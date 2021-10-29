@@ -5,10 +5,10 @@
       <list>
         <option value="$PROJECT_DIR$/sales-service/pom.xml" />
         <option value="$PROJECT_DIR$/discovery-service/pom.xml" />
-        <option value="$PROJECT_DIR$/salesrep-service/pom.xml" />
         <option value="$PROJECT_DIR$/opportunity-service/pom.xml" />
         <option value="$PROJECT_DIR$/lead-service/pom.xml" />
         <option value="$PROJECT_DIR$/account-service/pom.xml" />
+        <option value="$PROJECT_DIR$/salesrep-service/pom.xml" />
       </list>
     </option>
   </component>

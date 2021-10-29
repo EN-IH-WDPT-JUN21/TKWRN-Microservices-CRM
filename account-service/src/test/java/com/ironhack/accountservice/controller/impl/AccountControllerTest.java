@@ -15,7 +15,6 @@ import com.ironhack.accountservice.exceptions.ExceedsMaxLength;
 import com.ironhack.accountservice.exceptions.InvalidCountryException;
 import com.ironhack.accountservice.exceptions.NameContainsNumbersException;
 import com.ironhack.accountservice.repository.AccountRepository;
-import com.tkwrn.accountservice.controller.dto.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -38,10 +38,10 @@ public class SalesRepController implements ISalesRepController {
     }
 
 
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public SalesRep findById(@PathVariable Long id) {
         return salesRepService;
-    }
+    }*/
 
 }
