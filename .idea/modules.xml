@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/opportunity-service/OpportunityService.iml" filepath="$PROJECT_DIR$/opportunity-service/OpportunityService.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/TKWRN-Microservices-CRM.iml" filepath="$PROJECT_DIR$/.idea/TKWRN-Microservices-CRM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/account-service/account-service.iml" filepath="$PROJECT_DIR$/account-service/account-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/discovery-service/discovery-service.iml" filepath="$PROJECT_DIR$/discovery-service/discovery-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lead-service/lead-service.iml" filepath="$PROJECT_DIR$/lead-service/lead-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/salesrep-service/salesrep-service.iml" filepath="$PROJECT_DIR$/salesrep-service/salesrep-service.iml" />
     </modules>
   </component>
