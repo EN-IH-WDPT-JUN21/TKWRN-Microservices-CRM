@@ -18,8 +18,8 @@ public class SalesRepDTO {
     private String repName;
 
     @ElementCollection
-    private List<LeadDTO> leadList;
+    private List<Long> leadList;
 
     @ElementCollection
-    private List<OpportunityDTO> opportunityList;
+    private List<Long> opportunityList;
 }

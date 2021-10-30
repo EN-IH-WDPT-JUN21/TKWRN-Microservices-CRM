@@ -18,9 +18,9 @@ public class SampleDataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<SalesRepDTO> salesReps = new ArrayList<>();
+        /*List<SalesRepDTO> salesReps = new ArrayList<>();
         salesReps.add(new SalesRepDTO(1L, "Mary Jane"));
-        salesReps.add(new SalesRepDTO(2L, "Joe Doe"));
+        salesReps.add(new SalesRepDTO(2L, "Joe Doe"));*/
 
         leadRepository.saveAll(List.of(
                 new Lead("Sebastian Marek Labedz", "123456789", "labedzsebastian@gmail.co", "Wings of Freedom", 1L),

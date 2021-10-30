@@ -9,9 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
-@RestController("/api/v1/sales-reps")
+@RestController
+@RequestMapping("/api/v1/sales-reps")
 public class SalesRepController implements ISalesRepController {
 
     SalesRepRepository salesRepRepository;
@@ -33,15 +33,15 @@ public class SalesRepController implements ISalesRepController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<SalesRep> getAllSalesReps() {
-        return salesRepRepository.findAll();
+    public List<SalesRepDTO> getAllSalesReps() {
+        return salesRepService.findAllSalesReps();
     }
 
 
-    /*@GetMapping("/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public SalesRep findById(@PathVariable Long id) {
-        return salesRepService;
-    }*/
+    public SalesRepDTO findById(@PathVariable Long id) {
+        return salesRepService.findById(id);
+    }
 
 }

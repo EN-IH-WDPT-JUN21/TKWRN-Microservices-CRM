@@ -1,6 +1,5 @@
 package com.ironhack.salesrepservice.dto;
 
-import com.ironhack.salesrepservice.dao.SalesRep;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +17,5 @@ public class OpportunityDTO {
     private int quantity;
     private String decisionMaker;
     private String account;
-    private SalesRep salesRep;
+    private Long salesRepId;
 }

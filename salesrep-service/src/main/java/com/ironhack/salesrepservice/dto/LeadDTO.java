@@ -1,6 +1,5 @@
 package com.ironhack.salesrepservice.dto;
 
-import com.ironhack.salesrepservice.dao.SalesRep;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,5 +16,5 @@ public class LeadDTO {
     private String phoneNumber;
     private String email;
     private String companyName;
-    private SalesRep salesRep;
+    private Long salesId;
 }
