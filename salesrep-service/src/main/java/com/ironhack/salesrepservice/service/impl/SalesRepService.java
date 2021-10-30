@@ -8,7 +8,10 @@ import com.ironhack.salesrepservice.proxy.LeadServiceProxy;
 import com.ironhack.salesrepservice.proxy.OpportunityServiceProxy;
 import com.ironhack.salesrepservice.repository.SalesRepRepository;
 import com.ironhack.salesrepservice.service.interfaces.ISalesRepService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +40,9 @@ public class SalesRepService implements ISalesRepService {
     }
 
     public SalesRepDTO findById(Long id) {
-        Optional<SalesRep> tempSalesRep = salesRepRepository.findById(id);
-        SalesRepDTO salesRepDTO = convertSalesRepToDTO(tempSalesRep.get());
-        return salesRepDTO;
+        SalesRep salesRep = salesRepRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Sales representative with id " + id + " does not exist."));
+        return convertSalesRepToDTO(salesRep);
     }
 
     public List<SalesRepDTO> findAllSalesReps() {
@@ -51,6 +54,11 @@ public class SalesRepService implements ISalesRepService {
         return salesRepDTOList;
     }
 
+    public void deleteSalesRep(Long id) {
+        SalesRep salesRep = salesRepRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Sales representative with id " + id + " does not exist."));
+        salesRepRepository.delete(salesRep);
+    }
 
     public SalesRepDTO convertSalesRepToDTO(SalesRep salesRep) {
         List<Long> leadList = new ArrayList<>();
