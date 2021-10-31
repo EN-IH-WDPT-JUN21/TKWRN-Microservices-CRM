@@ -78,7 +78,7 @@ public class LeadService {
         LeadDTO leadDTO = getById(id);
         ContactDTO newContact = contactProxy.createContact(leadDTO);
         OpportunityDTO newOpp = new OpportunityDTO(Status.OPEN, product, quantity, newContact.getId(), leadDTO.getSalesId());
-//        oops.createOpportunity(newOpp);
+        oops.createOpportunity(newOpp);
         Lead lead = convertDtoToLead(leadDTO);
         leadRepository.delete(lead);
         return newOpp;
