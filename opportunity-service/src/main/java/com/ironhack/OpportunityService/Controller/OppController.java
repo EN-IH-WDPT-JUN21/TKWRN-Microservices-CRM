@@ -28,8 +28,8 @@ public class OppController {
         return opportunityRepository.findById(id).orElse(null);
     }
 
-    @PostMapping("/create")
-    public Opportunity createOpportunity(@RequestBody OpportunityDTO opportunityDTO){
+    @PostMapping("/new")
+    public OpportunityDTO createOpportunity(@RequestBody OpportunityDTO opportunityDTO){
         return opportunityService.createOpp(opportunityDTO);
     }
 

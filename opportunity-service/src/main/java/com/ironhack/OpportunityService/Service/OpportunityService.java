@@ -17,7 +17,7 @@ public class OpportunityService {
     @Autowired
     OpportunityRepository opportunityRepository;
 
-    public Opportunity createOpp(OpportunityDTO opportunityDTO) {
+    public OpportunityDTO createOpp(OpportunityDTO opportunityDTO) {
         Opportunity newOpp =  new Opportunity(
                 opportunityDTO.getStatus(),
                 opportunityDTO.getProduct(),
@@ -26,8 +26,9 @@ public class OpportunityService {
                 opportunityDTO.getAccountId(),
                 opportunityDTO.getSalesRepId()
         );
+        opportunityRepository.save(newOpp);
 
-        return opportunityRepository.save(newOpp);
+        return opportunityDTO;
     }
 
     public Opportunity updateOpp(Long id, OpportunityDTO opportunityDTO) {
