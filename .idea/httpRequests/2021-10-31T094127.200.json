@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "name": "John Doe",
+  "phoneNumber": "123475357",
+  "email": "alfa@beta.uk",
+  "companyName": "Kałasznikow",
+  "salesId": 1,
+  "accountId": null,
+  "opportunityId": []
+}

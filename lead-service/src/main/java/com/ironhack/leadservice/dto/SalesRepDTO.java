@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.ElementCollection;
 import java.util.List;
 
 @Getter
@@ -21,9 +22,10 @@ public class SalesRepDTO {
 
     private List<Lead> leadList;
 
-    private List<OpportunityDTO> opportunityList;
+    @ElementCollection
+    private List<Long> opportunityList;
 
-    public SalesRepDTO(String repName, List<Lead> leadList, List<OpportunityDTO> opportunityList) {
+    public SalesRepDTO(String repName, List<Lead> leadList, List<Long> opportunityList) {
         this.repName = repName;
         this.leadList = leadList;
         this.opportunityList = opportunityList;

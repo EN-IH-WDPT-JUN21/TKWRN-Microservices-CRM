@@ -13,8 +13,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OpportunityDTO {
 
-    private Long id;
-
     private Status status = Status.OPEN;
 
     private Truck product;
@@ -23,11 +21,15 @@ public class OpportunityDTO {
 
     private Long decisionMaker;
 
-//    private Long accountId;
+    private Long accountId;
 
     private Long salesId;
 
-    public void setTruck(Truck product) {
+    public OpportunityDTO(Status status, Truck product, Integer quantity, Long decisionMaker, Long salesId) {
+        this.status = status;
         this.product = product;
+        this.quantity = quantity;
+        this.decisionMaker = decisionMaker;
+        this.salesId = salesId;
     }
 }

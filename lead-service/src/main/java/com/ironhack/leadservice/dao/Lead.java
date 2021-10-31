@@ -30,8 +30,6 @@ public class Lead {
     @Column(name = "company_name")
     protected String companyName;
 
-//    protected SalesRep salesRep;
-
     protected Long salesId;
 
     public Lead(String name, String phoneNumber, String email, String companyName, Long salesId) {

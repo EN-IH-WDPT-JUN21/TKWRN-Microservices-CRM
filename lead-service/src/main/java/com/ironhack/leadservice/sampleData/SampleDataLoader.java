@@ -1,13 +1,11 @@
 package com.ironhack.leadservice.sampleData;
 
-import com.ironhack.leadservice.LeadRepository;
+import com.ironhack.leadservice.repository.LeadRepository;
 import com.ironhack.leadservice.dao.Lead;
-import com.ironhack.leadservice.dto.SalesRepDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
