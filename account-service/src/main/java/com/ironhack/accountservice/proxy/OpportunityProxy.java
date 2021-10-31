@@ -14,9 +14,9 @@ import javax.validation.Valid;
 @Service
 @FeignClient("opp-service")
 public interface OpportunityProxy {
-    @GetMapping("/oops/{id}")
+    @GetMapping("/api/v1/opps/{id}")
     OpportunityReceiptDTO findOpportunityById(@PathVariable(name = "id") Long id);
 
-    @PatchMapping("/oops/change-account/{id}")
+    @PatchMapping("/api/v1/opps/change-account/{id}")
     void updateAccount(@PathVariable(name = "id") Long id, @RequestBody @Valid OpportunityUpdateDTO opportunityUpdateDTO);
 }

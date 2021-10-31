@@ -14,9 +14,9 @@ import javax.validation.Valid;
 @Service
 @FeignClient("contact-service")
 public interface ContactProxy {
-    @GetMapping("/contacts/{id}")
-    public ContactReceiptDTO findContactById (@PathVariable(name="id") Long id);
+    @GetMapping("/api/v1/contacts/{id}")
+    ContactReceiptDTO findContactById (@PathVariable(name="id") Long id);
 
-    @PatchMapping("/contacts/change-account/{id}")
+    @PatchMapping("/api/v1/contacts/change-account/{id}")
     void updateAccount(@PathVariable(name = "id") Long id, @RequestBody @Valid ContactUpdateDTO contactUpdateDTO);
 }

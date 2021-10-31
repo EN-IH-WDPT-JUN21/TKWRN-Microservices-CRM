@@ -10,10 +10,10 @@ import java.util.List;
 @FeignClient("opportunity-service")
 public interface OpportunityServiceProxy {
 
-    @GetMapping("/opp/get")
+    @GetMapping("/api/v1/opps/get")
     List<OpportunityDTO> getAllOpportunities();
 
-    @GetMapping("/opp/get/{id}")
+    @GetMapping("/api/v1/opps/get/{id}")
     OpportunityDTO findById(@PathVariable Long id);
 
 }

@@ -10,10 +10,10 @@ import java.util.List;
 @FeignClient("lead-service")
 public interface LeadServiceProxy {
 
-    @GetMapping("/leads")
+    @GetMapping("/api/v1/leads")
     List<LeadDTO> getAllLeads();
 
-    @GetMapping("/leads/{id}")
+    @GetMapping("/api/v1/leads/{id}")
     LeadDTO findById(@PathVariable Long id);
 
 }

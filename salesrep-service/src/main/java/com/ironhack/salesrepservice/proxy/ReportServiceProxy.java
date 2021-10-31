@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient("report-service")
 public interface ReportServiceProxy {
 
-    @PostMapping("/post/salesreps/add")
+    @PostMapping("/api/v1/post/salesreps/add")
     SalesRep addSalesRep(@RequestBody SalesRep salesrep);
 }
 

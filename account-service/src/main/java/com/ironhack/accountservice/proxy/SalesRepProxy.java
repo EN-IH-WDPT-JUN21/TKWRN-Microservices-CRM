@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Service
 @FeignClient("sales-rep-service")
 public interface SalesRepProxy {
-    @GetMapping("/sales-reps/{id}")
-    public SalesRepDTO findSalesRepById (@PathVariable(name="id") Long id);
+    @GetMapping("/api/v1/sales-reps/{id}")
+    SalesRepDTO findSalesRepById (@PathVariable(name="id") Long id);
 }
