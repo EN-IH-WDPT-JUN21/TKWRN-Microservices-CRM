@@ -1,6 +1,5 @@
 package com.ironhack.leadservice.dto;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,16 +11,15 @@ import lombok.Setter;
 @Getter
 public class LeadDTO {
 
-    @NotNull
-    protected Long id;
+    private Long id;
 
-    protected String name;
+    private String name;
 
-    protected String phoneNumber;
+    private String phoneNumber;
 
-    protected String email;
+    private String email;
 
-    protected String companyName;
+    private String companyName;
 
     private Long salesId;
 

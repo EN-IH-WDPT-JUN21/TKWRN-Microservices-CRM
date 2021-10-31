@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Sebastian Marek Labedz",
+    "phoneNumber": "123456789",
+    "email": "labedzsebastian@gmail.co",
+    "companyName": "Wings of Freedom",
+    "salesId": 1
+  },
+  {
+    "id": 2,
+    "name": "Lee Dawson",
+    "phoneNumber": "980651164",
+    "email": "ld@gmail.com",
+    "companyName": "LeeD",
+    "salesId": 1
+  },
+  {
+    "id": 3,
+    "name": "Natalia Shilyaeva",
+    "phoneNumber": "563782789",
+    "email": "nattyshil@yahoo.com",
+    "companyName": "Nathy From Wonderland",
+    "salesId": 2
+  }
+]

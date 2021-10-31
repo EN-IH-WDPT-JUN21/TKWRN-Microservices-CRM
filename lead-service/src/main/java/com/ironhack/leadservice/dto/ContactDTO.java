@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.ElementCollection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,18 +18,19 @@ public class ContactDTO {
 
     private Long id;
 
-    protected String name;
+    private String name;
 
-    protected String phoneNumber;
+    private String phoneNumber;
 
-    protected String email;
+    private String email;
 
-    protected String companyName;
+    private String companyName;
 
     private Long salesId;
 
     private Long accountId;
 
+    @ElementCollection
     private List<Long> opportunityId = new ArrayList<>();
 
     public ContactDTO(String name, String phoneNumber, String email, String companyName, Long salesId, Long accountId, List<Long> opportunityId) {
