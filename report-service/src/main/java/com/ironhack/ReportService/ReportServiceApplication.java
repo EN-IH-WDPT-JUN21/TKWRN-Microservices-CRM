@@ -1,4 +1,4 @@
-package com.ironhack.OpportunityService;
+package com.ironhack.ReportService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients
-public class OpportunityServiceApplication {
+public class ReportServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OpportunityServiceApplication.class, args);
+		SpringApplication.run(ReportServiceApplication.class, args);
 	}
 
 }
