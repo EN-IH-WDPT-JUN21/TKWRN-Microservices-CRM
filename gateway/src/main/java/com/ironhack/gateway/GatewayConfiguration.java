@@ -12,20 +12,38 @@ public class GatewayConfiguration {
     public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
         return builder.routes()
 
+                // Account Service
+                .route(p -> p.path("/api/v1/accounts/**")
+                        .uri("lb://ACCOUNT-SERVICE"))
+                .route(p -> p.path("/api/v1/accounts**")
+                        .uri("lb://ACCOUNT-SERVICE"))
+
+                // Contact Service
+                .route(p -> p.path("/api/v1/contacts/**")
+                        .uri("lb://CONTACT-SERVICE"))
+                .route(p -> p.path("/api/v1/contacts**")
+                        .uri("lb://CONTACT-SERVICE"))
+
                 // Lead service
                 .route(p -> p.path("/leads/**")
                         .uri("lb://LEAD-SERVICE"))
+                .route(p -> p.path("/leads**")
+                        .uri("lb://LEAD-SERVICE"))
 
                 // Opportunity service
-                .route(p -> p.path("/opp/**")
+                .route(p -> p.path("/api/v1/opps/**")
+                        .uri("lb://OPPORTUNITY-SERVICE"))
+                .route(p -> p.path("/api/v1/opps**")
                         .uri("lb://OPPORTUNITY-SERVICE"))
 
-                // Account Service
-                .route(p -> p.path("/accounts/**")
-                        .uri("lb://ACCOUNT-SERVICE"))
+                // Report service
+                .route(p -> p.path("/api/v1/**")
+                        .uri("lb://REPORT-SERVICE"))
 
                 // Salesrep service
                 .route(p -> p.path("/api/v1/sales-reps/**")
+                        .uri("lb://SALESREP-SERVICE"))
+                .route(p -> p.path("/api/v1/sales-reps**")
                         .uri("lb://SALESREP-SERVICE"))
 
                 .build();

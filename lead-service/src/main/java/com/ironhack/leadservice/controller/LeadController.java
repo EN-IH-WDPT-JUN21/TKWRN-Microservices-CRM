@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/leads")
 public class LeadController {
 
     @Autowired
@@ -21,25 +22,25 @@ public class LeadController {
     @Autowired
     LeadService leadService;
 
-    @GetMapping("/leads")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<LeadDTO> getLeads() {
         return leadService.getAllLeads();
     }
 
-    @GetMapping("/leads/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public LeadDTO getLeadById(@PathVariable(value = "id") long id) {
         return leadService.getById(id);
     }
 
-    @PostMapping("/leads")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public LeadDTO createLead(@RequestBody LeadDTO lead) {
         return leadService.create(lead);
     }
 
-    @GetMapping("/leads/{id}/convert")
+    @GetMapping("/{id}/convert")
     @ResponseStatus(HttpStatus.CREATED)
     public OpportunityDTO convertLead(@PathVariable(value = "id") long id,
                                       @RequestParam Truck product,

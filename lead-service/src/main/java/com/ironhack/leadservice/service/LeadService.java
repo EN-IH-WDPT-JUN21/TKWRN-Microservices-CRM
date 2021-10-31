@@ -11,7 +11,6 @@ import com.ironhack.leadservice.dto.OpportunityDTO;
 import com.ironhack.leadservice.dto.SalesRepDTO;
 import com.ironhack.leadservice.proxies.OpportunityProxy;
 import com.ironhack.leadservice.proxies.SalesProxy;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -27,22 +26,21 @@ public class LeadService {
 
     private SalesProxy salesProxy;
 
-    private OpportunityProxy oops;
+    private OpportunityProxy oppsProxy;
 
     private ContactProxy contactProxy;
 
-    public LeadService(LeadRepository leadRepository, SalesProxy salesProxy, OpportunityProxy oops, ContactProxy contactProxy) {
+    public LeadService(LeadRepository leadRepository, SalesProxy salesProxy, OpportunityProxy oppsProxy, ContactProxy contactProxy) {
         this.leadRepository = leadRepository;
         this.salesProxy = salesProxy;
-        this.oops = oops;
+        this.oppsProxy = oppsProxy;
         this.contactProxy = contactProxy;
     }
 
     public LeadDTO getById(long id) {
         Lead lead = leadRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Lead with id " + id + " does not exist."));
-        LeadDTO leadDTO = convertLeadToDto(lead);
-        return leadDTO;
+        return convertLeadToDto(lead);
     }
 
     public LeadDTO create(LeadDTO leadDTO) {
@@ -63,22 +61,28 @@ public class LeadService {
     }
 
     public LeadDTO convertLeadToDto(Lead lead) {
-        LeadDTO newLeadDto = new LeadDTO(lead.getId(), lead.getName(),
-                lead.getPhoneNumber(), lead.getEmail(), lead.getCompanyName(), lead.getSalesId());
-        return newLeadDto;
+        return new LeadDTO(lead.getId(),
+                           lead.getName(),
+                           lead.getPhoneNumber(),
+                           lead.getEmail(),
+                           lead.getCompanyName(),
+                           lead.getSalesId());
     }
 
     public Lead convertDtoToLead(LeadDTO leadDTO) {
-        Lead newLead = new Lead(leadDTO.getId(), leadDTO.getName(),
-                leadDTO.getPhoneNumber(), leadDTO.getEmail(), leadDTO.getCompanyName(), leadDTO.getSalesId());
-        return newLead;
+        return new Lead(leadDTO.getId(),
+                        leadDTO.getName(),
+                        leadDTO.getPhoneNumber(),
+                        leadDTO.getEmail(),
+                        leadDTO.getCompanyName(),
+                        leadDTO.getSalesId());
     }
 
     public OpportunityDTO convert(Long id, Truck product, int quantity) {
         LeadDTO leadDTO = getById(id);
         ContactDTO newContact = contactProxy.createContact(leadDTO);
         OpportunityDTO newOpp = new OpportunityDTO(Status.OPEN, product, quantity, newContact.getId(), leadDTO.getSalesId());
-        oops.createOpportunity(newOpp);
+        oppsProxy.createOpportunity(newOpp);
         Lead lead = convertDtoToLead(leadDTO);
         leadRepository.delete(lead);
         return newOpp;

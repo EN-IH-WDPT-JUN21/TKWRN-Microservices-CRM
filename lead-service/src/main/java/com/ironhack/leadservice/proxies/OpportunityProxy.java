@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient("oops-service")
+@FeignClient("opportunity-service")
 public interface OpportunityProxy {
 
-    @GetMapping("/api/v1/oops/{id}")
+    @GetMapping("/api/v1/opps/{id}")
     OpportunityDTO getOpportunity(@PathVariable(value = "id") long id);
 
-    @PostMapping("/api/v1/oops")
-    OpportunityDTO createOpportunity(@RequestBody OpportunityDTO oops);
+    @PostMapping("/api/v1/opps")
+    OpportunityDTO createOpportunity(@RequestBody OpportunityDTO opps);
 }

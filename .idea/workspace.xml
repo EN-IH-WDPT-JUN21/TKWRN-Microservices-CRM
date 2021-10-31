@@ -5,15 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="962c8d9f-5426-4660-864f-eb1229fed0da" name="Changes" comment="Second commit">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/dto/UpdatedContactDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_test_5_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_5_3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/controller/ContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/controller/ContactController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/dto/ContactDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/dto/ContactDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/service/ContactService.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/service/ContactService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/src/main/java/com/ironhack/accountservice/controller/impl/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/main/java/com/ironhack/accountservice/controller/impl/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/ironhack/gateway/GatewayConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/ironhack/gateway/GatewayConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/controller/LeadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/controller/LeadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/OpportunityProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/OpportunityProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/SalesProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/SalesProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/service/LeadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/service/LeadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/controller/LeadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/controller/LeadController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/OpportunityProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/OpportunityProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/SalesProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/SalesProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/repository/LeadRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/repository/LeadRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/service/LeadService.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/service/LeadService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opportunity-service/src/main/java/com/ironhack/OpportunityService/Controller/OppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/opportunity-service/src/main/java/com/ironhack/OpportunityService/Controller/OppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report-service/report-service/report-service.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,11 +45,15 @@
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
+        <entry key="JPA Inspector" value="true" />
+        <entry key="JPA Palette" value="true" />
         <entry key="JPA Structure" value="true" />
       </map>
     </option>
     <option name="myId2Visible">
       <map>
+        <entry key="JPA Inspector" value="false" />
+        <entry key="JPA Palette" value="false" />
         <entry key="JPA Structure" value="false" />
       </map>
     </option>
@@ -60,6 +75,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">

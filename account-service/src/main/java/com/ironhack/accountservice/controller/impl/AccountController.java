@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("/api/v1/accounts")
 public class AccountController implements IAccountController {
     @Autowired
     private AccountRepository accountRepository;

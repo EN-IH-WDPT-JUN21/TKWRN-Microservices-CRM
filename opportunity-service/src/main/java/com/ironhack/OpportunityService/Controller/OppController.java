@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/opp")
+@RequestMapping("/api/v1/opps")
 public class OppController {
 
     @Autowired
