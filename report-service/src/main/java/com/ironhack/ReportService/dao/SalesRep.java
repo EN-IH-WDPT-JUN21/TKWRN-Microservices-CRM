@@ -24,12 +24,11 @@ public class SalesRep {
     @Column(name="sales_rep_name")
     private String repName;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "salesRep")
-    private List<Lead> leadList;
+    @ElementCollection
+    private List<Long> leadIdList;
 
-    @OneToMany(mappedBy = "salesRep")
-    private List<Opportunity> opportunityList;
+    @ElementCollection
+    private List<Long> opportunityIdList;
 
 
 }

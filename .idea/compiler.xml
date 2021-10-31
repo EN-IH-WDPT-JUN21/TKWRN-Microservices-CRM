@@ -24,7 +24,7 @@
       <module name="gateway" target="1.5" />
       <module name="lead-service" target="1.5" />
       <module name="opportunity-service" target="17" />
-      <module name="report-service" target="1.5" />
+      <module name="report-service" target="17" />
       <module name="salesrep-service" target="1.5" />
     </bytecodeTargetLevel>
   </component>
