@@ -1,4 +1,4 @@
-package com.ironhack.leadservice.dto;
+package com.ironhack.contactservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -49,4 +49,11 @@ public class ContactDTO {
         this.salesId = salesId;
         this.accountId = accountId;
     }
+
+    public ContactDTO(Long accountId) {
+        this.accountId = accountId;
+    }
 }
+
+
+

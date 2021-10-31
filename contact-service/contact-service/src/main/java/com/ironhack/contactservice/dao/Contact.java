@@ -1,10 +1,8 @@
-package com.ironhack.leadservice.dto;
+package com.ironhack.contactservice.dao;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +10,11 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+public class Contact {
 
-public class ContactDTO {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     protected String name;
@@ -29,18 +29,19 @@ public class ContactDTO {
 
     private Long accountId;
 
+    @ElementCollection
     private List<Long> opportunityId = new ArrayList<>();
 
-    public ContactDTO(Long id, String name, String phoneNumber, String email, String companyName, Long salesId) {
-        this.id = id;
+    public Contact(String name, String phoneNumber, String email, String companyName, Long salesId) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.companyName = companyName;
         this.salesId = salesId;
+        this.accountId = null;
     }
 
-    public ContactDTO(Long id, String name, String phoneNumber, String email, String companyName, Long salesId, Long accountId) {
+    public Contact(Long id, String name, String phoneNumber, String email, String companyName, Long salesId, Long accountId) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;

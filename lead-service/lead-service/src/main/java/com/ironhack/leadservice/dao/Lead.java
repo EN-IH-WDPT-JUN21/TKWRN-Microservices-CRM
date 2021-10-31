@@ -1,20 +1,15 @@
 package com.ironhack.leadservice.dao;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
 @Getter
-@Table(name = "leads")
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Lead {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
@@ -29,8 +24,6 @@ public class Lead {
 
     @Column(name = "company_name")
     protected String companyName;
-
-//    protected SalesRep salesRep;
 
     protected Long salesId;
 
