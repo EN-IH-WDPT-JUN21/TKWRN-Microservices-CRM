@@ -30,7 +30,7 @@ public class ContactDTO {
     private Long accountId;
 
     @ElementCollection
-    private List<Long> opportunityId = new ArrayList();
+    private List<Long> opportunityId = new ArrayList<>();
 
     public ContactDTO(Long id, String name, String phoneNumber, String email, String companyName, Long salesId) {
         this.id = id;

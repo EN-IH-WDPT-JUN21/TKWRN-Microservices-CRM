@@ -4,114 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d1df8fb-d8e5-43d1-be0b-d6d1b00c730b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/contact-service/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact-service/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact-service/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact-service/HELP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact-service/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact-service/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contact-service/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/ContactProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/TKWRN-Microservices-CRM.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="962c8d9f-5426-4660-864f-eb1229fed0da" name="Changes" comment="Second commit">
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/dto/UpdatedContactDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.jpb/jpb-settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/account-service/account-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/contact-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/contact-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/target/classes/com/ironhack/contactservice/ContactServiceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/target/classes/com/ironhack/contactservice/controller/ContactController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/target/classes/com/ironhack/contactservice/dao/Contact.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/target/classes/com/ironhack/contactservice/dto/ContactDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/target/classes/com/ironhack/contactservice/dto/LeadDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/target/classes/com/ironhack/contactservice/repository/ContactRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/target/classes/com/ironhack/contactservice/sampleData/SampleDataLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/target/classes/com/ironhack/contactservice/service/ContactService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service/target/test-classes/com/ironhack/contactservice/ContactServiceApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/discovery-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/lead-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/LeadServiceApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/controller/LeadController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/dao/Lead.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/dto/ContactDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/dto/LeadDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/dto/OpportunityDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/dto/SalesRepDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/enums/Industry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/enums/Status.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/enums/Truck.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/exceptions/EmailNotValidException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/exceptions/EmptyStringException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/exceptions/ExceedsMaxLength.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/exceptions/IdContainsLettersException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/exceptions/InvalidCountryException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/exceptions/InvalidEnumException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/exceptions/NameContainsNumbersException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/exceptions/NoSuchValueException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/exceptions/PhoneNumberContainsLettersException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/proxy/ContactProxy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/proxy/OpportunityProxy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/proxy/SalesProxy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/repository/LeadRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/sampleData/SampleDataLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/classes/com/ironhack/leadservice/service/LeadService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service/target/test-classes/com/ironhack/leadservice/LeadServiceApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/LeadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/controller/LeadController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/LeadRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/repository/LeadRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/LeadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/service/LeadService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dao/Contact.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dao/Lead.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dao/Lead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dto/ContactDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dto/ContactDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dto/LeadDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dto/LeadDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dto/OpportunityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dto/OpportunityDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dto/SalesRepDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dto/SalesRepDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/enums/ConsoleTextColors.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/EmailNotValidException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/ExceedsMaxLength.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/IdContainsLettersException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/InvalidCountryException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/NameContainsNumbersException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/NoSuchValueException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/PhoneNumberContainsLettersException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/interfaces/Variables.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/OpportunityProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/OpportunityProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/SalesProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/SalesProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/sampleData/SampleDataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/sampleData/SampleDataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/LeadController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/LeadRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/LeadService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dao/Contact.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dao/Lead.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dao/Lead.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dto/ContactDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dto/ContactDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dto/LeadDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dto/LeadDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dto/OpportunityDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dto/OpportunityDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dto/SalesRepDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dto/SalesRepDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/enums/ConsoleTextColors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/exceptions/EmailNotValidException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/exceptions/ExceedsMaxLength.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/exceptions/IdContainsLettersException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/exceptions/InvalidCountryException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/exceptions/NameContainsNumbersException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/exceptions/NoSuchValueException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/exceptions/PhoneNumberContainsLettersException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/interfaces/Variables.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/ContactProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/ContactProxy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/OpportunityProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/OpportunityProxy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/SalesProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/SalesProxy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/sampleData/SampleDataLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/sampleData/SampleDataLoader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/controller/ContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/controller/ContactController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/dto/ContactDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/dto/ContactDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/service/ContactService.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/service/ContactService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,6 +31,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="JPA Structure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="JPA Structure" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectId" id="20GSIAx8iYicpuhhpjm4jjTmz8D" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -144,6 +58,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunDashboard">
