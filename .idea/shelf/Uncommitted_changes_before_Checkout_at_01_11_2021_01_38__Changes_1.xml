@@ -1,0 +1,9 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_01_11_2021_01_38_[Changes]1" date="1635727141067" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_11_2021_01_38_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 01.11.2021 01:38 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="lead-service/target/classes/com/ironhack/leadservice/repository/LeadRepository.class" />
+    <option name="AFTER_PATH" value="lead-service/target/classes/com/ironhack/leadservice/repository/LeadRepository.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_11_2021_01_38_[Changes]1/LeadRepository.class" />
+  </binary>
+</changelist>

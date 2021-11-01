@@ -41,24 +41,24 @@ public class DatabaseController {
 
     //Database Entry Post Methods
     @PostMapping("/new/account")
-    public Account addorCreateAccount(@RequestBody Account account){
-        return dbpService.addOrCreateAccount(account);
+    public Account addOrUpdateAccount(@RequestBody Account account){
+        return dbpService.addOrUpdateAccount(account);
     }
     @PostMapping("/new/contact")
-    public Contact addorCreateContact(@RequestBody Contact contact){
-        return dbpService.addOrCreateContact(contact);
+    public Contact addOrUpdateContact(@RequestBody Contact contact){
+        return dbpService.addOrUpdateContact(contact);
     }
     @PostMapping("/new/lead")
-    public Lead addOrCreateLead(@RequestBody Lead lead){
-        return dbpService.addOrCreateLead(lead);
+    public Lead addOrUpdateLead(@RequestBody Lead lead){
+        return dbpService.addOrUpdateLead(lead);
     }
     @PostMapping("/new/opportunity")
-    public Opportunity addOrCreateOpp(@RequestBody OpportunityDTO opportunityDTO){
-        return dbpService.addOrCreateOpp(opportunityDTO);
+    public Opportunity addOrUpdateOpp(@RequestBody OpportunityDTO opportunityDTO){
+        return dbpService.addOrUpdateOpp(opportunityDTO);
     }
     @PostMapping("/new/salesrep")
-    public SalesRep addOrCreateSalesRep(@RequestBody SalesRep salesrep){
-        return dbpService.addOrCreateSalesRep(salesrep);
+    public SalesRep addOrUpdateSalesRep(@RequestBody SalesRep salesrep){
+        return dbpService.addOrUpdateSalesRep(salesrep);
     }
 
 }

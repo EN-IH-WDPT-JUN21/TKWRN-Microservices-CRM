@@ -43,6 +43,12 @@ public class SalesRepController implements ISalesRepController {
         return salesRepService.findById(id);
     }
 
+    @PatchMapping("/update/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public SalesRepDTO updateSalesRepName(@PathVariable Long id, @RequestParam String name) {
+        return salesRepService.updateSalesRepName(id, name);
+    }
+
     @PostMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteSalesRep(@PathVariable Long id) {

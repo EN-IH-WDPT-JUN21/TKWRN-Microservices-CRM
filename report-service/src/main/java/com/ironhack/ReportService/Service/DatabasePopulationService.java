@@ -99,7 +99,7 @@ public class DatabasePopulationService {
     }
 
 
-    public Account addOrCreateAccount(Account account) {
+    public Account addOrUpdateAccount(Account account) {
         try {
             accountRepository.save(account);
         } catch (Exception e) {
@@ -108,7 +108,7 @@ public class DatabasePopulationService {
         return account;
     }
 
-    public Contact addOrCreateContact(Contact contact) {
+    public Contact addOrUpdateContact(Contact contact) {
         try {
             contactRepository.save(contact);
         } catch (Exception e) {
@@ -117,7 +117,7 @@ public class DatabasePopulationService {
         return contact;
     }
 
-    public Lead addOrCreateLead(Lead lead) {
+    public Lead addOrUpdateLead(Lead lead) {
         try {
             leadRepository.save(lead);
         } catch (Exception e) {
@@ -126,7 +126,7 @@ public class DatabasePopulationService {
         return lead;
     }
 
-    public Opportunity addOrCreateOpp(OpportunityDTO opportunityDTO) {
+    public Opportunity addOrUpdateOpp(OpportunityDTO opportunityDTO) {
         Opportunity opportunity = new Opportunity(opportunityDTO);
         try {
             opportunityRepository.save(opportunity);
@@ -136,7 +136,7 @@ public class DatabasePopulationService {
         return opportunity;
     }
 
-    public SalesRep addOrCreateSalesRep(SalesRep salesrep) {
+    public SalesRep addOrUpdateSalesRep(SalesRep salesrep) {
         try {
             salesRepRepository.save(salesrep);
         } catch (Exception e) {
