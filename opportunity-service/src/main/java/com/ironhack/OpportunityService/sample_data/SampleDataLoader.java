@@ -28,6 +28,7 @@ public class SampleDataLoader implements CommandLineRunner {
 
         List<Opportunity> sampleOpps = IntStream.rangeClosed(1, 10)
                 .mapToObj(i -> new Opportunity(
+                    (long) i,
                     Status.OPEN,
                     Truck.HYBRID,
                     faker.number().numberBetween(1, 100),

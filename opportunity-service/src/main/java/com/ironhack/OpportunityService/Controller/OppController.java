@@ -8,6 +8,7 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -36,6 +37,11 @@ public class OppController {
     @PutMapping("/update/{id}")
     public Opportunity updateOpportunity(@PathVariable Long id, @RequestBody OpportunityDTO opportunityDTO){
         return opportunityService.updateOpp(id, opportunityDTO);
+    }
+
+    @PatchMapping("change-account/{id}")
+    void updateAccount(@PathVariable(name = "id") Long id, @RequestBody @Valid OpportunityDTO opportunityDTO){
+        opportunityService.updateAccountId(id, opportunityDTO);
     }
 
     @DeleteMapping("/delete/{id}")

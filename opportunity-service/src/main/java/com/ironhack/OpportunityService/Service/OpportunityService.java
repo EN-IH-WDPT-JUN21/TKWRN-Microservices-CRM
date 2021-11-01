@@ -82,4 +82,16 @@ public class OpportunityService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No Opportunity with that Id Exists. Did you mean to create one?");
         }
     }
+
+    public void updateAccountId(Long id, OpportunityDTO opportunityDTO) {
+        Optional<Opportunity> storedOpp = opportunityRepository.findById(id);
+        if (storedOpp.isPresent()){
+            try {
+                storedOpp.get().setAccountId(opportunityDTO.getAccountId());
+                opportunityRepository.save(storedOpp.get());
+            } catch (Exception e){
+                throw new IllegalArgumentException("Malformed OpportunityDTO passed to updateAccount method.");
+            }
+        }
+    }
 }
