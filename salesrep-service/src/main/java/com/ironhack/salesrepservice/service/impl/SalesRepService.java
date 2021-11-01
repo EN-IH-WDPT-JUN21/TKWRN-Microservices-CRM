@@ -6,6 +6,7 @@ import com.ironhack.salesrepservice.dto.OpportunityDTO;
 import com.ironhack.salesrepservice.dto.SalesRepDTO;
 import com.ironhack.salesrepservice.proxy.LeadServiceProxy;
 import com.ironhack.salesrepservice.proxy.OpportunityServiceProxy;
+import com.ironhack.salesrepservice.proxy.ReportServiceProxy;
 import com.ironhack.salesrepservice.repository.SalesRepRepository;
 import com.ironhack.salesrepservice.service.interfaces.ISalesRepService;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ public class SalesRepService implements ISalesRepService {
     SalesRepRepository salesRepRepository;
     LeadServiceProxy leadServiceProxy;
     OpportunityServiceProxy opportunityServiceProxy;
+    ReportServiceProxy reportServiceProxy;
 
     public SalesRepService(SalesRepRepository salesRepRepository, LeadServiceProxy leadServiceProxy,
                            OpportunityServiceProxy opportunityServiceProxy) {
@@ -35,8 +37,8 @@ public class SalesRepService implements ISalesRepService {
     public SalesRepDTO addSalesRep(SalesRepDTO salesRepDTO) {
         SalesRep salesRep = convertDTOToSalesRep(salesRepDTO);
         salesRepRepository.save(salesRep);
-        SalesRepDTO newSalesRepDTO = convertSalesRepToDTO(salesRep);
-        return newSalesRepDTO;
+        reportServiceProxy.addOrUpdateSalesRep(salesRepDTO);
+        return convertSalesRepToDTO(salesRep);
     }
 
     public SalesRepDTO findById(Long id) {
@@ -52,6 +54,16 @@ public class SalesRepService implements ISalesRepService {
             salesRepDTOList.add(salesRepDTO);
         }
         return salesRepDTOList;
+    }
+
+    public SalesRepDTO updateSalesRepName(Long id, String name) {
+        SalesRep salesRep = salesRepRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Sales representative with id " + id + " does not exist."));
+        salesRep.setRepName(name);
+        salesRepRepository.save(salesRep);
+        SalesRepDTO salesRepDTO = convertSalesRepToDTO(salesRep);
+        reportServiceProxy.addOrUpdateSalesRep(salesRepDTO);
+        return salesRepDTO;
     }
 
     public void deleteSalesRep(Long id) {
@@ -84,8 +96,7 @@ public class SalesRepService implements ISalesRepService {
 
 
     public SalesRep convertDTOToSalesRep(SalesRepDTO salesRepDTO) {
-        SalesRep salesRep = new SalesRep(salesRepDTO.getId(),
-                                         salesRepDTO.getRepName());
-        return salesRep;
+        return new SalesRep(salesRepDTO.getId(),
+                            salesRepDTO.getRepName());
     }
 }
