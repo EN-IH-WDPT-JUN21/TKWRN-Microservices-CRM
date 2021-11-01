@@ -5,10 +5,7 @@ import com.ironhack.accountservice.controller.dto.AccountRequestDTO;
 import com.ironhack.accountservice.controller.dto.AccountUpdateDTO;
 import com.ironhack.accountservice.controller.interfaces.IAccountController;
 import com.ironhack.accountservice.dao.Account;
-import com.ironhack.accountservice.exceptions.EmptyStringException;
 import com.ironhack.accountservice.exceptions.ExceedsMaxLength;
-import com.ironhack.accountservice.exceptions.InvalidCountryException;
-import com.ironhack.accountservice.exceptions.NameContainsNumbersException;
 import com.ironhack.accountservice.repository.AccountRepository;
 import com.ironhack.accountservice.service.interfaces.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,11 +55,6 @@ public class AccountController implements IAccountController {
         return accountService.updateAccount(id, accountUpdateDTO.getOpportunityId());
     }
 
-    @GetMapping("/populate")
-    public void populate() throws NameContainsNumbersException, EmptyStringException, InvalidCountryException, ExceedsMaxLength {
-
-        accountService.populate();
-    }
 
     @GetMapping("reports/MEAN-EMPLOYEE-COUNT")
     @ResponseStatus(HttpStatus.OK)

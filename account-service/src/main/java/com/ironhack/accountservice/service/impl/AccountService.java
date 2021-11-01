@@ -54,9 +54,6 @@ public class AccountService implements IAccountService {
     // to create simple Account w/o links
     @Retry(name = "account-api", fallbackMethod = "fallbackAccountDTO")
     public AccountReceiptDTO store(AccountRequestDTO accountRequestDTO) {
-        // Validate if Account already exists
-//        List<Account> accountOptional = accountRepository.findById(accountDTO.);
-//        if (!accountOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book with ISBN " + accountDTO.getIsbn() + " and account " + accountDTO.getAccount() + " already exist");
         try{
             Account account;
             account = new Account(accountRequestDTO.getIndustry(), accountRequestDTO.getEmployeeCount(), accountRequestDTO.getCity(), accountRequestDTO.getCountry());
@@ -77,14 +74,14 @@ public class AccountService implements IAccountService {
         OpportunityReceiptDTO opportunityDTO;
         ContactReceiptDTO contactReceiptDTO;
         try{
-            opportunityDTO= opportunityProxy.findOpportunityById(accountRequestDTO.getOpportunityId());
+            opportunityDTO= opportunityProxy.getById(accountRequestDTO.getOpportunityId());
             opportunityReceiptDTOS.add(opportunityDTO);
         }catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no opportunity with this id");
         }
 
         try{
-            contactReceiptDTO= contactProxy.findContactById(opportunityDTO.getDecisionMakerId());
+            contactReceiptDTO= contactProxy.getContactById(opportunityDTO.getDecisionMakerId());
             contactReceiptDTOS.add(contactReceiptDTO);
         }catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no contact with this id");
@@ -155,7 +152,7 @@ public class AccountService implements IAccountService {
         opportunityProxy.updateAccount(opportunityDTO.getId(), opportunityUpdateDTO);
         contactReceiptDTO.setAccountId(newAccount.getId());
         ContactUpdateDTO contactUpdateDTO = new ContactUpdateDTO(accountId);
-        contactProxy.updateAccount(contactReceiptDTO.getId(), contactUpdateDTO);
+        contactProxy.updateContact(contactReceiptDTO.getId(), contactUpdateDTO);
 //      contactRepository.save(opportunity.getDecisionMaker());
         AccountReceiptDTO accountReceiptDTO = new AccountReceiptDTO(newAccount.getId(), newAccount.getIndustry(), newAccount.getEmployeeCount(), newAccount.getCity(), newAccount.getCountry());
         accountReceiptDTO.setOpportunityList(opportunityReceiptDTOS);
@@ -183,14 +180,14 @@ public class AccountService implements IAccountService {
         OpportunityReceiptDTO opportunityDTO;
         ContactReceiptDTO contactReceiptDTO;
         try{
-            opportunityDTO= opportunityProxy.findOpportunityById(opportunityId);
+            opportunityDTO= opportunityProxy.getById(opportunityId);
             opportunityReceiptDTOS.add(opportunityDTO);
         }catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no opportunity with this id");
         }
 
         try{
-            contactReceiptDTO= contactProxy.findContactById(opportunityDTO.getDecisionMakerId());
+            contactReceiptDTO= contactProxy.getContactById(opportunityDTO.getDecisionMakerId());
             contactReceiptDTOS.add(contactReceiptDTO);
         }catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no contact with this id");
@@ -207,7 +204,7 @@ public class AccountService implements IAccountService {
         opportunityProxy.updateAccount(opportunityId, opportunityUpdateDTO);
         contactReceiptDTO.setAccountId(accountStored.getId());
         ContactUpdateDTO contactUpdateDTO = new ContactUpdateDTO(accountId);
-        contactProxy.updateAccount(contactId, contactUpdateDTO);
+        contactProxy.updateContact(contactId, contactUpdateDTO);
         AccountReceiptDTO accountReceiptDTO = new AccountReceiptDTO(accountStored.getId(), accountStored.getIndustry(), accountStored.getEmployeeCount(), accountStored.getCity(), accountStored.getCountry());
         accountReceiptDTO.setOpportunityList(opportunityReceiptDTOS);
         accountReceiptDTO.setContactList(contactReceiptDTOS);
@@ -216,43 +213,6 @@ public class AccountService implements IAccountService {
 
     }
 
-
-
-
-    //to populate data
-
-    @Retry(name = "account-api", fallbackMethod = "fallbackAccountNull")
-    public void populate() throws NameContainsNumbersException, EmptyStringException, InvalidCountryException, ExceedsMaxLength {
- /*       List<SalesRep> salesReps = salesRepRepository.saveAll(List.of(
-                new SalesRep("David Lynch"),
-                new SalesRep("Martha Stewart")
-        ));
-
-        List<Contact> contacts = contactRepository.saveAll(List.of(
-                new Contact("John Doe", "123475357", "alfa@beta.uk", "Kałasznikow", salesReps.get(0)),
-                new Contact("Martha Steward", "123475357", "ms@wp.pl", "My own company", salesReps.get(1)),
-                new Contact("George Truman", "123475357", "thisisverylongemail@gmail.com", "Truman Show", salesReps.get(0))
-
-        ));
-
-        List<Opportunity> opportunities = opportunityRepository.saveAll(List.of(
-                new Opportunity(Truck.FLATBED, 10, contacts.get(0), salesReps.get(0)),
-                new Opportunity(Truck.BOX, 1150, contacts.get(1), salesReps.get(0)),
-                new Opportunity(Truck.HYBRID, 1, contacts.get(2), salesReps.get(1))
-
-        ));
-
-        List<Account> accounts = accountRepository.saveAll(List.of(
-                new Account(Industry.PRODUCE, 50, "London", "UNITED KINGDOM", contacts.get(0), opportunities.get(0)),
-                new Account(Industry.ECOMMERCE, 500, "Madrid", "SPAIN", contacts.get(1), opportunities.get(1)),
-                new Account(Industry.MANUFACTURING, 20, "Paris", "FRANCE", contacts.get(2), opportunities.get(2))
-        ));*/
-        List<Account> accounts = accountRepository.saveAll(List.of(
-                new Account(Industry.PRODUCE, 50, "London", "UNITED KINGDOM"),
-                new Account(Industry.ECOMMERCE, 500, "Madrid", "SPAIN"),
-                new Account(Industry.MANUFACTURING, 20, "Paris", "FRANCE")
-        ));
-    }
 
     //reports
 

@@ -12,9 +12,9 @@
         <module name="report-service" />
         <module name="account-service" />
         <module name="salesrep-service" />
-        <module name="gateway" />
-        <module name="opportunity-service" />
         <module name="discovery-service" />
+        <module name="opportunity-service" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
