@@ -26,7 +26,7 @@ public class ContactService {
         return convertContactToDto(contact);
     }
 
-    public void update(long id, UpdatedContactDTO updatedDTO) {
+    public void update(long id, ContactDTO updatedDTO) {
         Contact contact = contactRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact with id " + id + " does not exist."));
             contact.setAccountId(updatedDTO.getAccountId());

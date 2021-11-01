@@ -24,17 +24,31 @@ public class AccountController implements IAccountController {
     @Autowired
     private IAccountService accountService;
 
+//    @GetMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<Account> getAccounts(){
+//
+//        return accountService.getAccounts();
+//    }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Account> getAccounts(){
+    public List<AccountReceiptDTO> getAccounts(){
 
-        return accountService.getAccounts();
+        return accountService.getAccountsWithLists();
     }
+
+
+//    @GetMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public Account findAccountById (@PathVariable(name="id") Long id){
+//        return accountService.findAccountById(id);
+//    }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Account findAccountById (@PathVariable(name="id") Long id){
-        return accountService.findAccountById(id);
+    public AccountReceiptDTO findAccountById (@PathVariable(name="id") Long id){
+        return accountService.findAccountByIdWithLists(id);
     }
 
     @PostMapping
