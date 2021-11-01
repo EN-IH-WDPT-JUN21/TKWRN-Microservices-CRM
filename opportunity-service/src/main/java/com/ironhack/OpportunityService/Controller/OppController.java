@@ -44,7 +44,7 @@ public class OppController {
         return opportunityService.updateOpp(id, opportunityDTO);
     }
 
-    @PatchMapping("change-account/{id}")
+    @PutMapping("change-account/{id}")
     void updateAccount(@PathVariable(name = "id") Long id, @RequestBody @Valid OpportunityDTO opportunityDTO){
         opportunityService.updateAccountId(id, opportunityDTO);
     }
