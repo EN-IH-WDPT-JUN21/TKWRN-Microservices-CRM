@@ -16,7 +16,6 @@ public interface IAccountService {
     AccountReceiptDTO store(AccountRequestDTO accountRequestDTO);
     AccountReceiptDTO createAccount(AccountRequestDTO accountRequestDTO) throws ExceedsMaxLength;
     AccountReceiptDTO updateAccount(Long id, Long opportunityId) throws ExceedsMaxLength;
-    void populate() throws NameContainsNumbersException, EmptyStringException, InvalidCountryException, ExceedsMaxLength;
     Double findMeanEmployeeCount();
     int findMedianEmployeeCount();
     int findMaxEmployeeCount();

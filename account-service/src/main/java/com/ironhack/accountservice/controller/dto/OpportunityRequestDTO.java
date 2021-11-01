@@ -30,8 +30,6 @@ public class OpportunityRequestDTO {
 
     private Long decisionMakerId;
 
-//    private Long accountId;
-
 
     private Long salesRepId;
 

@@ -28,17 +28,8 @@ public class OpportunityReceiptDTO {
 
     private Long decisionMakerId;
 
-
-//    private ContactReceiptDTO decisionMaker;
-
     private Long accountId;
 
-//    private Account account;
-
     private Long salesRepId;
-
-
-//    private SalesRepDTO salesRepDTO;
-
 
 }

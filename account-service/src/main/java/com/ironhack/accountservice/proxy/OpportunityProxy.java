@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.validation.Valid;
 
 @Service
-@FeignClient("opp-service")
+@FeignClient("opportunity-service")
 public interface OpportunityProxy {
-    @GetMapping("/api/v1/opps/{id}")
-    OpportunityReceiptDTO findOpportunityById(@PathVariable(name = "id") Long id);
+    @GetMapping("/api/v1/opps/get/{id}")
+    OpportunityReceiptDTO getById(@PathVariable(name = "id") Long id);
 
     @PatchMapping("/api/v1/opps/change-account/{id}")
     void updateAccount(@PathVariable(name = "id") Long id, @RequestBody @Valid OpportunityUpdateDTO opportunityUpdateDTO);
