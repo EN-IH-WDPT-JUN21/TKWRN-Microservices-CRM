@@ -5,40 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="962c8d9f-5426-4660-864f-eb1229fed0da" name="Changes" comment="Second commit">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_xml_2_12_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_12_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_contribs_jersey_apache_client4_1_19_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_jersey_client_1_19_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_jersey_core_1_19_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_jersey_server_1_19_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_jersey_servlet_1_19_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_micrometer_micrometer_core_1_7_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_freemarker_freemarker_2_3_31.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hdrhistogram_HdrHistogram_2_1_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_latencyutils_LatencyUtils_2_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_actuator_2_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_actuator_autoconfigure_2_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_actuator_2_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_freemarker_2_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_netflix_eureka_server_3_0_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_netflix_eureka_server_3_0_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dto/AccountDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dto/ContactTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dto/OpportunityDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discovery-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Controller/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Controller/DatabaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Service/DatabasePopulationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Service/DatabasePopulationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/Contact.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/Lead.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/Lead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/Opportunity.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/Opportunity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/SalesRep.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/SalesRep.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/AccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/AccountRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/ContactRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/ContactRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
