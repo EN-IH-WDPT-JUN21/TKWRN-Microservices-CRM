@@ -29,6 +29,11 @@ public class OppController {
         return opportunityRepository.findById(id).orElse(null);
     }
 
+    @GetMapping("/get-by-account/{id}")
+    public List<OpportunityDTO> getAllOppsByAccount(@PathVariable Long id){
+        return opportunityService.findAllByAccountId(id);
+    }
+
     @PostMapping("/new")
     public OpportunityDTO createOpportunity(@RequestBody OpportunityDTO opportunityDTO){
         return opportunityService.createOpp(opportunityDTO);
@@ -39,7 +44,7 @@ public class OppController {
         return opportunityService.updateOpp(id, opportunityDTO);
     }
 
-    @PatchMapping("change-account/{id}")
+    @PutMapping("change-account/{id}")
     void updateAccount(@PathVariable(name = "id") Long id, @RequestBody @Valid OpportunityDTO opportunityDTO){
         opportunityService.updateAccountId(id, opportunityDTO);
     }

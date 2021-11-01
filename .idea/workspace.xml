@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="962c8d9f-5426-4660-864f-eb1229fed0da" name="Changes" comment="Second commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/AccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/AccountRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/ContactRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/ContactRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/LeadRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/LeadRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/OpportunityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/OpportunityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/SalesRepRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/SalesRepRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/controller/impl/SalesRepController.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/controller/impl/SalesRepController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dao/SalesRep.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dao/SalesRep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/proxy/ReportServiceProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/proxy/ReportServiceProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/service/impl/SalesRepService.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/service/impl/SalesRepService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/service/interfaces/ISalesRepService.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/service/interfaces/ISalesRepService.java" afterDir="false" />
-    </list>
+    <list default="true" id="962c8d9f-5426-4660-864f-eb1229fed0da" name="Changes" comment="Second commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,13 +79,26 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ReportServiceApplication">
+  <component name="RunManager" selected="Application.OpportunityServiceApplication">
     <configuration name="DiscoveryServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ironhack.discoveryservice.DiscoveryServiceApplication" />
       <module name="discovery-service" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ironhack.discoveryservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OpportunityServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.OpportunityService.OpportunityServiceApplication" />
+      <module name="opportunity-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ironhack.OpportunityService.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,9 +118,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="generated-requests#15" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="15" runType="Run single request">
-      <method v="2" />
     </configuration>
     <configuration name="generated-requests#16" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="16" runType="Run single request">
       <method v="2" />
@@ -185,6 +183,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.OpportunityServiceApplication" />
         <item itemvalue="Application.ReportServiceApplication" />
         <item itemvalue="Application.DiscoveryServiceApplication" />
       </list>
