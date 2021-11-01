@@ -29,6 +29,11 @@ public class OppController {
         return opportunityRepository.findById(id).orElse(null);
     }
 
+    @GetMapping("/get-by-account/{id}")
+    public List<OpportunityDTO> getAllOppsByAccount(@PathVariable Long id){
+        return opportunityService.findAllByAccountId(id);
+    }
+
     @PostMapping("/new")
     public OpportunityDTO createOpportunity(@RequestBody OpportunityDTO opportunityDTO){
         return opportunityService.createOpp(opportunityDTO);

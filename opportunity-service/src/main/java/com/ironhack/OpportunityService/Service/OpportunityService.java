@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -93,5 +94,15 @@ public class OpportunityService {
                 throw new IllegalArgumentException("Malformed OpportunityDTO passed to updateAccount method.");
             }
         }
+    }
+
+    public List<OpportunityDTO> findAllByAccountId(Long id) {
+        List<Opportunity> oppList = opportunityRepository.findAllByAccountId(id);
+        List<OpportunityDTO> oppDTOList = new ArrayList<>();
+        for (var opp : oppList){
+            oppDTOList.add(new OpportunityDTO(opp.getStatus(), opp.getProduct(), opp.getQuantity(),
+                    opp.getDecisionMakerId(), opp.getAccountId(), opp.getSalesRepId()));
+        }
+        return oppDTOList;
     }
 }
