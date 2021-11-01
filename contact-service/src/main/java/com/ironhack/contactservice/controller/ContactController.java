@@ -42,8 +42,8 @@ public class ContactController {
         return contactService.create(leadDTO);
     }
 
-    @PatchMapping({"/change-account/{id}"})
-    public void updateContact(@PathVariable("id") long id, @RequestBody UpdatedContactDTO contactDTO) {
+    @PutMapping({"/change-account/{id}"})
+    public void updateContact(@PathVariable("id") long id, @RequestBody ContactDTO contactDTO) {
         contactService.update(id, contactDTO);
     }
 }

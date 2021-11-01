@@ -12,7 +12,9 @@ import java.util.List;
 
 public interface IAccountService {
     List<Account> getAccounts();
+    List<AccountReceiptDTO> getAccountsWithLists();
     Account findAccountById (Long id);
+    AccountReceiptDTO findAccountByIdWithLists (Long id);
     AccountReceiptDTO store(AccountRequestDTO accountRequestDTO);
     AccountReceiptDTO createAccount(AccountRequestDTO accountRequestDTO) throws ExceedsMaxLength;
     AccountReceiptDTO updateAccount(Long id, Long opportunityId) throws ExceedsMaxLength;
