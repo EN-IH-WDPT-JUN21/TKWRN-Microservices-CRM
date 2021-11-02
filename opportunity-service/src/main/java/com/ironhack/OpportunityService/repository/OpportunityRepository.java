@@ -15,7 +15,7 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
     //Find opportunity by id
     Optional<Opportunity> findById(Long id);
 
-    @Query("SELECT o.id, o.status, o.product, o.quantity FROM Opportunity o WHERE o.accountId = :id")
+//    @Query("SELECT o.id, o.status, o.product, o.quantity FROM Opportunity o WHERE o.accountId = :id")
     List<Opportunity> findAllByAccountId(Long id);
 
 }

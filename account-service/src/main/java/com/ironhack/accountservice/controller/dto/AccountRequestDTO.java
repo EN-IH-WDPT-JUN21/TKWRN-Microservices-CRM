@@ -32,10 +32,6 @@ public class AccountRequestDTO {
     private String city;
     private String country;
 
-//    private List<Long> contactListId;
-//
-//    private List<Long> opportunityListId;
-
     public AccountRequestDTO(String industryName, Integer employeeCount, String city, String country) {
         this.industryName = industryName;
         this.employeeCount = employeeCount;
@@ -43,12 +39,4 @@ public class AccountRequestDTO {
         this.country = country;
     }
 
-    //    public AccountRequestDTO(String industryName, Integer employeeCount, String city, String country, List<Long> contactListId, List<Long> opportunityListId) {
-//        this.industryName = industryName;
-//        this.employeeCount = employeeCount;
-//        this.city = city;
-//        this.country = country;
-//        this.contactListId = contactListId;
-//        this.opportunityListId = opportunityListId;
-//    }
 }

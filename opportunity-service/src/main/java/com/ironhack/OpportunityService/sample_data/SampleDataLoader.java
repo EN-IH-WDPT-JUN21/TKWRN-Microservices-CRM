@@ -32,9 +32,9 @@ public class SampleDataLoader implements CommandLineRunner {
                     Status.OPEN,
                     Truck.HYBRID,
                     faker.number().numberBetween(1, 100),
-                    faker.number().numberBetween(1L, 100L),
-                    faker.number().numberBetween(1L, 100L),
-                    faker.number().numberBetween(1L, 100L)
+                    faker.number().numberBetween(1L, 10L),
+                    faker.number().numberBetween(1L, 10L),
+                    faker.number().numberBetween(1L, 10L)
                 )).collect(Collectors.toList());
 
         opportunityRepository.saveAll(sampleOpps);
