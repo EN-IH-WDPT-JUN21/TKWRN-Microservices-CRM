@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/account-report")
+@RequestMapping("/api/v1/account-report")
 public class AccountReportController {
 
     @Autowired

@@ -11,11 +11,10 @@ import java.util.Optional;
 @Repository
 public interface ContactRepository extends JpaRepository<Contact,String> {
 
-    /*@Query("SELECT c.id, c.name, c.companyName FROM Contact c")
+    @Query("SELECT c.id, c.name, c.companyName FROM Contact c")
     List<Object[]> findAllContacts();
 
     Optional<Contact> findById(Long id);
 
-
-    Contact getById(Long decisionMakerId);*/
+    Contact getById(Long decisionMakerId);
 }
