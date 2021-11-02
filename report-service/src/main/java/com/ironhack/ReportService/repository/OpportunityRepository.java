@@ -62,9 +62,9 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
     List<Object[]> findCountOppForCity();
 
     //Report CLOSED-WON, CLOSED-LOST, and OPEN opportunities by City (takes a parameter argument)
-    @Query("SELECT account.city, COUNT(*) FROM opportunity_report" +
+    @Query(value = "SELECT account.city, COUNT(*) FROM opportunity_report" +
             "JOIN account_report ON opportunity_report.account_id WHERE status = ?1 " +
-            "GROUP BY account_report.city ORDER BY account_report.city")
+            "GROUP BY account_report.city ORDER BY account_report.city", nativeQuery = true)
     List<Object[]> findCountOpportunityByCityForStatus(String status);
 
     //Report Opportunities by Industry
@@ -74,9 +74,9 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
     List<Object[]> findCountOppForIndustry();
 
     //Report CLOSED-WON, CLOSED-LOST, and OPEN opportunities by Industry (takes a parameter argument)
-    @Query("SELECT account_report.industry, COUNT(*) FROM opportunity_report " +
+    @Query(value = "SELECT account_report.industry, COUNT(*) FROM opportunity_report " +
             "JOIN account_report ON opportunity_report.account_id WHERE status = ?1 " +
-            "GROUP BY account_report.industry ORDER BY account_report.industry")
+            "GROUP BY account_report.industry ORDER BY account_report.industry", nativeQuery = true)
     List<Object[]> findCountOpportunityByIndustryForStatus(String status);
 
     //Report mean number of products quantity for all Opportunities

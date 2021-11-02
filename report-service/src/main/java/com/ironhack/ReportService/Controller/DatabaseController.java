@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/report-db")
+@RequestMapping("/api/v1/report-db")
 public class DatabaseController {
 
     @Autowired
     DatabasePopulationService dbpService;
 
-    //Full Mirror Methods, use sparringly!
+    //Full Mirror Methods, use sparingly!
     @PostMapping("/post/accounts")
     public String createAccountDatabase(@RequestBody List<AccountDTO> accountDTOList){
         return dbpService.createAccountDatabase(accountDTOList);
