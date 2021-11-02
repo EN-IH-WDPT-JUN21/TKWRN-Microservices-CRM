@@ -11,12 +11,10 @@ import com.ironhack.salesrepservice.repository.SalesRepRepository;
 import com.ironhack.salesrepservice.service.interfaces.ISalesRepService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SalesRepService implements ISalesRepService {
@@ -70,6 +68,12 @@ public class SalesRepService implements ISalesRepService {
         SalesRep salesRep = salesRepRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Sales representative with id " + id + " does not exist."));
         salesRepRepository.delete(salesRep);
+    }
+
+
+    public String populateSalesrepDatabase() {
+        List<SalesRepDTO> salesrepDTOList = new ArrayList<>(findAllSalesReps());
+        return reportServiceProxy.createSalesrepDatabase(salesrepDTOList);
     }
 
     public SalesRepDTO convertSalesRepToDTO(SalesRep salesRep) {

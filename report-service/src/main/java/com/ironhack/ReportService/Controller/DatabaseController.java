@@ -4,13 +4,14 @@ import com.ironhack.ReportService.Service.DatabasePopulationService;
 import com.ironhack.ReportService.dao.*;
 import com.ironhack.ReportService.dto.AccountDTO;
 import com.ironhack.ReportService.dto.OpportunityDTO;
+import com.ironhack.ReportService.dto.SalesRepDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/report-db")
+//@RequestMapping("/report-db")
 public class DatabaseController {
 
     @Autowired
@@ -34,8 +35,8 @@ public class DatabaseController {
         return dbpService.createOppDatabase(opportunityDTOList);
     }
     @PostMapping("/post/salesreps")
-    public String createSalesrepDatabase(@RequestBody List<SalesRep> salesrepList){
-        return dbpService.createSalesrepDatabase(salesrepList);
+    public String createSalesrepDatabase(@RequestBody List<SalesRepDTO> salesrepDTOList){
+        return "List" + salesrepDTOList;
     }
 
 

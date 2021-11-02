@@ -3,6 +3,7 @@ package com.ironhack.ReportService.Service;
 import com.ironhack.ReportService.dao.*;
 import com.ironhack.ReportService.dto.AccountDTO;
 import com.ironhack.ReportService.dto.OpportunityDTO;
+import com.ironhack.ReportService.dto.SalesRepDTO;
 import com.ironhack.ReportService.repository.*;
 import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,7 +88,16 @@ public class DatabasePopulationService {
         return "Mirrored " + opportunityList.size() + " entries to Opportunity Database";
     }
 
-    public String createSalesrepDatabase(List<SalesRep> salesrepList) {
+    public String createSalesrepDatabase(List<SalesRepDTO> salesrepDTOList) {
+        List<SalesRep> salesrepList = new ArrayList<>();
+        for (SalesRepDTO salesrepDTO : salesrepDTOList) {
+            /*try {
+                salesrepList.add(new SalesRep(salesrepDTO));
+            } catch (Exception e){
+                throw new IllegalArgumentException("Error finding  Salesrep");
+            }*/
+            System.out.println(salesrepDTO.getRepName());
+        }
         try {
             salesRepRepository.saveAll(salesrepList);
         } catch (Exception e){
@@ -95,7 +105,7 @@ public class DatabasePopulationService {
         }
         salesRepRepository.deleteAll();
         salesRepRepository.saveAll(salesrepList);
-        return "Mirrored " + salesrepList.size() + " entries to Account Database";
+        return "Mirrored " + salesrepList.size() + " entries to Salesrep Database";
     }
 
 

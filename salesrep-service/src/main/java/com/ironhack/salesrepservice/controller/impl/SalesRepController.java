@@ -55,5 +55,9 @@ public class SalesRepController implements ISalesRepController {
         salesRepService.deleteSalesRep(id);
     }
 
-
+    @PostMapping("/populate")
+    @ResponseStatus(HttpStatus.OK)
+    public String createSalesrepDatabase() {
+        return salesRepService.populateSalesrepDatabase();
+    }
 }

@@ -31,6 +31,7 @@ public class Account {
     private Integer employeeCount;
 
     private String city;
+    @Column(name="country")
     private String country;
 
     @ElementCollection

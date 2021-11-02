@@ -11,4 +11,5 @@ public interface ISalesRepService {
     List<SalesRepDTO> findAllSalesReps();
     SalesRepDTO updateSalesRepName(Long id, String name);
     void deleteSalesRep(Long id);
+    String populateSalesrepDatabase();
 }

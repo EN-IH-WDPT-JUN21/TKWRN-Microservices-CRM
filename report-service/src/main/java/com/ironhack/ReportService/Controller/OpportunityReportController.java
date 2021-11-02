@@ -19,7 +19,7 @@ public class OpportunityReportController {
     @Autowired
     OpportunityRepository opportunityRepository;
 
-    /*@GetMapping("/count-by-rep")
+    @GetMapping("/count-by-rep")
     List<Object[]> findCountOpportunityByRepName(){
         return opportunityRepository.findCountOpportunityByRepName();
     }
@@ -105,5 +105,5 @@ public class OpportunityReportController {
     @GetMapping("min-opportunities-per-account")
     Optional<Double>findMinOpportunitiesPerAccount(){
         return opportunityRepository.findMinOpportunitiesPerAccount();
-    }*/
+    }
 }

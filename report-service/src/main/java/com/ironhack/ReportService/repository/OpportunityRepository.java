@@ -39,11 +39,11 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
     List<Object[]> findCountOppForProduct();
 
     //Report CLOSED-WON, CLOSED-LOST, and OPEN opportunities by Product (takes a parameter argument)
-    @Query("SELECT o.product, COUNT(o) FROM Opportunity o WHERE status = :status GROUP BY o.product ORDER BY o.product")
+    @Query("SELECT o.product, COUNT(o) FROM Opportunity o WHERE o.status = :status GROUP BY o.product ORDER BY o.product")
     List<Object[]> findCountOpportunityByProductForStatus(@Param("status") Enum status);
 
     //Report Opportunities by Country
-    @Query(value = "SELECT account_report.country, COUNT(*) FROM opportunity_report" +
+    @Query(value = "SELECT account_report.country, COUNT(*) FROM opportunity_report " +
             "JOIN account_report ON opportunity_report.account_id " +
             "GROUP BY account_report.country " +
             "ORDER BY account_report.country", nativeQuery = true)
@@ -62,21 +62,21 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
     List<Object[]> findCountOppForCity();
 
     //Report CLOSED-WON, CLOSED-LOST, and OPEN opportunities by City (takes a parameter argument)
-    @Query("SELECT account.city, COUNT(*) FROM opportunity_report" +
+    @Query(value = "SELECT account_report.city, COUNT(*) FROM opportunity_report " +
             "JOIN account_report ON opportunity_report.account_id WHERE status = ?1 " +
-            "GROUP BY account_report.city ORDER BY account_report.city")
+            "GROUP BY account_report.city ORDER BY account_report.city", nativeQuery = true)
     List<Object[]> findCountOpportunityByCityForStatus(String status);
 
     //Report Opportunities by Industry
     @Query(value = "SELECT account_report.industry, COUNT(*) FROM opportunity_report " +
-            "JOIN account_report ON opportunity_report.account_id" +
+            "JOIN account_report ON opportunity_report.account_id " +
             "GROUP BY account_report.industry ORDER BY account_report.industry", nativeQuery = true)
     List<Object[]> findCountOppForIndustry();
 
     //Report CLOSED-WON, CLOSED-LOST, and OPEN opportunities by Industry (takes a parameter argument)
-    @Query("SELECT account_report.industry, COUNT(*) FROM opportunity_report " +
+    @Query(value = "SELECT account_report.industry, COUNT(*) FROM opportunity_report " +
             "JOIN account_report ON opportunity_report.account_id WHERE status = ?1 " +
-            "GROUP BY account_report.industry ORDER BY account_report.industry")
+            "GROUP BY account_report.industry ORDER BY account_report.industry", nativeQuery = true)
     List<Object[]> findCountOpportunityByIndustryForStatus(String status);
 
     //Report mean number of products quantity for all Opportunities
@@ -95,23 +95,21 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
     @Query("SELECT MIN(quantity) FROM Opportunity")
     Optional<Integer> findMinProductQuantity();
 
-//    //Report Mean number of Opportunities associated with an account
-//    @Query(value = "select avg(a.count_opportunity) from (select count(distinct id) as count_opportunity from opportunity_report group by opportunity_report.account_id order by count_opportunity) a", nativeQuery = true)
-//    Optional<Double>findMeanOpportunitiesPerAccount();
-//
-//    // *** Median Report is needed JPQL can give list of all opportunitycounts in an ordered int array, needs a second step to find the median from this ***
-//    @Query(value = "select count(distinct id) as count_opportunity from opportunity_report group by opportunity_report.account_id order by count_opportunity", nativeQuery = true)
-//    int[]findMedianOppsPerAccountStep1();
+    //Report Mean number of Opportunities associated with an account
+    @Query(value = "SELECT avg(a.count_opportunity) " +
+            "FROM (SELECT count(DISTINCT id) AS count_opportunity FROM opportunity_report GROUP BY opportunity_report.account_id order by count_opportunity) a", nativeQuery = true)
+    Optional<Double>findMeanOpportunitiesPerAccount();
 
-//    //Report Max number of Opportunities associated with an account
-//    @Query(value = "select max(a.count_opportunity) from (select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity) a", nativeQuery = true)
-//    Optional<Double>findMaxOpportunitiesPerAccount();
-//
-//    //Report Min number of Opportunities associated with an account
-//    @Query(value = "select min(a.count_opportunity) from (select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity) a", nativeQuery = true)
-//    Optional<Double>findMinOpportunitiesPerAccount();
+    // *** Median Report is needed JPQL can give list of all opportunitycounts in an ordered int array, needs a second step to find the median from this ***
+    @Query(value = "select count(distinct id) as count_opportunity from opportunity_report group by opportunity_report.account_id order by count_opportunity", nativeQuery = true)
+    int[]findMedianOppsPerAccountStep1();
 
-//    //Report Opportunities by City
-//    @Query("SELECT ac.:selector, COUNT(o) FROM Opportunity o JOIN o.account ac GROUP BY ac.:selector ORDER BY ac.:selector")
-//    List<Object[]> findCountOpportunity(@Param("selector") String selector);
+    //Report Max number of Opportunities associated with an account
+    @Query(value = "select max(a.count_opportunity) from (select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity) a", nativeQuery = true)
+    Optional<Double>findMaxOpportunitiesPerAccount();
+
+    //Report Min number of Opportunities associated with an account
+    @Query(value = "select min(a.count_opportunity) from (select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity) a", nativeQuery = true)
+    Optional<Double>findMinOpportunitiesPerAccount();
+
 }

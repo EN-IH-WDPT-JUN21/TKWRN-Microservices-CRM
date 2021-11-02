@@ -1,5 +1,6 @@
 package com.ironhack.ReportService.dao;
 
+import com.ironhack.ReportService.dto.SalesRepDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,4 +32,11 @@ public class SalesRep {
     private List<Long> opportunityIdList;
 
 
+    public SalesRep(SalesRepDTO salesrepDTO) {
+        this.id = salesrepDTO.getId();
+        this.repName = salesrepDTO.getRepName();
+        this.leadIdList = salesrepDTO.getLeadIdList();
+        this.opportunityIdList = salesrepDTO.getOpportunityIdList();
+
+    }
 }
