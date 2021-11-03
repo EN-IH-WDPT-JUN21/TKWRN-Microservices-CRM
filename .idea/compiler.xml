@@ -11,6 +11,7 @@
         <module name="contact-service" />
         <module name="report-service" />
         <module name="account-service" />
+        <module name="menu-service" />
         <module name="salesrep-service" />
         <module name="discovery-service" />
         <module name="opportunity-service" />
@@ -19,14 +20,15 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="account-service" target="1.5" />
+      <module name="account-service" target="17" />
       <module name="contact-service" target="17" />
       <module name="discovery-service" target="17" />
       <module name="gateway" target="17" />
       <module name="lead-service" target="17" />
+      <module name="menu-service" target="17" />
       <module name="opportunity-service" target="17" />
       <module name="report-service" target="17" />
-      <module name="salesrep-service" target="1.5" />
+      <module name="salesrep-service" target="17" />
       <module name="stolen_name_trucking_company_homework_3" target="14" />
       <module name="wrapper" target="1.5" />
     </bytecodeTargetLevel>
@@ -38,6 +40,7 @@
       <module name="discovery-service" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="lead-service" options="-parameters" />
+      <module name="menu-service" options="-parameters" />
       <module name="opportunity-service" options="-parameters" />
       <module name="report-service" options="-parameters" />
       <module name="salesrep-service" options="-parameters" />

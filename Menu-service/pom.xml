@@ -9,12 +9,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ironhack</groupId>
-	<artifactId>stolen_name_trucking_company_homework_3</artifactId>
+	<artifactId>menu-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>stolen_name_trucking_company_homework_3</name>
+	<name>menu-service</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -53,7 +53,7 @@
         </dependency>
         <dependency>
             <groupId>com.ironhack</groupId>
-            <artifactId>stolen_name_trucking_company_homework_3</artifactId>
+            <artifactId>menu-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 		<dependency>
@@ -105,8 +105,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>14</source>
-                    <target>14</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
         </plugins>
