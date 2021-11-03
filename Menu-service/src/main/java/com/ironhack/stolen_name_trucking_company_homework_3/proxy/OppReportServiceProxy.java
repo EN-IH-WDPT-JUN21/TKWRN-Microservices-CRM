@@ -45,32 +45,19 @@ public interface OppReportServiceProxy {
     @GetMapping("/mean-product-quantity")
     Optional<Double> findMeanProductQuantity();
 
-//    // *** Median Report is needed JPQL can give list of all quantities in an ordered int array, needs a second step to find the median from this ***
-//    @Query("SELECT quantity FROM Opportunity order by quantity")
-//    int[]findMedianQuantityStep1();
-
     @GetMapping("/max-product-quantity")
     Optional<Integer> findMaxProductQuantity();
 
     @GetMapping("/min-product-quantity")
     Optional<Integer> findMinProductQuantity();
 
-//    @GetMapping("mean-opportunities-per-account")
-//    Optional<Double>findMeanOpportunitiesPerAccount(){
-//        return opportunityRepository.findMeanOpportunitiesPerAccount();
-//    }
-//
-////    // *** Median Report is needed JPQL can give list of all opportunitycounts in an ordered int array, needs a second step to find the median from this ***
-////    @Query(value = "select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity", nativeQuery = true)
-////    int[]findMedianOppsPerAccountStep1();
-//
-//    @GetMapping("max-opportunities-per-account")
-//    Optional<Double>findMaxOpportunitiesPerAccount(){
-//        return opportunityRepository.findMaxOpportunitiesPerAccount();
-//    }
-//
-//    @GetMapping("min-opportunities-per-account")
-//    Optional<Double>findMinOpportunitiesPerAccount(){
-//        return opportunityRepository.findMinOpportunitiesPerAccount();
-//    }
+    @GetMapping("mean-opportunities-per-account")
+    Optional<Double>findMeanOpportunitiesPerAccount();
+
+    @GetMapping("max-opportunities-per-account")
+    Optional<Double>findMaxOpportunitiesPerAccount();
+
+    @GetMapping("min-opportunities-per-account")
+    Optional<Double>findMinOpportunitiesPerAccount();
+
 }

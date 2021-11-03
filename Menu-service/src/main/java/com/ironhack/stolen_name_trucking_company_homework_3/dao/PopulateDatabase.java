@@ -32,15 +32,15 @@ public class PopulateDatabase{
         );
 
         List<AccountRequestDTO> accountRequestDTOList = List.of(
-                new AccountRequestDTO(1L, Industry.PRODUCE, 50, "London", "UNITED KINGDOM"),
-                new AccountRequestDTO(2L, Industry.ECOMMERCE, 500, "Madrid", "SPAIN"),
-                new AccountRequestDTO(3L, Industry.MANUFACTURING, 20, "Paris", "FRANCE")
+                new AccountRequestDTO( 1L, Industry.PRODUCE.toString(), 50, "London", "UNITED KINGDOM"),
+                new AccountRequestDTO(2L, Industry.ECOMMERCE.toString(), 500, "Madrid", "SPAIN"),
+                new AccountRequestDTO(3L, Industry.MANUFACTURING.toString(), 20, "Paris", "FRANCE")
         );
 
         List<OpportunityRequestDTO> opportunityRequestDTOList = List.of(
-                new OpportunityRequestDTO(1L, Truck.FLATBED, 10, contactRequestDTOList.get(0).getId(), accountRequestDTOList.get(0).getId(),  salesRepRequestDTOList.get(0).getId()),
-                new OpportunityRequestDTO(2L, Truck.BOX, 1150, contactRequestDTOList.get(1).getId(), accountRequestDTOList.get(1).getId(), salesRepRequestDTOList.get(0).getId()),
-                new OpportunityRequestDTO(3L, Truck.HYBRID, 1, contactRequestDTOList.get(2).getId(), accountRequestDTOList.get(2).getId(), salesRepRequestDTOList.get(1).getId())
+                new OpportunityRequestDTO(1L, Truck.FLATBED, 10, contactRequestDTOList.get(0).getId(), 1L,  salesRepRequestDTOList.get(0).getId()),
+                new OpportunityRequestDTO(2L, Truck.BOX, 1150, contactRequestDTOList.get(1).getId(), 2L, salesRepRequestDTOList.get(0).getId()),
+                new OpportunityRequestDTO(3L, Truck.HYBRID, 1, contactRequestDTOList.get(2).getId(), 3L, salesRepRequestDTOList.get(1).getId())
 
         );
 

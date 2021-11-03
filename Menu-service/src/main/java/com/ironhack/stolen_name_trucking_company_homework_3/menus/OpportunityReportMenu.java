@@ -59,7 +59,7 @@ public class OpportunityReportMenu implements Variables {
                         System.out.println("Average number of opportunities per account is: " + oppReportServiceProxy.findMeanOpportunitiesPerAccount().get());
                         break;
                     case MED_OPPS_PERR_ACC:
-                        System.out.println("Median number of opportunities per account is: " + getMedian(oppReportServiceProxy.findMedianOppsPerAccountStep1()));
+                        //System.out.println("Median number of opportunities per account is: " + getMedian(oppReportServiceProxy.findMedianOppsPerAccountStep1()));
                         break;
                     case MAX_OPPS_PERR_ACC:
                         System.out.println("Maximum number of opportunities per account is: " + oppReportServiceProxy.findMaxOpportunitiesPerAccount().get());

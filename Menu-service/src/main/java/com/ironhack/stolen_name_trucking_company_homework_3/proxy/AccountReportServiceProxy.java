@@ -13,8 +13,8 @@ public interface AccountReportServiceProxy {
     @GetMapping("/mean-employee-count")
     Optional<Double> findMeanEmployeeCount();
 
-//    @GetMapping("/median-employee-count")
-//    int[]findMedianEmployeeCountStep1();
+    @GetMapping("/median-employee-count")
+    int[]findMedianEmployeeCountStep1();
 
     @GetMapping("/max-employee-count")
     Optional<Integer> findMaxEmployeeCount();

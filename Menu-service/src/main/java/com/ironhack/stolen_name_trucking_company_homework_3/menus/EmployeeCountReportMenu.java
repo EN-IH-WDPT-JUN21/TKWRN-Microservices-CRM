@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class EmployeeCountReportMenu implements Variables {
 
     @Autowired
-    AccountReportServiceProxy accountReportServiceProxy;
+    private static AccountReportServiceProxy accountReportServiceProxy;
 
     @Autowired
     ReportMainMenu reportMainMenu;

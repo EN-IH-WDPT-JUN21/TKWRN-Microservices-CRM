@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class IndustryReportMenu implements Variables {
 
     @Autowired
-    OppReportServiceProxy oppReportServiceProxy;
+    private static OppReportServiceProxy oppReportServiceProxy;
 
     @Autowired
     ReportMainMenu reportMainMenu;
