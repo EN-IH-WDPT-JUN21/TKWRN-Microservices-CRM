@@ -33,13 +33,6 @@ public class Account {
     private String city;
     private String country;
 
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    @OneToMany(mappedBy = "account")
-//    private List<Contact> contactList = new ArrayList<>();
-//
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    @OneToMany(mappedBy = "account")
-//    private List<Opportunity> opportunityList = new ArrayList<>();
 
     private static final String colorMain = "\u001B[33m";
     private static final String colorMainBold = "\033[1;37m";
@@ -47,10 +40,6 @@ public class Account {
     private static final String colorHeadlineBold = "\033[1;34m";
     private static final String reset = "\u001B[0m";
 
-//    public Account(ContactReceiptDTO contactDTO, OpportunityReceiptDTO opportunityDTO) throws ExceedsMaxLength {
-//        addContact(contactDTO);
-//        addOpportunity(opportunityDTO);
-//    }
 
     public Account(Industry industry, int employeeCount, String city, String country) throws NameContainsNumbersException, EmptyStringException, InvalidCountryException, ExceedsMaxLength {
         setIndustry(industry);
@@ -58,16 +47,6 @@ public class Account {
         setCity(city);
         setCountry(country);
     }
-
-//
-//    public Account(Industry industry, int employeeCount, String city, String country, ContactReceiptDTO contactDTO, OpportunityReceiptDTO opportunityDTO) throws NameContainsNumbersException, EmptyStringException, InvalidCountryException, ExceedsMaxLength {
-//        setIndustry(industry);
-//        setEmployeeCount(employeeCount);
-//        setCity(city);
-//        setCountry(country);
-//        addContact(contactDTO);
-//        addOpportunity(opportunityDTO);
-//    }
 
 
     public void setEmployeeCount(int employeeCount) throws ExceedsMaxLength {
@@ -108,67 +87,6 @@ public class Account {
 
         this.country = country;
     }
-//
-//    public String printContactList() {
-//        return String.format("%-1s %-15s %-1s %-48s %-1s %-25s %-1s %-45s %-1s %-48s %-1s\n",
-//                colorMain + "║",
-//                colorTable + contactList.get(0).getId(),
-//                colorMain + "║",
-//                colorTable + contactList.get(0).getName().toUpperCase(),
-//                colorMain + "║",
-//                colorTable + contactList.get(0).getPhoneNumber(),
-//                colorMain + "║",
-//                colorTable + contactList.get(0).getEmail().toUpperCase(),
-//                colorMain + "║",
-//                colorTable + contactList.get(0).getCompanyName().toUpperCase(),
-//                colorMain + "║"+ reset);
-//    }
-//
-//    public String getCompanyName(){
-//        return contactList.get(0).getCompanyName();
-//    }
-//
-//    public void addContact(ContactReceiptDTO contactDTO) {
-//        SalesRep salesRep = new SalesRep(contactDTO.getSalesRepDTO().getId(), contactDTO.getSalesRepDTO().getRepName());
-//        Contact contact = new Contact(contactDTO.getId(), contactDTO.getName(), contactDTO.getPhoneNumber(), contactDTO.getEmail(), contactDTO.getCompanyName(), salesRep);
-//        contactList.add(contact);
-//    }
-//
-//    public String printOpportunityList() {
-//        System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Opportunity created" + colorMain + " ════════════════╦═══════════════════════════╦═══════════════════════════╗" + reset);
-//        System.out.printf("%-1s %-17s %-1s %-24s %-1s %-24s %-1s %-24s %-1s %-50s %-1s\n",
-//                colorMain + "║",
-//                colorHeadlineBold + "ID",
-//                colorMain + "║",
-//                colorHeadlineBold + "Status",
-//                colorMain + "║",
-//                colorHeadlineBold + "Product",
-//                colorMain + "║",
-//                colorHeadlineBold + "Quantity",
-//                colorMain + "║",
-//                colorHeadlineBold + "Decision maker",
-//                colorMain + "║\n" +
-//                        colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════════════╬═══════════════════════════╣\n");
-//        return String.format("%-1s %-15s %-1s %-22s %-1s %-22s %-1s %-22s %-1s %-48s %-1s\n",
-//                colorMain + "║",
-//                colorTable + opportunityList.get(0).getId(),
-//                colorMain + "║",
-//                colorTable + opportunityList.get(0).getStatus(),
-//                colorMain + "║",
-//                colorTable + opportunityList.get(0).getProduct(),
-//                colorMain + "║",
-//                colorTable + opportunityList.get(0).getQuantity(),
-//                colorMain + "║",
-//                colorTable + opportunityList.get(0).getDecisionMaker().getName().toUpperCase(),
-//                colorMain + "║"+ reset);
-//    }
-//
-//    public void addOpportunity(OpportunityReceiptDTO opportunityDTO) throws ExceedsMaxLength {
-//        SalesRep salesRep = new SalesRep(opportunityDTO.getSalesRepDTO().getId(), opportunityDTO.getSalesRepDTO().getRepName());
-//        Contact contact = new Contact(opportunityDTO.getDecisionMaker().getId(), opportunityDTO.getDecisionMaker().getName(), opportunityDTO.getDecisionMaker().getPhoneNumber(), opportunityDTO.getDecisionMaker().getEmail(), opportunityDTO.getDecisionMaker().getCompanyName(), salesRep);
-//        Opportunity opportunity = new Opportunity(opportunityDTO.getId(), opportunityDTO.getProduct(), opportunityDTO.getQuantity(), contact, salesRep);
-//        opportunityList.add(opportunity);
-//    }
 
 
     @Override

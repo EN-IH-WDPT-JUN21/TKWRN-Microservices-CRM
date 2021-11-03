@@ -30,11 +30,6 @@ public class ContactRequestDTO {
     private Long salesRepId;
 
 
-//    private Long accountId;
-
-//    private List<Long> opportunityListId;
-
-
     public ContactRequestDTO(Long id, String name, String phoneNumber, String email, String companyName) {
         this.id = id;
         this.name = name;
