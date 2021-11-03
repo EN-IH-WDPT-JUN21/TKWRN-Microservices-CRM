@@ -1,0 +1,187 @@
+Index: report-service/src/main/java/com/ironhack/ReportService/Controller/OpportunityReportController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ironhack.ReportService.Controller;\r\n\r\nimport com.ironhack.ReportService.repository.OpportunityRepository;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.data.jpa.repository.Query;\r\nimport org.springframework.data.repository.query.Param;\r\nimport org.springframework.web.bind.annotation.GetMapping;\r\nimport org.springframework.web.bind.annotation.PathVariable;\r\nimport org.springframework.web.bind.annotation.RequestMapping;\r\nimport org.springframework.web.bind.annotation.RestController;\r\n\r\nimport java.util.List;\r\nimport java.util.Optional;\r\n\r\n@RestController\r\n@RequestMapping(\"/opportunity-report\")\r\npublic class OpportunityReportController {\r\n\r\n    @Autowired\r\n    OpportunityRepository opportunityRepository;\r\n\r\n    @GetMapping(\"/count-by-rep\")\r\n    List<Object[]> findCountOpportunityByRepName(){\r\n        return opportunityRepository.findCountOpportunityByRepName();\r\n    }\r\n\r\n    @GetMapping(\"/count-by-rep/{status}\")\r\n    List<Object[]> findCountOpportunityByRepNameForStatus(@PathVariable String status){\r\n        return opportunityRepository.findCountOpportunityByRepNameForStatus(status);\r\n    }\r\n\r\n    @GetMapping(\"/count-by-product\")\r\n    List<Object[]> findCountOppForProduct(){\r\n        return opportunityRepository.findCountOppForProduct();\r\n    }\r\n\r\n    @GetMapping(\"/count-by-product/{status}\")\r\n    List<Object[]> findCountOpportunityByProductForStatus(@PathVariable Enum status){\r\n        return opportunityRepository.findCountOpportunityByProductForStatus(status);\r\n    }\r\n\r\n    @GetMapping(\"/count-by-country\")\r\n    List<Object[]> findCountOppForCountry(){\r\n        return opportunityRepository.findCountOppForCountry();\r\n    }\r\n\r\n    @GetMapping(\"/count-by-country/{status}\")\r\n    List<Object[]> findCountOpportunityByCountryForStatus(@PathVariable String status){\r\n        return opportunityRepository.findCountOpportunityByCountryForStatus(status);\r\n    }\r\n\r\n    @GetMapping(\"/count-by-city\")\r\n    List<Object[]> findCountOppForCity(){\r\n        return opportunityRepository.findCountOppForCity();\r\n    }\r\n\r\n    @GetMapping(\"/count-by-city/{status}\")\r\n    List<Object[]> findCountOpportunityByCityForStatus(@PathVariable  String status){\r\n        return opportunityRepository.findCountOpportunityByCityForStatus(status);\r\n    }\r\n\r\n    @GetMapping(\"/count-by-industry\")\r\n    List<Object[]> findCountOppForIndustry(){\r\n        return opportunityRepository.findCountOppForIndustry();\r\n    }\r\n\r\n    @GetMapping(\"/count-by-industry/{status}\")\r\n    List<Object[]> findCountOpportunityByIndustryForStatus(@PathVariable String status){\r\n        return opportunityRepository.findCountOpportunityByIndustryForStatus(status);\r\n    }\r\n\r\n    @GetMapping(\"/mean-product-quantity\")\r\n    Optional<Double> findMeanProductQuantity(){\r\n        return opportunityRepository.findMeanProductQuantity();\r\n    }\r\n\r\n//    // *** Median Report is needed JPQL can give list of all quantities in an ordered int array, needs a second step to find the median from this ***\r\n//    @Query(\"SELECT quantity FROM Opportunity order by quantity\")\r\n//    int[]findMedianQuantityStep1();\r\n\r\n    @GetMapping(\"/max-product-quantity\")\r\n    Optional<Integer> findMaxProductQuantity(){\r\n        return opportunityRepository.findMaxProductQuantity();\r\n    }\r\n\r\n    @GetMapping(\"/min-product-quantity\")\r\n    Optional<Integer> findMinProductQuantity(){\r\n        return opportunityRepository.findMinProductQuantity();\r\n    }\r\n\r\n    @GetMapping(\"mean-opportunities-per-account\")\r\n    Optional<Double>findMeanOpportunitiesPerAccount(){\r\n        return opportunityRepository.findMeanOpportunitiesPerAccount();\r\n    }\r\n\r\n//    // *** Median Report is needed JPQL can give list of all opportunitycounts in an ordered int array, needs a second step to find the median from this ***\r\n//    @Query(value = \"select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity\", nativeQuery = true)\r\n//    int[]findMedianOppsPerAccountStep1();\r\n\r\n    @GetMapping(\"max-opportunities-per-account\")\r\n    Optional<Double>findMaxOpportunitiesPerAccount(){\r\n        return opportunityRepository.findMaxOpportunitiesPerAccount();\r\n    }\r\n\r\n    @GetMapping(\"min-opportunities-per-account\")\r\n    Optional<Double>findMinOpportunitiesPerAccount(){\r\n        return opportunityRepository.findMinOpportunitiesPerAccount();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/report-service/src/main/java/com/ironhack/ReportService/Controller/OpportunityReportController.java b/report-service/src/main/java/com/ironhack/ReportService/Controller/OpportunityReportController.java
+--- a/report-service/src/main/java/com/ironhack/ReportService/Controller/OpportunityReportController.java	(revision a277808c4a23326e5397e05dbdbb85596930f73b)
++++ b/report-service/src/main/java/com/ironhack/ReportService/Controller/OpportunityReportController.java	(date 1635966378762)
+@@ -1,9 +1,8 @@
+ package com.ironhack.ReportService.Controller;
+ 
++import com.ironhack.ReportService.enums.Status;
+ import com.ironhack.ReportService.repository.OpportunityRepository;
+ import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.data.jpa.repository.Query;
+-import org.springframework.data.repository.query.Param;
+ import org.springframework.web.bind.annotation.GetMapping;
+ import org.springframework.web.bind.annotation.PathVariable;
+ import org.springframework.web.bind.annotation.RequestMapping;
+@@ -13,7 +12,7 @@
+ import java.util.Optional;
+ 
+ @RestController
+-@RequestMapping("/opportunity-report")
++@RequestMapping("/api/v1/opportunity-report")
+ public class OpportunityReportController {
+ 
+     @Autowired
+@@ -35,7 +34,7 @@
+     }
+ 
+     @GetMapping("/count-by-product/{status}")
+-    List<Object[]> findCountOpportunityByProductForStatus(@PathVariable Enum status){
++    List<Object[]> findCountOpportunityByProductForStatus(@PathVariable Status status){
+         return opportunityRepository.findCountOpportunityByProductForStatus(status);
+     }
+ 
+@@ -93,6 +92,10 @@
+         return opportunityRepository.findMeanOpportunitiesPerAccount();
+     }
+ 
++    @GetMapping("/median-opportunities-account")
++    int[] findMedianOppsPerAccountStep1() {
++        return opportunityRepository.findMedianOppsPerAccountStep1();
++    }
+ //    // *** Median Report is needed JPQL can give list of all opportunitycounts in an ordered int array, needs a second step to find the median from this ***
+ //    @Query(value = "select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity", nativeQuery = true)
+ //    int[]findMedianOppsPerAccountStep1();
+Index: .idea/dataSources.local.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"dataSourceStorageLocal\" created-in=\"IU-212.5457.46\">\r\n    <data-source name=\"MySQL - ironhackhomework4@localhost\" uuid=\"adb525a7-5567-4813-866b-2abfd9c80c28\">\r\n      <database-info product=\"\" version=\"\" jdbc-version=\"\" driver-name=\"\" driver-version=\"\" dbms=\"MYSQL\" exact-version=\"0\" />\r\n      <schema-mapping />\r\n    </data-source>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.local.xml b/.idea/dataSources.local.xml
+--- a/.idea/dataSources.local.xml	(revision a277808c4a23326e5397e05dbdbb85596930f73b)
++++ b/.idea/dataSources.local.xml	(date 1635966372366)
+@@ -3,7 +3,11 @@
+   <component name="dataSourceStorageLocal" created-in="IU-212.5457.46">
+     <data-source name="MySQL - ironhackhomework4@localhost" uuid="adb525a7-5567-4813-866b-2abfd9c80c28">
+       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+-      <schema-mapping />
++      <schema-mapping>
++        <introspection-scope>
++          <node kind="schema" qname="ironhackhomework4" />
++        </introspection-scope>
++      </schema-mapping>
+     </data-source>
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectModuleManager\">\r\n    <modules>\r\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/TKWRN.iml\" filepath=\"$PROJECT_DIR$/.idea/TKWRN.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/account-service/account-service.iml\" filepath=\"$PROJECT_DIR$/account-service/account-service.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/contact-service/contact-service.iml\" filepath=\"$PROJECT_DIR$/contact-service/contact-service.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/discovery-service/discovery-service.iml\" filepath=\"$PROJECT_DIR$/discovery-service/discovery-service.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/gateway/gateway.iml\" filepath=\"$PROJECT_DIR$/gateway/gateway.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/lead-service/lead-service.iml\" filepath=\"$PROJECT_DIR$/lead-service/lead-service.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/opportunity-service/opportunity-service.iml\" filepath=\"$PROJECT_DIR$/opportunity-service/opportunity-service.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/report-service/report-service.iml\" filepath=\"$PROJECT_DIR$/report-service/report-service.iml\" />\r\n      <module fileurl=\"file://$PROJECT_DIR$/salesrep-service/salesrep-service.iml\" filepath=\"$PROJECT_DIR$/salesrep-service/salesrep-service.iml\" />\r\n    </modules>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	(revision a277808c4a23326e5397e05dbdbb85596930f73b)
++++ b/.idea/modules.xml	(date 1635966378766)
+@@ -8,9 +8,11 @@
+       <module fileurl="file://$PROJECT_DIR$/discovery-service/discovery-service.iml" filepath="$PROJECT_DIR$/discovery-service/discovery-service.iml" />
+       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
+       <module fileurl="file://$PROJECT_DIR$/lead-service/lead-service.iml" filepath="$PROJECT_DIR$/lead-service/lead-service.iml" />
++      <module fileurl="file://$PROJECT_DIR$/Menu-service/menu-service.iml" filepath="$PROJECT_DIR$/Menu-service/menu-service.iml" />
+       <module fileurl="file://$PROJECT_DIR$/opportunity-service/opportunity-service.iml" filepath="$PROJECT_DIR$/opportunity-service/opportunity-service.iml" />
+       <module fileurl="file://$PROJECT_DIR$/report-service/report-service.iml" filepath="$PROJECT_DIR$/report-service/report-service.iml" />
+       <module fileurl="file://$PROJECT_DIR$/salesrep-service/salesrep-service.iml" filepath="$PROJECT_DIR$/salesrep-service/salesrep-service.iml" />
++      <module fileurl="file://$PROJECT_DIR$/Menu-service/stolen_name_trucking_company_homework_3.iml" filepath="$PROJECT_DIR$/Menu-service/stolen_name_trucking_company_homework_3.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
+Index: opportunity-service/src/main/java/com/ironhack/OpportunityService/dao/Opportunity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ironhack.OpportunityService.dao;//Extends com.ironhack.stolen_name_trucking_company_homework_3.ClientInformation class to retain Unique ID incrementing.\r\n\r\nimport com.ironhack.OpportunityService.enums.Status;\r\nimport com.ironhack.OpportunityService.enums.Truck;\r\nimport com.ironhack.OpportunityService.exceptions.ExceedsMaxLength;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Getter;\r\nimport lombok.NoArgsConstructor;\r\nimport lombok.Setter;\r\n\r\nimport javax.persistence.*;\r\n\r\n@Setter\r\n@Getter\r\n@AllArgsConstructor\r\n@NoArgsConstructor\r\n@Entity\r\n@Table(name = \"opportunity\")\r\npublic class Opportunity {\r\n\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    private Long id;\r\n\r\n    // This sets the status to Enum Open whenever an opportunity object is created\r\n    @Enumerated(EnumType.STRING)\r\n    private Status status = Status.OPEN;\r\n\r\n    @Enumerated(EnumType.STRING)\r\n    private Truck product;\r\n    private Integer quantity;\r\n\r\n    private Long decisionMakerId;\r\n\r\n    private Long accountId;\r\n\r\n    private Long salesRepId;\r\n\r\n    public Opportunity(Status status, Truck product, Integer quantity,\r\n                       Long decisionMakerId, Long accountId, Long salesRepId) {\r\n        this.status = status;\r\n        this.product = product;\r\n        this.quantity = quantity;\r\n        this.decisionMakerId = decisionMakerId;\r\n        this.accountId = accountId;\r\n        this.salesRepId = salesRepId;\r\n    }\r\n\r\n    private static final String colorMain = \"\\u001B[33m\";\r\n    private static final String colorMainBold = \"\\033[1;37m\";\r\n    private static final String colorTable = \"\\u001B[32m\";\r\n    private static final String colorHeadlineBold = \"\\033[1;34m\";\r\n    private static final String reset = \"\\u001B[0m\";\r\n\r\n\r\n    public Truck getProduct() {\r\n        return product;\r\n    }\r\n\r\n    public void setTruck(Truck product) {\r\n        this.product = product;\r\n    }\r\n\r\n    public void setQuantity(int quantity) /* throws ExceedsMaxLength */ {\r\n         if (quantity <= 0) {\r\n            throw new IllegalArgumentException(\"Quantity must be positive. Please try again.\");\r\n        }\r\n        this.quantity = quantity;\r\n    }\r\n\r\n\r\n    public Status getStatus() {\r\n        return status;\r\n    }\r\n\r\n    public void setStatus(Status status) {\r\n        this.status = status;\r\n    }\r\n\r\n\r\n    public String toString() {\r\n        return  String.format(\"%-1s %-15s %-1s %-25s %-1s %-22s %-1s %-22s %-1s\\n\",\r\n                              colorMain + \"║\",\r\n                              colorTable + id,\r\n                              colorMain + \"║\",\r\n                              colorTable + status,\r\n                              colorMain + \"║\",\r\n                              colorTable + product,\r\n                              colorMain + \"║\",\r\n                              colorTable + quantity,\r\n                              colorMain + \"║\"+ reset);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/opportunity-service/src/main/java/com/ironhack/OpportunityService/dao/Opportunity.java b/opportunity-service/src/main/java/com/ironhack/OpportunityService/dao/Opportunity.java
+--- a/opportunity-service/src/main/java/com/ironhack/OpportunityService/dao/Opportunity.java	(revision a277808c4a23326e5397e05dbdbb85596930f73b)
++++ b/opportunity-service/src/main/java/com/ironhack/OpportunityService/dao/Opportunity.java	(date 1635966378759)
+@@ -1,8 +1,7 @@
+-package com.ironhack.OpportunityService.dao;//Extends com.ironhack.stolen_name_trucking_company_homework_3.ClientInformation class to retain Unique ID incrementing.
++package com.ironhack.OpportunityService.dao;//Extends com.ironhack.menuservice.ClientInformation class to retain Unique ID incrementing.
+ 
+ import com.ironhack.OpportunityService.enums.Status;
+ import com.ironhack.OpportunityService.enums.Truck;
+-import com.ironhack.OpportunityService.exceptions.ExceedsMaxLength;
+ import lombok.AllArgsConstructor;
+ import lombok.Getter;
+ import lombok.NoArgsConstructor;
+Index: opportunity-service/src/main/java/com/ironhack/OpportunityService/DTO/OpportunityDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ironhack.OpportunityService.DTO;\r\n\r\nimport com.ironhack.OpportunityService.enums.Status;\r\nimport com.ironhack.OpportunityService.enums.Truck;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Getter;\r\nimport lombok.NoArgsConstructor;\r\nimport lombok.Setter;\r\n\r\nimport javax.persistence.*;\r\n\r\n@Getter\r\n@Setter\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\npublic class OpportunityDTO {\r\n\r\n    private Status status = Status.OPEN;\r\n\r\n    private Truck product;\r\n\r\n    private Integer quantity;\r\n\r\n    private Long decisionMakerId;\r\n\r\n    private Long accountId;\r\n\r\n    private Long salesRepId;\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/opportunity-service/src/main/java/com/ironhack/OpportunityService/DTO/OpportunityDTO.java b/opportunity-service/src/main/java/com/ironhack/OpportunityService/DTO/OpportunityDTO.java
+--- a/opportunity-service/src/main/java/com/ironhack/OpportunityService/DTO/OpportunityDTO.java	(revision a277808c4a23326e5397e05dbdbb85596930f73b)
++++ b/opportunity-service/src/main/java/com/ironhack/OpportunityService/DTO/OpportunityDTO.java	(date 1635966378756)
+@@ -7,15 +7,13 @@
+ import lombok.NoArgsConstructor;
+ import lombok.Setter;
+ 
+-import javax.persistence.*;
+-
+ @Getter
+ @Setter
+ @NoArgsConstructor
+ @AllArgsConstructor
+ public class OpportunityDTO {
+ 
+-    private Status status = Status.OPEN;
++    private Status status;
+ 
+     private Truck product;
+ 
+Index: report-service/src/main/java/com/ironhack/ReportService/repository/OpportunityRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ironhack.ReportService.repository;\r\n\r\nimport com.ironhack.ReportService.dao.Opportunity;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\nimport org.springframework.data.jpa.repository.Query;\r\nimport org.springframework.data.repository.query.Param;\r\nimport org.springframework.stereotype.Repository;\r\n\r\nimport java.util.List;\r\nimport java.util.Optional;\r\n\r\n@Repository\r\npublic interface OpportunityRepository extends JpaRepository<Opportunity, Long> {\r\n\r\n    //Find opportunity by id\r\n    Optional<Opportunity> findById(Long id);\r\n\r\n    //Report Opportunities by SalesRep\r\n    @Query(value = \"SELECT sales_rep_report.sales_rep_name, COUNT(*) FROM opportunity_report \" +\r\n            \"RIGHT JOIN sales_rep_report ON opportunity_report.sales_rep_id \" +\r\n            \"GROUP BY  sales_rep_report.sales_rep_name \" +\r\n            \"ORDER BY  sales_rep_report.sales_rep_name\", nativeQuery = true)\r\n    List<Object[]> findCountOpportunityByRepName();\r\n\r\n    //Show all opportunities\r\n    @Query(value = \"SELECT opportunity_report.id, opportunity_report.status, opportunity_report.product, \" +\r\n            \"opportunity_report.quantity, contact_report.contact_name FROM opportunity_report \" +\r\n            \"JOIN contact_report ON opportunity_report.decision_maker_id\", nativeQuery = true)\r\n    List<Object[]> findAllOpportunities();\r\n\r\n    //Report CLOSED-WON, CLOSED-LOST, and OPEN opportunities by SalesRep (takes a parameter argument)\r\n    @Query(value = \"SELECT sales_rep_report.sales_rep_name, COUNT(*) FROM opportunity_report \" +\r\n            \"RIGHT JOIN sales_rep_report ON opportunity_report.sales_rep_id WHERE opportunity_report.status = ?1 \" +\r\n            \"GROUP BY sales_rep_report.sales_rep_name ORDER BY sales_rep_report.sales_rep_name\", nativeQuery = true)\r\n    List<Object[]> findCountOpportunityByRepNameForStatus(String status);\r\n\r\n    //Report Opportunities by Product\r\n    @Query(\"SELECT o.product, count(o) FROM Opportunity o GROUP BY o.product ORDER BY o.product\")\r\n    List<Object[]> findCountOppForProduct();\r\n\r\n    //Report CLOSED-WON, CLOSED-LOST, and OPEN opportunities by Product (takes a parameter argument)\r\n    @Query(\"SELECT o.product, COUNT(o) FROM Opportunity o WHERE o.status = :status GROUP BY o.product ORDER BY o.product\")\r\n    List<Object[]> findCountOpportunityByProductForStatus(@Param(\"status\") Enum status);\r\n\r\n    //Report Opportunities by Country\r\n    @Query(value = \"SELECT account_report.country, COUNT(*) FROM opportunity_report \" +\r\n            \"JOIN account_report ON opportunity_report.account_id \" +\r\n            \"GROUP BY account_report.country \" +\r\n            \"ORDER BY account_report.country\", nativeQuery = true)\r\n    List<Object[]> findCountOppForCountry();\r\n\r\n    //Report CLOSED-WON, CLOSED-LOST, and OPEN opportunities by Country (takes a parameter argument)\r\n    @Query(value = \"SELECT account_report.country, COUNT(*) FROM opportunity_report \" +\r\n            \"JOIN account_report ON opportunity_report.account_id WHERE status = ?1  \" +\r\n            \"GROUP BY account_report.country ORDER BY account_report.country\", nativeQuery = true)\r\n    List<Object[]> findCountOpportunityByCountryForStatus(String status);\r\n\r\n    //Report Opportunities by City\r\n    @Query(value = \"SELECT account_report.city, COUNT(*) FROM opportunity_report \" +\r\n            \"JOIN account_report ON opportunity_report.account_id \" +\r\n            \"GROUP BY account_report.city ORDER BY account_report.city\", nativeQuery = true)\r\n    List<Object[]> findCountOppForCity();\r\n\r\n    //Report CLOSED-WON, CLOSED-LOST, and OPEN opportunities by City (takes a parameter argument)\r\n    @Query(value = \"SELECT account_report.city, COUNT(*) FROM opportunity_report \" +\r\n            \"JOIN account_report ON opportunity_report.account_id WHERE status = ?1 \" +\r\n            \"GROUP BY account_report.city ORDER BY account_report.city\", nativeQuery = true)\r\n    List<Object[]> findCountOpportunityByCityForStatus(String status);\r\n\r\n    //Report Opportunities by Industry\r\n    @Query(value = \"SELECT account_report.industry, COUNT(*) FROM opportunity_report \" +\r\n            \"JOIN account_report ON opportunity_report.account_id \" +\r\n            \"GROUP BY account_report.industry ORDER BY account_report.industry\", nativeQuery = true)\r\n    List<Object[]> findCountOppForIndustry();\r\n\r\n    //Report CLOSED-WON, CLOSED-LOST, and OPEN opportunities by Industry (takes a parameter argument)\r\n    @Query(value = \"SELECT account_report.industry, COUNT(*) FROM opportunity_report \" +\r\n            \"JOIN account_report ON opportunity_report.account_id WHERE status = ?1 \" +\r\n            \"GROUP BY account_report.industry ORDER BY account_report.industry\", nativeQuery = true)\r\n    List<Object[]> findCountOpportunityByIndustryForStatus(String status);\r\n\r\n    //Report mean number of products quantity for all Opportunities\r\n    @Query(\"SELECT AVG(quantity) FROM Opportunity\")\r\n    Optional<Double> findMeanProductQuantity();\r\n\r\n    // *** Median Report is needed JPQL can give list of all quantities in an ordered int array, needs a second step to find the median from this ***\r\n    @Query(\"SELECT quantity FROM Opportunity order by quantity\")\r\n    int[]findMedianQuantityStep1();\r\n\r\n    //Report Maximum  products quantity for all Opportunities\r\n    @Query(\"SELECT MAX(quantity) FROM Opportunity\")\r\n    Optional<Integer> findMaxProductQuantity();\r\n\r\n    //Report Minimum  products quantity for all Opportunities\r\n    @Query(\"SELECT MIN(quantity) FROM Opportunity\")\r\n    Optional<Integer> findMinProductQuantity();\r\n\r\n    //Report Mean number of Opportunities associated with an account\r\n    @Query(value = \"SELECT avg(a.count_opportunity) \" +\r\n            \"FROM (SELECT count(DISTINCT id) AS count_opportunity FROM opportunity_report GROUP BY opportunity_report.account_id order by count_opportunity) a\", nativeQuery = true)\r\n    Optional<Double>findMeanOpportunitiesPerAccount();\r\n\r\n    // *** Median Report is needed JPQL can give list of all opportunitycounts in an ordered int array, needs a second step to find the median from this ***\r\n    @Query(value = \"select count(distinct id) as count_opportunity from opportunity_report group by opportunity_report.account_id order by count_opportunity\", nativeQuery = true)\r\n    int[]findMedianOppsPerAccountStep1();\r\n\r\n    //Report Max number of Opportunities associated with an account\r\n    @Query(value = \"select max(a.count_opportunity) from (select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity) a\", nativeQuery = true)\r\n    Optional<Double>findMaxOpportunitiesPerAccount();\r\n\r\n    //Report Min number of Opportunities associated with an account\r\n    @Query(value = \"select min(a.count_opportunity) from (select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity) a\", nativeQuery = true)\r\n    Optional<Double>findMinOpportunitiesPerAccount();\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/report-service/src/main/java/com/ironhack/ReportService/repository/OpportunityRepository.java b/report-service/src/main/java/com/ironhack/ReportService/repository/OpportunityRepository.java
+--- a/report-service/src/main/java/com/ironhack/ReportService/repository/OpportunityRepository.java	(revision a277808c4a23326e5397e05dbdbb85596930f73b)
++++ b/report-service/src/main/java/com/ironhack/ReportService/repository/OpportunityRepository.java	(date 1635966372388)
+@@ -1,6 +1,7 @@
+ package com.ironhack.ReportService.repository;
+ 
+ import com.ironhack.ReportService.dao.Opportunity;
++import com.ironhack.ReportService.enums.Status;
+ import org.springframework.data.jpa.repository.JpaRepository;
+ import org.springframework.data.jpa.repository.Query;
+ import org.springframework.data.repository.query.Param;
+@@ -40,7 +41,7 @@
+ 
+     //Report CLOSED-WON, CLOSED-LOST, and OPEN opportunities by Product (takes a parameter argument)
+     @Query("SELECT o.product, COUNT(o) FROM Opportunity o WHERE o.status = :status GROUP BY o.product ORDER BY o.product")
+-    List<Object[]> findCountOpportunityByProductForStatus(@Param("status") Enum status);
++    List<Object[]> findCountOpportunityByProductForStatus(@Param("status") Status status);
+ 
+     //Report Opportunities by Country
+     @Query(value = "SELECT account_report.country, COUNT(*) FROM opportunity_report " +
+Index: report-service/src/main/java/com/ironhack/ReportService/dao/Opportunity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ironhack.ReportService.dao;//Extends com.ironhack.stolen_name_trucking_company_homework_3.ClientInformation class to retain Unique ID incrementing.\r\n\r\nimport com.ironhack.ReportService.dto.OpportunityDTO;\r\nimport com.ironhack.ReportService.enums.Status;\r\nimport com.ironhack.ReportService.enums.Truck;\r\nimport com.ironhack.ReportService.repository.AccountRepository;\r\nimport com.ironhack.ReportService.repository.ContactRepository;\r\nimport com.ironhack.ReportService.repository.SalesRepRepository;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Getter;\r\nimport lombok.NoArgsConstructor;\r\nimport lombok.Setter;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\n\r\nimport javax.persistence.*;\r\n\r\n@Setter\r\n@Getter\r\n@AllArgsConstructor\r\n@NoArgsConstructor\r\n@Entity\r\n@Table(name = \"opportunity_report\")\r\npublic class Opportunity {\r\n\r\n    @Id\r\n    private Long id;\r\n\r\n    // This sets the status to Enum Open whenever an opportunity object is created\r\n    @Enumerated(EnumType.STRING)\r\n    private Status status = Status.OPEN;\r\n\r\n    @Enumerated(EnumType.STRING)\r\n    private Truck product;\r\n    private Integer quantity;\r\n\r\n    private Long decisionMakerId;\r\n\r\n    private Long accountId;\r\n\r\n    private Long salesRepId;\r\n\r\n    public Opportunity(OpportunityDTO opportunityDTO) {\r\n        this.id = opportunityDTO.getId();\r\n        this.status = opportunityDTO.getStatus();\r\n        this.product = opportunityDTO.getProduct();\r\n        this.quantity = opportunityDTO.getQuantity();\r\n        this.decisionMakerId = opportunityDTO.getDecisionMakerId();\r\n        this.accountId = opportunityDTO.getAccountId();\r\n        this.salesRepId = opportunityDTO.getSalesRepId();\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/report-service/src/main/java/com/ironhack/ReportService/dao/Opportunity.java b/report-service/src/main/java/com/ironhack/ReportService/dao/Opportunity.java
+--- a/report-service/src/main/java/com/ironhack/ReportService/dao/Opportunity.java	(revision a277808c4a23326e5397e05dbdbb85596930f73b)
++++ b/report-service/src/main/java/com/ironhack/ReportService/dao/Opportunity.java	(date 1635966372375)
+@@ -1,4 +1,4 @@
+-package com.ironhack.ReportService.dao;//Extends com.ironhack.stolen_name_trucking_company_homework_3.ClientInformation class to retain Unique ID incrementing.
++package com.ironhack.ReportService.dao;//Extends com.ironhack.menuservice.ClientInformation class to retain Unique ID incrementing.
+ 
+ import com.ironhack.ReportService.dto.OpportunityDTO;
+ import com.ironhack.ReportService.enums.Status;
