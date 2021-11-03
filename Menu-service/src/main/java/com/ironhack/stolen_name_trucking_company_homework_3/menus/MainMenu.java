@@ -1,12 +1,17 @@
 package com.ironhack.stolen_name_trucking_company_homework_3.menus;
 
-import com.ironhack.stolen_name_trucking_company_homework_3.dao.*;
+import com.ironhack.stolen_name_trucking_company_homework_3.dao.Login;
+import com.ironhack.stolen_name_trucking_company_homework_3.dao.PopulateDatabase;
+import com.ironhack.stolen_name_trucking_company_homework_3.dao.Variables;
 import com.ironhack.stolen_name_trucking_company_homework_3.dto.*;
-import com.ironhack.stolen_name_trucking_company_homework_3.enums.*;
+import com.ironhack.stolen_name_trucking_company_homework_3.enums.Industry;
+import com.ironhack.stolen_name_trucking_company_homework_3.enums.Status;
+import com.ironhack.stolen_name_trucking_company_homework_3.enums.Truck;
 import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.*;
 import com.ironhack.stolen_name_trucking_company_homework_3.proxy.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -24,7 +29,7 @@ public class MainMenu implements Variables {
     private static AccountServiceProxy accountServiceProxy;
     private static LeadServiceProxy leadServiceProxy;
     private static OpportunityServiceProxy opportunityServiceProxy;
-    private static ReportServiceProxy reportServiceProxy;
+    private static ReportDBServiceProxy reportDBServiceProxy;
     private static SalesRepServiceProxy salesRepServiceProxy;
     private static ContactServiceProxy contactServiceProxy;
 
@@ -346,14 +351,15 @@ public class MainMenu implements Variables {
     }
 
     // Method called to create a new account
-    public AccountRequestDTO createAccount(OpportunityRequestDTO opportunityRequestDTO) {
+    public AccountReceiptDTO createAccount(OpportunityRequestDTO opportunityRequestDTO) {
         System.out.println(colorInput + "Would you like to create a new Account?" + colorTable + " y / n" + reset);
         Scanner scanner = new Scanner(System.in);
         try {
             switch (scanner.nextLine().trim().toLowerCase(Locale.ROOT)) {
                 case "y" -> {
-                    AccountRequestDTO newAccountRequestDTO = new AccountRequestDTO(opportunityRequestDTO.getDecisionMaker(), opportunityRequestDTO);
-                    accountServiceProxy.save(newAccountRequestDTO);
+                    //AccountRequestDTO newAccountRequestDTO = new AccountRequestDTO(opportunityRequestDTO.getDecisionMakerId(), opportunityRequestDTO);
+                    AccountRequestDTO newAccountRequestDTO = new AccountRequestDTO(opportunityRequestDTO);
+                    AccountReceiptDTO accountReceiptDTO = accountServiceProxy.createAccount(newAccountRequestDTO);
                     valid = false;
 
                         // checks if restrictions for Industry are met
@@ -372,7 +378,7 @@ public class MainMenu implements Variables {
 
                         // checks if restrictions for Employee count are met
                         while (!valid) {
-                            System.out.println(colorInput + "\nPlease input the employee count for " + colorTable + newAccountRequestDTO.getCompanyName() + colorInput + ":  " + reset); //**Needs amending to display name in contact list
+                            System.out.println(colorInput + "\nPlease input the employee count for " + colorTable + accountReceiptDTO.getContactList().get(0).getCompanyName() + colorInput + ":  " + reset); //**Needs amending to display name in contact list
                             try {
                                 newAccountRequestDTO.setEmployeeCount(Integer.parseInt(scanner.nextLine().trim()));
                                 valid = true;
@@ -387,11 +393,11 @@ public class MainMenu implements Variables {
 
                         // checks if restrictions for City name are met
                         while (!valid) {
-                            System.out.println(colorInput + "\nPlease input the city for " + colorTable + newAccountRequestDTO.getCompanyName() + colorInput + ":  " + reset);
+                            System.out.println(colorInput + "\nPlease input the city for " + colorTable + accountReceiptDTO.getCity() + colorInput + ":  " + reset);
                             try {
                                 newAccountRequestDTO.setCity(scanner.nextLine().trim().toUpperCase(Locale.ROOT));
                                 valid = true;
-                            } catch (EmptyStringException | NameContainsNumbersException | ExceedsMaxLength e) {
+                            } catch (Exception e) {
                                 System.out.println(colorError + e.getMessage());
                             }
                         }
@@ -400,11 +406,11 @@ public class MainMenu implements Variables {
 
                         // checks if Country is in country array
                         while (!valid) {
-                            System.out.println(colorInput + "\nPlease input the Country for " + colorTable + newAccountRequestDTO.getCompanyName() + ":  " + reset);
+                            System.out.println(colorInput + "\nPlease input the Country for " + colorTable + accountReceiptDTO.getCountry() + ":  " + reset);
                             try {
                                 newAccountRequestDTO.setCountry(scanner.nextLine().trim().toUpperCase());
                                 valid = true;
-                            } catch (EmptyStringException | ExceedsMaxLength | InvalidCountryException e) {
+                            } catch (Exception e) {
                                 System.out.println(colorError + e.getMessage());
                             }
                         }
@@ -412,29 +418,28 @@ public class MainMenu implements Variables {
                         valid = false;
 
                         // Assigns the Account to the contact(decision maker) of the opportunity
-                        opportunityRequestDTO.getDecisionMaker().setAccount(newAccountRequestDTO);
-                        contactServiceProxy.save(opportunityRequestDTO.getDecisionMaker());
-                        accountServiceProxy.save(newAccountRequestDTO);
-                        System.out.println(newAccountRequestDTO);
+                        opportunityRequestDTO.setAccountId(accountReceiptDTO.getId());
+                        //contactServiceProxy.updateContact();
+                        //accountServiceProxy.save(newAccountRequestDTO);
+                        System.out.println(accountReceiptDTO);
 
-                        return newAccountRequestDTO;
+                        return accountReceiptDTO;
                 }
                 case "n" -> {
                     valid = false;
-                    if(accountServiceProxy.findAll().isEmpty()){
+                    if(accountServiceProxy.getAccounts().isEmpty()){
                         System.out.println(colorError + "There are no Accounts. Please create a new Account");
                         createAccount(opportunityRequestDTO);
                     }
                     while (!valid) {
                         System.out.println(colorInput + "Please, input the account number you wish to link the " + colorTable + "Opportunity " + opportunityRequestDTO.getId() + colorInput + " to: " + reset);
                         try {
-                            opportunityRequestDTO.setAccountRequestDTO(accountServiceProxy.findById(Long.parseLong(scanner.nextLine().trim())).get());
-                            opportunityServiceProxy.createOpportunity(opportunityRequestDTO);
-                            opportunityRequestDTO.getDecisionMaker().setAccount(opportunityRequestDTO.getAccountRequestDTO());
-                            contactServiceProxy.save(opportunityRequestDTO.getDecisionMaker());
+                            opportunityRequestDTO.setAccountId(Long.parseLong(scanner.nextLine().trim()));
+                            OpportunityReceiptDTO oppReceipt = opportunityServiceProxy.createOpportunity(opportunityRequestDTO);
+                            //contactServiceProxy.save(opportunityRequestDTO.getDecisionMaker());
                             valid = true;
-                            System.out.println(colorInput + "The Opportunity has been linked to " + colorTable + opportunityRequestDTO.getAccountRequestDTO().getCompanyName() + reset);
-                            return opportunityRequestDTO.getAccountRequestDTO();
+                            System.out.println(colorInput + "The Opportunity has been linked to " + colorTable + contactServiceProxy.getContactById(oppReceipt.getDecisionMakerId()).getCompanyName() + reset);
+                            return accountServiceProxy.findAccountById(oppReceipt.getAccountId());
                         } catch (Exception e) {
                             System.out.println(colorError + "There is no account with this number. Please, try again" + reset);
                         }
@@ -468,9 +473,9 @@ public class MainMenu implements Variables {
         for (int i = 0; i < allLeads.size(); i++) {
             System.out.printf("%-1s %-17s %-1s %-50s %-1s\n",
                     colorMain + "║",
-                    colorTable + allLeads.get(i)[0],
+                    colorTable + allLeads.get(i).getId(),
                     colorMain + "║",
-                    colorTable + allLeads.get(i)[0].toString().toUpperCase(Locale.ROOT),
+                    colorTable + allLeads.get(i).getName(),
                     colorMain + "║" + reset);
         }
     }
@@ -498,11 +503,11 @@ public class MainMenu implements Variables {
         for (int i = 0; i < allContacts.size(); i++) {
             System.out.printf("%-1s %-17s %-1s %-50s %-1s %-47s %-1s\n",
                     colorMain + "║",
-                    colorTable + allContacts.get(i)[0],
+                    colorTable + allContacts.get(i).getId(),
                     colorMain + "║",
-                    colorTable + allContacts.get(i)[1].toString().toUpperCase(Locale.ROOT),
+                    colorTable + allContacts.get(i).getName(),
                     colorMain + "║",
-                    colorTable + allContacts.get(i)[2].toString().toUpperCase(Locale.ROOT),
+                    colorTable + allContacts.get(i).getCompanyName(),
                     colorMain + "║" + reset);
         }
     }
@@ -537,15 +542,15 @@ public class MainMenu implements Variables {
         for (int i = 0; i < allOpps.size(); i++) {
             System.out.printf("%-1s %-17s %-1s %-24s %-1s %-17s %-1s %-17s %-1s %-47s %-1s\n",
                     colorMain + "║",
-                    colorTable + allOpps.get(i)[0],
+                    colorTable + allOpps.get(i).getId(),
                     colorMain + "║",
-                    colorTable + allOpps.get(i)[1].toString().toUpperCase(Locale.ROOT),
+                    colorTable + allOpps.get(i).getStatus(),
                     colorMain + "║",
-                    colorTable + allOpps.get(i)[2].toString().toUpperCase(Locale.ROOT),
+                    colorTable + allOpps.get(i).getProduct(),
                     colorMain + "║",
-                    colorTable + allOpps.get(i)[3].toString().toUpperCase(Locale.ROOT),
+                    colorTable + allOpps.get(i).getQuantity(),
                     colorMain + "║",
-                    colorTable + allOpps.get(i)[4].toString().toUpperCase(Locale.ROOT),
+                    colorTable + allOpps.get(i).getDecisionMakerId(),
                     colorMain + "║" + reset);
         }
     }
@@ -568,9 +573,9 @@ public class MainMenu implements Variables {
         for (int i = 0; i < allAccs.size(); i++) {
             System.out.printf("%-1s %-17s %-1s %-50s %-1s\n",
                     colorMain + "║",
-                    colorTable + allAccs.get(i)[0],
+                    colorTable + allAccs.get(i).getId(),
                     colorMain + "║",
-                    colorTable + allAccs.get(i)[1].toString().toUpperCase(Locale.ROOT),
+                    colorTable + contactServiceProxy.getContactById(allAccs.get(i).getContactList().get(0).getId()).getCompanyName(),
                     colorMain + "║" + reset);
         }
     }
@@ -786,9 +791,9 @@ public class MainMenu implements Variables {
         for (int i = 0; i < allReps.size(); i++) {
             System.out.printf("%-1s %-17s %-1s %-50s %-1s\n",
                     colorMain + "║",
-                    colorTable + allReps.get(i)[0],
+                    colorTable + allReps.get(i).getId(),
                     colorMain + "║",
-                    colorTable + allReps.get(i)[1].toString().toUpperCase(Locale.ROOT),
+                    colorTable + allReps.get(i).getRepName(),
                     colorMain + "║" + reset);
         }
     }

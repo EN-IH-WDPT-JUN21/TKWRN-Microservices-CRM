@@ -4,6 +4,7 @@ import com.ironhack.stolen_name_trucking_company_homework_3.dao.Variables;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.ReportCommands;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.Status;
 import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.NoSuchValueException;
+import com.ironhack.stolen_name_trucking_company_homework_3.proxy.OppReportServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ import java.util.Scanner;
 public class IndustryReportMenu implements Variables {
 
     @Autowired
-    OpportunityRepository opportunityRepository;
+    OppReportServiceProxy oppReportServiceProxy;
 
     @Autowired
     ReportMainMenu reportMainMenu;
@@ -57,7 +58,7 @@ public class IndustryReportMenu implements Variables {
             } else {
                 switch (ReportCommands.getCommandType(input)){
                     case REPORT_OPP_BY_INDUSTRY:
-                        var oppCountInd = opportunityRepository.findCountOppForIndustry();
+                        var oppCountInd = oppReportServiceProxy.findCountOppForIndustry();
                         if(oppCountInd.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -68,7 +69,7 @@ public class IndustryReportMenu implements Variables {
                         }
                         break;
                     case REPORT_CLOSE_W_BY_INDUSTRY:
-                        var oppIndW = opportunityRepository.findCountOpportunityByIndustryForStatus(Status.CLOSED_WON.toString());
+                        var oppIndW = oppReportServiceProxy.findCountOpportunityByIndustryForStatus(Status.CLOSED_WON.toString());
                         if(oppIndW.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -79,7 +80,7 @@ public class IndustryReportMenu implements Variables {
                         }
                         break;
                     case REPORT_CLOSE_L_BY_INDUSTRY:
-                        var oppIndL = opportunityRepository.findCountOpportunityByIndustryForStatus(Status.CLOSED_LOST.toString());
+                        var oppIndL = oppReportServiceProxy.findCountOpportunityByIndustryForStatus(Status.CLOSED_LOST.toString());
                         if(oppIndL.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -90,7 +91,7 @@ public class IndustryReportMenu implements Variables {
                         }
                         break;
                     case REPORT_OPEN_BY_INDUSTRY:
-                        var oppIndOp = opportunityRepository.findCountOpportunityByIndustryForStatus(Status.OPEN.toString());
+                        var oppIndOp = oppReportServiceProxy.findCountOpportunityByIndustryForStatus(Status.OPEN.toString());
                         if(oppIndOp.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {

@@ -4,6 +4,8 @@ import com.ironhack.stolen_name_trucking_company_homework_3.dao.Variables;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.ReportCommands;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.Status;
 import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.NoSuchValueException;
+import com.ironhack.stolen_name_trucking_company_homework_3.proxy.OppReportServiceProxy;
+import com.ironhack.stolen_name_trucking_company_homework_3.proxy.ReportDBServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +15,7 @@ import java.util.Scanner;
 @Component
 public class CityReportMenu implements Variables {
 
-    @Autowired
-    OpportunityRepository opportunityRepository;
+    private OppReportServiceProxy oppReportServiceProxy;
 
     @Autowired
     ReportMainMenu reportMainMenu;
@@ -59,7 +60,7 @@ public class CityReportMenu implements Variables {
             } else {
                 switch (ReportCommands.getCommandType(input)){
                     case REPORT_OPP_BY_CITY:
-                        var oppCountCity = opportunityRepository.findCountOppForCity();
+                        var oppCountCity = oppReportServiceProxy.findCountOppForCity();
                         if(oppCountCity.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -70,7 +71,7 @@ public class CityReportMenu implements Variables {
                         }
                         break;
                     case REPORT_CLOSE_W_BY_CITY:
-                        var oppCityW = opportunityRepository.findCountOpportunityByCityForStatus(Status.CLOSED_WON.toString());
+                        var oppCityW = oppReportServiceProxy.findCountOpportunityByCityForStatus(Status.CLOSED_WON.toString());
                         if(oppCityW.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -81,7 +82,7 @@ public class CityReportMenu implements Variables {
                         }
                         break;
                     case REPORT_CLOSE_L_BY_CITY:
-                        var oppCityL = opportunityRepository.findCountOpportunityByCityForStatus(Status.CLOSED_LOST.toString());
+                        var oppCityL = oppReportServiceProxy.findCountOpportunityByCityForStatus(Status.CLOSED_LOST.toString());
                         if(oppCityL.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -92,7 +93,7 @@ public class CityReportMenu implements Variables {
                         }
                         break;
                     case REPORT_OPEN_BY_CITY:
-                        var oppCityOp = opportunityRepository.findCountOpportunityByCityForStatus(Status.OPEN.toString());
+                        var oppCityOp = oppReportServiceProxy.findCountOpportunityByCityForStatus(Status.OPEN.toString());
                         if(oppCityOp.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {

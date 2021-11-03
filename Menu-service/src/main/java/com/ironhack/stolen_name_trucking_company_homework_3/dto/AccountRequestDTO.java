@@ -13,15 +13,35 @@ import lombok.Setter;
 @Setter
 public class AccountRequestDTO {
 
-    private Long id;
+    private Long opportunityId;
 
-    private Industry industry;
+    private String industryName;
+
+    public Industry getIndustry() {
+        return Industry.valueOf(industryName);
+    }
+
+    public void setIndustry(Industry industry) {
+        this.industryName = industry.toString();
+    }
 
     private Integer employeeCount;
 
     private String city;
-
     private String country;
+
+    public AccountRequestDTO(String industryName, Integer employeeCount, String city, String country) {
+        this.industryName = industryName;
+        this.employeeCount = employeeCount;
+        this.city = city;
+        this.country = country;
+    }
+
+    public AccountRequestDTO(OpportunityRequestDTO opportunityRequestDTO) {
+         this.opportunityId = opportunityRequestDTO.getId();
+    }
+
+
 
 }
 

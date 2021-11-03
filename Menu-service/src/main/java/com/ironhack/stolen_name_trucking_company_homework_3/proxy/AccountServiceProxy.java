@@ -20,11 +20,11 @@ public interface AccountServiceProxy {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<AccountRequestDTO> getAccounts();
+    public List<AccountReceiptDTO> getAccounts();
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public AccountRequestDTO findAccountById (@PathVariable(name="id") Long id);
+    public AccountReceiptDTO findAccountById (@PathVariable(name="id") Long id);
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

@@ -3,6 +3,7 @@ package com.ironhack.stolen_name_trucking_company_homework_3.menus;
 import com.ironhack.stolen_name_trucking_company_homework_3.dao.Variables;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.ReportCommands;
 import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.NoSuchValueException;
+import com.ironhack.stolen_name_trucking_company_homework_3.proxy.OppReportServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +13,7 @@ import java.util.Scanner;
 @Component
 public class QuantityReportMenu implements Variables {
 
-    @Autowired
-    OpportunityRepository opportunityRepository;
+    private OppReportServiceProxy oppReportServiceProxy;
 
     @Autowired
     ReportMainMenu reportMainMenu;
@@ -56,16 +56,16 @@ public class QuantityReportMenu implements Variables {
             } else {
                 switch (ReportCommands.getCommandType(input)){
                     case MEAN_QUANT:
-                        System.out.println("Average quantity of trucks is: " + opportunityRepository.findMeanProductQuantity().get());
+                        System.out.println("Average quantity of trucks is: " + oppReportServiceProxy.findMeanProductQuantity().get());
                         break;
                     case MED_QUANT:
-                        System.out.println("Median quantity of trucks is: " + getMedian(opportunityRepository.findMedianQuantityStep1()));
+                        System.out.println("Median quantity of trucks is: " + getMedian(oppReportServiceProxy.findMedianQuantityStep1()));
                         break;
                     case MAX_QUANT:
-                        System.out.println("Maximum quantity of trucks is: " + opportunityRepository.findMaxProductQuantity().get());
+                        System.out.println("Maximum quantity of trucks is: " + oppReportServiceProxy.findMaxProductQuantity().get());
                         break;
                     case MIN_QUANT:
-                        System.out.println("Minimum quantity of trucks is: " + opportunityRepository.findMinProductQuantity().get());
+                        System.out.println("Minimum quantity of trucks is: " + oppReportServiceProxy.findMinProductQuantity().get());
                         break;
                     case BACK: reportMainMenu.reportMainMenu();
                     case MAIN_MENU: mainMenu.OS();

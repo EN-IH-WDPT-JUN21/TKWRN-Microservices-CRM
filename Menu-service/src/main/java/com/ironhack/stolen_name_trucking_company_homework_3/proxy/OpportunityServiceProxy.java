@@ -22,7 +22,7 @@ public interface OpportunityServiceProxy {
     public List<OpportunityRequestDTO> getAllOppsByAccount(@PathVariable Long id);
 
     @PostMapping("/new")
-    public OpportunityRequestDTO createOpportunity(@RequestBody OpportunityRequestDTO opportunityDTO);
+    public OpportunityReceiptDTO createOpportunity(@RequestBody OpportunityRequestDTO opportunityDTO);
 
     @PutMapping("/update/{id}")
     public OpportunityReceiptDTO updateOpportunity(@PathVariable Long id, @RequestBody OpportunityRequestDTO opportunityDTO);

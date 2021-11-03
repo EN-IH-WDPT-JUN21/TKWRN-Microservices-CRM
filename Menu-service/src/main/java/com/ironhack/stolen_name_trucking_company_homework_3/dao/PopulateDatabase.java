@@ -4,13 +4,13 @@ import com.ironhack.stolen_name_trucking_company_homework_3.dto.*;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.Industry;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.Truck;
 import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.*;
-import com.ironhack.stolen_name_trucking_company_homework_3.proxy.ReportServiceProxy;
+import com.ironhack.stolen_name_trucking_company_homework_3.proxy.ReportDBServiceProxy;
 
 import java.util.List;
 
 public class PopulateDatabase{
 
-    private static ReportServiceProxy reportServiceProxy;
+    private static ReportDBServiceProxy reportDBServiceProxy;
 
     public static void populateDatabase() throws NameContainsNumbersException, EmptyStringException, EmailNotValidException, ExceedsMaxLength, PhoneNumberContainsLettersException, InvalidCountryException {
 
@@ -44,11 +44,11 @@ public class PopulateDatabase{
 
         );
 
-        reportServiceProxy.createSalesrepDatabase(salesRepRequestDTOList);
-        reportServiceProxy.createLeadDatabase(leadRequestDTOList);
-        reportServiceProxy.createContactDatabase(contactRequestDTOList);
-        reportServiceProxy.createAccountDatabase(accountRequestDTOList);
-        reportServiceProxy.createOpportunityDatabase(opportunityRequestDTOList);
+        reportDBServiceProxy.createSalesrepDatabase(salesRepRequestDTOList);
+        reportDBServiceProxy.createLeadDatabase(leadRequestDTOList);
+        reportDBServiceProxy.createContactDatabase(contactRequestDTOList);
+        reportDBServiceProxy.createAccountDatabase(accountRequestDTOList);
+        reportDBServiceProxy.createOpportunityDatabase(opportunityRequestDTOList);
     }
 
 }

@@ -3,6 +3,7 @@ package com.ironhack.stolen_name_trucking_company_homework_3.menus;
 import com.ironhack.stolen_name_trucking_company_homework_3.dao.Variables;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.ReportCommands;
 import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.NoSuchValueException;
+import com.ironhack.stolen_name_trucking_company_homework_3.proxy.AccountReportServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ import java.util.Scanner;
 public class EmployeeCountReportMenu implements Variables {
 
     @Autowired
-    AccountRepository accountRepository;
+    AccountReportServiceProxy accountReportServiceProxy;
 
     @Autowired
     ReportMainMenu reportMainMenu;
@@ -57,17 +58,17 @@ public class EmployeeCountReportMenu implements Variables {
                 switch (ReportCommands.getCommandType(input)){
                     case MEAN_EMPCOUNT:
                         System.out.println(colorMain + "\n╔════════════════════════════════════════════════════╗");
-                        System.out.println("║" + colorTable + "  Average number of employees is: " + accountRepository.findMeanEmployeeCount().get() + colorMain + "             ║");
+                        System.out.println("║" + colorTable + "  Average number of employees is: " + accountReportServiceProxy.findMeanEmployeeCount().get() + colorMain + "             ║");
                         System.out.println("╚════════════════════════════════════════════════════╝" + reset);
                         break;
                     case MEDIAN_EMPCOUNT:
-                        System.out.println("Median number of employees is: " + getMedian(accountRepository.findMedianEmployeeCountStep1()));
+                        System.out.println("Median number of employees is: " + getMedian(accountReportServiceProxy.findMedianEmployeeCountStep1()));
                         break;
                     case MAX_EMPCOUNT:
-                        System.out.println("Maximum number of employees is: " + accountRepository.findMaxEmployeeCount().get());
+                        System.out.println("Maximum number of employees is: " + accountReportServiceProxy.findMaxEmployeeCount().get());
                         break;
                     case MIN_EMPCOUNT:
-                        System.out.println("Minimum number of employees is: " + accountRepository.findMinEmployeeCount().get());
+                        System.out.println("Minimum number of employees is: " + accountReportServiceProxy.findMinEmployeeCount().get());
                         break;
                     case BACK: reportMainMenu.reportMainMenu();
                     case MAIN_MENU: mainMenu.OS();

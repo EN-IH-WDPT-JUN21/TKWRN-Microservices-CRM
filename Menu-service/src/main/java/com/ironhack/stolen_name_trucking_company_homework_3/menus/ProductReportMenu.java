@@ -4,7 +4,7 @@ import com.ironhack.stolen_name_trucking_company_homework_3.dao.Variables;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.ReportCommands;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.Status;
 import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.NoSuchValueException;
-import com.ironhack.stolen_name_trucking_company_homework_3.repository.*;
+import com.ironhack.stolen_name_trucking_company_homework_3.proxy.OppReportServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +14,7 @@ import java.util.Scanner;
 @Component
 public class ProductReportMenu implements Variables {
 
-    @Autowired
-    OpportunityRepository opportunityRepository;
+    private OppReportServiceProxy oppReportServiceProxy;
 
     @Autowired
     ReportMainMenu reportMainMenu;
@@ -58,7 +57,7 @@ public class ProductReportMenu implements Variables {
             } else {
                 switch (ReportCommands.getCommandType(input)){
                     case REPORT_OPP_BY_PRODUCT:
-                        var countOppProd = opportunityRepository.findCountOppForProduct();
+                        var countOppProd = oppReportServiceProxy.findCountOppForProduct();
                         if(countOppProd.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -69,7 +68,7 @@ public class ProductReportMenu implements Variables {
                         }
                         break;
                     case REPORT_CLOSE_W_BY_PRODUCT:
-                        var countProdW = opportunityRepository.findCountOpportunityByProductForStatus(Status.CLOSED_WON);
+                        var countProdW = oppReportServiceProxy.findCountOpportunityByProductForStatus(Status.CLOSED_WON);
                         if(countProdW.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -80,7 +79,7 @@ public class ProductReportMenu implements Variables {
                         }
                         break;
                     case REPORT_CLOSE_L_BY_PRODUCT:
-                        var countProdL = opportunityRepository.findCountOpportunityByProductForStatus(Status.CLOSED_LOST);
+                        var countProdL = oppReportServiceProxy.findCountOpportunityByProductForStatus(Status.CLOSED_LOST);
                         if(countProdL.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -91,7 +90,7 @@ public class ProductReportMenu implements Variables {
                         }
                         break;
                     case REPORT_OPEN_BY_PRODUCT:
-                        var countProdOp = opportunityRepository.findCountOpportunityByProductForStatus(Status.OPEN);
+                        var countProdOp = oppReportServiceProxy.findCountOpportunityByProductForStatus(Status.OPEN);
                         if(countProdOp.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {

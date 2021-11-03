@@ -4,7 +4,7 @@ import com.ironhack.stolen_name_trucking_company_homework_3.dao.Variables;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.ReportCommands;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.Status;
 import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.NoSuchValueException;
-import com.ironhack.stolen_name_trucking_company_homework_3.repository.*;
+import com.ironhack.stolen_name_trucking_company_homework_3.proxy.OppReportServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,11 +14,7 @@ import java.util.Scanner;
 @Component
 public class SalesRepReportMenu implements Variables {
 
-    @Autowired
-    LeadRepository leadRepository;
-
-    @Autowired
-    OpportunityRepository opportunityRepository;
+    private OppReportServiceProxy oppReportServiceProxy;
 
     @Autowired
     ReportMainMenu reportMainMenu;
@@ -63,7 +59,7 @@ public class SalesRepReportMenu implements Variables {
             } else {
                 switch (ReportCommands.getCommandType(input)){
                     case REPORT_LEAD_BY_SALESREP:
-                        var leadByRep = leadRepository.findCountLeadByRepName();
+                        var leadByRep = oppReportServiceProxy.findCountOpportunityByRepName();
                         if(leadByRep.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -74,7 +70,7 @@ public class SalesRepReportMenu implements Variables {
                         }
                         break;
                     case REPORT_OPP_BY_SALESREP:
-                        var oppByRep = opportunityRepository.findCountOpportunityByRepName();
+                        var oppByRep = oppReportServiceProxy.findCountOpportunityByRepName();
                         if(oppByRep.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -85,7 +81,7 @@ public class SalesRepReportMenu implements Variables {
                         }
                         break;
                     case REPORT_CLOSE_W_BY_SALESREP:
-                        var oppCloseW = opportunityRepository.findCountOpportunityByRepNameForStatus(Status.CLOSED_WON.toString());
+                        var oppCloseW = oppReportServiceProxy.findCountOpportunityByRepNameForStatus(Status.CLOSED_WON.toString());
                         if(oppCloseW.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -96,7 +92,7 @@ public class SalesRepReportMenu implements Variables {
                         }
                         break;
                     case REPORT_CLOSE_L_BY_SALESREP:
-                        var oppCloseL = opportunityRepository.findCountOpportunityByRepNameForStatus(Status.CLOSED_LOST.toString());
+                        var oppCloseL = oppReportServiceProxy.findCountOpportunityByRepNameForStatus(Status.CLOSED_LOST.toString());
                         if(oppCloseL.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -107,7 +103,7 @@ public class SalesRepReportMenu implements Variables {
                         }
                         break;
                     case REPORT_OPEN_BY_SALESREP:
-                        var oppOpen = opportunityRepository.findCountOpportunityByRepNameForStatus(Status.OPEN.toString());
+                        var oppOpen = oppReportServiceProxy.findCountOpportunityByRepNameForStatus(Status.OPEN.toString());
                         if(oppOpen.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {

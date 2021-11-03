@@ -4,6 +4,7 @@ import com.ironhack.stolen_name_trucking_company_homework_3.dao.Variables;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.ReportCommands;
 import com.ironhack.stolen_name_trucking_company_homework_3.enums.Status;
 import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.NoSuchValueException;
+import com.ironhack.stolen_name_trucking_company_homework_3.proxy.OppReportServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +14,7 @@ import java.util.Scanner;
 @Component
 public class CountryReportMenu implements Variables {
 
-    @Autowired
-    OpportunityRepository opportunityRepository;
+    private OppReportServiceProxy oppReportServiceProxy;
 
     @Autowired
     ReportMainMenu reportMainMenu;
@@ -57,7 +57,7 @@ public class CountryReportMenu implements Variables {
             } else {
                 switch (ReportCommands.getCommandType(input)){
                     case REPORT_OPP_BY_COUNTRY:
-                        var oppCountry = opportunityRepository.findCountOppForCountry();
+                        var oppCountry = oppReportServiceProxy.findCountOppForCountry();
                         if(oppCountry.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -68,7 +68,7 @@ public class CountryReportMenu implements Variables {
                         }
                         break;
                     case REPORT_CLOSE_W_BY_COUNTRY:
-                        var oppCountryW = opportunityRepository.findCountOpportunityByCountryForStatus(Status.CLOSED_WON.toString());
+                        var oppCountryW = oppReportServiceProxy.findCountOpportunityByCountryForStatus(Status.CLOSED_WON.toString());
                         if(oppCountryW.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -79,7 +79,7 @@ public class CountryReportMenu implements Variables {
                         }
                         break;
                     case REPORT_CLOSE_L_BY_COUNTRY:
-                        var oppCountryL = opportunityRepository.findCountOpportunityByCountryForStatus(Status.CLOSED_LOST.toString());
+                        var oppCountryL = oppReportServiceProxy.findCountOpportunityByCountryForStatus(Status.CLOSED_LOST.toString());
                         if(oppCountryL.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {
@@ -90,7 +90,7 @@ public class CountryReportMenu implements Variables {
                         }
                         break;
                     case REPORT_OPEN_BY_COUNTRY:
-                        var oppCountryOp = opportunityRepository.findCountOpportunityByCountryForStatus(Status.OPEN.toString());
+                        var oppCountryOp = oppReportServiceProxy.findCountOpportunityByCountryForStatus(Status.OPEN.toString());
                         if(oppCountryOp.isEmpty()){
                             System.out.println(colorTable + "\nThere are no entries matching reporting criteria" + reset);
                         } else {

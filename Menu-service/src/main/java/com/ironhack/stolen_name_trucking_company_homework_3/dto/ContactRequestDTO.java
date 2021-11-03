@@ -38,4 +38,5 @@ public class ContactRequestDTO {
         this.companyName = companyName;
         this.salesId = salesId;
     }
+
 }
