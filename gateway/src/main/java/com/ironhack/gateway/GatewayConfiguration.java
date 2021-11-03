@@ -37,7 +37,17 @@ public class GatewayConfiguration {
                         .uri("lb://OPPORTUNITY-SERVICE"))
 
                 // Report service
-                .route(p -> p.path("/api/v1/**")
+                .route(p -> p.path("/api/v1/report-db**")
+                        .uri("lb://REPORT-SERVICE"))
+                .route(p -> p.path("/api/v1/report-db/**")
+                        .uri("lb://REPORT-SERVICE"))
+                .route(p -> p.path("/api/v1/account-report**")
+                        .uri("lb://REPORT-SERVICE"))
+                .route(p -> p.path("/api/v1/account-report/**")
+                        .uri("lb://REPORT-SERVICE"))
+                .route(p -> p.path("/api/v1/opportunity-report**")
+                        .uri("lb://REPORT-SERVICE"))
+                .route(p -> p.path("/api/v1/opportunity-report/**")
                         .uri("lb://REPORT-SERVICE"))
 
                 // Salesrep service

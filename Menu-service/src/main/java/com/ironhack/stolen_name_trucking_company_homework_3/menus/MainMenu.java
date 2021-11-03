@@ -10,6 +10,7 @@ import com.ironhack.stolen_name_trucking_company_homework_3.enums.Truck;
 import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.*;
 import com.ironhack.stolen_name_trucking_company_homework_3.proxy.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 
@@ -26,14 +27,31 @@ public class MainMenu implements Variables {
     @Autowired
     SalesRepReportMenu salesRepReportMenu;
 
-    private static AccountServiceProxy accountServiceProxy;
-    private static LeadServiceProxy leadServiceProxy;
-    private static OpportunityServiceProxy opportunityServiceProxy;
-    private static ReportDBServiceProxy reportDBServiceProxy;
-    private static SalesRepServiceProxy salesRepServiceProxy;
-    private static ContactServiceProxy contactServiceProxy;
+    @Autowired
+    private AccountServiceProxy accountServiceProxy;
 
-    public MainMenu() {
+    @Autowired
+    private LeadServiceProxy leadServiceProxy;
+
+    @Autowired
+    private OpportunityServiceProxy opportunityServiceProxy;
+
+    @Autowired
+    private ReportDBServiceProxy reportDBServiceProxy;
+
+    @Autowired
+    private SalesRepServiceProxy salesRepServiceProxy;
+
+    @Autowired
+    private ContactServiceProxy contactServiceProxy;
+
+    public MainMenu(AccountServiceProxy accountServiceProxy, LeadServiceProxy leadServiceProxy, OpportunityServiceProxy opportunityServiceProxy, ReportDBServiceProxy reportDBServiceProxy, SalesRepServiceProxy salesRepServiceProxy, ContactServiceProxy contactServiceProxy) {
+        this.accountServiceProxy = accountServiceProxy;
+        this.leadServiceProxy = leadServiceProxy;
+        this.opportunityServiceProxy = opportunityServiceProxy;
+        this.reportDBServiceProxy = reportDBServiceProxy;
+        this.salesRepServiceProxy = salesRepServiceProxy;
+        this.contactServiceProxy = contactServiceProxy;
     }
 
     private static boolean wasRunFocus = false;
@@ -88,6 +106,7 @@ public class MainMenu implements Variables {
                 System.out.println(colorError + "Exiting the program" + reset);
                 System.exit(0);
             } else if (input[0].equals("populate")) {
+                System.out.println("populate");
                 PopulateDatabase.populateDatabase();
             } else if (input.length < 2) {
                 throw new IllegalArgumentException();

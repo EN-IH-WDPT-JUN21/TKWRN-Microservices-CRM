@@ -4,10 +4,12 @@ import com.ironhack.stolen_name_trucking_company_homework_3.dto.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @FeignClient("report-service")
+@RequestMapping("/api/v1/report-db")
 public interface ReportDBServiceProxy {
 
     @PostMapping("/post/accounts")
