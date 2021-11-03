@@ -4,29 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d23b74b7-1fb9-409d-91d7-65ae4a1dc616" name="Changes" comment="Second commit">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dto/SalesRepDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_11_2021_01_38__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_11_2021_01_38__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_11_2021_01_38__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_01_11_2021_01_38__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2021_22_43__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2021_22_43__Changes_.xml" afterDir="false" />
+    <list default="true" id="962c8d9f-5426-4660-864f-eb1229fed0da" name="Changes" comment="Second commit">
+      <change afterPath="$PROJECT_DIR$/salesrep-service/src/test/java/com/ironhack/salesrepservice/controller/impl/SalesRepControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/adb525a7-5567-4813-866b-2abfd9c80c28.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/adb525a7-5567-4813-866b-2abfd9c80c28.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/contact-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/lead-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Controller/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Controller/DatabaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Controller/OpportunityReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Controller/OpportunityReportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Service/DatabasePopulationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Service/DatabasePopulationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/SalesRep.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dao/SalesRep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/OpportunityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/OpportunityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/SalesRepRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/SalesRepRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/controller/impl/SalesRepController.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/controller/impl/SalesRepController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/LeadDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/LeadDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/OpportunityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/OpportunityDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/SalesRepDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/SalesRepDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/proxy/ReportServiceProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/proxy/ReportServiceProxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/service/impl/SalesRepService.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/service/impl/SalesRepService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/service/interfaces/ISalesRepService.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/service/interfaces/ISalesRepService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,13 +28,14 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="a0531355f0fbcb81472357135c2de2a2f580f3ed" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -83,7 +74,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/dto" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Omakatayo-Enterprise-Java-Development-4.06" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -91,6 +84,12 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ArmoredPC\Desktop\Ironhack Bootcamp\TKWRN-Microservices-CRM2\report-service\src\main\java\com\ironhack\ReportService\dto" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.ironhack.salesrepservice.controller.impl" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.ironhack.salesrepservice.sample_data" />
@@ -103,33 +102,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ReportServiceApplication">
-    <configuration name="DiscoveryServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.discoveryservice.DiscoveryServiceApplication" />
-      <module name="discovery-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ironhack.discoveryservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OpportunityServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.OpportunityService.OpportunityServiceApplication" />
-      <module name="opportunity-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ironhack.OpportunityService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.SalesRepControllerTest.addSalesRep">
     <configuration name="ReportServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ironhack.ReportService.ReportServiceApplication" />
       <module name="report-service" />
@@ -143,11 +116,69 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="generated-requests#16" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="16" runType="Run single request">
-      <method v="2" />
+    <configuration name="SalesRepControllerTest.addSalesRep" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="salesrep-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ironhack.salesrepservice.controller.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ironhack.salesrepservice.controller.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.salesrepservice.controller.impl.SalesRepControllerTest" />
+      <option name="METHOD_NAME" value="addSalesRep" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="generated-requests#17" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="17" runType="Run single request">
-      <method v="2" />
+    <configuration name="SalesRepControllerTest.deleteSalesRep" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="salesrep-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ironhack.salesrepservice.controller.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ironhack.salesrepservice.controller.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.salesrepservice.controller.impl.SalesRepControllerTest" />
+      <option name="METHOD_NAME" value="deleteSalesRep" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalesRepControllerTest.findById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="salesrep-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ironhack.salesrepservice.controller.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ironhack.salesrepservice.controller.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.salesrepservice.controller.impl.SalesRepControllerTest" />
+      <option name="METHOD_NAME" value="findById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalesRepControllerTest.getAllSalesReps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="salesrep-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ironhack.salesrepservice.controller.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ironhack.salesrepservice.controller.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.salesrepservice.controller.impl.SalesRepControllerTest" />
+      <option name="METHOD_NAME" value="getAllSalesReps" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="AccountServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="account-service" />
@@ -207,9 +238,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SalesRepControllerTest.addSalesRep" />
+        <item itemvalue="JUnit.SalesRepControllerTest.deleteSalesRep" />
+        <item itemvalue="JUnit.SalesRepControllerTest.findById" />
+        <item itemvalue="JUnit.SalesRepControllerTest.getAllSalesReps" />
         <item itemvalue="Application.ReportServiceApplication" />
-        <item itemvalue="Application.OpportunityServiceApplication" />
-        <item itemvalue="Application.DiscoveryServiceApplication" />
       </list>
     </recent_temporary>
   </component>

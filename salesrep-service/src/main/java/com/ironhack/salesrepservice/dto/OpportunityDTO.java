@@ -12,10 +12,5 @@ import lombok.Setter;
 public class OpportunityDTO {
 
     private Long id;
-    private String status;
-    private String product;
-    private int quantity;
-    private String decisionMaker;
-    private String account;
     private Long salesRepId;
 }

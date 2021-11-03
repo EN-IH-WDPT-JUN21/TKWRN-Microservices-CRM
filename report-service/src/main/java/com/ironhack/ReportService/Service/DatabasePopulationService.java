@@ -91,12 +91,11 @@ public class DatabasePopulationService {
     public String createSalesrepDatabase(List<SalesRepDTO> salesrepDTOList) {
         List<SalesRep> salesrepList = new ArrayList<>();
         for (SalesRepDTO salesrepDTO : salesrepDTOList) {
-            /*try {
+            try {
                 salesrepList.add(new SalesRep(salesrepDTO));
             } catch (Exception e){
                 throw new IllegalArgumentException("Error finding  Salesrep");
-            }*/
-            System.out.println(salesrepDTO.getRepName());
+            }
         }
         try {
             salesRepRepository.saveAll(salesrepList);

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/report-db")
+@RequestMapping("/api/v1/report-db")
 public class DatabaseController {
 
     @Autowired
@@ -36,7 +36,7 @@ public class DatabaseController {
     }
     @PostMapping("/post/salesreps")
     public String createSalesrepDatabase(@RequestBody List<SalesRepDTO> salesrepDTOList){
-        return "List" + salesrepDTOList;
+        return dbpService.createSalesrepDatabase(salesrepDTOList);
     }
 
 

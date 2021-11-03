@@ -25,10 +25,11 @@ public class SalesRepService implements ISalesRepService {
     ReportServiceProxy reportServiceProxy;
 
     public SalesRepService(SalesRepRepository salesRepRepository, LeadServiceProxy leadServiceProxy,
-                           OpportunityServiceProxy opportunityServiceProxy) {
+                           OpportunityServiceProxy opportunityServiceProxy, ReportServiceProxy reportServiceProxy) {
         this.salesRepRepository = salesRepRepository;
         this.leadServiceProxy = leadServiceProxy;
         this.opportunityServiceProxy = opportunityServiceProxy;
+        this.reportServiceProxy = reportServiceProxy;
     }
 
 

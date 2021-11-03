@@ -10,10 +10,10 @@ import java.util.List;
 @FeignClient("report-service")
 public interface ReportServiceProxy {
 
-    @PostMapping("/api/v1/post/salesreps/add")
+    @PostMapping("/api/v1/report-db/new/salesrep")
     SalesRepDTO addOrUpdateSalesRep(@RequestBody SalesRepDTO salesrepDTO);
 
-    @PostMapping("/post/salesreps")
-    String createSalesrepDatabase(List<SalesRepDTO> salesrepDTOList);
+    @PostMapping("/api/v1/report-db/post/salesreps")
+    String createSalesrepDatabase(@RequestBody List<SalesRepDTO> salesrepDTOList);
 }
 

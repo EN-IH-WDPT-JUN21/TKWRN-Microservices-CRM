@@ -18,8 +18,13 @@ public class SalesRepDTO {
     private String repName;
 
     @ElementCollection
-    private List<Long> leadList;
+    private List<Long> leadIdList;
 
     @ElementCollection
-    private List<Long> opportunityList;
+    private List<Long> opportunityIdList;
+
+    public SalesRepDTO(Long id, String repName) {
+        this.id = id;
+        this.repName = repName;
+    }
 }

@@ -12,9 +12,5 @@ import lombok.Setter;
 public class LeadDTO {
 
     private Long id;
-    private String name;
-    private String phoneNumber;
-    private String email;
-    private String companyName;
     private Long salesId;
 }
