@@ -1,7 +1,6 @@
-package com.ironhack.menuservice.proxy;
+package com.ironhack.stolen_name_trucking_company_homework_3.proxy;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,33 +45,19 @@ public interface OppReportServiceProxy {
     @GetMapping("/mean-product-quantity")
     Optional<Double> findMeanProductQuantity();
 
-    // *** Median Report is needed JPQL can give list of all quantities in an ordered int array, needs a second step to find the median from this ***
-    @Query("SELECT quantity FROM Opportunity order by quantity")
-    int[]findMedianQuantityStep1();
-
     @GetMapping("/max-product-quantity")
     Optional<Integer> findMaxProductQuantity();
 
     @GetMapping("/min-product-quantity")
     Optional<Integer> findMinProductQuantity();
 
-//    @GetMapping("mean-opportunities-per-account")
-//    Optional<Double>findMeanOpportunitiesPerAccount(){
-//        return opportunityRepository.findMeanOpportunitiesPerAccount();
-//    }
-//
-    // *** Median Report is needed JPQL can give list of all opportunitycounts in an ordered int array, needs a second step to find the median from this ***
+    @GetMapping("mean-opportunities-per-account")
+    Optional<Double>findMeanOpportunitiesPerAccount();
 
-    @GetMapping("/median-opportunities-account")
-    int[] findMedianOppsPerAccountStep1();
-//
-//    @GetMapping("max-opportunities-per-account")
-//    Optional<Double>findMaxOpportunitiesPerAccount(){
-//        return opportunityRepository.findMaxOpportunitiesPerAccount();
-//    }
-//
-//    @GetMapping("min-opportunities-per-account")
-//    Optional<Double>findMinOpportunitiesPerAccount(){
-//        return opportunityRepository.findMinOpportunitiesPerAccount();
-//    }
+    @GetMapping("max-opportunities-per-account")
+    Optional<Double>findMaxOpportunitiesPerAccount();
+
+    @GetMapping("min-opportunities-per-account")
+    Optional<Double>findMinOpportunitiesPerAccount();
+
 }

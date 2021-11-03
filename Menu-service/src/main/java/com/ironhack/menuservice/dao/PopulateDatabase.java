@@ -1,15 +1,10 @@
-package com.ironhack.menuservice.dao;
+package com.ironhack.stolen_name_trucking_company_homework_3.dao;
 
-import com.ironhack.menuservice.dto.AccountRequestDTO;
-import com.ironhack.menuservice.dto.ContactRequestDTO;
-import com.ironhack.menuservice.dto.LeadRequestDTO;
-import com.ironhack.menuservice.dto.OpportunityRequestDTO;
-import com.ironhack.menuservice.enums.Industry;
-import com.ironhack.menuservice.enums.Truck;
-import com.ironhack.menuservice.exceptions.EmailNotValidException;
-import com.ironhack.menuservice.exceptions.EmptyStringException;
-import com.ironhack.menuservice.exceptions.PhoneNumberContainsLettersException;
-import com.ironhack.menuservice.proxy.ReportDBServiceProxy;
+import com.ironhack.stolen_name_trucking_company_homework_3.dto.*;
+import com.ironhack.stolen_name_trucking_company_homework_3.enums.Industry;
+import com.ironhack.stolen_name_trucking_company_homework_3.enums.Truck;
+import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.*;
+import com.ironhack.stolen_name_trucking_company_homework_3.proxy.ReportDBServiceProxy;
 
 import java.util.List;
 
@@ -17,11 +12,11 @@ public class PopulateDatabase{
 
     private static ReportDBServiceProxy reportDBServiceProxy;
 
-    public static void populateDatabase() throws com.ironhack.menuservice.exceptions.NameContainsNumbersException, EmptyStringException, EmailNotValidException, com.ironhack.menuservice.exceptions.ExceedsMaxLength, PhoneNumberContainsLettersException, com.ironhack.menuservice.exceptions.InvalidCountryException {
+    public static void populateDatabase() throws NameContainsNumbersException, EmptyStringException, EmailNotValidException, ExceedsMaxLength, PhoneNumberContainsLettersException, InvalidCountryException {
 
-        List<com.ironhack.menuservice.dto.SalesRepRequestDTO> salesRepRequestDTOList = List.of(
-                new com.ironhack.menuservice.dto.SalesRepRequestDTO(1L, "David Lynch"),
-                new com.ironhack.menuservice.dto.SalesRepRequestDTO(2L, "Martha Stewart")
+        List<SalesRepRequestDTO> salesRepRequestDTOList = List.of(
+                new SalesRepRequestDTO(1L, "David Lynch"),
+                new SalesRepRequestDTO(2L, "Martha Stewart")
         );
 
         List<LeadRequestDTO>  leadRequestDTOList= List.of(
@@ -37,15 +32,15 @@ public class PopulateDatabase{
         );
 
         List<AccountRequestDTO> accountRequestDTOList = List.of(
-                new AccountRequestDTO(1L, Industry.PRODUCE.name(), 50, "London", "UNITED KINGDOM"),
-                new AccountRequestDTO(2L, Industry.ECOMMERCE.name(), 500, "Madrid", "SPAIN"),
-                new AccountRequestDTO(3L, Industry.MANUFACTURING.name(), 20, "Paris", "FRANCE")
+                new AccountRequestDTO( 1L, Industry.PRODUCE.toString(), 50, "London", "UNITED KINGDOM"),
+                new AccountRequestDTO(2L, Industry.ECOMMERCE.toString(), 500, "Madrid", "SPAIN"),
+                new AccountRequestDTO(3L, Industry.MANUFACTURING.toString(), 20, "Paris", "FRANCE")
         );
 
         List<OpportunityRequestDTO> opportunityRequestDTOList = List.of(
-                new OpportunityRequestDTO(1L, Truck.FLATBED, 10, contactRequestDTOList.get(0).getId(), accountRequestDTOList.get(0).getOpportunityId(),  salesRepRequestDTOList.get(0).getId()),
-                new OpportunityRequestDTO(2L, Truck.BOX, 1150, contactRequestDTOList.get(1).getId(), accountRequestDTOList.get(1).getOpportunityId(), salesRepRequestDTOList.get(0).getId()),
-                new OpportunityRequestDTO(3L, Truck.HYBRID, 1, contactRequestDTOList.get(2).getId(), accountRequestDTOList.get(2).getOpportunityId(), salesRepRequestDTOList.get(1).getId())
+                new OpportunityRequestDTO(1L, Truck.FLATBED, 10, contactRequestDTOList.get(0).getId(), 1L,  salesRepRequestDTOList.get(0).getId()),
+                new OpportunityRequestDTO(2L, Truck.BOX, 1150, contactRequestDTOList.get(1).getId(), 2L, salesRepRequestDTOList.get(0).getId()),
+                new OpportunityRequestDTO(3L, Truck.HYBRID, 1, contactRequestDTOList.get(2).getId(), 3L, salesRepRequestDTOList.get(1).getId())
 
         );
 

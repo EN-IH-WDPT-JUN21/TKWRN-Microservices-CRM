@@ -59,7 +59,7 @@ public class QuantityReportMenu implements Variables {
                         System.out.println("Average quantity of trucks is: " + oppReportServiceProxy.findMeanProductQuantity().get());
                         break;
                     case MED_QUANT:
-                        System.out.println("Median quantity of trucks is: " + getMedian(oppReportServiceProxy.findMedianQuantityStep1()));
+                        //System.out.println("Median quantity of trucks is: " + getMedian(oppReportServiceProxy.findMedianQuantityStep1()));
                         break;
                     case MAX_QUANT:
                         System.out.println("Maximum quantity of trucks is: " + oppReportServiceProxy.findMaxProductQuantity().get());
