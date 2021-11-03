@@ -29,7 +29,8 @@ public class MenuServiceApplication implements CommandLineRunner{
 		} else if (getIsLoggedIn() == 2) {
 			menu.OSGuest();
 		} else {
-			throw new Error("Our server is busy! Please run the program again to login!");
+			throw new Error("Please run the program again to login! " +
+					"Be sure to run it using 'Main' class from 'dao'!");
 		}
 	}
 }

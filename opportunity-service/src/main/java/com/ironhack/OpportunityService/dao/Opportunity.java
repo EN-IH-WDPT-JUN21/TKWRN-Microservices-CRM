@@ -1,4 +1,4 @@
-package com.ironhack.OpportunityService.dao;//Extends com.ironhack.stolen_name_trucking_company_homework_3.ClientInformation class to retain Unique ID incrementing.
+package com.ironhack.OpportunityService.dao;//Extends com.ironhack.menuservice.ClientInformation class to retain Unique ID incrementing.
 
 import com.ironhack.OpportunityService.enums.Status;
 import com.ironhack.OpportunityService.enums.Truck;

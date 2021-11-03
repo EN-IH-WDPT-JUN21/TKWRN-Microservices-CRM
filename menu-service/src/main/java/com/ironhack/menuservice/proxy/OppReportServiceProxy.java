@@ -1,4 +1,4 @@
-package com.ironhack.stolen_name_trucking_company_homework_3.proxy;
+package com.ironhack.menuservice.proxy;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

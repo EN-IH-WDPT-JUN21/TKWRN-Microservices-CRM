@@ -16,7 +16,6 @@
         <module name="discovery-service" />
         <module name="opportunity-service" />
         <module name="gateway" />
-        <module name="stolen_name_trucking_company_homework_3" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -29,7 +28,6 @@
       <module name="opportunity-service" target="17" />
       <module name="report-service" target="17" />
       <module name="salesrep-service" target="17" />
-      <module name="stolen_name_trucking_company_homework_3" target="14" />
       <module name="wrapper" target="1.5" />
     </bytecodeTargetLevel>
   </component>
@@ -44,7 +42,6 @@
       <module name="opportunity-service" options="-parameters" />
       <module name="report-service" options="-parameters" />
       <module name="salesrep-service" options="-parameters" />
-      <module name="stolen_name_trucking_company_homework_3" options="-parameters" />
     </option>
   </component>
 </project>

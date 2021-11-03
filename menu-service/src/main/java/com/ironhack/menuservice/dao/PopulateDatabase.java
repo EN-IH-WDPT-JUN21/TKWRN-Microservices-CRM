@@ -1,10 +1,10 @@
-package com.ironhack.stolen_name_trucking_company_homework_3.dao;
+package com.ironhack.menuservice.dao;
 
-import com.ironhack.stolen_name_trucking_company_homework_3.dto.*;
-import com.ironhack.stolen_name_trucking_company_homework_3.enums.Industry;
-import com.ironhack.stolen_name_trucking_company_homework_3.enums.Truck;
-import com.ironhack.stolen_name_trucking_company_homework_3.exceptions.*;
-import com.ironhack.stolen_name_trucking_company_homework_3.proxy.ReportDBServiceProxy;
+import com.ironhack.menuservice.dto.*;
+import com.ironhack.menuservice.enums.Industry;
+import com.ironhack.menuservice.enums.Truck;
+import com.ironhack.menuservice.exceptions.*;
+import com.ironhack.menuservice.proxy.ReportDBServiceProxy;
 
 import java.util.List;
 
