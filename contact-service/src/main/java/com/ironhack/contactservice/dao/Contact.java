@@ -20,10 +20,10 @@ public class Contact {
             strategy = GenerationType.IDENTITY
     )
     private Long id;
-    protected String name;
-    protected String phoneNumber;
-    protected String email;
-    protected String companyName;
+    private String name;
+    private String phoneNumber;
+    private String email;
+    private String companyName;
     private Long salesId;
     private Long accountId;
     @ElementCollection

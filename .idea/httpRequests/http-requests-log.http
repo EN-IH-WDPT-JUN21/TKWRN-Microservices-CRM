@@ -1,3 +1,9 @@
+GET http://localhost:8100/api/v1/leads
+
+<> 2021-11-03T124448.404.json
+
+###
+
 GET http://localhost:8100/leads/1/convert?product=HYBRID&quantity=3
 
 <> 2021-10-31T102730.201.json
