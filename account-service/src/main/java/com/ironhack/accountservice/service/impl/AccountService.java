@@ -44,19 +44,63 @@ public class AccountService implements IAccountService {
         return accountRepository.findAll();
     }
 
+    @Retry(name = "account-api", fallbackMethod = "fallbackAccountDTOList")
+    public List<AccountReceiptDTO> getAccountsWithLists(){
+        List<AccountReceiptDTO> accountReceiptDTOList = new ArrayList<>();
+        List<Account> accounts = accountRepository.findAll();
+        for(Account account: accounts){
+            Long id = account.getId();
+            var opps = opportunityProxy.getAllOppsByAccount(id);
+
+            AccountReceiptDTO accountReceiptDTO= new AccountReceiptDTO(account.getId(), account.getIndustry(),account.getEmployeeCount(), account.getCity(),account.getCountry());
+            if (!opps.isEmpty()){
+                accountReceiptDTO.setOpportunityList(opps);
+            }
+//            var contacts = contactProxy.getAllContactsByAccount(id);
+//
+//            if (!contacts.isEmpty()){
+//                accountReceiptDTO.setContactList(contacts);
+//            }
+            accountReceiptDTOList.add(accountReceiptDTO);
+        }
+        return accountReceiptDTOList;
+    }
+
     @Retry(name = "account-api", fallbackMethod = "fallbackAccount")
     public Account findAccountById (Long id){
         Optional<Account> optionalAccount = accountRepository.findById(id);
         return optionalAccount.isPresent()? optionalAccount.get() : null;
     }
 
+    @Retry(name = "account-api", fallbackMethod = "fallbackAccountDTO")
+    public AccountReceiptDTO findAccountByIdWithLists (Long id){
+        Optional<Account> optionalAccount = accountRepository.findById(id);
+
+        if(optionalAccount.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no account with this number. Please, try again");
+
+        }
+        Account account = optionalAccount.get();
+
+        var opps = opportunityProxy.getAllOppsByAccount(id);
+
+        AccountReceiptDTO accountReceiptDTO= new AccountReceiptDTO(account.getId(), account.getIndustry(),account.getEmployeeCount(), account.getCity(),account.getCountry());
+        if (!opps.isEmpty()){
+            accountReceiptDTO.setOpportunityList(opps);
+        }
+//            var contacts = contactProxy.getAllContactsByAccount(id);
+//
+//            if (!contacts.isEmpty()){
+//                accountReceiptDTO.setContactList(contacts);
+//            }
+
+        return accountReceiptDTO;
+    }
+
 
     // to create simple Account w/o links
     @Retry(name = "account-api", fallbackMethod = "fallbackAccountDTO")
     public AccountReceiptDTO store(AccountRequestDTO accountRequestDTO) {
-        // Validate if Account already exists
-//        List<Account> accountOptional = accountRepository.findById(accountDTO.);
-//        if (!accountOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Book with ISBN " + accountDTO.getIsbn() + " and account " + accountDTO.getAccount() + " already exist");
         try{
             Account account;
             account = new Account(accountRequestDTO.getIndustry(), accountRequestDTO.getEmployeeCount(), accountRequestDTO.getCity(), accountRequestDTO.getCountry());
@@ -77,14 +121,14 @@ public class AccountService implements IAccountService {
         OpportunityReceiptDTO opportunityDTO;
         ContactReceiptDTO contactReceiptDTO;
         try{
-            opportunityDTO= opportunityProxy.findOpportunityById(accountRequestDTO.getOpportunityId());
+            opportunityDTO= opportunityProxy.getById(accountRequestDTO.getOpportunityId());
             opportunityReceiptDTOS.add(opportunityDTO);
         }catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no opportunity with this id");
         }
 
         try{
-            contactReceiptDTO= contactProxy.findContactById(opportunityDTO.getDecisionMakerId());
+            contactReceiptDTO= contactProxy.getContactById(opportunityDTO.getDecisionMakerId());
             contactReceiptDTOS.add(contactReceiptDTO);
         }catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no contact with this id");
@@ -155,7 +199,7 @@ public class AccountService implements IAccountService {
         opportunityProxy.updateAccount(opportunityDTO.getId(), opportunityUpdateDTO);
         contactReceiptDTO.setAccountId(newAccount.getId());
         ContactUpdateDTO contactUpdateDTO = new ContactUpdateDTO(accountId);
-        contactProxy.updateAccount(contactReceiptDTO.getId(), contactUpdateDTO);
+        contactProxy.updateContact(contactReceiptDTO.getId(), contactReceiptDTO);
 //      contactRepository.save(opportunity.getDecisionMaker());
         AccountReceiptDTO accountReceiptDTO = new AccountReceiptDTO(newAccount.getId(), newAccount.getIndustry(), newAccount.getEmployeeCount(), newAccount.getCity(), newAccount.getCountry());
         accountReceiptDTO.setOpportunityList(opportunityReceiptDTOS);
@@ -183,14 +227,14 @@ public class AccountService implements IAccountService {
         OpportunityReceiptDTO opportunityDTO;
         ContactReceiptDTO contactReceiptDTO;
         try{
-            opportunityDTO= opportunityProxy.findOpportunityById(opportunityId);
+            opportunityDTO= opportunityProxy.getById(opportunityId);
             opportunityReceiptDTOS.add(opportunityDTO);
         }catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no opportunity with this id");
         }
 
         try{
-            contactReceiptDTO= contactProxy.findContactById(opportunityDTO.getDecisionMakerId());
+            contactReceiptDTO= contactProxy.getContactById(opportunityDTO.getDecisionMakerId());
             contactReceiptDTOS.add(contactReceiptDTO);
         }catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no contact with this id");
@@ -207,7 +251,7 @@ public class AccountService implements IAccountService {
         opportunityProxy.updateAccount(opportunityId, opportunityUpdateDTO);
         contactReceiptDTO.setAccountId(accountStored.getId());
         ContactUpdateDTO contactUpdateDTO = new ContactUpdateDTO(accountId);
-        contactProxy.updateAccount(contactId, contactUpdateDTO);
+        contactProxy.updateContact(contactId, contactReceiptDTO);
         AccountReceiptDTO accountReceiptDTO = new AccountReceiptDTO(accountStored.getId(), accountStored.getIndustry(), accountStored.getEmployeeCount(), accountStored.getCity(), accountStored.getCountry());
         accountReceiptDTO.setOpportunityList(opportunityReceiptDTOS);
         accountReceiptDTO.setContactList(contactReceiptDTOS);
@@ -216,43 +260,6 @@ public class AccountService implements IAccountService {
 
     }
 
-
-
-
-    //to populate data
-
-    @Retry(name = "account-api", fallbackMethod = "fallbackAccountNull")
-    public void populate() throws NameContainsNumbersException, EmptyStringException, InvalidCountryException, ExceedsMaxLength {
- /*       List<SalesRep> salesReps = salesRepRepository.saveAll(List.of(
-                new SalesRep("David Lynch"),
-                new SalesRep("Martha Stewart")
-        ));
-
-        List<Contact> contacts = contactRepository.saveAll(List.of(
-                new Contact("John Doe", "123475357", "alfa@beta.uk", "Kałasznikow", salesReps.get(0)),
-                new Contact("Martha Steward", "123475357", "ms@wp.pl", "My own company", salesReps.get(1)),
-                new Contact("George Truman", "123475357", "thisisverylongemail@gmail.com", "Truman Show", salesReps.get(0))
-
-        ));
-
-        List<Opportunity> opportunities = opportunityRepository.saveAll(List.of(
-                new Opportunity(Truck.FLATBED, 10, contacts.get(0), salesReps.get(0)),
-                new Opportunity(Truck.BOX, 1150, contacts.get(1), salesReps.get(0)),
-                new Opportunity(Truck.HYBRID, 1, contacts.get(2), salesReps.get(1))
-
-        ));
-
-        List<Account> accounts = accountRepository.saveAll(List.of(
-                new Account(Industry.PRODUCE, 50, "London", "UNITED KINGDOM", contacts.get(0), opportunities.get(0)),
-                new Account(Industry.ECOMMERCE, 500, "Madrid", "SPAIN", contacts.get(1), opportunities.get(1)),
-                new Account(Industry.MANUFACTURING, 20, "Paris", "FRANCE", contacts.get(2), opportunities.get(2))
-        ));*/
-        List<Account> accounts = accountRepository.saveAll(List.of(
-                new Account(Industry.PRODUCE, 50, "London", "UNITED KINGDOM"),
-                new Account(Industry.ECOMMERCE, 500, "Madrid", "SPAIN"),
-                new Account(Industry.MANUFACTURING, 20, "Paris", "FRANCE")
-        ));
-    }
 
     //reports
 
@@ -319,6 +326,14 @@ public class AccountService implements IAccountService {
         logger.info("call account fallback method");
         List<Account> fallbackAccountList = new ArrayList<>();
         Account fallbackAccount = new Account(Industry.PRODUCE, 1, "", "This is a account fallback");
+        fallbackAccountList.add(fallbackAccount);
+        return fallbackAccountList;
+    }
+
+    public List<AccountReceiptDTO>  fallbackAccountDTOList(Exception e) throws NameContainsNumbersException, EmptyStringException, InvalidCountryException, ExceedsMaxLength {
+        logger.info("call account fallback method");
+        List<AccountReceiptDTO> fallbackAccountList = new ArrayList<>();
+        AccountReceiptDTO fallbackAccount = new AccountReceiptDTO(1l,Industry.PRODUCE, 1, "", "This is a account fallback");
         fallbackAccountList.add(fallbackAccount);
         return fallbackAccountList;
     }

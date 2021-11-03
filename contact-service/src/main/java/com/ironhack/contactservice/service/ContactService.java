@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Optional;
 
 @Service
 public class ContactService {
@@ -44,20 +43,21 @@ public class ContactService {
 
     public ContactDTO convertContactToDto(Contact contact) {
         return new ContactDTO(contact.getId(),
-                contact.getName(),
-                contact.getPhoneNumber(),
-                contact.getEmail(),
-                contact.getCompanyName(),
-                contact.getSalesId());
+                              contact.getName(),
+                              contact.getPhoneNumber(),
+                              contact.getEmail(),
+                              contact.getCompanyName(),
+                              contact.getSalesId());
     }
 
     public Contact convertDtoToContact(ContactDTO contactDTO) {
         return new Contact(contactDTO.getId(),
-                contactDTO.getName(),
-                contactDTO.getPhoneNumber(),
-                contactDTO.getEmail(),
-                contactDTO.getCompanyName(),
-                contactDTO.getSalesId(),
-                contactDTO.getAccountId());
+                           contactDTO.getName(),
+                           contactDTO.getPhoneNumber(),
+                           contactDTO.getEmail(),
+                           contactDTO.getCompanyName(),
+                           contactDTO.getSalesId(),
+                           contactDTO.getAccountId());
+
     }
 }

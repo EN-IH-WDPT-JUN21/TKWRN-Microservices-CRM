@@ -9,5 +9,6 @@ public interface ISalesRepService {
     SalesRepDTO addSalesRep(SalesRepDTO salesRepDTO);
     SalesRepDTO findById(Long id);
     List<SalesRepDTO> findAllSalesReps();
+    SalesRepDTO updateSalesRepName(Long id, String name);
     void deleteSalesRep(Long id);
 }

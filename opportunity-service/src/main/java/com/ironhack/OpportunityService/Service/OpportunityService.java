@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ public class OpportunityService {
     @Autowired
     OpportunityRepository opportunityRepository;
 
-    public Opportunity createOpp(OpportunityDTO opportunityDTO) {
+    public OpportunityDTO createOpp(OpportunityDTO opportunityDTO) {
         Opportunity newOpp =  new Opportunity(
                 opportunityDTO.getStatus(),
                 opportunityDTO.getProduct(),
@@ -26,8 +27,9 @@ public class OpportunityService {
                 opportunityDTO.getAccountId(),
                 opportunityDTO.getSalesRepId()
         );
+        opportunityRepository.save(newOpp);
 
-        return opportunityRepository.save(newOpp);
+        return opportunityDTO;
     }
 
     public Opportunity updateOpp(Long id, OpportunityDTO opportunityDTO) {
@@ -80,5 +82,27 @@ public class OpportunityService {
         } else {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No Opportunity with that Id Exists. Did you mean to create one?");
         }
+    }
+
+    public void updateAccountId(Long id, OpportunityDTO opportunityDTO) {
+        Optional<Opportunity> storedOpp = opportunityRepository.findById(id);
+        if (storedOpp.isPresent()){
+            try {
+                storedOpp.get().setAccountId(opportunityDTO.getAccountId());
+                opportunityRepository.save(storedOpp.get());
+            } catch (Exception e){
+                throw new IllegalArgumentException("Malformed OpportunityDTO passed to updateAccount method.");
+            }
+        }
+    }
+
+    public List<OpportunityDTO> findAllByAccountId(Long id) {
+        List<Opportunity> oppList = opportunityRepository.findAllByAccountId(id);
+        List<OpportunityDTO> oppDTOList = new ArrayList<>();
+        for (var opp : oppList){
+            oppDTOList.add(new OpportunityDTO(opp.getStatus(), opp.getProduct(), opp.getQuantity(),
+                    opp.getDecisionMakerId(), opp.getAccountId(), opp.getSalesRepId()));
+        }
+        return oppDTOList;
     }
 }

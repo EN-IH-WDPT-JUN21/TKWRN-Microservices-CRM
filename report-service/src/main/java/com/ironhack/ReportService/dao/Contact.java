@@ -34,17 +34,12 @@ public class Contact{
     @Column(name="company_name")
     protected String companyName;
 
-    @ManyToOne
-    @JoinColumn(name = "sales_rep_id", referencedColumnName = "id")
-    private SalesRep salesRep;
+    private Long salesRepId;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "id")
-    private Account account;
+    private Long accountId;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "decisionMaker")
-    private List<Opportunity> opportunity = new ArrayList<>();
+    @ElementCollection
+    private List<Long> opportunityIdList = new ArrayList<>();
 
 
 

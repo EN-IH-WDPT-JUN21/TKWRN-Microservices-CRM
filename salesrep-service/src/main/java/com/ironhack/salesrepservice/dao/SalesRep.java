@@ -22,6 +22,10 @@ public class SalesRep {
     @Column(name="sales_rep_name")
     private String repName;
 
+    public SalesRep(String repName) {
+        this.repName = repName;
+    }
+
     /*@ElementCollection
     private List<String> leadList;
 

@@ -29,9 +29,7 @@ public class Lead {
     @Column(name="company_name")
     protected String companyName;
 
-    @ManyToOne
-    @JoinColumn(name = "sales_rep_id", referencedColumnName = "id")
-    private SalesRep salesRep;
+    private Long salesRepId;
 
 
 }

@@ -2,7 +2,6 @@ package com.ironhack.leadservice.controller;
 
 import com.ironhack.leadservice.repository.LeadRepository;
 import com.ironhack.leadservice.service.LeadService;
-import com.ironhack.leadservice.dao.Lead;
 import com.ironhack.leadservice.dto.LeadDTO;
 import com.ironhack.leadservice.dto.OpportunityDTO;
 import com.ironhack.leadservice.enums.Truck;

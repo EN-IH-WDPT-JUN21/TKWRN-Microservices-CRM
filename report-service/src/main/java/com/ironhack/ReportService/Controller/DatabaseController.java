@@ -2,22 +2,24 @@ package com.ironhack.ReportService.Controller;
 
 import com.ironhack.ReportService.Service.DatabasePopulationService;
 import com.ironhack.ReportService.dao.*;
+import com.ironhack.ReportService.dto.AccountDTO;
+import com.ironhack.ReportService.dto.OpportunityDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/reports")
+@RequestMapping("/api/v1/report-db")
 public class DatabaseController {
 
     @Autowired
     DatabasePopulationService dbpService;
 
-    //Full Mirror Methods, use sparringly!
+    //Full Mirror Methods, use sparingly!
     @PostMapping("/post/accounts")
-    public String createAccountDatabase(@RequestBody List<Account> accountList){
-        return dbpService.createAccountDatabase(accountList);
+    public String createAccountDatabase(@RequestBody List<AccountDTO> accountDTOList){
+        return dbpService.createAccountDatabase(accountDTOList);
     }
     @PostMapping("/post/contacts")
     public String createContactDatabase(@RequestBody List<Contact> contactList){
@@ -28,8 +30,8 @@ public class DatabaseController {
         return dbpService.createLeadDatabase(leadList);
     }
     @PostMapping("/post/opportunities")
-    public String createOpportunityDatabase(@RequestBody List<Opportunity> opportunityList){
-        return dbpService.createOppDatabase(opportunityList);
+    public String createOpportunityDatabase(@RequestBody List<OpportunityDTO> opportunityDTOList){
+        return dbpService.createOppDatabase(opportunityDTOList);
     }
     @PostMapping("/post/salesreps")
     public String createSalesrepDatabase(@RequestBody List<SalesRep> salesrepList){
@@ -38,24 +40,24 @@ public class DatabaseController {
 
 
     //Database Entry Post Methods
-    @PostMapping("/post/accounts/add")
+    @PostMapping("/new/account")
     public Account addOrUpdateAccount(@RequestBody Account account){
         return dbpService.addOrUpdateAccount(account);
     }
-    @PostMapping("/post/contacts/add")
+    @PostMapping("/new/contact")
     public Contact addOrUpdateContact(@RequestBody Contact contact){
         return dbpService.addOrUpdateContact(contact);
     }
-    @PostMapping("/post/leads/add")
+    @PostMapping("/new/lead")
     public Lead addOrUpdateLead(@RequestBody Lead lead){
         return dbpService.addOrUpdateLead(lead);
     }
-    @PostMapping("/post/opportunities/add")
-    public Opportunity addOrUpdateOpp(@RequestBody Opportunity opportunity){
-        return dbpService.addOrUpdateOpp(opportunity);
+    @PostMapping("/new/opportunity")
+    public Opportunity addOrUpdateOpp(@RequestBody OpportunityDTO opportunityDTO){
+        return dbpService.addOrUpdateOpp(opportunityDTO);
     }
-    @PostMapping("/post/salesreps/add")
-    public SalesRep addOrCreateSalesRep(@RequestBody SalesRep salesrep){
+    @PostMapping("/new/salesrep")
+    public SalesRep addOrUpdateSalesRep(@RequestBody SalesRep salesrep){
         return dbpService.addOrUpdateSalesRep(salesrep);
     }
 

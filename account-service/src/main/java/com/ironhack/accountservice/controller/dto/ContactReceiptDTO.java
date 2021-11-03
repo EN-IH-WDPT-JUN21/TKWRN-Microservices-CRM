@@ -17,9 +17,7 @@ public class ContactReceiptDTO {
 
     private Long id;
 
-    @Column(name="contact_name")
     protected String name;
-
 
     protected String phoneNumber;
 
@@ -30,15 +28,11 @@ public class ContactReceiptDTO {
 
 
     private Long salesRepId;
-//    private SalesRepDTO salesRepDTO;
 
 
     private Long accountId;
-//    private Account account;
 
-    private List<Long> opportunityListId;
-//    private List<OpportunityReceiptDTO> opportunity;
-
+    private List<Long> opportunityId;
 
 
 }

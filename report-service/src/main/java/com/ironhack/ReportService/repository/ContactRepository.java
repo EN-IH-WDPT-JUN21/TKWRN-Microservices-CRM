@@ -16,5 +16,5 @@ public interface ContactRepository extends JpaRepository<Contact,String> {
 
     Optional<Contact> findById(Long id);
 
-
+    Contact getById(Long decisionMakerId);
 }

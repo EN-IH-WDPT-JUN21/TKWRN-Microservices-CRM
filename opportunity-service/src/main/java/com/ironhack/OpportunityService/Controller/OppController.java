@@ -8,10 +8,11 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/opp")
+@RequestMapping("/api/v1/opps")
 public class OppController {
 
     @Autowired
@@ -28,14 +29,24 @@ public class OppController {
         return opportunityRepository.findById(id).orElse(null);
     }
 
-    @PostMapping("/create")
-    public Opportunity createOpportunity(@RequestBody OpportunityDTO opportunityDTO){
+    @GetMapping("/get-by-account/{id}")
+    public List<OpportunityDTO> getAllOppsByAccount(@PathVariable Long id){
+        return opportunityService.findAllByAccountId(id);
+    }
+
+    @PostMapping("/new")
+    public OpportunityDTO createOpportunity(@RequestBody OpportunityDTO opportunityDTO){
         return opportunityService.createOpp(opportunityDTO);
     }
 
     @PutMapping("/update/{id}")
     public Opportunity updateOpportunity(@PathVariable Long id, @RequestBody OpportunityDTO opportunityDTO){
         return opportunityService.updateOpp(id, opportunityDTO);
+    }
+
+    @PutMapping("change-account/{id}")
+    void updateAccount(@PathVariable(name = "id") Long id, @RequestBody @Valid OpportunityDTO opportunityDTO){
+        opportunityService.updateAccountId(id, opportunityDTO);
     }
 
     @DeleteMapping("/delete/{id}")

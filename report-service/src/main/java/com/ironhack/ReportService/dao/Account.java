@@ -1,5 +1,6 @@
 package com.ironhack.ReportService.dao;
 
+import com.ironhack.ReportService.dto.AccountDTO;
 import com.ironhack.ReportService.enums.Industry;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,14 +33,22 @@ public class Account {
     private String city;
     private String country;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "account")
-    private List<Contact> contactList = new ArrayList<>();
+    @ElementCollection
+    private List<Long> contactIdList = new ArrayList<>();
 
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "account")
-    private List<Opportunity> opportunityList = new ArrayList<>();
+    @ElementCollection
+    private List<Long> opportunityIdList = new ArrayList<>();
 
+
+    public Account(AccountDTO accountDTO) {
+        this.id = accountDTO.getId();
+        this.industry = accountDTO.getIndustry();
+        this.employeeCount = accountDTO.getEmployeeCount();
+        this.city = accountDTO.getCity();
+        this.country = accountDTO.getCountry();
+        this.contactIdList = accountDTO.getContactIdList();
+        this.opportunityIdList = accountDTO.getOpportunityIdList();
+    }
 
 }
 

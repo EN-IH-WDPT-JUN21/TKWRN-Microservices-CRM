@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/opportunity-report")
+@RequestMapping("/api/v1/opportunity-report")
 public class OpportunityReportController {
 
     @Autowired
@@ -88,22 +88,22 @@ public class OpportunityReportController {
         return opportunityRepository.findMinProductQuantity();
     }
 
-    @GetMapping("mean-opportunities-per-account")
-    Optional<Double>findMeanOpportunitiesPerAccount(){
-        return opportunityRepository.findMeanOpportunitiesPerAccount();
-    }
-
-//    // *** Median Report is needed JPQL can give list of all opportunitycounts in an ordered int array, needs a second step to find the median from this ***
-//    @Query(value = "select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity", nativeQuery = true)
-//    int[]findMedianOppsPerAccountStep1();
-
-    @GetMapping("max-opportunities-per-account")
-    Optional<Double>findMaxOpportunitiesPerAccount(){
-        return opportunityRepository.findMaxOpportunitiesPerAccount();
-    }
-
-    @GetMapping("min-opportunities-per-account")
-    Optional<Double>findMinOpportunitiesPerAccount(){
-        return opportunityRepository.findMinOpportunitiesPerAccount();
-    }
+//    @GetMapping("mean-opportunities-per-account")
+//    Optional<Double>findMeanOpportunitiesPerAccount(){
+//        return opportunityRepository.findMeanOpportunitiesPerAccount();
+//    }
+//
+////    // *** Median Report is needed JPQL can give list of all opportunitycounts in an ordered int array, needs a second step to find the median from this ***
+////    @Query(value = "select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity", nativeQuery = true)
+////    int[]findMedianOppsPerAccountStep1();
+//
+//    @GetMapping("max-opportunities-per-account")
+//    Optional<Double>findMaxOpportunitiesPerAccount(){
+//        return opportunityRepository.findMaxOpportunitiesPerAccount();
+//    }
+//
+//    @GetMapping("min-opportunities-per-account")
+//    Optional<Double>findMinOpportunitiesPerAccount(){
+//        return opportunityRepository.findMinOpportunitiesPerAccount();
+//    }
 }

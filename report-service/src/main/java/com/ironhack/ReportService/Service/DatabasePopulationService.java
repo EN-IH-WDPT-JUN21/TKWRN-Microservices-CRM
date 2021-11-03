@@ -1,11 +1,14 @@
 package com.ironhack.ReportService.Service;
 
 import com.ironhack.ReportService.dao.*;
+import com.ironhack.ReportService.dto.AccountDTO;
+import com.ironhack.ReportService.dto.OpportunityDTO;
 import com.ironhack.ReportService.repository.*;
 import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +30,11 @@ public class DatabasePopulationService {
     @Autowired
     SalesRepRepository salesRepRepository;
 
-    public String createAccountDatabase(List<Account> accountList) {
+    public String createAccountDatabase(List<AccountDTO> accountDTOList) {
+        List<Account> accountList = new ArrayList<>();
+        for (var accountDTO : accountDTOList){
+            accountList.add(new Account(accountDTO));
+        }
         try {
             accountRepository.saveAll(accountList);
         } catch (Exception e){
@@ -35,7 +42,7 @@ public class DatabasePopulationService {
         }
         accountRepository.deleteAll();
         accountRepository.saveAll(accountList);
-        return "Mirrored " + accountList.size() + " entries to Account Database";
+        return "Mirrored " + accountDTOList.size() + " entries to Account Database";
     }
 
     public String createContactDatabase(List<Contact> contactList) {
@@ -60,7 +67,16 @@ public class DatabasePopulationService {
         return "Mirrored " + leadList.size() + " entries to Lead Database";
     }
 
-    public String createOppDatabase(List<Opportunity> opportunityList) {
+    public String createOppDatabase(List<OpportunityDTO> opportunityDTOList) {
+        List<Opportunity> opportunityList = new ArrayList<>();
+        for (var opportunityDTO : opportunityDTOList){
+            try {
+                opportunityList.add(new Opportunity(opportunityDTO));
+            } catch (Exception e){
+                throw new IllegalArgumentException("Error finding Account or Salesrep referenced in Opportunities." +
+                        "Please ensure the Sales Rep and Account databases are up to date before retrying");
+            }
+        }
         try {
             opportunityRepository.saveAll(opportunityList);
         } catch (Exception e){
@@ -110,7 +126,8 @@ public class DatabasePopulationService {
         return lead;
     }
 
-    public Opportunity addOrUpdateOpp(Opportunity opportunity) {
+    public Opportunity addOrUpdateOpp(OpportunityDTO opportunityDTO) {
+        Opportunity opportunity = new Opportunity(opportunityDTO);
         try {
             opportunityRepository.save(opportunity);
         } catch (Exception e) {

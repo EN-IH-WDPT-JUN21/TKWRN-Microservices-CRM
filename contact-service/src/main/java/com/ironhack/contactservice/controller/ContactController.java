@@ -3,6 +3,7 @@ package com.ironhack.contactservice.controller;
 import com.ironhack.contactservice.dao.Contact;
 import com.ironhack.contactservice.dto.ContactDTO;
 import com.ironhack.contactservice.dto.LeadDTO;
+import com.ironhack.contactservice.dto.UpdatedContactDTO;
 import com.ironhack.contactservice.repository.ContactRepository;
 import com.ironhack.contactservice.service.ContactService;
 import org.springframework.http.HttpStatus;
@@ -41,8 +42,8 @@ public class ContactController {
         return contactService.create(leadDTO);
     }
 
-    @PatchMapping({"/change-account/{id}"})
-    public void updateContact(@PathVariable("id") long id, @RequestParam("accountId") ContactDTO contactDTO) {
+    @PutMapping({"/change-account/{id}"})
+    public void updateContact(@PathVariable("id") long id, @RequestBody ContactDTO contactDTO) {
         contactService.update(id, contactDTO);
     }
 }

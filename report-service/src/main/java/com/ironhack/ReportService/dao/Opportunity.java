@@ -1,11 +1,16 @@
 package com.ironhack.ReportService.dao;//Extends com.ironhack.stolen_name_trucking_company_homework_3.ClientInformation class to retain Unique ID incrementing.
 
+import com.ironhack.ReportService.dto.OpportunityDTO;
 import com.ironhack.ReportService.enums.Status;
 import com.ironhack.ReportService.enums.Truck;
+import com.ironhack.ReportService.repository.AccountRepository;
+import com.ironhack.ReportService.repository.ContactRepository;
+import com.ironhack.ReportService.repository.SalesRepRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
@@ -28,19 +33,21 @@ public class Opportunity {
     private Truck product;
     private Integer quantity;
 
+    private Long decisionMakerId;
 
-    @ManyToOne
-    @JoinColumn(name = "decision_maker", referencedColumnName = "id")
-    private Contact decisionMaker;
+    private Long accountId;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "id")
-    private Account account;
+    private Long salesRepId;
 
-
-    @ManyToOne
-    @JoinColumn(name = "sales_rep_id", referencedColumnName = "id")
-    private SalesRep salesRep;
+    public Opportunity(OpportunityDTO opportunityDTO) {
+        this.id = opportunityDTO.getId();
+        this.status = opportunityDTO.getStatus();
+        this.product = opportunityDTO.getProduct();
+        this.quantity = opportunityDTO.getQuantity();
+        this.decisionMakerId = opportunityDTO.getDecisionMakerId();
+        this.accountId = opportunityDTO.getAccountId();
+        this.salesRepId = opportunityDTO.getSalesRepId();
+    }
 
 
 }

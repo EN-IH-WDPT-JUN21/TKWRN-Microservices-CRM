@@ -16,12 +16,12 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     Optional<Double> findMeanEmployeeCount();
 
     //Show accounts
-    @Query("SELECT ac.id, c.companyName FROM Contact c JOIN c.account ac")
+    @Query(value = "SELECT account.id, contact.companyName FROM Contact JOIN account ON contact.accountId = account.id", nativeQuery = true)
     List<Object[]> findAllAccounts();
 
-    // *** Median Report is needed JPQL can give list of all employeecounts in an ordered int array, needs a second step to find the median from this ***
-    @Query("SELECT employeeCount FROM Account order by employeeCount")
-    int[]findMedianEmployeeCountStep1();
+//    // *** Median Report is needed JPQL can give list of all employeecounts in an ordered int array, needs a second step to find the median from this ***
+//    @Query("SELECT employeeCount FROM Account order by employeeCount")
+//    int[]findMedianEmployeeCountStep1();
 
     //Report Maximum  employee count for all Accounts
     @Query("SELECT MAX(employeeCount) FROM Account")
