@@ -11,23 +11,23 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/account-report")
+@RequestMapping("/api/v1/account-report")
 public class AccountReportController {
 
     @Autowired
     AccountRepository accountRepository;
 
-    /*@GetMapping("/mean-employee-count")
+    @GetMapping("/mean-employee-count")
     Optional<Double> findMeanEmployeeCount(){
         return accountRepository.findMeanEmployeeCount();
-    }*/
+    }
 
 //    @GetMapping("/median-employee-count")
 //    int[]findMedianEmployeeCountStep1(){
 //        return accountRepository.findMedianEmployeeCountStep1();
 //    }
 
-    /*@GetMapping("/max-employee-count")
+    @GetMapping("/max-employee-count")
     Optional<Integer> findMaxEmployeeCount(){
         return accountRepository.findMaxEmployeeCount();
     }
@@ -35,5 +35,5 @@ public class AccountReportController {
     @GetMapping("/min-employee-count")
     Optional<Integer> findMinEmployeeCount(){
         return accountRepository.findMinEmployeeCount();
-    }*/
+    }
 }

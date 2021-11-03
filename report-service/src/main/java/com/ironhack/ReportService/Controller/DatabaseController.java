@@ -3,6 +3,7 @@ package com.ironhack.ReportService.Controller;
 import com.ironhack.ReportService.Service.DatabasePopulationService;
 import com.ironhack.ReportService.dao.*;
 import com.ironhack.ReportService.dto.AccountDTO;
+import com.ironhack.ReportService.dto.ContactDTO;
 import com.ironhack.ReportService.dto.OpportunityDTO;
 import com.ironhack.ReportService.dto.SalesRepDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class DatabaseController {
     @Autowired
     DatabasePopulationService dbpService;
 
-    //Full Mirror Methods, use sparringly!
+    //Full Mirror Methods, use sparingly!
     @PostMapping("/post/accounts")
     public String createAccountDatabase(@RequestBody List<AccountDTO> accountDTOList){
         return dbpService.createAccountDatabase(accountDTOList);
