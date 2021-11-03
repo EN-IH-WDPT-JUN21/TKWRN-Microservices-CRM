@@ -3,6 +3,7 @@ package com.ironhack.leadservice.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ironhack.leadservice.dao.Lead;
 import com.ironhack.leadservice.dto.LeadDTO;
+import com.ironhack.leadservice.dto.SalesRepDTO;
 import com.ironhack.leadservice.repository.LeadRepository;
 import com.ironhack.leadservice.service.LeadService;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,13 +30,9 @@ public class LeadControllerTest {
     @Autowired
     private LeadRepository leadRepository;
 
-    @Autowired
-    private LeadService leadService;
-
     private MockMvc mockMvc;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
-
 
     @BeforeEach
     void setUp() {
@@ -51,7 +48,7 @@ public class LeadControllerTest {
 
     @Test
     void findAllLeads() throws Exception {
-        MvcResult result = mockMvc.perform(get("/api/v1/leads")).andExpect(status().isOk()).andReturn();
+        MvcResult result = mockMvc.perform(get("/leads")).andExpect(status().isOk()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("Sebastian Marek Labedz"));
         assertTrue(result.getResponse().getContentAsString().contains("Lee Dawson"));
         assertTrue(result.getResponse().getContentAsString().contains("Natalia Shilyaeva"));
@@ -59,35 +56,27 @@ public class LeadControllerTest {
 
     @Test
     void findByLeadId_LeadExists() throws Exception {
-        MvcResult result = mockMvc.perform(get("/api/v1/leads/3")).andExpect(status().isOk()).andReturn();
+        MvcResult result = mockMvc.perform(get("/leads/3")).andExpect(status().isOk()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("Natalia Shilyaeva"));
     }
 
     @Test
     void findByLeadId_LeadNotFound() throws Exception {
-        mockMvc.perform(get("/api/v1/leads/14")).andExpect(status().isNotFound()).andReturn();
+        mockMvc.perform(get("/leads/14")).andExpect(status().isNotFound()).andReturn();
     }
 
-//
-//    @Test
-//    void createNewLead() throws Exception {
-//        LeadDTO leadDTO;
-//        leadDTO = new LeadDTO();
-//        leadDTO.setId(4L);
-//        leadDTO.setName("Mary Jane");
-//        leadDTO.setEmail("MaryJ@gmail.com");
-//        leadDTO.setPhoneNumber("12345678");
-//        leadDTO.setCompanyName("Webs");
-//        leadDTO.setSalesId(1L);
-//        String body = objectMapper.writeValueAsString(leadDTO);
-//        MvcResult result = mockMvc.perform(post("/api/v1/leads").content(body)
-//                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isCreated()).andReturn();
-//        assertTrue(result.getResponse().getContentAsString().contains("Mary Jane"));
-//    }
+    @Test
+    void createNewLead() throws Exception {
+        LeadDTO leadDTO = new LeadDTO(4L, "Mary Jane", "123123123", "MaryJ@gmail.com", "Webs", 1L);
+        String body = objectMapper.writeValueAsString(leadDTO);
+        MvcResult result = mockMvc.perform(post("/leads/create").content(body)
+                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isCreated()).andReturn();
+        assertTrue(result.getResponse().getContentAsString().contains("Mary Jane"));
+    }
 
     @Test
     void convertLead() throws Exception {
-        MvcResult result = mockMvc.perform(get("/api/v1/leads/1/convert?product=HYBRID&quantity=5")).andExpect(status().isCreated()).andReturn();
+        MvcResult result = mockMvc.perform(get("/leads/1/convert?product=HYBRID&quantity=5")).andExpect(status().isCreated()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("HYBRID"));
     }
 

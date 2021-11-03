@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping({"/api/v1/contacts"})
+@RequestMapping({"/contacts"})
 public class ContactController {
 
     private ContactRepository contactRepository;
@@ -35,7 +35,7 @@ public class ContactController {
         return contactService.getById(id);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public ContactDTO createContact(@RequestBody LeadDTO leadDTO) {
         return contactService.create(leadDTO);

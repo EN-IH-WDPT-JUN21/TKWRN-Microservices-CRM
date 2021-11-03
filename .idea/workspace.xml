@@ -5,16 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7d1df8fb-d8e5-43d1-be0b-d6d1b00c730b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/contact-service/src/test/java/com/ironhack/contactservice/controller/ContactControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lead-service/src/test/java/com/ironhack/leadservice/controller/LeadControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/exceptions/EmailNotValidException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/exceptions/EmptyStringException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/exceptions/ExceedsMaxLength.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/exceptions/IdContainsLettersException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/exceptions/InvalidCountryException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/exceptions/InvalidEnumException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/exceptions/NameContainsNumbersException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/exceptions/NoSuchValueException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/exceptions/PhoneNumberContainsLettersException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contact-service/src/test/java/com/ironhack/contactservice/dao/ContactTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/EmailNotValidException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/ExceedsMaxLength.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/IdContainsLettersException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/InvalidCountryException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/NameContainsNumbersException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/NoSuchValueException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/exceptions/PhoneNumberContainsLettersException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lead-service/src/test/java/com/ironhack/leadservice/dao/LeadTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/src/main/java/com/ironhack/accountservice/controller/impl/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/main/java/com/ironhack/accountservice/controller/impl/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/src/main/java/com/ironhack/accountservice/controller/interfaces/IAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/main/java/com/ironhack/accountservice/controller/interfaces/IAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account-service/src/main/java/com/ironhack/accountservice/service/impl/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/account-service/src/main/java/com/ironhack/accountservice/service/impl/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact-service/contact-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/contact-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/controller/ContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/controller/ContactController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/dao/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/dao/Contact.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/dto/ContactDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/dto/ContactDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/service/ContactService.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/service/ContactService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact-service/src/test/java/com/ironhack/contactservice/controller/ContactControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/contact-service/src/test/java/com/ironhack/contactservice/controller/ContactControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/lead-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/lead-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/controller/LeadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/controller/LeadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dao/Lead.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/dao/Lead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/ContactProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/ContactProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/OpportunityProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/OpportunityProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/SalesProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/proxies/SalesProxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/repository/LeadRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/repository/LeadRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/service/LeadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/service/LeadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/test/java/com/ironhack/leadservice/controller/LeadControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/test/java/com/ironhack/leadservice/controller/LeadControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/controller/LeadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/controller/LeadController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dao/Lead.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dao/Lead.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/ContactProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/ContactProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/OpportunityProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/OpportunityProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/SalesProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/SalesProxy.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/repository/LeadRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/repository/LeadRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/service/LeadService.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/service/LeadService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/test-classes/com/ironhack/leadservice/controller/LeadControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/test-classes/com/ironhack/leadservice/controller/LeadControllerTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +69,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev-anna2" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="20GSIAx8iYicpuhhpjm4jjTmz8D" />
@@ -48,6 +92,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/contact-service/src/main/java/com/ironhack/contactservice/exceptions" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\userr\labs\TKWRN\contact-service\src\main\java\com\ironhack\contactservice\exceptions" />
+      <recent name="C:\Users\userr\labs\TKWRN\lead-service\src\main\java\com\ironhack\leadservice\exceptions" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.ironhack.contactservice" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -56,8 +110,8 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.LeadControllerTest">
-    <configuration name="ContactControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ContactControllerTest.updateContact">
+    <configuration name="ContactControllerTest.createNewContact" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="contact-service" />
       <extension name="coverage">
         <pattern>
@@ -67,39 +121,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.ironhack.contactservice.controller" />
       <option name="MAIN_CLASS_NAME" value="com.ironhack.contactservice.controller.ContactControllerTest" />
+      <option name="METHOD_NAME" value="createNewContact" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContactControllerTest.updateContact" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="contact-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ironhack.contactservice.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ironhack.contactservice.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.contactservice.controller.ContactControllerTest" />
+      <option name="METHOD_NAME" value="updateContact" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContactTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="contact-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ironhack.contactservice.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ironhack.contactservice.controller.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.contactservice.dao.ContactTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContactControllerTest.findByContactId_ContactExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="contact-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ironhack.contactservice.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ironhack.contactservice.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.contactservice.controller.ContactControllerTest" />
-      <option name="METHOD_NAME" value="findByContactId_ContactExists" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContactControllerTest.findByContactId_ContactNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="contact-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ironhack.contactservice.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ironhack.contactservice.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.contactservice.controller.ContactControllerTest" />
-      <option name="METHOD_NAME" value="findByContactId_ContactNotFound" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -119,18 +173,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LeadControllerTest.findByLeadId_LeadNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LeadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lead-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ironhack.leadservice.controller.*" />
+          <option name="PATTERN" value="com.ironhack.leadservice.dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ironhack.leadservice.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.leadservice.controller.LeadControllerTest" />
-      <option name="METHOD_NAME" value="findByLeadId_LeadNotFound" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.ironhack.leadservice.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.leadservice.dao.LeadTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -193,11 +246,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ContactControllerTest.updateContact" />
+        <item itemvalue="JUnit.ContactControllerTest.createNewContact" />
+        <item itemvalue="JUnit.LeadTest" />
+        <item itemvalue="JUnit.ContactTest" />
         <item itemvalue="JUnit.LeadControllerTest" />
-        <item itemvalue="JUnit.ContactControllerTest" />
-        <item itemvalue="JUnit.ContactControllerTest.findByContactId_ContactNotFound" />
-        <item itemvalue="JUnit.ContactControllerTest.findByContactId_ContactExists" />
-        <item itemvalue="JUnit.LeadControllerTest.findByLeadId_LeadNotFound" />
       </list>
     </recent_temporary>
   </component>

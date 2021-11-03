@@ -20,36 +20,44 @@ public class ContactService {
     }
 
     public ContactDTO getById(long id) {
-        Contact contact = contactRepository.findById(id).orElseThrow(() -> {
-            return new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact with id " + id + " does not exist.");
-        });
-        ContactDTO contactDTO = this.convertContactToDto(contact);
-        return contactDTO;
+        Contact contact = contactRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact with id " + id + " does not exist."));
+        return convertContactToDto(contact);
     }
 
     public void update(long id, ContactDTO updatedDTO) {
-        Optional<Contact> storedContact = contactRepository.findById(id);
-        if (storedContact.isPresent()) {
-            Long accountId = Long.valueOf(updatedDTO.getAccountId().toString());
-            storedContact.get().setAccountId(accountId);
-            contactRepository.save(storedContact.get());
-        }
-
+        Contact contact = contactRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact with id " + id + " does not exist."));
+        contact.setAccountId(updatedDTO.getAccountId());
+        contactRepository.save(contact);
     }
 
     public ContactDTO create(LeadDTO leadDTO) {
-        Contact newContact = new Contact(leadDTO.getName(), leadDTO.getPhoneNumber(), leadDTO.getEmail(), leadDTO.getCompanyName(), leadDTO.getSalesId());
+        Contact newContact = new Contact(leadDTO.getName(),
+                leadDTO.getPhoneNumber(),
+                leadDTO.getEmail(),
+                leadDTO.getCompanyName(),
+                leadDTO.getSalesId());
         contactRepository.save(newContact);
-        return this.convertContactToDto(newContact);
+        return convertContactToDto(newContact);
     }
 
     public ContactDTO convertContactToDto(Contact contact) {
-        ContactDTO newContactDto = new ContactDTO(contact.getId(), contact.getName(), contact.getPhoneNumber(), contact.getEmail(), contact.getCompanyName(), contact.getSalesId());
-        return newContactDto;
+        return new ContactDTO(contact.getId(),
+                contact.getName(),
+                contact.getPhoneNumber(),
+                contact.getEmail(),
+                contact.getCompanyName(),
+                contact.getSalesId());
     }
 
     public Contact convertDtoToContact(ContactDTO contactDTO) {
-        Contact newContact = new Contact(contactDTO.getId(), contactDTO.getName(), contactDTO.getPhoneNumber(), contactDTO.getEmail(), contactDTO.getCompanyName(), contactDTO.getSalesId(), contactDTO.getAccountId());
-        return newContact;
+        return new Contact(contactDTO.getId(),
+                contactDTO.getName(),
+                contactDTO.getPhoneNumber(),
+                contactDTO.getEmail(),
+                contactDTO.getCompanyName(),
+                contactDTO.getSalesId(),
+                contactDTO.getAccountId());
     }
 }

@@ -3,11 +3,13 @@ package com.ironhack.contactservice.controller;
 import com.ironhack.contactservice.dao.Contact;
 import com.ironhack.contactservice.dto.ContactDTO;
 import com.ironhack.contactservice.repository.ContactRepository;
+import com.ironhack.contactservice.service.ContactService;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -21,16 +23,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 public class ContactControllerTest {
+
     @Autowired
     private WebApplicationContext webApplicationContext;
 
     @Autowired
     private ContactRepository contactRepository;
 
+    @Autowired
+    private ContactService contactService;
+
     private MockMvc mockMvc;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
-
 
     @BeforeEach
     void setUp() {
@@ -46,7 +51,7 @@ public class ContactControllerTest {
 
     @Test
     void findAllContacts() throws Exception {
-        MvcResult result = mockMvc.perform(get("/api/v1/contacts")).andExpect(status().isOk()).andReturn();
+        MvcResult result = mockMvc.perform(get("/contacts")).andExpect(status().isOk()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("John Doe"));
         assertTrue(result.getResponse().getContentAsString().contains("Martha Steward"));
         assertTrue(result.getResponse().getContentAsString().contains("George Truman"));
@@ -54,13 +59,13 @@ public class ContactControllerTest {
 
     @Test
     void findByContactId_ContactExists() throws Exception {
-        MvcResult result = mockMvc.perform(get("/api/v1/contacts/1")).andExpect(status().isOk()).andReturn();
+        MvcResult result = mockMvc.perform(get("/contacts/1")).andExpect(status().isOk()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("John Doe"));
     }
 
     @Test
     void findByContactId_ContactNotFound() throws Exception {
-        mockMvc.perform(get("/api/v1/contacts/1444")).andExpect(status().isNotFound()).andReturn();
+        mockMvc.perform(get("/contacts/1444")).andExpect(status().isNotFound()).andReturn();
     }
 
 
@@ -75,7 +80,7 @@ public class ContactControllerTest {
         contactDTO.setCompanyName("Webs");
         contactDTO.setSalesId(1L);
         String body = objectMapper.writeValueAsString(contactDTO);
-        MvcResult result = mockMvc.perform(post("/api/v1/contacts").content(body)
+        MvcResult result = mockMvc.perform(post("/contacts/create").content(body)
                 .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isCreated()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("Mary Jane"));
     }
