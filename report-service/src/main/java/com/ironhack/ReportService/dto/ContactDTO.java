@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContactTO {
+public class ContactDTO {
 
     private Long id;
 

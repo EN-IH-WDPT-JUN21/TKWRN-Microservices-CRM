@@ -3,6 +3,7 @@ package com.ironhack.ReportService.Controller;
 import com.ironhack.ReportService.Service.DatabasePopulationService;
 import com.ironhack.ReportService.dao.*;
 import com.ironhack.ReportService.dto.AccountDTO;
+import com.ironhack.ReportService.dto.ContactDTO;
 import com.ironhack.ReportService.dto.OpportunityDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
