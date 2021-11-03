@@ -1,4 +1,4 @@
-package com.ironhack.ReportService.dao;//Extends com.ironhack.stolen_name_trucking_company_homework_3.ClientInformation class to retain Unique ID incrementing.
+package com.ironhack.ReportService.dao;//Extends com.ironhack.menuservice.ClientInformation class to retain Unique ID incrementing.
 
 import com.ironhack.ReportService.dto.OpportunityDTO;
 import com.ironhack.ReportService.enums.Status;
