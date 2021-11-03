@@ -5,18 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="962c8d9f-5426-4660-864f-eb1229fed0da" name="Changes" comment="Second commit">
-      <change afterPath="$PROJECT_DIR$/salesrep-service/src/test/java/com/ironhack/salesrepservice/controller/impl/SalesRepControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/adb525a7-5567-4813-866b-2abfd9c80c28.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/adb525a7-5567-4813-866b-2abfd9c80c28.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Controller/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Controller/DatabaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Service/DatabasePopulationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Service/DatabasePopulationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/controller/impl/SalesRepController.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/controller/impl/SalesRepController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/LeadDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/LeadDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/OpportunityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/OpportunityDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/SalesRepDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/dto/SalesRepDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/proxy/ReportServiceProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/proxy/ReportServiceProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/service/impl/SalesRepService.java" beforeDir="false" afterPath="$PROJECT_DIR$/salesrep-service/src/main/java/com/ironhack/salesrepservice/service/impl/SalesRepService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/dao/PopulateDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/dao/PopulateDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/EmployeeCountReportMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/EmployeeCountReportMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/IndustryReportMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/IndustryReportMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/OpportunityReportMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/OpportunityReportMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/QuantityReportMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/QuantityReportMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/proxy/AccountReportServiceProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/proxy/AccountReportServiceProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/proxy/OppReportServiceProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/Menu-service/src/main/java/com/ironhack/stolen_name_trucking_company_homework_3/proxy/OppReportServiceProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Menu-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/dao/AccountRequestDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/dao/ContactRequestDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/dao/LeadRequestDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/dao/OpportunityRequestDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/dao/PopulateDatabaseTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/dao/SalesRepRequestDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/dao/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/CityReportMenuTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/CountryReportMenuTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/EmployeeCountReportMenuTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/IndustryReportMenuTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/MainMenuTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/OpportunityRequestDTOReportMenuTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/ProductReportMenuTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/QuantityReportMenuTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/menus/SalesRepRequestDTOReportMenuTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/repository/AccountRequestDTORepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/repository/ContactRequestDTORepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/repository/LeadRequestDTORepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/repository/OpportunityRequestDTORepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menu-service/src/test/java/com/ironhack/stolen_name_trucking_company_homework_3/repository/SalesRepRequestDTORepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opportunity-service/src/main/java/com/ironhack/OpportunityService/DTO/OpportunityDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/opportunity-service/src/main/java/com/ironhack/OpportunityService/DTO/OpportunityDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opportunity-service/src/main/java/com/ironhack/OpportunityService/dao/Opportunity.java" beforeDir="false" afterPath="$PROJECT_DIR$/opportunity-service/src/main/java/com/ironhack/OpportunityService/dao/Opportunity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,16 +46,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
-        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="a0531355f0fbcb81472357135c2de2a2f580f3ed" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +84,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -74,22 +96,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Omakatayo-Enterprise-Java-Development-4.06" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/Menu-service/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ArmoredPC\Desktop\Ironhack Bootcamp\TKWRN-Microservices-CRM2" />
       <recent name="C:\Users\ArmoredPC\Desktop\Ironhack Bootcamp\TKWRN-Microservices-CRM2\report-service\src\main\java\com\ironhack\ReportService\dto" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.ironhack.salesrepservice.controller.impl" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.ironhack.salesrepservice.sample_data" />
@@ -102,13 +118,13 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SalesRepControllerTest.addSalesRep">
-    <configuration name="ReportServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.ReportService.ReportServiceApplication" />
-      <module name="report-service" />
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="AccountServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.accountservice.AccountServiceApplication" />
+      <module name="account-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ironhack.ReportService.*" />
+          <option name="PATTERN" value="com.ironhack.accountservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,66 +132,54 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalesRepControllerTest.addSalesRep" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="salesrep-service" />
+    <configuration name="DiscoveryServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.discoveryservice.DiscoveryServiceApplication" />
+      <module name="discovery-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ironhack.salesrepservice.controller.impl.*" />
+          <option name="PATTERN" value="com.ironhack.discoveryservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ironhack.salesrepservice.controller.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.salesrepservice.controller.impl.SalesRepControllerTest" />
-      <option name="METHOD_NAME" value="addSalesRep" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalesRepControllerTest.deleteSalesRep" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="salesrep-service" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.stolen_name_trucking_company_homework_3.dao.Main" />
+      <module name="stolen_name_trucking_company_homework_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ironhack.salesrepservice.controller.impl.*" />
+          <option name="PATTERN" value="com.ironhack.stolen_name_trucking_company_homework_3.dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ironhack.salesrepservice.controller.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.salesrepservice.controller.impl.SalesRepControllerTest" />
-      <option name="METHOD_NAME" value="deleteSalesRep" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalesRepControllerTest.findById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="salesrep-service" />
+    <configuration name="OpportunityServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.OpportunityService.OpportunityServiceApplication" />
+      <module name="opportunity-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ironhack.salesrepservice.controller.impl.*" />
+          <option name="PATTERN" value="com.ironhack.OpportunityService.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ironhack.salesrepservice.controller.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.salesrepservice.controller.impl.SalesRepControllerTest" />
-      <option name="METHOD_NAME" value="findById" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalesRepControllerTest.getAllSalesReps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="salesrep-service" />
+    <configuration name="StolenNameTruckingCompanyHomework3Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.stolen_name_trucking_company_homework_3.StolenNameTruckingCompanyHomework3Application" />
+      <module name="stolen_name_trucking_company_homework_3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ironhack.salesrepservice.controller.impl.*" />
+          <option name="PATTERN" value="com.ironhack.stolen_name_trucking_company_homework_3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.ironhack.salesrepservice.controller.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.salesrepservice.controller.impl.SalesRepControllerTest" />
-      <option name="METHOD_NAME" value="getAllSalesReps" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -238,25 +242,23 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SalesRepControllerTest.addSalesRep" />
-        <item itemvalue="JUnit.SalesRepControllerTest.deleteSalesRep" />
-        <item itemvalue="JUnit.SalesRepControllerTest.findById" />
-        <item itemvalue="JUnit.SalesRepControllerTest.getAllSalesReps" />
-        <item itemvalue="Application.ReportServiceApplication" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.StolenNameTruckingCompanyHomework3Application" />
+        <item itemvalue="Application.AccountServiceApplication" />
+        <item itemvalue="Application.OpportunityServiceApplication" />
+        <item itemvalue="Application.DiscoveryServiceApplication" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d23b74b7-1fb9-409d-91d7-65ae4a1dc616" name="Changes" comment="Second commit" />
       <created>1635669351097</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1635669351097</updated>
       <workItem from="1635669353863" duration="42000" />
       <workItem from="1635669480521" duration="2886000" />
-      <workItem from="1635841631962" duration="808000" />
     </task>
     <servers />
   </component>

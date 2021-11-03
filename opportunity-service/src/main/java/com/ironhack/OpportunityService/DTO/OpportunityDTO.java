@@ -15,7 +15,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class OpportunityDTO {
 
-    private Status status = Status.OPEN;
+    private Status status;
 
     private Truck product;
 

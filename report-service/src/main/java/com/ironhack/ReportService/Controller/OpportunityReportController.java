@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/opportunity-report")
+@RequestMapping("/api/v1/opportunity-report")
 public class OpportunityReportController {
 
     @Autowired

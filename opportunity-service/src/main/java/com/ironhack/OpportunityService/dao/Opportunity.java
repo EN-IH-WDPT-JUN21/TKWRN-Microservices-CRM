@@ -52,6 +52,9 @@ public class Opportunity {
     private static final String colorHeadlineBold = "\033[1;34m";
     private static final String reset = "\u001B[0m";
 
+    public Opportunity(Truck product, Integer quantity, Long decisionMakerId, Long accountId, Long salesRepId) {
+    }
+
 
     public Truck getProduct() {
         return product;
