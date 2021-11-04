@@ -32,7 +32,7 @@ Generates, stores, updates and converts Lead objects into Opportunity objects
 | /api/v1/leads | `GET` | Get all Leads | None
 | /api/v1/leads/{id} | `GET` | Get Lead by id | `id=[long]`
 | /api/v1/leads/new | `POST` | Add new Lead | None
-| /api/v1/leads/{id}/convert | `GET` | Convert Lead into Opportunity |  `id=[long]`
+| /api/v1/leads/convert/{id} | `GET` | Convert Lead into Opportunity |  `id=[long]`
 | /api/v1/leads/delete/{id} | `DELETE` | Delete Lead | `id=[long]`
 
 ## contact-service
