@@ -40,4 +40,8 @@ public class ContactDTO {
         this.companyName = companyName;
         this.salesId = salesId;
     }
+    
+    public ContactDTO(Long accountId) {
+        this.accountId = accountId;
+    }
 }
