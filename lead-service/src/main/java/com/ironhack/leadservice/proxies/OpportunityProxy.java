@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient("opportunity-service")
 public interface OpportunityProxy {
 
-    @GetMapping("/opp/{id}")
+    @GetMapping("/api/v1/opps/{id}")
     OpportunityDTO getOpportunity(@PathVariable(value = "id") long id);
 
-    @PostMapping("/opp/create")
+    @PostMapping("/api/v1/opps/new")
     OpportunityDTO createOpportunity(@RequestBody OpportunityDTO oops);
 }
