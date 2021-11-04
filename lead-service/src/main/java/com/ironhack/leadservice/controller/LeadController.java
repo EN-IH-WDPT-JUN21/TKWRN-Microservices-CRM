@@ -39,12 +39,17 @@ public class LeadController {
         return leadService.create(lead);
     }
 
-    @GetMapping("/{id}/convert")
+    @PostMapping("/populate")
+    @ResponseStatus(HttpStatus.OK)
+    public String createLeadDatabase() {
+        return leadService.populateLeadDatabase();
+    }
+
+    @GetMapping("/convert/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public OpportunityDTO convertLead(@PathVariable(value = "id") long id,
                                       @RequestParam Truck product,
                                       @RequestParam int quantity) {
-
         return leadService.convert(id, product, quantity);
     }
 
