@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/leads")
+@RequestMapping("/api/v1/leads")
 public class LeadController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class LeadController {
         return leadService.getById(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public LeadDTO createLead(@RequestBody LeadDTO lead) {
         return leadService.create(lead);
