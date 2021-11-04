@@ -30,11 +30,23 @@ public class LeadService {
 
     private ContactProxy contactProxy;
 
-    public LeadService(LeadRepository leadRepository, SalesProxy salesProxy, OpportunityProxy oppsProxy, ContactProxy contactProxy) {
+    private ReportServiceProxy reportServiceProxy;
+
+    public LeadService(LeadRepository leadRepository,
+                       SalesProxy salesProxy,
+                       OpportunityProxy oppsProxy,
+                       ContactProxy contactProxy,
+                       ReportServiceProxy reportServiceProxy) {
         this.leadRepository = leadRepository;
         this.salesProxy = salesProxy;
         this.oppsProxy = oppsProxy;
         this.contactProxy = contactProxy;
+        this.reportServiceProxy = reportServiceProxy;
+    }
+
+    public String populateLeadDatabase() {
+        List<LeadDTO> leadDTOList = new ArrayList<>(getAllLeads());
+        return reportServiceProxy.createLeadDatabase(leadDTOList);
     }
 
     public LeadDTO getById(long id) {
@@ -95,5 +107,29 @@ public class LeadService {
             allLeadDTO.add(convertLeadToDto(lead));
         }
         return  allLeadDTO;
+    }
+
+    List<Object[]> findAllLeads() {
+        List<Object[]> allLeads = leadRepository.findAllLeads();
+        if(allLeads.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There are no Leads to display");
+        }
+        return allLeads;
+    }
+
+    Optional<Lead> findById(Long id) {
+        Optional<Lead> foundLead = leadRepository.findById(id);
+        if(foundLead.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "There is no Lead with id: " + id);
+        }
+        return foundLead;
+    }
+
+    List<Object[]> findCountLeadByRepName() {
+        List<Object[]> foundCount = leadRepository.findCountLeadByRepName();
+        if(foundCount.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Couldn't calculate count");
+        }
+        return foundCount;
     }
 }
