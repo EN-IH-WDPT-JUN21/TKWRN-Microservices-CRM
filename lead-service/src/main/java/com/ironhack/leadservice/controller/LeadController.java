@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/leads")
+@RequestMapping("/leads")
 public class LeadController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class LeadController {
         return leadService.getById(id);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public LeadDTO createLead(@RequestBody LeadDTO lead) {
         return leadService.create(lead);
@@ -46,5 +46,10 @@ public class LeadController {
                                       @RequestParam int quantity) {
 
         return leadService.convert(id, product, quantity);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteLead(@PathVariable Long id){
+        leadRepository.deleteById(id);
     }
 }
