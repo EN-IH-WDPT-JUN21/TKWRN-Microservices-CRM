@@ -1,9 +1,11 @@
 # TKWRN-Microservices-CRM
 
 Refactoring monolith CRM SPring project into microservices structure.
+--------------------------------------------------------------------
 Original project: https://github.com/EN-IH-WDPT-JUN21/Stolen-Name-LBL-Trucking_Company_Homework-3
 
-Services:
+# Services
+
 ## discovery-service 
 Implements Eureka server
 
