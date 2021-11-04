@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping({"/contacts"})
+@RequestMapping("/api/v1/contacts")
 public class ContactController {
 
     private ContactRepository contactRepository;
@@ -36,13 +36,13 @@ public class ContactController {
         return contactService.getById(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public ContactDTO createContact(@RequestBody LeadDTO leadDTO) {
         return contactService.create(leadDTO);
     }
 
-    @PutMapping({"/change-account/{id}"})
+    @PutMapping("/change-account/{id}")
     public void updateContact(@PathVariable("id") long id, @RequestBody ContactDTO contactDTO) {
         contactService.update(id, contactDTO);
     }
