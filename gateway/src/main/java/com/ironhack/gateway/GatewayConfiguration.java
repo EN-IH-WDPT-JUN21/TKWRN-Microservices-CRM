@@ -25,9 +25,9 @@ public class GatewayConfiguration {
                         .uri("lb://CONTACT-SERVICE"))
 
                 // Lead service
-                .route(p -> p.path("/leads/**")
+                .route(p -> p.path("/api/v1/leads/**")
                         .uri("lb://LEAD-SERVICE"))
-                .route(p -> p.path("/leads**")
+                .route(p -> p.path("/api/v1/leads**")
                         .uri("lb://LEAD-SERVICE"))
 
                 // Opportunity service
