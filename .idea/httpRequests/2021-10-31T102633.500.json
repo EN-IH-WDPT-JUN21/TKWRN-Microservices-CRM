@@ -1,6 +1,0 @@
-{
-  "timestamp": "2021-10-31T09:26:33.868+00:00",
-  "status": 500,
-  "error": "Internal Server Error",
-  "path": "/leads/1/convert"
-}

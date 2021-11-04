@@ -3,13 +3,11 @@ package com.ironhack.contactservice.service;
 import com.ironhack.contactservice.dao.Contact;
 import com.ironhack.contactservice.dto.ContactDTO;
 import com.ironhack.contactservice.dto.LeadDTO;
-import com.ironhack.contactservice.dto.UpdatedContactDTO;
 import com.ironhack.contactservice.repository.ContactRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Optional;
 
 @Service
 public class ContactService {
@@ -29,16 +27,16 @@ public class ContactService {
     public void update(long id, ContactDTO updatedDTO) {
         Contact contact = contactRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contact with id " + id + " does not exist."));
-            contact.setAccountId(updatedDTO.getAccountId());
-            contactRepository.save(contact);
+        contact.setAccountId(updatedDTO.getAccountId());
+        contactRepository.save(contact);
     }
 
     public ContactDTO create(LeadDTO leadDTO) {
         Contact newContact = new Contact(leadDTO.getName(),
-                                         leadDTO.getPhoneNumber(),
-                                         leadDTO.getEmail(),
-                                         leadDTO.getCompanyName(),
-                                         leadDTO.getSalesId());
+                leadDTO.getPhoneNumber(),
+                leadDTO.getEmail(),
+                leadDTO.getCompanyName(),
+                leadDTO.getSalesId());
         contactRepository.save(newContact);
         return convertContactToDto(newContact);
     }
@@ -60,5 +58,6 @@ public class ContactService {
                            contactDTO.getCompanyName(),
                            contactDTO.getSalesId(),
                            contactDTO.getAccountId());
+
     }
 }
