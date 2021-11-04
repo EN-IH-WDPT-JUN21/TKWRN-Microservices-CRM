@@ -48,7 +48,7 @@ public class LeadControllerTest {
 
     @Test
     void findAllLeads() throws Exception {
-        MvcResult result = mockMvc.perform(get("/leads")).andExpect(status().isOk()).andReturn();
+        MvcResult result = mockMvc.perform(get("/api/v1/leads")).andExpect(status().isOk()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("Sebastian Marek Labedz"));
         assertTrue(result.getResponse().getContentAsString().contains("Lee Dawson"));
         assertTrue(result.getResponse().getContentAsString().contains("Natalia Shilyaeva"));
@@ -56,29 +56,37 @@ public class LeadControllerTest {
 
     @Test
     void findByLeadId_LeadExists() throws Exception {
-        MvcResult result = mockMvc.perform(get("/leads/3")).andExpect(status().isOk()).andReturn();
+        MvcResult result = mockMvc.perform(get("/api/v1/leads/3")).andExpect(status().isOk()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("Natalia Shilyaeva"));
     }
 
     @Test
     void findByLeadId_LeadNotFound() throws Exception {
-        mockMvc.perform(get("/leads/14")).andExpect(status().isNotFound()).andReturn();
+        mockMvc.perform(get("/api/v1/leads/148")).andExpect(status().isNotFound()).andReturn();
     }
 
     @Test
     void createNewLead() throws Exception {
-        LeadDTO leadDTO = new LeadDTO(4L, "Mary Jane", "123123123", "MaryJ@gmail.com", "Webs", 1L);
+        LeadDTO leadDTO = new LeadDTO(60L, "Mary Jane", "123123123", "MaryJ@gmail.com", "Webs", 1L);
         String body = objectMapper.writeValueAsString(leadDTO);
-        MvcResult result = mockMvc.perform(post("/leads/create").content(body)
+        MvcResult result = mockMvc.perform(post("/api/v1/leads/new").content(body)
                 .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isCreated()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("Mary Jane"));
     }
 
     @Test
     void convertLead() throws Exception {
-        MvcResult result = mockMvc.perform(get("/leads/1/convert?product=HYBRID&quantity=5")).andExpect(status().isCreated()).andReturn();
-        assertTrue(result.getResponse().getContentAsString().contains("HYBRID"));
+        long sizeBefore = leadRepository.count();
+        MvcResult result = mockMvc.perform(get("/api/v1/leads/convert/1?product=HYBRID&quantity=5")).andExpect(status().isCreated()).andReturn();
+        long sizeAfter = leadRepository.count();
+        assertEquals(--sizeBefore, sizeAfter);
     }
 
-
+    @Test
+    void deleteLead() throws Exception {
+        long sizeBefore = leadRepository.count();
+        MvcResult result = mockMvc.perform(delete("/api/v1/leads/delete/2")).andExpect(status().isOk()).andReturn();
+        long sizeAfter = leadRepository.count();
+        assertEquals(--sizeBefore, sizeAfter);
+    }
 }
