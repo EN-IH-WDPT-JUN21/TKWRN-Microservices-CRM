@@ -51,7 +51,7 @@ public class ContactControllerTest {
 
     @Test
     void findAllContacts() throws Exception {
-        MvcResult result = mockMvc.perform(get("/contacts")).andExpect(status().isOk()).andReturn();
+        MvcResult result = mockMvc.perform(get("/api/v1/contacts")).andExpect(status().isOk()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("John Doe"));
         assertTrue(result.getResponse().getContentAsString().contains("Martha Steward"));
         assertTrue(result.getResponse().getContentAsString().contains("George Truman"));
@@ -59,15 +59,14 @@ public class ContactControllerTest {
 
     @Test
     void findByContactId_ContactExists() throws Exception {
-        MvcResult result = mockMvc.perform(get("/contacts/1")).andExpect(status().isOk()).andReturn();
+        MvcResult result = mockMvc.perform(get("/api/v1/contacts/1")).andExpect(status().isOk()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("John Doe"));
     }
 
     @Test
     void findByContactId_ContactNotFound() throws Exception {
-        mockMvc.perform(get("/contacts/1444")).andExpect(status().isNotFound()).andReturn();
+        mockMvc.perform(get("/api/v1/contacts/1444")).andExpect(status().isNotFound()).andReturn();
     }
-
 
     @Test
     void createNewContact() throws Exception {
@@ -80,9 +79,16 @@ public class ContactControllerTest {
         contactDTO.setCompanyName("Webs");
         contactDTO.setSalesId(1L);
         String body = objectMapper.writeValueAsString(contactDTO);
-        MvcResult result = mockMvc.perform(post("/contacts/create").content(body)
+        MvcResult result = mockMvc.perform(post("/api/v1/contacts/new").content(body)
                 .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isCreated()).andReturn();
         assertTrue(result.getResponse().getContentAsString().contains("Mary Jane"));
     }
-}
 
+    @Test
+    void updateContact() throws Exception {
+        ContactDTO updatedContactDTO = new ContactDTO(1L);
+        String body = objectMapper.writeValueAsString(updatedContactDTO);
+        MvcResult result = mockMvc.perform(put("/api/v1/contacts/change-account/1").content(body)
+                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
+    }
+}
