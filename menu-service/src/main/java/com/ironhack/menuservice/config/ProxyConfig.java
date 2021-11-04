@@ -1,6 +1,6 @@
-package com.ironhack.stolen_name_trucking_company_homework_3.config;
+package com.ironhack.menuservice.config;
 
-import com.ironhack.stolen_name_trucking_company_homework_3.proxy.*;
+import com.ironhack.menuservice.proxy.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
