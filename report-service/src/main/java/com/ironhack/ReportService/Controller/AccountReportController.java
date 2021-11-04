@@ -1,5 +1,6 @@
 package com.ironhack.ReportService.Controller;
 
+import com.ironhack.ReportService.Service.QueryHelperService;
 import com.ironhack.ReportService.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
@@ -17,15 +18,18 @@ public class AccountReportController {
     @Autowired
     AccountRepository accountRepository;
 
+    @Autowired
+    QueryHelperService queryHelperService;
+
     @GetMapping("/mean-employee-count")
     Optional<Double> findMeanEmployeeCount(){
         return accountRepository.findMeanEmployeeCount();
     }
 
-//    @GetMapping("/median-employee-count")
-//    int[]findMedianEmployeeCountStep1(){
-//        return accountRepository.findMedianEmployeeCountStep1();
-//    }
+    @GetMapping("/median-employee-count")
+    Double findMedianEmployeeCountStep1(){
+        return queryHelperService.findMedianEmployeeCount();
+    }
 
     @GetMapping("/max-employee-count")
     Optional<Integer> findMaxEmployeeCount(){

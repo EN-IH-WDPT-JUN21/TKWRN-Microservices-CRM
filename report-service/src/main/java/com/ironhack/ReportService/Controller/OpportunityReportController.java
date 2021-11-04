@@ -1,5 +1,6 @@
 package com.ironhack.ReportService.Controller;
 
+import com.ironhack.ReportService.Service.QueryHelperService;
 import com.ironhack.ReportService.repository.OpportunityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
@@ -18,6 +19,9 @@ public class OpportunityReportController {
 
     @Autowired
     OpportunityRepository opportunityRepository;
+
+    @Autowired
+    QueryHelperService queryHelperService;
 
     @GetMapping("/count-by-rep")
     List<Object[]> findCountOpportunityByRepName(){
@@ -74,9 +78,10 @@ public class OpportunityReportController {
         return opportunityRepository.findMeanProductQuantity();
     }
 
-//    // *** Median Report is needed JPQL can give list of all quantities in an ordered int array, needs a second step to find the median from this ***
-//    @Query("SELECT quantity FROM Opportunity order by quantity")
-//    int[]findMedianQuantityStep1();
+    @GetMapping("/median-product-quantity")
+    Double findMedianQuantityStep1() {
+        return queryHelperService.findMedianQuantity();
+    }
 
     @GetMapping("/max-product-quantity")
     Optional<Integer> findMaxProductQuantity(){
@@ -93,9 +98,10 @@ public class OpportunityReportController {
         return opportunityRepository.findMeanOpportunitiesPerAccount();
     }
 
-//    // *** Median Report is needed JPQL can give list of all opportunitycounts in an ordered int array, needs a second step to find the median from this ***
-//    @Query(value = "select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity", nativeQuery = true)
-//    int[]findMedianOppsPerAccountStep1();
+    @GetMapping("/median-opportunities-per-account")
+    Double findMedianOppsPerAccountStep1() {
+        return queryHelperService.findMedianOppsPerAccount();
+    }
 
     @GetMapping("max-opportunities-per-account")
     Optional<Double>findMaxOpportunitiesPerAccount(){

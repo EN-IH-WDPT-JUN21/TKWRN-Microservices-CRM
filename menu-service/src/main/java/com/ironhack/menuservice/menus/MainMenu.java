@@ -10,6 +10,7 @@ import com.ironhack.menuservice.enums.Truck;
 import com.ironhack.menuservice.exceptions.*;
 import com.ironhack.menuservice.proxy.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 @Component
+@EnableFeignClients
 public class MainMenu implements Variables {
 
     @Autowired
