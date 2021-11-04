@@ -80,8 +80,8 @@ Populates database, stores exceptions, anums and variables
 | Endpoint | Method | Description | Path Params
 | :--- | :--- | :--- | :--- 
 | /api/v1/account-report/mean-employee-count | `GET` | Get mean employee count | None
-| /api/v1/account-report/median-employee-count" | `GET` | Get median employee count | None
-| /api/v1account-report/max-employee-count | `GET` | Get max employee count | None
+| /api/v1/account-report/median-employee-count | `GET` | Get median employee count | None
+| /api/v1/account-report/max-employee-count | `GET` | Get max employee count | None
 | /api/v1/account-report/min-employee-count | `GET` | Get min employee count | None
 
 ### How to use
