@@ -28,5 +28,8 @@ public interface LeadServiceProxy {
     LeadRequestDTO convertLead(@PathVariable(value = "id") long id,
                                       @RequestParam Truck product,
                                       @RequestParam int quantity);
+    
+    @DeleteMapping("/api/v1/delete/{id}")
+    void delete(LeadRequestDTO leadRequestDTO);
 
 }

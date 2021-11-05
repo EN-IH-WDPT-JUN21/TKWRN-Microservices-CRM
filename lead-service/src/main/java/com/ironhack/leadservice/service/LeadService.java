@@ -64,6 +64,7 @@ public class LeadService {
                 Lead newLead = convertDtoToLead(leadDTO);
                 newLead.setSalesId(sales.getId());
                 leadRepository.save(newLead);
+                reportServiceProxy.addOrUpdateLead(convertLeadToDto(newLead));
                 return convertLeadToDto(newLead);
             } catch (Exception e) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The sales id wasn't found in the system.");
