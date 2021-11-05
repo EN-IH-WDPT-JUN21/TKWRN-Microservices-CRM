@@ -11,7 +11,6 @@ import com.ironhack.menuservice.exceptions.*;
 import com.ironhack.menuservice.proxy.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
@@ -30,22 +29,16 @@ public class MainMenu implements Variables {
     @Autowired
     SalesRepReportMenu salesRepReportMenu;
 
-    @Autowired
     private AccountServiceProxy accountServiceProxy;
 
-    @Autowired
     private LeadServiceProxy leadServiceProxy;
 
-    @Autowired
     private OpportunityServiceProxy opportunityServiceProxy;
 
-    @Autowired
     private ReportDBServiceProxy reportDBServiceProxy;
 
-    @Autowired
     private SalesRepServiceProxy salesRepServiceProxy;
 
-    @Autowired
     private ContactServiceProxy contactServiceProxy;
 
     public MainMenu(AccountServiceProxy accountServiceProxy, LeadServiceProxy leadServiceProxy, OpportunityServiceProxy opportunityServiceProxy, ReportDBServiceProxy reportDBServiceProxy, SalesRepServiceProxy salesRepServiceProxy, ContactServiceProxy contactServiceProxy) {
@@ -536,7 +529,7 @@ public class MainMenu implements Variables {
 
     public void showOpportunities() {
         var allOpps = opportunityServiceProxy.getAll();
-        System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "Total Number Of Opportunities: " + allOpps.size() + colorMain + " ══════╦══════════════════════════════════════════╗" + reset);
+        System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "Total Number Of Opportunities: " + allOpps.size() + colorMain + " ═════╦══════════════════════════════════════════╗" + reset);
         System.out.printf("%-1s %-17s %-1s %-24s %-1s %-17s %-1s %-17s %-1s %-47s %-1s\n",
                 colorMain + "║",
                 colorHeadlineBold + "ID",
@@ -752,6 +745,7 @@ public class MainMenu implements Variables {
                     while (!valid) {
                         System.out.println(colorInput + "\nPlease input the sales representative's name: " + reset);
                         try {
+
                             newSalesRepRequestDTO.setRepName(scanner.nextLine().trim().toUpperCase());
                             valid = true;
                         } catch (Exception e) {
