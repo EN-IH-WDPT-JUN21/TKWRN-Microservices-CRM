@@ -13,19 +13,19 @@ public interface LeadServiceProxy {
 
     @GetMapping("/api/v1/leads")
     @ResponseStatus(HttpStatus.OK)
-    public List<LeadRequestDTO> getLeads();
+    List<LeadRequestDTO> getLeads();
 
     @GetMapping("/api/v1/leads/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public LeadRequestDTO getLeadById(@PathVariable(value = "id") long id);
+    LeadRequestDTO getLeadById(@PathVariable(value = "id") long id);
 
     @PostMapping("/api/v1/leads/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public LeadRequestDTO createLead(@RequestBody LeadRequestDTO lead);
+    LeadRequestDTO createLead(@RequestBody LeadRequestDTO lead);
 
     @GetMapping("/api/v1/leads/{id}/convert")
     @ResponseStatus(HttpStatus.CREATED)
-    public LeadRequestDTO convertLead(@PathVariable(value = "id") long id,
+    LeadRequestDTO convertLead(@PathVariable(value = "id") long id,
                                       @RequestParam Truck product,
                                       @RequestParam int quantity);
     

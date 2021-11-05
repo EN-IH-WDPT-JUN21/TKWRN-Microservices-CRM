@@ -13,8 +13,8 @@
         <module name="menu-service" />
         <module name="account-service" />
         <module name="salesrep-service" />
-        <module name="gateway" />
         <module name="discovery-service" />
+        <module name="gateway" />
         <module name="opportunity-service" />
       </profile>
     </annotationProcessing>

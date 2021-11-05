@@ -1,11 +1,6 @@
 package com.ironhack.menuservice.dto;//For creating basic Leads. Extends Client information in order to retain a unique ID counter.
 
-import com.ironhack.menuservice.dto.SalesRepRequestDTO;
-import com.ironhack.menuservice.exceptions.*;
 import lombok.*;
-import org.apache.commons.validator.routines.EmailValidator;
-
-import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor

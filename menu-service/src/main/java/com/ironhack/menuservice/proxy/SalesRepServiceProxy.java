@@ -8,26 +8,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient("salesrep-service")
-@RequestMapping("/api/v1/sales-reps")
 public interface SalesRepServiceProxy {
-    @PostMapping("/new")
+
+    @PostMapping("/api/v1/sales-reps/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public SalesRepRequestDTO addSalesRep(@RequestBody SalesRepRequestDTO salesRepDTO);
+    SalesRepRequestDTO addSalesRep(@RequestBody SalesRepRequestDTO salesRepDTO);
 
-    @GetMapping
+    @GetMapping("/api/v1/sales-reps")
     @ResponseStatus(HttpStatus.OK)
-    public List<SalesRepRequestDTO> getAllSalesReps();
+    List<SalesRepRequestDTO> getAllSalesReps();
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/v1/sales-reps/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public SalesRepRequestDTO findById(@PathVariable Long id);
+    SalesRepRequestDTO findById(@PathVariable Long id);
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/api/v1/sales-reps/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public SalesRepRequestDTO updateSalesRepName(@PathVariable Long id, @RequestParam String name);
+    SalesRepRequestDTO updateSalesRepName(@PathVariable Long id, @RequestParam String name);
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/api/v1/sales-reps/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteSalesRep(@PathVariable Long id);
+    void deleteSalesRep(@PathVariable Long id);
 
 }
