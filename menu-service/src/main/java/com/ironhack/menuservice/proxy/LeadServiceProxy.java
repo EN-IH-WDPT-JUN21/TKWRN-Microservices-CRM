@@ -9,25 +9,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient("lead-service")
-@RequestMapping("/api/v1/leads")
 public interface LeadServiceProxy {
 
-    @GetMapping
+    @GetMapping("/api/v1/leads")
     @ResponseStatus(HttpStatus.OK)
     public List<LeadRequestDTO> getLeads();
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/v1/leads/{id}")
     @ResponseStatus(HttpStatus.OK)
     public LeadRequestDTO getLeadById(@PathVariable(value = "id") long id);
 
-    @PostMapping
+    @PostMapping("/api/v1/leads/new")
     @ResponseStatus(HttpStatus.CREATED)
     public LeadRequestDTO createLead(@RequestBody LeadRequestDTO lead);
 
-    @GetMapping("/{id}/convert")
+    @GetMapping("/api/v1/leads/{id}/convert")
     @ResponseStatus(HttpStatus.CREATED)
     public LeadRequestDTO convertLead(@PathVariable(value = "id") long id,
                                       @RequestParam Truck product,
                                       @RequestParam int quantity);
+    
+    @DeleteMapping("/api/v1/leads/{id}")
+    void delete(LeadRequestDTO leadRequestDTO);
 
 }
