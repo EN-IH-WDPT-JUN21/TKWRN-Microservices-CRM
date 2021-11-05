@@ -36,7 +36,7 @@ public class SalesRepService implements ISalesRepService {
     public SalesRepDTO addSalesRep(SalesRepDTO salesRepDTO) {
         SalesRep salesRep = convertDTOToSalesRep(salesRepDTO);
         salesRepRepository.save(salesRep);
-        reportServiceProxy.addOrUpdateSalesRep(salesRepDTO);
+        reportServiceProxy.addOrUpdateSalesRep(salesRep);
         return convertSalesRepToDTO(salesRep);
     }
 
@@ -55,13 +55,17 @@ public class SalesRepService implements ISalesRepService {
         return salesRepDTOList;
     }
 
+    public List<SalesRep> findAllSalesRepsForReport() {
+        return salesRepRepository.findAll();
+    }
+
     public SalesRepDTO updateSalesRepName(Long id, String name) {
         SalesRep salesRep = salesRepRepository.findById(id).orElseThrow(
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Sales representative with id " + id + " does not exist."));
         salesRep.setRepName(name);
         salesRepRepository.save(salesRep);
         SalesRepDTO salesRepDTO = convertSalesRepToDTO(salesRep);
-        reportServiceProxy.addOrUpdateSalesRep(salesRepDTO);
+        reportServiceProxy.addOrUpdateSalesRep(salesRep);
         return salesRepDTO;
     }
 
@@ -73,8 +77,8 @@ public class SalesRepService implements ISalesRepService {
 
 
     public String populateSalesrepDatabase() {
-        List<SalesRepDTO> salesrepDTOList = new ArrayList<>(findAllSalesReps());
-        return reportServiceProxy.createSalesrepDatabase(salesrepDTOList);
+        List<SalesRep> salesrepList = findAllSalesRepsForReport();
+        return reportServiceProxy.createSalesrepDatabase(salesrepList);
     }
 
     public SalesRepDTO convertSalesRepToDTO(SalesRep salesRep) {

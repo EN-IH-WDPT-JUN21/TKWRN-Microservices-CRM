@@ -1,5 +1,7 @@
 package com.ironhack.leadservice.sampleData;
 
+import com.ironhack.leadservice.dto.LeadDTO;
+import com.ironhack.leadservice.proxies.ReportServiceProxy;
 import com.ironhack.leadservice.repository.LeadRepository;
 import com.ironhack.leadservice.dao.Lead;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ public class SampleDataLoader implements CommandLineRunner {
     @Autowired
     LeadRepository leadRepository;
 
+    @Autowired
+    ReportServiceProxy reportServiceProxy;
+
     @Override
     public void run(String... args) throws Exception {
         /*List<SalesRepDTO> salesReps = new ArrayList<>();
@@ -25,5 +30,12 @@ public class SampleDataLoader implements CommandLineRunner {
                 new Lead("Lee Dawson", "980651164", "ld@gmail.com", "LeeD", 1L),
                 new Lead("Natalia Shilyaeva", "563782789", "nattyshil@yahoo.com", "Nathy From Wonderland", 2L)
         ));
+
+        reportServiceProxy.createLeadDatabase(List.of(
+                new LeadDTO(1L, "Sebastian Marek Labedz", "123456789", "labedzsebastian@gmail.co", "Wings of Freedom", 1L),
+                new LeadDTO(2L,"Lee Dawson", "980651164", "ld@gmail.com", "LeeD", 1L),
+                new LeadDTO(3L,"Natalia Shilyaeva", "563782789", "nattyshil@yahoo.com", "Nathy From Wonderland", 2L)
+        ));
+
     }
 }

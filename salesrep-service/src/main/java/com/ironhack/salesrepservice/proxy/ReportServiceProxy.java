@@ -1,5 +1,6 @@
 package com.ironhack.salesrepservice.proxy;
 
+import com.ironhack.salesrepservice.dao.SalesRep;
 import com.ironhack.salesrepservice.dto.SalesRepDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,9 +12,9 @@ import java.util.List;
 public interface ReportServiceProxy {
 
     @PostMapping("/api/v1/report-db/new/salesrep")
-    SalesRepDTO addOrUpdateSalesRep(@RequestBody SalesRepDTO salesrepDTO);
+    SalesRep addOrUpdateSalesRep(@RequestBody SalesRep salesrep);
 
     @PostMapping("/api/v1/report-db/post/salesreps")
-    String createSalesrepDatabase(@RequestBody List<SalesRepDTO> salesrepDTOList);
+    String createSalesrepDatabase(@RequestBody List<SalesRep> salesrepList);
 }
 

@@ -117,7 +117,7 @@ public class MainMenu implements Variables {
 //                if (!leadServiceProxy.existsById(Long.parseLong(input[2]))) {
 //                    throw new NoSuchValueException("There is no Lead that matches that id.");
 //                }
-                lookUpLeadId(Long.parseLong(input[2]));
+                lookUpLeadId(input[2]);
             } else if (input[0].equals("lookup") && input[1].equals("opportunity") && input.length > 2) {
 //                if (!opportunityServiceProxy.existsById(Long.parseLong(input[2]))) {
 //                    throw new NoSuchValueException("There is no Opportunity that matches that id.");
@@ -924,7 +924,7 @@ public class MainMenu implements Variables {
                 System.out.println(colorError + "Exiting the program" + reset);
                 System.exit(0);
             } else if (input[0].equals("lookup") && input[1].equals("lead")) {
-                lookUpLeadId(Long.parseLong(input[2]));
+                lookUpLeadId(input[2]);
             } else if (input[0].equals("lookup") && input[1].equals("opportunity")) {
                 lookUpOppId(input[2]);
             } else {
