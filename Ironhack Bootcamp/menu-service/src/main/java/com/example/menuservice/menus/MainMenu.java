@@ -11,6 +11,7 @@ import com.example.menuservice.exceptions.*;
 import com.example.menuservice.proxy.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
@@ -46,15 +47,6 @@ public class MainMenu implements Variables {
 
     @Autowired
     private ContactServiceProxy contactServiceProxy;
-
-    public MainMenu(AccountServiceProxy accountServiceProxy, LeadServiceProxy leadServiceProxy, OpportunityServiceProxy opportunityServiceProxy, ReportDBServiceProxy reportDBServiceProxy, SalesRepServiceProxy salesRepServiceProxy, ContactServiceProxy contactServiceProxy) {
-        this.accountServiceProxy = accountServiceProxy;
-        this.leadServiceProxy = leadServiceProxy;
-        this.opportunityServiceProxy = opportunityServiceProxy;
-        this.reportDBServiceProxy = reportDBServiceProxy;
-        this.salesRepServiceProxy = salesRepServiceProxy;
-        this.contactServiceProxy = contactServiceProxy;
-    }
 
     private static boolean wasRunFocus = false;
     private static boolean wasRunPopulate = false;
@@ -583,7 +575,7 @@ public class MainMenu implements Variables {
                 colorMain + "║",
                 colorHeadlineBold + "ID",
                 colorMain + "║",
-                colorHeadlineBold + "Company name",
+                colorHeadlineBold + "Industry",
                 colorMain + "║");
         System.out.printf("%-1s%-12s%-1s%-45s%-1s\n",
                 colorMain + "╠",
@@ -596,7 +588,13 @@ public class MainMenu implements Variables {
                     colorMain + "║",
                     colorTable + allAccs.get(i).getId(),
                     colorMain + "║",
-                    colorTable + contactServiceProxy.getContactById(allAccs.get(i).getContactList().get(0).getId()).getCompanyName(),
+                    colorTable + allAccs.get(i).getIndustry(),
+                    colorMain + "║",
+                    colorTable + allAccs.get(i).getEmployeeCount(),
+                    colorMain + "║",
+                    colorTable + allAccs.get(i).getCity(),
+                    colorMain + "║",
+                    colorTable + allAccs.get(i).getCountry(),
                     colorMain + "║" + reset);
         }
     }

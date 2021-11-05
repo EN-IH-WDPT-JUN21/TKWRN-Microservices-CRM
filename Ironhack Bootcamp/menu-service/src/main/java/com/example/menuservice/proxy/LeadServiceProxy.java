@@ -6,6 +6,7 @@ import com.example.menuservice.dto.LeadRequestDTO;
 import com.example.menuservice.enums.Truck;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

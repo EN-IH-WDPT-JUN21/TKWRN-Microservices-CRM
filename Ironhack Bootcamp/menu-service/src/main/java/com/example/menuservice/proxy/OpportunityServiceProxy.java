@@ -4,6 +4,7 @@ package com.example.menuservice.proxy;
 import com.example.menuservice.dto.OpportunityReceiptDTO;
 import com.example.menuservice.dto.OpportunityRequestDTO;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
