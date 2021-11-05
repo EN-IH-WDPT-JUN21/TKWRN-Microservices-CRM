@@ -10,22 +10,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient("contact-service")
-@RequestMapping({"/api/v1/contacts"})
 public interface ContactServiceProxy {
 
-
-    @GetMapping
+    @GetMapping("/api/v1/contacts")
     @ResponseStatus(HttpStatus.OK)
     public List<ContactReceiptDTO> getContacts();
 
-    @GetMapping({"/{id}"})
+    @GetMapping("/api/v1/contacts/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ContactReceiptDTO getContactById(@PathVariable("id") long id);
 
-    @PostMapping
+    @PostMapping("/api/v1/contacts/new")
     @ResponseStatus(HttpStatus.CREATED)
     public ContactReceiptDTO createContact(@RequestBody LeadRequestDTO leadDTO);
 
-    @PatchMapping({"/change-account/{id}"})
+    @PatchMapping({"(/api/v1/contacts/change-account/{id}"})
     public void updateContact(@PathVariable("id") long id, @RequestBody ContactRequestDTO contactDTO);
 }
