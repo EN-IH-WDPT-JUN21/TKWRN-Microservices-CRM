@@ -580,24 +580,42 @@ public class MainMenu implements Variables {
     public void showAccounts() {
         var allAccs = accountServiceProxy.getAccounts();
         System.out.println(colorMain + "\n╔════════════╦═══ " + colorMainBold + "Total Number Of Accounts: " + allAccs.size() + colorMain + " ═════════════╗" + reset);
-        System.out.printf("%-1s %-17s %-1s %-50s %-1s\n",
+        System.out.printf("%-1s %-17s %-1s %-24s %-1s %-17s %-1s %-17s %-1s %-47s %-1s\n",
                 colorMain + "║",
                 colorHeadlineBold + "ID",
                 colorMain + "║",
-                colorHeadlineBold + "Company name",
+                colorHeadlineBold + "Industry",
+                colorMain + "║",
+                colorHeadlineBold + "Employee Count",
+                colorMain + "║",
+                colorHeadlineBold + "City",
+                colorMain + "║",
+                colorHeadlineBold + "Country",
                 colorMain + "║");
-        System.out.printf("%-1s%-12s%-1s%-45s%-1s\n",
+        System.out.printf("%-1s%-12s%-1s%-19s%-1s%-12s%-1s%-12s%-1s%-42s%-1s\n",
                 colorMain + "╠",
                 "════════════",
                 "╬",
-                "═════════════════════════════════════════════",
+                "═══════════════════",
+                "╬",
+                "════════════",
+                "╬",
+                "════════════",
+                "╬",
+                "══════════════════════════════════════════",
                 "╣" + reset);
         for (int i = 0; i < allAccs.size(); i++) {
-            System.out.printf("%-1s %-17s %-1s %-50s %-1s\n",
+            System.out.printf("%-1s%-12s%-1s%-19s%-1s%-12s%-1s%-12s%-1s%-42s%-1s\n",
                     colorMain + "║",
                     colorTable + allAccs.get(i).getId(),
                     colorMain + "║",
-                    colorTable + contactServiceProxy.getContactById(allAccs.get(i).getContactList().get(0).getId()).getCompanyName(),
+                    colorTable + allAccs.get(i).getIndustry(),
+                    colorMain + "║",
+                    colorTable + allAccs.get(i).getEmployeeCount(),
+                    colorMain + "║",
+                    colorTable + allAccs.get(i).getCity(),
+                    colorMain + "║",
+                    colorTable + allAccs.get(i).getCountry(),
                     colorMain + "║" + reset);
         }
     }

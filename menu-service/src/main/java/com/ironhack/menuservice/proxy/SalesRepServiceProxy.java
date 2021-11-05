@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient("salesrep-service")
+@RequestMapping("/api/v1/sales-reps")
 public interface SalesRepServiceProxy {
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
