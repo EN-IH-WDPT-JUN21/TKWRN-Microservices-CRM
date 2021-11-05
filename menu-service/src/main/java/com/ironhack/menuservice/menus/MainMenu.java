@@ -326,7 +326,7 @@ public class MainMenu implements Variables {
                     newOpp.setDecisionMakerId(newContactRequestDTO.getId()); // Assigns contact as the decisionMaker
                     newOpp.setSalesRepId(leadRequestDTO.getSalesId());
                     opportunityServiceProxy.createOpportunity(newOpp);
-                    leadServiceProxy.delete(leadRequestDTO);
+                    leadServiceProxy.delete(leadRequestDTO.getId(), leadRequestDTO);
                     System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Opportunity created" + colorMain + " ════════════╦═══════════════════╗" + reset);
                     System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
                             colorMain + "║",
