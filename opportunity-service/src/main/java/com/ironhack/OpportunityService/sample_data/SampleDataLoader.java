@@ -39,6 +39,15 @@ public class SampleDataLoader implements CommandLineRunner {
 
         opportunityRepository.saveAll(sampleOpps);
 
+        List<Opportunity>  opportunities = opportunityRepository.saveAll(List.of(
+                new Opportunity(1l, Status.OPEN, Truck.FLATBED, 10, 1l, 1l, 1l),
+                new Opportunity(2l, Status.OPEN, Truck.BOX, 1150, 2l, 2l, 1l),
+                new Opportunity(3l, Status.OPEN, Truck.HYBRID, 1, 3l, 3l, 2l)
+
+        ));
+
+        opportunityRepository.saveAll(opportunities);
+
     }
 
 }

@@ -55,8 +55,10 @@ class AccountRepositoryTest {
 
     @Test
     void findMedianEmployeeCountStep1_test(){
+
+        int size = accountRepository.findAll().size();
         var medianEmployeeCount = accountRepository.findMedianEmployeeCountStep1();
-        assertEquals(3, medianEmployeeCount.length);
+        assertEquals(size, medianEmployeeCount.length);
     }
 
     @Test

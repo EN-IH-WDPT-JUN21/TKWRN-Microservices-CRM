@@ -35,4 +35,13 @@ public class ContactReceiptDTO {
     private List<Long> opportunityId;
 
 
+    public ContactReceiptDTO(Long id, String name, String phoneNumber, String email, String companyName, Long salesRepId, Long accountId) {
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.companyName = companyName;
+        this.salesRepId = salesRepId;
+        this.accountId = accountId;
+    }
 }

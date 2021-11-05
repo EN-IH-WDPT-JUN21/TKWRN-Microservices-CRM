@@ -80,12 +80,12 @@ public class Account {
         else if(country.length()>25){
             throw new ExceedsMaxLength("Exceeds maximum value of 25 characters. Please, try again.");
         }
-        else if(!isValidCountry(country)){
+        else if(!isValidCountry(country.toUpperCase())){
             throw new InvalidCountryException( "That is not a real country. Please try again.");
         }
 
 
-        this.country = country;
+        this.country = country.toUpperCase();
     }
 
 

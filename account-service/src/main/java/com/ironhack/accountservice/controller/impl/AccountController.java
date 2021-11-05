@@ -24,12 +24,7 @@ public class AccountController implements IAccountController {
     @Autowired
     private IAccountService accountService;
 
-//    @GetMapping
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<Account> getAccounts(){
-//
-//        return accountService.getAccounts();
-//    }
+
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -38,12 +33,6 @@ public class AccountController implements IAccountController {
         return accountService.getAccountsWithLists();
     }
 
-
-//    @GetMapping("/{id}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public Account findAccountById (@PathVariable(name="id") Long id){
-//        return accountService.findAccountById(id);
-//    }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -70,27 +59,4 @@ public class AccountController implements IAccountController {
     }
 
 
-    @GetMapping("reports/MEAN-EMPLOYEE-COUNT")
-    @ResponseStatus(HttpStatus.OK)
-    public Double findMeanEmployeeCount(){
-        return accountService.findMeanEmployeeCount();
-    }
-
-    @GetMapping("reports/MEDIAN-EMPLOYEE-COUNT")
-    @ResponseStatus(HttpStatus.OK)
-    public int findMedianEmployeeCount(){
-        return accountService.findMedianEmployeeCount();
-    }
-
-    @GetMapping("reports/MAX-EMPLOYEE-COUNT")
-    @ResponseStatus(HttpStatus.OK)
-    public int findMaxEmployeeCount(){
-        return accountService.findMaxEmployeeCount();
-    }
-
-    @GetMapping("reports/MIN-EMPLOYEE-COUNT")
-    @ResponseStatus(HttpStatus.OK)
-    public int findMinEmployeeCount(){
-        return accountService.findMinEmployeeCount();
-    }
 }

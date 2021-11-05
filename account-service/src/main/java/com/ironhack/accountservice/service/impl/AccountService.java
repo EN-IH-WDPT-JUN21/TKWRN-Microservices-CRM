@@ -261,64 +261,6 @@ public class AccountService implements IAccountService {
     }
 
 
-    //reports
-
-    @Retry(name = "account-api", fallbackMethod = "fallbackDouble")
-    public Double findMeanEmployeeCount(){
-        Optional<Double> optionalMean = accountRepository.findMeanEmployeeCount();
-
-        if(optionalMean.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Mean can't be calculated");
-
-        }
-        return optionalMean.get();
-    }
-
-    @Retry(name = "account-api", fallbackMethod = "fallbackInt")
-    public int findMedianEmployeeCount(){
-        int[] optionalMedian = accountRepository.findMedianEmployeeCountStep1();
-        if(optionalMedian.length==0){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Median can't be calculated");
-
-        }
-        int median = getMedian(optionalMedian);
-        return median;
-    }
-
-    public int getMedian(int[] intArray){
-        try {
-            int sizeOfArray = intArray.length;
-            if (sizeOfArray % 2 == 1) {
-                return intArray[(sizeOfArray + 1) / 2 - 1];
-            } else {
-                return (intArray[sizeOfArray / 2 - 1] + intArray[sizeOfArray / 2]) / 2;
-            }
-        }catch (ArrayIndexOutOfBoundsException e){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Median can't be calculated");
-        }
-    }
-
-    @Retry(name = "account-api", fallbackMethod = "fallbackInt")
-    public int findMaxEmployeeCount(){
-        Optional<Integer> optionalMax = accountRepository.findMaxEmployeeCount();
-
-        if(optionalMax.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Maximum can't be calculated");
-
-        }
-        return optionalMax.get();
-    }
-
-    @Retry(name = "account-api", fallbackMethod = "fallbackInt")
-    public int findMinEmployeeCount(){
-        Optional<Integer> optionalMin = accountRepository.findMinEmployeeCount();
-
-        if(optionalMin.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Minimum can't be calculated");
-
-        }
-        return optionalMin.get();
-    }
 
     //fallback
 
@@ -354,15 +296,4 @@ public class AccountService implements IAccountService {
         logger.info("call account fallback method");
     }
 
-    public Double fallbackDouble(Exception e) {
-        logger.info("call account fallback method");
-        Double fallbackDouble = 0.00;
-        return fallbackDouble;
-    }
-
-    public int fallbackInt(Exception e) {
-        logger.info("call account fallback method");
-        int fallbackInt = 0;
-        return fallbackInt;
-    }
 }

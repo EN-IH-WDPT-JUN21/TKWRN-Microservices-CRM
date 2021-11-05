@@ -30,7 +30,7 @@ public class OppController {
     }
 
     @GetMapping("/get-by-account/{id}")
-    public List<OpportunityDTO> getAllOppsByAccount(@PathVariable Long id){
+    public List<Opportunity> getAllOppsByAccount(@PathVariable Long id){
         return opportunityService.findAllByAccountId(id);
     }
 

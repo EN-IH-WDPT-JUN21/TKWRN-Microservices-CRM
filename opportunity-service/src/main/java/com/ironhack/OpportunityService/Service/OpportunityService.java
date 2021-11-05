@@ -96,13 +96,13 @@ public class OpportunityService {
         }
     }
 
-    public List<OpportunityDTO> findAllByAccountId(Long id) {
+    public List<Opportunity> findAllByAccountId(Long id) {
         List<Opportunity> oppList = opportunityRepository.findAllByAccountId(id);
         List<OpportunityDTO> oppDTOList = new ArrayList<>();
         for (var opp : oppList){
             oppDTOList.add(new OpportunityDTO(opp.getStatus(), opp.getProduct(), opp.getQuantity(),
                     opp.getDecisionMakerId(), opp.getAccountId(), opp.getSalesRepId()));
         }
-        return oppDTOList;
+        return oppList;
     }
 }

@@ -18,8 +18,4 @@ public interface IAccountService {
     AccountReceiptDTO store(AccountRequestDTO accountRequestDTO);
     AccountReceiptDTO createAccount(AccountRequestDTO accountRequestDTO) throws ExceedsMaxLength;
     AccountReceiptDTO updateAccount(Long id, Long opportunityId) throws ExceedsMaxLength;
-    Double findMeanEmployeeCount();
-    int findMedianEmployeeCount();
-    int findMaxEmployeeCount();
-    int findMinEmployeeCount();
 }
