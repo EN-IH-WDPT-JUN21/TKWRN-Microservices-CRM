@@ -326,7 +326,7 @@ public class MainMenu implements Variables {
                     newOpp.setDecisionMakerId(newContactRequestDTO.getId()); // Assigns contact as the decisionMaker
                     newOpp.setSalesRepId(leadRequestDTO.getSalesId());
                     opportunityServiceProxy.createOpportunity(newOpp);
-//                    leadServiceProxy.delete(leadRequestDTO);
+                    leadServiceProxy.delete(leadRequestDTO);
                     System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Opportunity created" + colorMain + " ════════════╦═══════════════════╗" + reset);
                     System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
                             colorMain + "║",
@@ -337,9 +337,18 @@ public class MainMenu implements Variables {
                             colorHeadlineBold + "Product",
                             colorMain + "║",
                             colorHeadlineBold + "Quantity",
-                            colorMain + "║\n" +
-                                    colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣");
-                    System.out.println(newOpp);
+                            colorMain + "║\n" + colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣");
+                            System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
+                                    colorMain + "║",
+                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getId(),
+                                    colorMain + "║",
+                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getStatus(),
+                                    colorMain + "║",
+                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getProduct(),
+                                    colorMain + "║",
+                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getQuantity(),
+                                    colorMain + "║");
+                    System.out.println();
                     System.out.println(colorInput + "Press Enter to continue..." + reset);
                     scanner.nextLine();
                     System.out.println(colorMain + "╔════════════╦═════ " + colorMainBold + "New Contact created" + colorMain + " ═══════════════════╦══════════════════════╦══════════════════════════════════════════╦═════════════════════════════════════════════╗" + reset);
@@ -356,7 +365,19 @@ public class MainMenu implements Variables {
                             colorHeadlineBold + "Company name",
                             colorMain + "║\n" +
                                     colorMain + "╠════════════╬═════════════════════════════════════════════╬══════════════════════╬══════════════════════════════════════════╬═════════════════════════════════════════════╣" + reset));
-                    System.out.println(newContactRequestDTO);
+                    System.out.printf(String.format("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s\n",
+                            colorMain + "║",
+                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getId(),
+                            colorMain + "║",
+                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getName(),
+                            colorMain + "║",
+                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getPhoneNumber(),
+                            colorMain + "║",
+                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getEmail(),
+                            colorMain + "║",
+                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getCompanyName(),
+                            colorMain + "║"));
+                    System.out.println();
                     System.out.println(colorInput + "Press Enter to continue..." + reset);
                     scanner.nextLine();
                     return newOpp;
