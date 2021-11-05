@@ -29,7 +29,7 @@ public interface LeadServiceProxy {
                                       @RequestParam Truck product,
                                       @RequestParam int quantity);
     
-    @DeleteMapping("/api/v1/leads/{id}")
+    @DeleteMapping("/api/v1/delete/{id}")
     void delete(LeadRequestDTO leadRequestDTO);
 
 }
