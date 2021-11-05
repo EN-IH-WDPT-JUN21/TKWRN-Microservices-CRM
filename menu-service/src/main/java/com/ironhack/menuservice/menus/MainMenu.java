@@ -593,11 +593,17 @@ public class MainMenu implements Variables {
                 "═════════════════════════════════════════════",
                 "╣" + reset);
         for (int i = 0; i < allAccs.size(); i++) {
+            String companyInfo = "";
+            if (allAccs.get(i).getContactList() == null){
+                companyInfo = "No Company associated with this Account";
+            } else {
+                companyInfo = contactServiceProxy.getContactById(allAccs.get(i).getContactList().get(0).getId()).getCompanyName();
+            }
             System.out.printf("%-1s %-17s %-1s %-50s %-1s\n",
                     colorMain + "║",
                     colorTable + allAccs.get(i).getId(),
                     colorMain + "║",
-                    colorTable + contactServiceProxy.getContactById(allAccs.get(i).getContactList().get(0).getId()).getCompanyName(),
+                    colorTable + companyInfo,
                     colorMain + "║" + reset);
         }
     }
