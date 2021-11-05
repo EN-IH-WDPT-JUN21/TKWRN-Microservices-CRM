@@ -44,11 +44,16 @@ public class PopulateDatabase{
 
         );
 
-        reportDBServiceProxy.createSalesrepDatabase(salesRepRequestDTOList);
-        reportDBServiceProxy.createLeadDatabase(leadRequestDTOList);
-        reportDBServiceProxy.createContactDatabase(contactRequestDTOList);
-        reportDBServiceProxy.createAccountDatabase(accountRequestDTOList);
-        reportDBServiceProxy.createOpportunityDatabase(opportunityRequestDTOList);
+        System.out.println("1");
+        System.out.println(reportDBServiceProxy.createSalesrepDatabase(salesRepRequestDTOList));
+        System.out.println("2");
+        System.out.println(reportDBServiceProxy.createLeadDatabase(leadRequestDTOList));
+        System.out.println("3");
+        System.out.println(reportDBServiceProxy.createContactDatabase(contactRequestDTOList));
+        System.out.println("4");
+        System.out.println(reportDBServiceProxy.createAccountDatabase(accountRequestDTOList));
+        System.out.println("5");
+        System.out.println(reportDBServiceProxy.createOpportunityDatabase(opportunityRequestDTOList));
     }
 
 }

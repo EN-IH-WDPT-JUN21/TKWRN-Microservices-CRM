@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 import java.awt.*;
 
 import static com.ironhack.menuservice.dao.Login.getIsLoggedIn;

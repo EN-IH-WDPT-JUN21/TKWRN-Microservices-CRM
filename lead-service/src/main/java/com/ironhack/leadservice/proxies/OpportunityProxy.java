@@ -13,6 +13,6 @@ public interface OpportunityProxy {
     @GetMapping("/api/v1/opps/{id}")
     OpportunityDTO getOpportunity(@PathVariable(value = "id") long id);
 
-    @PostMapping("/api/v1/opps")
-    OpportunityDTO createOpportunity(@RequestBody OpportunityDTO opps);
+    @PostMapping("/api/v1/opps/new")
+    OpportunityDTO createOpportunity(@RequestBody OpportunityDTO oops);
 }

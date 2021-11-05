@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 @Component
 public class Login implements ActionListener {
 
+
     private static JLabel title;
     private static JPanel panel;
     private static JLabel user;

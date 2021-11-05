@@ -85,7 +85,7 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
 
     // *** Median Report is needed JPQL can give list of all quantities in an ordered int array, needs a second step to find the median from this ***
     @Query("SELECT quantity FROM Opportunity order by quantity")
-    int[]findMedianQuantityStep1();
+    Optional<int[]> findMedianQuantityStep1();
 
     //Report Maximum  products quantity for all Opportunities
     @Query("SELECT MAX(quantity) FROM Opportunity")
@@ -102,7 +102,7 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Long> 
 
     // *** Median Report is needed JPQL can give list of all opportunitycounts in an ordered int array, needs a second step to find the median from this ***
     @Query(value = "select count(distinct id) as count_opportunity from opportunity_report group by opportunity_report.account_id order by count_opportunity", nativeQuery = true)
-    int[]findMedianOppsPerAccountStep1();
+    Optional<int[]> findMedianOppsPerAccountStep1();
 
     //Report Max number of Opportunities associated with an account
     @Query(value = "select max(a.count_opportunity) from (select count(distinct id) as count_opportunity from opportunity group by account_id order by count_opportunity) a", nativeQuery = true)

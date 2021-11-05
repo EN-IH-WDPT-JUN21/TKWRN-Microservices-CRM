@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient("contact-service")
 public interface ContactProxy {
 
-    @PostMapping("/api/v1/contacts")
+    @PostMapping("api/v1/contacts/new")
     ContactDTO createContact(@RequestBody LeadDTO leadDTO);
 }
