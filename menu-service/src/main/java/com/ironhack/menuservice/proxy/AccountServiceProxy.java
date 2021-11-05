@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @FeignClient("account-service")
-@RequestMapping("/api/v1/opps")
+@RequestMapping("/api/v1/accounts")
 public interface AccountServiceProxy {
 
     @GetMapping
