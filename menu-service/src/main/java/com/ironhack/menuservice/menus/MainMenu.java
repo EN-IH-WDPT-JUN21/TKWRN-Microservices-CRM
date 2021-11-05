@@ -609,10 +609,36 @@ public class MainMenu implements Variables {
     }
 
 
-    public void lookUpLeadId(Long id) throws RuntimeException {
-        System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "Lead details" + colorMain + " ══════════════════════════╦══════════════════════╦══════════════════════════════════════════╦═════════════════════════════════════════════╗" + reset);
-        System.out.println(leadServiceProxy.getLeadById(id));
+    public void lookUpLeadId(String id) throws RuntimeException {
+        System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "Lead details" + colorMain + " ══════════════════════════╦══════════════════════╦══════════════════════════════════════════╦═════════════════════════════════════════════╦════════════╗" + reset);
+        System.out.printf("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s %-17s %-1s",
+                colorMain + "║",
+                colorHeadlineBold + "ID",
+                colorMain + "║",
+                colorHeadlineBold + "Name",
+                colorMain + "║",
+                colorHeadlineBold + "Phone Number",
+                colorMain + "║",
+                colorHeadlineBold + "Email Address",
+                colorMain + "║",
+                colorHeadlineBold + "Company name",
+                colorMain + "║",
+                colorHeadlineBold + "SalesRep",
+                colorMain + "║\n" + colorMain + "╠════════════╬═════════════════════════════════════════════╬══════════════════════╬══════════════════════════════════════════╬═════════════════════════════════════════════╣════════════╬\n" + reset);
+                System.out.printf("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s %-17s %-1s\n",
+                colorMain + "║",
+                colorTable + leadServiceProxy.getLeadById(Long.parseLong(id)).getId(),
+                colorMain + "║",
+                colorTable + leadServiceProxy.getLeadById(Long.parseLong(id)).getName(),
+                colorMain + "║",
+                colorTable + leadServiceProxy.getLeadById(Long.parseLong(id)).getPhoneNumber(),
+                colorMain + "║",
+                colorTable + leadServiceProxy.getLeadById(Long.parseLong(id)).getEmail(),
+                colorMain + "║",
+                colorTable + leadServiceProxy.getLeadById(Long.parseLong(id)).getCompanyName(), colorMain + "║", colorTable + leadServiceProxy.getLeadById(Long.parseLong(id)).getSalesId(),
+                colorMain + "║" + reset);
     }
+
 
     // lookup opportunity by Id
     public void lookUpOppId(String id) throws RuntimeException {
