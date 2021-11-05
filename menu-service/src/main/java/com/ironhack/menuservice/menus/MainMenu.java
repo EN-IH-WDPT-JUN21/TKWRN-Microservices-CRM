@@ -176,6 +176,12 @@ public class MainMenu implements Variables {
             switch (scanner.nextLine().trim().toLowerCase(Locale.ROOT)) {
                 case "y" -> {
                     LeadRequestDTO newLeadRequestDTO = new LeadRequestDTO();
+                    int id = leadServiceProxy.getLeads().size() + 1;
+                    System.out.println(id);
+                    Long idLong = Long.parseLong(String.valueOf(id));
+                    System.out.println(idLong);
+                    newLeadRequestDTO.setId(idLong);
+                    System.out.println(newLeadRequestDTO.getId());
                     leadServiceProxy.createLead(newLeadRequestDTO);
 
                     //checks if restrictions for Customer name are met
@@ -586,11 +592,17 @@ public class MainMenu implements Variables {
                 "═════════════════════════════════════════════",
                 "╣" + reset);
         for (int i = 0; i < allAccs.size(); i++) {
+            String companyInfo = "";
+            if (allAccs.get(i).getContactList() == null){
+                companyInfo = "No Company associated with this Account";
+            } else {
+                companyInfo = contactServiceProxy.getContactById(allAccs.get(i).getContactList().get(0).getId()).getCompanyName();
+            }
             System.out.printf("%-1s %-17s %-1s %-50s %-1s\n",
                     colorMain + "║",
                     colorTable + allAccs.get(i).getId(),
                     colorMain + "║",
-                    colorTable + contactServiceProxy.getContactById(allAccs.get(i).getContactList().get(0).getId()).getCompanyName(),
+                    colorTable + companyInfo,
                     colorMain + "║" + reset);
         }
     }

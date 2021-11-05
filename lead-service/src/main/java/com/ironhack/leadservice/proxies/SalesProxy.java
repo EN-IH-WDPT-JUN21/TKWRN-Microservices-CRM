@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface SalesProxy {
 
     @GetMapping("/api/v1/sales-reps/{id}")
-    SalesRepDTO getSales(@PathVariable(value = "id") long id);
+    SalesRepDTO getSales(@PathVariable(value = "id") Long id);
 }

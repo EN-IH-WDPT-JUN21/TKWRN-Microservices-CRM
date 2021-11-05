@@ -9,9 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="lead-service" />
         <module name="contact-service" />
+        <module name="report-service" />
         <module name="menu-service" />
         <module name="account-service" />
+        <module name="salesrep-service" />
         <module name="discovery-service" />
+        <module name="gateway" />
+        <module name="opportunity-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

@@ -8,26 +8,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient("salesrep-service")
-@RequestMapping("/api/v1/sales-reps")
 public interface SalesRepServiceProxy {
 
-    @PostMapping("/new")
+    @PostMapping("/api/v1/sales-reps/new")
     @ResponseStatus(HttpStatus.CREATED)
     SalesRepRequestDTO addSalesRep(@RequestBody SalesRepRequestDTO salesRepDTO);
 
-    @GetMapping
+    @GetMapping("/api/v1/sales-reps")
     @ResponseStatus(HttpStatus.OK)
     List<SalesRepRequestDTO> getAllSalesReps();
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/v1/sales-reps/{id}")
     @ResponseStatus(HttpStatus.OK)
     SalesRepRequestDTO findById(@PathVariable Long id);
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/api/v1/sales-reps/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     SalesRepRequestDTO updateSalesRepName(@PathVariable Long id, @RequestParam String name);
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/api/v1/sales-reps/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     void deleteSalesRep(@PathVariable Long id);
 

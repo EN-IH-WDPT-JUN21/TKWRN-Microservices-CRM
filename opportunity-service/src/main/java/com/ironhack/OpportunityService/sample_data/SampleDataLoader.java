@@ -26,18 +26,6 @@ public class SampleDataLoader implements CommandLineRunner {
     @Override
     public void run(String... args){
 
-        List<Opportunity> sampleOpps = IntStream.rangeClosed(1, 10)
-                .mapToObj(i -> new Opportunity(
-                    (long) i,
-                    Status.OPEN,
-                    Truck.HYBRID,
-                    faker.number().numberBetween(1, 100),
-                    faker.number().numberBetween(1L, 10L),
-                    faker.number().numberBetween(1L, 10L),
-                    faker.number().numberBetween(1L, 10L)
-                )).collect(Collectors.toList());
-
-        opportunityRepository.saveAll(sampleOpps);
 
         List<Opportunity>  opportunities = opportunityRepository.saveAll(List.of(
                 new Opportunity(1l, Status.OPEN, Truck.FLATBED, 10, 1l, 1l, 1l),
