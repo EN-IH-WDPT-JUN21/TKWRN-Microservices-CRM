@@ -53,8 +53,9 @@ public class LeadController {
         return leadService.convert(id, product, quantity);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteLead(@PathVariable Long id){
-        leadRepository.deleteById(id);
+    @DeleteMapping("/api/v1/leads/delete/{id}")
+    public void delete(@PathVariable(value = "id") long id,
+                       @RequestBody LeadDTO lead) {
+         leadService.delete(id, lead);
     }
 }
