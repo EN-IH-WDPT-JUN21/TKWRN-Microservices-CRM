@@ -9,28 +9,27 @@ import javax.validation.Valid;
 import java.util.List;
 
 @FeignClient("opportunity-service")
-@RequestMapping("/api/v1/opps")
 public interface OpportunityServiceProxy {
 
-    @GetMapping("/get")
+    @GetMapping("/api/v1/opps/get")
     public List<OpportunityReceiptDTO> getAll();
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/api/v1/opps/get/{id}")
     public OpportunityReceiptDTO getById(@PathVariable Long id);
 
-    @GetMapping("/get-by-account/{id}")
+    @GetMapping("/api/v1/opps/get-by-account/{id}")
     public List<OpportunityRequestDTO> getAllOppsByAccount(@PathVariable Long id);
 
-    @PostMapping("/new")
+    @PostMapping("/api/v1/opps/new")
     public OpportunityReceiptDTO createOpportunity(@RequestBody OpportunityRequestDTO opportunityDTO);
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/api/v1/opps/update/{id}")
     public OpportunityReceiptDTO updateOpportunity(@PathVariable Long id, @RequestBody OpportunityRequestDTO opportunityDTO);
 
-    @PutMapping("change-account/{id}")
+    @PutMapping("/api/v1/opps/change-account/{id}")
     void updateAccount(@PathVariable(name = "id") Long id, @RequestBody @Valid OpportunityRequestDTO opportunityDTO);
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/api/v1/opps/delete/{id}")
     public void deleteOpportunity(@PathVariable Long id);
 
 }
