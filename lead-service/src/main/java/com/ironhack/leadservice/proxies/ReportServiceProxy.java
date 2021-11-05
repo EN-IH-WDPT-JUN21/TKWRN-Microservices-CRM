@@ -12,4 +12,7 @@ public interface ReportServiceProxy {
 
     @PostMapping("/api/v1/report-db/post/leads")
     String createLeadDatabase(@RequestBody List<LeadDTO> leadDTOList);
+
+    @PostMapping("/api/v1/report-db/new/lead")
+    LeadDTO addOrUpdateLead(@RequestBody LeadDTO leadDTO);
 }
