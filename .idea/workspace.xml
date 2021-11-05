@@ -5,24 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f591611a-7cb2-4d2b-b131-d54dc8fe8e1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_dataformat_jackson_dataformat_xml_2_12_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_12_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_contribs_jersey_apache_client4_1_19_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_jersey_client_1_19_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_jersey_core_1_19_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_jersey_server_1_19_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_jersey_jersey_servlet_1_19_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_freemarker_freemarker_2_3_31.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_2_0_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_freemarker_2_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_gateway_server_3_0_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_netflix_eureka_server_3_0_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_gateway_3_0_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_netflix_eureka_server_3_0_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Service/QueryHelperService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_11_2021_17_57__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_11_2021_17_57__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_11_2021_17_59__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_11_2021_17_59__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_11_2021_20_05__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_11_2021_20_05__Changes_.xml" afterDir="false" />
@@ -33,15 +15,21 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_11_2021_18_01__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_11_2021_18_01__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_11_2021_20_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_03_11_2021_20_32__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact-service/contact-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lead-service/lead-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/lead-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/service/LeadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/src/main/java/com/ironhack/leadservice/service/LeadService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/controller/LeadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/controller/LeadController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/dto/AccountDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/AccountProxy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/ContactProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/ContactProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/OpportunityProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/proxies/OpportunityProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/repository/LeadRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/repository/LeadRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/service/LeadService.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/classes/com/ironhack/leadservice/service/LeadService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lead-service/target/test-classes/com/ironhack/leadservice/controller/LeadControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/lead-service/target/test-classes/com/ironhack/leadservice/controller/LeadControllerTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/menu-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/menu-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/menu-service/src/main/java/com/ironhack/menuservice/MenuServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/menu-service/src/main/java/com/ironhack/menuservice/MenuServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu-service/src/main/java/com/ironhack/menuservice/config/ProxyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu-service/src/main/java/com/ironhack/menuservice/config/ProxyConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/menu-service/src/main/java/com/ironhack/menuservice/config/ProxyConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu-service/src/main/java/com/ironhack/menuservice/dao/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/menu-service/src/main/java/com/ironhack/menuservice/dao/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/menu-service/src/main/java/com/ironhack/menuservice/dao/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/menu-service/src/main/java/com/ironhack/menuservice/dao/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/menu-service/src/main/java/com/ironhack/menuservice/menus/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/menu-service/src/main/java/com/ironhack/menuservice/menus/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Controller/AccountReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/Controller/AccountReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/AccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/report-service/src/main/java/com/ironhack/ReportService/repository/AccountRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +90,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/Menu-service/src" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Menu-service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../menu-service" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -137,12 +125,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.menuservice.dao.Main" />
-      <module name="menu-service" />
+    <configuration name="ContactServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.contactservice.ContactServiceApplication" />
+      <module name="contact-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ironhack.menuservice.dao.*" />
+          <option name="PATTERN" value="com.ironhack.contactservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -150,12 +138,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.stolen_name_trucking_company_homework_3.dao.Main" />
-      <module name="menu-service" />
+    <configuration name="GatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.gateway.GatewayApplication" />
+      <module name="gateway" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ironhack.stolen_name_trucking_company_homework_3.dao.*" />
+          <option name="PATTERN" value="com.ironhack.gateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LeadServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ironhack.leadservice.LeadServiceApplication" />
+      <module name="lead-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ironhack.leadservice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -169,19 +170,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ironhack.ReportService.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StolenNameTruckingCompanyHomework3Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ironhack.stolen_name_trucking_company_homework_3.StolenNameTruckingCompanyHomework3Application" />
-      <module name="menu-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ironhack.stolen_name_trucking_company_homework_3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -253,19 +241,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.GatewayApplication" />
+      <item itemvalue="Application.LeadServiceApplication" />
+      <item itemvalue="Application.ContactServiceApplication" />
       <item itemvalue="Application.AccountServiceApplication" />
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.StolenNameTruckingCompanyHomework3Application" />
-      <item itemvalue="Application.Main (1)" />
       <item itemvalue="Application.ReportServiceApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ReportServiceApplication" />
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.StolenNameTruckingCompanyHomework3Application" />
         <item itemvalue="Application.AccountServiceApplication" />
+        <item itemvalue="Application.ContactServiceApplication" />
+        <item itemvalue="Application.LeadServiceApplication" />
+        <item itemvalue="Application.GatewayApplication" />
       </list>
     </recent_temporary>
   </component>

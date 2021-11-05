@@ -3,6 +3,7 @@ package com.ironhack.leadservice.service;
 import com.ironhack.leadservice.enums.Status;
 import com.ironhack.leadservice.enums.Truck;
 import com.ironhack.leadservice.proxies.ContactProxy;
+import com.ironhack.leadservice.proxies.ReportServiceProxy;
 import com.ironhack.leadservice.repository.LeadRepository;
 import com.ironhack.leadservice.dao.Lead;
 import com.ironhack.leadservice.dto.ContactDTO;
