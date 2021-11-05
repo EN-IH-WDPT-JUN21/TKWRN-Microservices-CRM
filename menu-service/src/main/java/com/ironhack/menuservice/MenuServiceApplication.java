@@ -13,6 +13,7 @@ import java.awt.*;
 import static com.ironhack.menuservice.dao.Login.getIsLoggedIn;
 
 @SpringBootApplication
+@EnableFeignClients
 public class MenuServiceApplication implements CommandLineRunner{
 
 	@Autowired
