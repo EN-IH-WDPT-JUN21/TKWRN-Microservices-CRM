@@ -801,13 +801,13 @@ public class MainMenu implements Variables {
                         colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣" + reset);
         System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
                 colorMain + "║",
-                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getId(),
+                colorHeadlineBold + opp.getId(),
                 colorMain + "║",
-                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getStatus(),
+                colorHeadlineBold + opp.getStatus(),
                 colorMain + "║",
-                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getProduct(),
+                colorHeadlineBold + opp.getProduct(),
                 colorMain + "║",
-                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getQuantity(),
+                colorHeadlineBold + opp.getQuantity(),
                 colorMain + "║\n" + reset);
         System.out.println(colorInput + "Would you like to change the status of this opportunity to " + colorTable + "LOST?   y / n" + reset);
         Scanner scanner = new Scanner(System.in);
@@ -846,13 +846,13 @@ public class MainMenu implements Variables {
                         colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣" + reset);
         System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
                 colorMain + "║",
-                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getId(),
+                colorHeadlineBold + opp.getId(),
                 colorMain + "║",
-                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getStatus(),
+                colorHeadlineBold + opp.getStatus(),
                 colorMain + "║",
-                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getProduct(),
+                colorHeadlineBold + opp.getProduct(),
                 colorMain + "║",
-                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getQuantity(),
+                colorHeadlineBold + opp.getQuantity(),
                 colorMain + "║\n" + reset);
         System.out.println(colorInput + "Would you like to change the status of this opportunity to " + colorTable + "WON?   y / n" + reset);
         Scanner scanner = new Scanner(System.in);
