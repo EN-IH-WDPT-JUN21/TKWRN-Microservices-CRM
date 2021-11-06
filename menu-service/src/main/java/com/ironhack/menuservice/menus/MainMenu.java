@@ -296,7 +296,7 @@ public class MainMenu implements Variables {
         try {
                 leadRequestDTO = leadServiceProxy.getLeadById(Long.parseLong(id));
         } catch (Exception e) {
-            System.out.println(colorError + "\nLead with id: " + id + "doesn't exist - please start again\n" + reset);
+            System.out.println(colorError + "\nLead with id: " + id + " doesn't exist" + reset);
         }
         
         System.out.println(colorInput + "\nWould you like to convert " +
