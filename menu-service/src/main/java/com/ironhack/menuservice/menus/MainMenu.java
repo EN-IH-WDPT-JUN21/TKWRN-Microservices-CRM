@@ -176,12 +176,12 @@ public class MainMenu implements Variables {
             switch (scanner.nextLine().trim().toLowerCase(Locale.ROOT)) {
                 case "y" -> {
                     LeadRequestDTO newLeadRequestDTO = new LeadRequestDTO();
-                    int id = leadServiceProxy.getLeads().size() + 1;
+                    /*int id = leadServiceProxy.getLeads().size() + 1;
                     System.out.println(id);
                     Long idLong = Long.parseLong(String.valueOf(id));
                     System.out.println(idLong);
                     newLeadRequestDTO.setId(idLong);
-                    System.out.println(newLeadRequestDTO.getId());
+                    System.out.println(newLeadRequestDTO.getId());*/
                     leadServiceProxy.createLead(newLeadRequestDTO);
 
                     //checks if restrictions for Customer name are met
