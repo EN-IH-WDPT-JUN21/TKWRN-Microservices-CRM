@@ -401,7 +401,7 @@ public class MainMenu implements Variables {
                 case "y" -> {
                     //AccountRequestDTO newAccountRequestDTO = new AccountRequestDTO(opportunityRequestDTO.getDecisionMakerId(), opportunityRequestDTO);
                     AccountRequestDTO newAccountRequestDTO = new AccountRequestDTO(opportunityRequestDTO);
-                    AccountReceiptDTO accountReceiptDTO = accountServiceProxy.createAccount(newAccountRequestDTO);
+            
                     valid = false;
 
                         // checks if restrictions for Industry are met
@@ -420,7 +420,7 @@ public class MainMenu implements Variables {
 
                         // checks if restrictions for Employee count are met
                         while (!valid) {
-                            System.out.println(colorInput + "\nPlease input the employee count for " + colorTable + accountReceiptDTO.getContactList().get(0).getCompanyName() + colorInput + ":  " + reset); //**Needs amending to display name in contact list
+                            System.out.println(colorInput + "\nPlease input the employee count" + colorTable + colorInput + ":  " + reset); //**Needs amending to display name in contact list
                             try {
                                 newAccountRequestDTO.setEmployeeCount(Integer.parseInt(scanner.nextLine().trim()));
                                 valid = true;
@@ -435,7 +435,7 @@ public class MainMenu implements Variables {
 
                         // checks if restrictions for City name are met
                         while (!valid) {
-                            System.out.println(colorInput + "\nPlease input the city for " + colorTable + accountReceiptDTO.getCity() + colorInput + ":  " + reset);
+                            System.out.println(colorInput + "\nPlease input the city" + colorTable + colorInput + ":  " + reset);
                             try {
                                 newAccountRequestDTO.setCity(scanner.nextLine().trim().toUpperCase(Locale.ROOT));
                                 valid = true;
@@ -448,7 +448,7 @@ public class MainMenu implements Variables {
 
                         // checks if Country is in country array
                         while (!valid) {
-                            System.out.println(colorInput + "\nPlease input the Country for " + colorTable + accountReceiptDTO.getCountry() + ":  " + reset);
+                            System.out.println(colorInput + "\nPlease input the Country" + colorTable + ":  " + reset);
                             try {
                                 newAccountRequestDTO.setCountry(scanner.nextLine().trim().toUpperCase());
                                 valid = true;
@@ -460,6 +460,7 @@ public class MainMenu implements Variables {
                         valid = false;
 
                         // Assigns the Account to the contact(decision maker) of the opportunity
+                        AccountReceiptDTO accountReceiptDTO = accountServiceProxy.createAccount(newAccountRequestDTO);
                         opportunityRequestDTO.setAccountId(accountReceiptDTO.getId());
                         //contactServiceProxy.updateContact();
                         //accountServiceProxy.save(newAccountRequestDTO);
