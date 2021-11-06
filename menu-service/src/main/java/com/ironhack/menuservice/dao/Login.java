@@ -28,7 +28,7 @@ public class Login implements ActionListener {
     private static String username;
     private static char[] userPassword;
     public static int isLoggedIn;
-    public static JLabel jep;
+    public static JLabel esterEgg;
 
     // Creates login window
     public static void login() {
@@ -79,14 +79,14 @@ public class Login implements ActionListener {
         hint.setBounds(20, 190, 380, 25);
         panel.add(hint);
         
-        jep = new JLabel("--> Knights Who Say Ni <--");
-        jep.grabFocus();
-        jep.setOpaque(false);
-        jep.setFont(new Font("Serif", Font.BOLD, 16));
-        jep.setForeground(Color.blue);
-        jep.setBounds(100, 230, 190, 30);
-        jep.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        jep.addMouseListener(new MouseAdapter() {
+        esterEgg = new JLabel("--> Knights Who Say Ni <--");
+        esterEgg.grabFocus();
+        esterEgg.setOpaque(false);
+        esterEgg.setFont(new Font("Serif", Font.BOLD, 16));
+        esterEgg.setForeground(Color.blue);
+        esterEgg.setBounds(100, 230, 190, 30);
+        esterEgg.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        esterEgg.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() > 0) {
                     if (Desktop.isDesktopSupported()) {
@@ -103,8 +103,8 @@ public class Login implements ActionListener {
                 }
             }
         });
-        jep.setVisible(false);
-        panel.add(jep);
+        esterEgg.setVisible(false);
+        panel.add(esterEgg);
 
         dummyLabel = new JLabel();
         panel.add(dummyLabel);
@@ -158,8 +158,9 @@ public class Login implements ActionListener {
                 System.out.println("Our server is busy! Please run the program again to login!");
             }
         } else if (getUsername().equals("Knights") && pass.equals("ni")) {
+            wrongInput.setText("");
             frame.setSize(400, 280);
-            jep.setVisible(true);
+            esterEgg.setVisible(true);
         } else {
             frame.setSize(400, 230);
             wrongInput.setText("Wrong username or password!");
