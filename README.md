@@ -142,16 +142,22 @@ git clone https://github.com/EN-IH-WDPT-JUN21/TKWRN-Microservices-CRM
 ```
 
 4. Gateway security credentials: 
-   - runs OS menu for full access
+   - runs OS menu with full access
    ```
    name = Admin
    password = admin
    ```
-   - OSGuest menu for readonly access
+   - runs OS menu with superuser acces
+   ```
+   name = Knights
+   password = ni
+   ```
+   - runs OSGuest menu with readonly access
    ```
    name = Guest
    password = guest
    ```
+  
 
 ### Service ports
 | Port | Service
