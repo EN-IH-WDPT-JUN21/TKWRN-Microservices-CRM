@@ -7,18 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Optional;
 
 @FeignClient("report-service")
-@RequestMapping("/api/v1/account-report")
 public interface AccountReportServiceProxy {
 
-    @GetMapping("/mean-employee-count")
+    @GetMapping("/api/v1/account-report/mean-employee-count")
     Optional<Double> findMeanEmployeeCount();
 
-    @GetMapping("/median-employee-count")
+    @GetMapping("/api/v1/account-report/median-employee-count")
     int[]findMedianEmployeeCountStep1();
 
-    @GetMapping("/max-employee-count")
+    @GetMapping("/api/v1/account-report/max-employee-count")
     Optional<Integer> findMaxEmployeeCount();
 
-    @GetMapping("/min-employee-count")
+    @GetMapping("/api/v1/account-report/min-employee-count")
     Optional<Integer> findMinEmployeeCount();
 }
