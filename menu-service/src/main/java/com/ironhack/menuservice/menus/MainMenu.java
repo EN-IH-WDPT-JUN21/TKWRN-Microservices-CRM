@@ -820,7 +820,7 @@ public class MainMenu implements Variables {
         }
     }
 
-    public SalesRepRequestDTO newSalesRep() {
+    public SalesRepReceiptDTO newSalesRep() {
 
         valid = false;
 
@@ -844,7 +844,7 @@ public class MainMenu implements Variables {
                     }
 
                     valid = false;
-                    salesRepServiceProxy.addSalesRep(newSalesRepRequestDTO);
+                    SalesRepReceiptDTO salesRepReceipt = salesRepServiceProxy.addSalesRep(newSalesRepRequestDTO);
                     System.out.println(colorMain + "\n╔════════════╦═══ " + colorMainBold + "New Sales Representative created" + colorMain + " ════════╗" + reset);
                     System.out.printf("%-1s %-17s %-1s %-50s %-1s\n",
                                       colorMain + "║",
@@ -860,11 +860,11 @@ public class MainMenu implements Variables {
                                       "╣" + reset);
                     System.out.printf("%-1s %-17s %-1s %-50s %-1s\n",
                             colorMain + "║",
-                            colorTable + newSalesRepRequestDTO.getId(),
+                            colorTable + salesRepReceipt.getId(),
                             colorMain + "║",
-                            colorTable + newSalesRepRequestDTO.getRepName().toUpperCase(),
+                            colorTable + salesRepReceipt.getRepName().toUpperCase(),
                             colorMain + "║" + reset);
-                    return newSalesRepRequestDTO;
+                    return salesRepReceipt;
                 }
                 case "n" -> // Would normally go back in the menu at this point
                         OS();

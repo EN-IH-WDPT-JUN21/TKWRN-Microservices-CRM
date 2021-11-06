@@ -1,6 +1,7 @@
 package com.ironhack.menuservice.dao;
 
 import com.ironhack.menuservice.MenuServiceApplication;
+import lombok.SneakyThrows;
 import org.springframework.boot.SpringApplication;
 import org.springframework.stereotype.Component;
 
@@ -9,6 +10,11 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 @Component
 public class Login implements ActionListener {
@@ -133,6 +139,7 @@ public class Login implements ActionListener {
         return isLoggedIn;
     }
 
+    @SneakyThrows
     @Override
     public void actionPerformed(ActionEvent e) {
         char[] password = passwordText.getPassword();
