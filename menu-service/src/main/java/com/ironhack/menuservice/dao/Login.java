@@ -28,6 +28,7 @@ public class Login implements ActionListener {
     private static String username;
     private static char[] userPassword;
     public static int isLoggedIn;
+    public static JLabel jep;
 
     // Creates login window
     public static void login() {
@@ -77,6 +78,33 @@ public class Login implements ActionListener {
         hint.setForeground(Color.red);
         hint.setBounds(20, 190, 380, 25);
         panel.add(hint);
+        
+        jep = new JLabel("--> Knights Who Say Ni <--");
+        jep.grabFocus();
+        jep.setOpaque(false);
+        jep.setFont(new Font("Serif", Font.BOLD, 16));
+        jep.setForeground(Color.blue);
+        jep.setBounds(100, 230, 190, 30);
+        jep.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jep.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() > 0) {
+                    if (Desktop.isDesktopSupported()) {
+                        Desktop desktop = Desktop.getDesktop();
+                        try {
+                            URI uri = new URI("https://www.youtube.com/watch?v=KHqy_AyKIUI&ab_channel=SonyPicturesatHomeUK");
+                            desktop.browse(uri);
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        } catch (URISyntaxException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
+        jep.setVisible(false);
+        panel.add(jep);
 
         dummyLabel = new JLabel();
         panel.add(dummyLabel);
@@ -129,7 +157,11 @@ public class Login implements ActionListener {
             } catch (RuntimeException ex) {
                 System.out.println("Our server is busy! Please run the program again to login!");
             }
+        } else if (getUsername().equals("Knights") && pass.equals("ni")) {
+            frame.setSize(400, 280);
+            jep.setVisible(true);
         } else {
+            frame.setSize(400, 230);
             wrongInput.setText("Wrong username or password!");
         }
 
