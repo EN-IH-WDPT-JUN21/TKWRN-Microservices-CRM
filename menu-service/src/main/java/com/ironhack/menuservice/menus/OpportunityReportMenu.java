@@ -13,7 +13,8 @@ import java.util.Scanner;
 @Component
 public class OpportunityReportMenu implements Variables {
 
-    private OppReportServiceProxy oppReportServiceProxy;
+    @Autowired
+    OppReportServiceProxy oppReportServiceProxy;
 
     @Autowired
     ReportMainMenu reportMainMenu;
@@ -56,16 +57,16 @@ public class OpportunityReportMenu implements Variables {
             } else {
                 switch (ReportCommands.getCommandType(input)){
                     case MEAN_OPPS_PERR_ACC:
-                        //System.out.println("Average number of opportunities per account is: " + oppReportServiceProxy.findMeanOpportunitiesPerAccount().get());
+                        System.out.println("Average number of opportunities per account is: " + oppReportServiceProxy.findMeanOpportunitiesPerAccount().get());
                         break;
                     case MED_OPPS_PERR_ACC:
-                        //System.out.println("Median number of opportunities per account is: " + getMedian(oppReportServiceProxy.findMedianOppsPerAccountStep1()));
+                        System.out.println("Median number of opportunities per account is: " + oppReportServiceProxy.findMedianOppsPerAccountStep1());
                         break;
                     case MAX_OPPS_PERR_ACC:
-                        //System.out.println("Maximum number of opportunities per account is: " + oppReportServiceProxy.findMaxOpportunitiesPerAccount().get());
+                        System.out.println("Maximum number of opportunities per account is: " + oppReportServiceProxy.findMaxOpportunitiesPerAccount().get());
                         break;
                     case MIN_OPPS_PERR_ACC:
-                        //System.out.println("Minimum number of opportunities per account is: " + oppReportServiceProxy.findMinOpportunitiesPerAccount().get());
+                        System.out.println("Minimum number of opportunities per account is: " + oppReportServiceProxy.findMinOpportunitiesPerAccount().get());
                         break;
                     case BACK: reportMainMenu.reportMainMenu();
                     case MAIN_MENU: mainMenu.OS();

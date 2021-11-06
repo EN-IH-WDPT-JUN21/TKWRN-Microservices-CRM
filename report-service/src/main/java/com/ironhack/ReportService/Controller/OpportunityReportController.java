@@ -39,7 +39,7 @@ public class OpportunityReportController {
     }
 
     @GetMapping("/count-by-product/{status}")
-    List<Object[]> findCountOpportunityByProductForStatus(@PathVariable Enum status){
+    List<Object[]> findCountOpportunityByProductForStatus(@PathVariable String status){
         return opportunityRepository.findCountOpportunityByProductForStatus(status);
     }
 

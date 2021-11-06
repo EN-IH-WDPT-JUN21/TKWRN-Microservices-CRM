@@ -14,7 +14,8 @@ import java.util.Scanner;
 @Component
 public class CountryReportMenu implements Variables {
 
-    private OppReportServiceProxy oppReportServiceProxy;
+    @Autowired
+    OppReportServiceProxy oppReportServiceProxy;
 
     @Autowired
     ReportMainMenu reportMainMenu;
