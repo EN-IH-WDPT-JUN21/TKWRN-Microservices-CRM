@@ -339,10 +339,10 @@ public class MainMenu implements Variables {
                     valid = false;
 
                     LeadRequestDTO newContactRequestDTO = new LeadRequestDTO(leadRequestDTO.getName().toUpperCase(), leadRequestDTO.getPhoneNumber().toUpperCase(), leadRequestDTO.getEmail().toUpperCase(), leadRequestDTO.getCompanyName().toUpperCase(), leadRequestDTO.getSalesId()); // Converts lead into contact
-                    contactServiceProxy.createContact(newContactRequestDTO);
+                    ContactReceiptDTO contactReceipt = contactServiceProxy.createContact(newContactRequestDTO);
                     newOpp.setDecisionMakerId(newContactRequestDTO.getId()); // Assigns contact as the decisionMaker
                     newOpp.setSalesRepId(leadRequestDTO.getSalesId());
-                    opportunityServiceProxy.createOpportunity(newOpp);
+                    OpportunityReceiptDTO oppReciept = opportunityServiceProxy.createOpportunity(newOpp);
                     leadServiceProxy.delete(leadRequestDTO.getId(), leadRequestDTO);
                     System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Opportunity created" + colorMain + " ════════════╦═══════════════════╗" + reset);
                     System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
@@ -357,13 +357,13 @@ public class MainMenu implements Variables {
                             colorMain + "║\n" + colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣");
                             System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
                                     colorMain + "║",
-                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getId(),
+                                    colorTable + oppReciept.getId(),
                                     colorMain + "║",
-                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getStatus(),
+                                    colorTable + oppReciept.getStatus(),
                                     colorMain + "║",
-                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getProduct(),
+                                    colorTable + oppReciept.getProduct(),
                                     colorMain + "║",
-                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getQuantity(),
+                                    colorTable + oppReciept.getQuantity(),
                                     colorMain + "║");
                     System.out.println();
                     System.out.println(colorInput + "Press Enter to continue..." + reset);
@@ -384,15 +384,15 @@ public class MainMenu implements Variables {
                                     colorMain + "╠════════════╬═════════════════════════════════════════════╬══════════════════════╬══════════════════════════════════════════╬═════════════════════════════════════════════╣" + reset));
                     System.out.printf(String.format("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s\n",
                             colorMain + "║",
-                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getId(),
+                            colorTable + contactReceipt.getId(),
                             colorMain + "║",
-                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getName(),
+                            colorTable + contactReceipt.getName(),
                             colorMain + "║",
-                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getPhoneNumber(),
+                            colorTable + contactReceipt.getPhoneNumber(),
                             colorMain + "║",
-                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getEmail(),
+                            colorTable + contactReceipt.getEmail(),
                             colorMain + "║",
-                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getCompanyName(),
+                            colorTable + contactReceipt.getCompanyName(),
                             colorMain + "║"));
                     System.out.println();
                     System.out.println(colorInput + "Press Enter to continue..." + reset);
@@ -481,8 +481,43 @@ public class MainMenu implements Variables {
                         AccountReceiptDTO accountReceiptDTO = accountServiceProxy.createAccount(newAccountRequestDTO);
                         opportunityRequestDTO.setAccountId(accountReceiptDTO.getId());
                         //contactServiceProxy.updateContact();
-                        //accountServiceProxy.save(newAccountRequestDTO);
-                        System.out.println(accountReceiptDTO);
+                    System.out.println(colorMain + "\n╔══════════╦═════ " + colorMainBold + "New Account Created"  + colorMain + " ════════════╦═════════════════════════╦═════════════════════════╦═══════════════════════════╗" + reset);
+                    System.out.printf("%-1s %-15s %-1s %-25s %-1s %-22s %-1s %-30s %-1s %-30s %-1s %-32s %-1s\n",
+                            colorMain + "║",
+                            colorHeadlineBold + "ID",
+                            colorMain + "║",
+                            colorHeadlineBold + "Industry",
+                            colorMain + "║",
+                            colorHeadlineBold + "Employee Count",
+                            colorMain + "║",
+                            colorHeadlineBold + "City",
+                            colorMain + "║",
+                            colorHeadlineBold + "Country",
+                            colorMain + "║",
+                            colorHeadlineBold + "Company Name",
+                            colorMain + "║\n" +
+                                    colorMain + "╠══════════╬════════════════════╬═════════════════╬═════════════════════════╬═════════════════════════╬═══════════════════════════╣" + reset);
+                        String companyInfo = "";
+                        if (accountReceiptDTO.getOpportunityList()== null){
+                            companyInfo = "No Company associated with this Account";
+                        } else {
+                            companyInfo = contactServiceProxy.getContactById(accountReceiptDTO.getOpportunityList().get(0).getDecisionMakerId()).getCompanyName();
+                        }
+                        System.out.printf("%-1s %-15s %-1s %-25s %-1s %-22s %-1s %-30s %-1s %-30s %-1s %-32s %-1s\n",
+                                colorMain + "║",
+                                colorTable + accountReceiptDTO.getId(),
+                                colorMain + "║",
+                                colorTable + accountReceiptDTO.getIndustry(),
+                                colorMain + "║",
+                                colorTable + accountReceiptDTO.getEmployeeCount(),
+                                colorMain + "║",
+                                colorTable + accountReceiptDTO.getCity(),
+                                colorMain + "║",
+                                colorTable + accountReceiptDTO.getCountry(),
+                                colorMain + "║",
+                                colorTable + companyInfo,
+                                colorMain + "║" + reset);
+
 
                         return accountReceiptDTO;
                 }
