@@ -29,6 +29,8 @@ public class Login implements ActionListener {
     private static char[] userPassword;
     public static int isLoggedIn;
     public static JLabel esterEgg;
+    public static Desktop desktop;
+    public static URI uri;
 
     // Creates login window
     public static void login() {
@@ -90,9 +92,9 @@ public class Login implements ActionListener {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() > 0) {
                     if (Desktop.isDesktopSupported()) {
-                        Desktop desktop = Desktop.getDesktop();
+                        desktop = Desktop.getDesktop();
                         try {
-                            URI uri = new URI("https://www.youtube.com/watch?v=KHqy_AyKIUI&ab_channel=SonyPicturesatHomeUK");
+                            uri = new URI("https://www.youtube.com/watch?v=KHqy_AyKIUI&ab_channel=SonyPicturesatHomeUK");
                             desktop.browse(uri);
                         } catch (IOException ex) {
                             ex.printStackTrace();
@@ -161,6 +163,9 @@ public class Login implements ActionListener {
             wrongInput.setText("");
             frame.setSize(400, 280);
             esterEgg.setVisible(true);
+            uri = new URI("https://www.youtube.com/watch?v=KHqy_AyKIUI&ab_channel=SonyPicturesatHomeUK");
+            desktop = Desktop.getDesktop();
+            desktop.browse(uri);
         } else {
             frame.setSize(400, 230);
             wrongInput.setText("Wrong username or password!");
