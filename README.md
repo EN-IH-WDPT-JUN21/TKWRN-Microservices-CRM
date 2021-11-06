@@ -7,6 +7,11 @@
 #### Refactoring monolith CRM Spring project into microservices structure.
 
 Original project: https://github.com/EN-IH-WDPT-JUN21/Stolen-Name-LBL-Trucking_Company_Homework-3
+--------------------------------------------------------------------
+Voice over:  Meanwhile, King Arthur and Bedevere, not more than a swallow's
+             flight away, had discovered something. 
+             There in the console, beside this shrubbery, only slightly higher, 
+             lives the feared menu, devourer of minds and DTOs....
 
 ## Services
 
