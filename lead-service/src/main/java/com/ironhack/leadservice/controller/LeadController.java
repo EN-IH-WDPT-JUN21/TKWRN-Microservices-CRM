@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/leads")
 public class LeadController {
 
     @Autowired
@@ -21,31 +20,31 @@ public class LeadController {
     @Autowired
     LeadService leadService;
 
-    @GetMapping
+    @GetMapping("/api/v1/leads")
     @ResponseStatus(HttpStatus.OK)
     public List<LeadDTO> getLeads() {
         return leadService.getAllLeads();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/v1/leads/{id}")
     @ResponseStatus(HttpStatus.OK)
     public LeadDTO getLeadById(@PathVariable(value = "id") long id) {
         return leadService.getById(id);
     }
 
-    @PostMapping("/new")
+    @PostMapping("/api/v1/leads/new")
     @ResponseStatus(HttpStatus.CREATED)
     public LeadDTO createLead(@RequestBody LeadDTO lead) {
         return leadService.create(lead);
     }
 
-    @PostMapping("/populate")
+    @PostMapping("/api/v1/leads/populate")
     @ResponseStatus(HttpStatus.OK)
     public String createLeadDatabase() {
         return leadService.populateLeadDatabase();
     }
 
-    @GetMapping("/convert/{id}")
+    @GetMapping("/api/v1/leads/convert/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public OpportunityDTO convertLead(@PathVariable(value = "id") long id,
                                       @RequestParam Truck product,
@@ -53,8 +52,9 @@ public class LeadController {
         return leadService.convert(id, product, quantity);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteLead(@PathVariable Long id){
-        leadRepository.deleteById(id);
+    @DeleteMapping("/api/v1/leads/delete/{id}")
+    public void delete(@PathVariable(value = "id") long id,
+                       @RequestBody LeadDTO lead) {
+         leadService.delete(id, lead);
     }
 }

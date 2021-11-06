@@ -11,7 +11,6 @@ import com.ironhack.menuservice.exceptions.*;
 import com.ironhack.menuservice.proxy.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
@@ -30,22 +29,16 @@ public class MainMenu implements Variables {
     @Autowired
     SalesRepReportMenu salesRepReportMenu;
 
-    @Autowired
     private AccountServiceProxy accountServiceProxy;
 
-    @Autowired
     private LeadServiceProxy leadServiceProxy;
 
-    @Autowired
     private OpportunityServiceProxy opportunityServiceProxy;
 
-    @Autowired
     private ReportDBServiceProxy reportDBServiceProxy;
 
-    @Autowired
     private SalesRepServiceProxy salesRepServiceProxy;
 
-    @Autowired
     private ContactServiceProxy contactServiceProxy;
 
     public MainMenu(AccountServiceProxy accountServiceProxy, LeadServiceProxy leadServiceProxy, OpportunityServiceProxy opportunityServiceProxy, ReportDBServiceProxy reportDBServiceProxy, SalesRepServiceProxy salesRepServiceProxy, ContactServiceProxy contactServiceProxy) {
@@ -183,6 +176,12 @@ public class MainMenu implements Variables {
             switch (scanner.nextLine().trim().toLowerCase(Locale.ROOT)) {
                 case "y" -> {
                     LeadRequestDTO newLeadRequestDTO = new LeadRequestDTO();
+                    int id = leadServiceProxy.getLeads().size() + 1;
+                    System.out.println(id);
+                    Long idLong = Long.parseLong(String.valueOf(id));
+                    System.out.println(idLong);
+                    newLeadRequestDTO.setId(idLong);
+                    System.out.println(newLeadRequestDTO.getId());
                     leadServiceProxy.createLead(newLeadRequestDTO);
 
                     //checks if restrictions for Customer name are met
@@ -326,7 +325,7 @@ public class MainMenu implements Variables {
                     newOpp.setDecisionMakerId(newContactRequestDTO.getId()); // Assigns contact as the decisionMaker
                     newOpp.setSalesRepId(leadRequestDTO.getSalesId());
                     opportunityServiceProxy.createOpportunity(newOpp);
-                    leadServiceProxy.delete(leadRequestDTO);
+                    leadServiceProxy.delete(leadRequestDTO.getId(), leadRequestDTO);
                     System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Opportunity created" + colorMain + " ════════════╦═══════════════════╗" + reset);
                     System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
                             colorMain + "║",
@@ -557,7 +556,7 @@ public class MainMenu implements Variables {
 
     public void showOpportunities() {
         var allOpps = opportunityServiceProxy.getAll();
-        System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "Total Number Of Opportunities: " + allOpps.size() + colorMain + " ══════╦══════════════════════════════════════════╗" + reset);
+        System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "Total Number Of Opportunities: " + allOpps.size() + colorMain + " ═════╦══════════════════════════════════════════╗" + reset);
         System.out.printf("%-1s %-17s %-1s %-24s %-1s %-17s %-1s %-17s %-1s %-47s %-1s\n",
                 colorMain + "║",
                 colorHeadlineBold + "ID",
@@ -656,7 +655,7 @@ public class MainMenu implements Variables {
                 colorHeadlineBold + "Company name",
                 colorMain + "║",
                 colorHeadlineBold + "SalesRep",
-                colorMain + "║\n" + colorMain + "╠════════════╬═════════════════════════════════════════════╬══════════════════════╬══════════════════════════════════════════╬═════════════════════════════════════════════╣════════════╬\n" + reset);
+                colorMain + "║\n" + colorMain + "╠════════════╬═════════════════════════════════════════════╬══════════════════════╬══════════════════════════════════════════╬═════════════════════════════════════════════╬════════════╣\n" + reset);
                 System.out.printf("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s %-17s %-1s\n",
                 colorMain + "║",
                 colorTable + leadServiceProxy.getLeadById(Long.parseLong(id)).getId(),
@@ -685,22 +684,43 @@ public class MainMenu implements Variables {
                 colorMain + "║",
                 colorHeadlineBold + "Quantity",
                 colorMain + "║\n" +
-                        colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣\n" + reset +
-                        opportunityServiceProxy.getById(Long.parseLong(id)) +
-                        colorMain + "\n╔════════════╦═══ " + colorMainBold + "Decision maker details" + colorMain + " ══════════════════╦══════════════════════╦══════════════════════════════════════════╦═════════════════════════════════════════════╗\n" + reset +
-                        String.format("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s\n",
-                                colorMain + "║",
-                                colorHeadlineBold + "ID",
-                                colorMain + "║",
-                                colorHeadlineBold + "Name",
-                                colorMain + "║",
-                                colorHeadlineBold + "Phone Number",
-                                colorMain + "║",
-                                colorHeadlineBold + "Email Address",
-                                colorMain + "║",
-                                colorHeadlineBold + "Company name",
-                                colorMain + "║\n" + colorMain + "╠════════════╬═════════════════════════════════════════════╬══════════════════════╬══════════════════════════════════════════╬═════════════════════════════════════════════╣\n" + reset +
-                                        opportunityServiceProxy.getById(Long.parseLong(id)).getDecisionMakerId().toString()));
+                colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣" + reset);
+        System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
+                colorMain + "║",
+                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getId(),
+                colorMain + "║",
+                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getStatus(),
+                colorMain + "║",
+                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getProduct(),
+                colorMain + "║",
+                colorHeadlineBold + opportunityServiceProxy.getById(Long.parseLong(id)).getQuantity(),
+                colorMain + "║\n" + reset);
+        System.out.println(colorMain + "\n╔════════════╦═══ " + colorMainBold + "Decision maker details" + colorMain + " ══════════════════╦══════════════════════╦══════════════════════════════════════════╦═════════════════════════════════════════════╗" + reset);
+        System.out.printf("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s\n",
+                colorMain + "║",
+                colorHeadlineBold + "ID",
+                colorMain + "║",
+                colorHeadlineBold + "Name",
+                colorMain + "║",
+                colorHeadlineBold + "Phone Number",
+                colorMain + "║",
+                colorHeadlineBold + "Email Address",
+                colorMain + "║",
+                colorHeadlineBold + "Company name",
+                colorMain + "║\n" +
+                colorMain + "╠════════════╬═════════════════════════════════════════════╬══════════════════════╬══════════════════════════════════════════╬═════════════════════════════════════════════╣" + reset);
+        System.out.printf("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s\n",
+                colorMain + "║",
+                colorHeadlineBold + contactServiceProxy.getContactById(Long.parseLong(id)).getId(),
+                colorMain + "║",
+                colorHeadlineBold + contactServiceProxy.getContactById(Long.parseLong(id)).getName(),
+                colorMain + "║",
+                colorHeadlineBold + contactServiceProxy.getContactById(Long.parseLong(id)).getPhoneNumber(),
+                colorMain + "║",
+                colorHeadlineBold + contactServiceProxy.getContactById(Long.parseLong(id)).getEmail(),
+                colorMain + "║",
+                colorHeadlineBold + contactServiceProxy.getContactById(Long.parseLong(id)).getCompanyName(),
+                colorMain + "║\n" + reset);
     }
 
 
@@ -816,6 +836,7 @@ public class MainMenu implements Variables {
                     while (!valid) {
                         System.out.println(colorInput + "\nPlease input the sales representative's name: " + reset);
                         try {
+
                             newSalesRepRequestDTO.setRepName(scanner.nextLine().trim().toUpperCase());
                             valid = true;
                         } catch (Exception e) {

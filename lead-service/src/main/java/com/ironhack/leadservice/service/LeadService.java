@@ -134,4 +134,8 @@ public class LeadService {
         }
         return foundCount;
     }
+    
+    public void delete(long id, LeadDTO lead) {
+        leadRepository.deleteById(id);
+    }
 }

@@ -15,29 +15,28 @@ import javax.validation.Valid;
 import java.util.List;
 
 @FeignClient("account-service")
-@RequestMapping("/api/v1/accounts")
 public interface AccountServiceProxy {
 
-    @GetMapping
+    @GetMapping("/api/v1/accounts")
     @ResponseStatus(HttpStatus.OK)
     public List<AccountReceiptDTO> getAccounts();
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/v1/accounts/{id}")
     @ResponseStatus(HttpStatus.OK)
     public AccountReceiptDTO findAccountById (@PathVariable(name="id") Long id);
 
-    @PostMapping
+    @PostMapping("/api/v1/accounts")
     @ResponseStatus(HttpStatus.CREATED)
     public AccountReceiptDTO create(@RequestBody @Valid AccountRequestDTO accountRequestDTO);
 
-    @PostMapping("/new")
+    @PostMapping("/api/v1/accounts/new")
     @ResponseStatus(HttpStatus.CREATED)
     public AccountReceiptDTO createAccount(@RequestBody @Valid AccountRequestDTO accountRequestDTO);
 
-    @PutMapping("/change/{id}")
+    @PutMapping("/api/v1/accounts/change/{id}")
     @ResponseStatus(HttpStatus.OK)
     public AccountReceiptDTO updateAccount(@PathVariable(name = "id") Long id, @RequestBody @Valid AccountUpdateDTO accountUpdateDTO);
 
-    @GetMapping("/populate")
+    @GetMapping("/api/v1/accounts/populate")
     public void populate() throws NameContainsNumbersException, EmptyStringException, InvalidCountryException, ExceedsMaxLength;
 }
