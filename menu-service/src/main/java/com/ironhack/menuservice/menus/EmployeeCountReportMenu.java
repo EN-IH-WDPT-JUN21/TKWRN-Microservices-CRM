@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 @Component
@@ -62,7 +63,7 @@ public class EmployeeCountReportMenu implements Variables {
                         System.out.println("╚════════════════════════════════════════════════════╝" + reset);
                         break;
                     case MEDIAN_EMPCOUNT:
-                        System.out.println("Median number of employees is: " + getMedian(accountReportServiceProxy.findMedianEmployeeCountStep1()));
+                        System.out.println("Median number of employees is: " + accountReportServiceProxy.findMedianEmployeeCountStep1());
                         break;
                     case MAX_EMPCOUNT:
                         System.out.println("Maximum number of employees is: " + accountReportServiceProxy.findMaxEmployeeCount().get());
@@ -90,16 +91,4 @@ public class EmployeeCountReportMenu implements Variables {
 //        employeeCountReportMenu();
     }
 
-    public int getMedian(int[] intArray){
-        try {
-            int sizeOfArray = intArray.length;
-            if (sizeOfArray % 2 == 1) {
-                return intArray[(sizeOfArray + 1) / 2 - 1];
-            } else {
-                return (intArray[sizeOfArray / 2 - 1] + intArray[sizeOfArray / 2]) / 2;
-            }
-        }catch (ArrayIndexOutOfBoundsException e){
-            return 0;
-        }
-    }
 }
