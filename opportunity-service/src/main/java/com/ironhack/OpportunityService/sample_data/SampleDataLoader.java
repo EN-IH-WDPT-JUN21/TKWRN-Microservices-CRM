@@ -4,7 +4,9 @@ import com.github.javafaker.Faker;
 import com.ironhack.OpportunityService.dao.Opportunity;
 import com.ironhack.OpportunityService.enums.Status;
 import com.ironhack.OpportunityService.enums.Truck;
+import com.ironhack.OpportunityService.proxies.ReportServiceProxy;
 import com.ironhack.OpportunityService.repository.OpportunityRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +16,9 @@ import java.util.stream.IntStream;
 
 @Component
 public class SampleDataLoader implements CommandLineRunner {
+
+    @Autowired
+    ReportServiceProxy reportServiceProxy;
 
     private final OpportunityRepository opportunityRepository;
     private final Faker faker;
@@ -36,6 +41,10 @@ public class SampleDataLoader implements CommandLineRunner {
 
         opportunityRepository.saveAll(opportunities);
 
+        reportServiceProxy.createOppDatabase(List.of(
+                new Opportunity(1l, Status.OPEN, Truck.FLATBED, 10, 1l, 1l, 1l),
+                new Opportunity(2l, Status.OPEN, Truck.BOX, 1150, 2l, 2l, 1l),
+                new Opportunity(3l, Status.OPEN, Truck.HYBRID, 1, 3l, 3l, 2l)));
     }
 
 }

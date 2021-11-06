@@ -50,6 +50,15 @@ public class Contact {
         this.accountId = accountId;
     }
 
+    public Contact(long id, String name, String phoneNumber, String email, String companyName, long l1) {
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.companyName = companyName;
+        this.salesId = l1;
+    }
+
     public void setName(String name) throws NameContainsNumbersException, EmptyStringException, ExceedsMaxLength {
         if (name.isEmpty()) {
             throw new EmptyStringException("No name input. Please try again.");
