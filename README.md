@@ -3,15 +3,20 @@
    <img src="https://github.com/EN-IH-WDPT-JUN21/TKWRN-Microservices-CRM/blob/main/nullLogo.png?raw=true">
 </p>
 
---------------------------------------------------------------------
-#### Refactoring monolith CRM Spring project into microservices structure.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Original project: https://github.com/EN-IH-WDPT-JUN21/Stolen-Name-LBL-Trucking_Company_Homework-3
---------------------------------------------------------------------
-Voice over:  Meanwhile, King Arthur and Bedevere, not more than a swallow's
+<p align="center"><em>Voice over:  Meanwhile, King Arthur and Bedevere, not more than a swallow's
              flight away, had discovered something. 
              There in the console, beside this shrubbery, only slightly higher, 
-             lives the feared menu, devourer of minds and DTOs....
+   lives the feared menu, devourer of minds and DTOs....</em>
+</p>
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#### Refactoring monolith CRM Spring project into microservices structure.
+
+[Original project](https://github.com/EN-IH-WDPT-JUN21/Stolen-Name-LBL-Trucking_Company_Homework-3)
+
 
 ## Services
 
