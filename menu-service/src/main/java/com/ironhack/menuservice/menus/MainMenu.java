@@ -291,8 +291,14 @@ public class MainMenu implements Variables {
 
     // Method to convert Lead to Opportunity
     public OpportunityRequestDTO convertLead(String id) throws NullPointerException {
-
-        LeadRequestDTO leadRequestDTO = leadServiceProxy.getLeadById(Long.parseLong(id));
+        
+        LeadRequestDTO leadRequestDTO = null;
+        try {
+                leadRequestDTO = leadServiceProxy.getLeadById(Long.parseLong(id));
+        } catch (Exception e) {
+            System.out.println(colorError + "\nLead with id: " + id + "doesn't exist - please start again\n" + reset);
+        }
+        
         System.out.println(colorInput + "\nWould you like to convert " +
                 colorTable + leadRequestDTO.getName().toUpperCase() +
                 colorInput + " from " +
