@@ -31,4 +31,5 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     @Query("SELECT MIN(employeeCount) FROM Account")
     Optional<Integer> findMinEmployeeCount();
 
+
 }

@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/account-report")
 public class AccountReportController {
 
     @Autowired
@@ -21,22 +20,22 @@ public class AccountReportController {
     @Autowired
     QueryHelperService queryHelperService;
 
-    @GetMapping("/mean-employee-count")
+    @GetMapping("/api/v1/account-report/mean-employee-count")
     Optional<Double> findMeanEmployeeCount(){
         return accountRepository.findMeanEmployeeCount();
     }
 
-    @GetMapping("/median-employee-count")
+    @GetMapping("/api/v1/account-report/median-employee-count")
     Double findMedianEmployeeCountStep1(){
         return queryHelperService.findMedianEmployeeCount();
     }
 
-    @GetMapping("/max-employee-count")
+    @GetMapping("/api/v1/account-report/max-employee-count")
     Optional<Integer> findMaxEmployeeCount(){
         return accountRepository.findMaxEmployeeCount();
     }
 
-    @GetMapping("/min-employee-count")
+    @GetMapping("/api/v1/account-report/min-employee-count")
     Optional<Integer> findMinEmployeeCount(){
         return accountRepository.findMinEmployeeCount();
     }

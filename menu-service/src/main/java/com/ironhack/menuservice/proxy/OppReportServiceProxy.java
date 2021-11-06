@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 @FeignClient("report-service")
-//@RequestMapping("/api/v1/opportunity-report")
 public interface OppReportServiceProxy {
 
     @GetMapping("/api/v1/opportunity-report/count-by-rep")
@@ -53,6 +52,9 @@ public interface OppReportServiceProxy {
 
     @GetMapping("/api/v1/opportunity-report/mean-opportunities-per-account")
     Optional<Double>findMeanOpportunitiesPerAccount();
+
+    @GetMapping("/api/v1/opportunity-report/median-opportunities-per-account")
+    Double findMedianOppsPerAccountStep1();
 
     @GetMapping("/api/v1/opportunity-report/max-opportunities-per-account")
     Optional<Double>findMaxOpportunitiesPerAccount();
