@@ -120,13 +120,13 @@ git clone https://github.com/EN-IH-WDPT-JUN21/TKWRN-Microservices-CRM
 ```
 2. Run the main class of each service in the order:
    - discovery-service
+   - gateway
+   - report-service
    - salesrep-service
    - lead-service
    - contact-service
    - opportunity-service
    - account-service
-   - report-service
-   - gateway
    - menu-service (main method of class Main in dao)
 
 3. Mysql database setup 

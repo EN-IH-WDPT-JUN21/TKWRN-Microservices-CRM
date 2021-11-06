@@ -50,6 +50,9 @@ public interface OppReportServiceProxy {
     @GetMapping("/api/v1/opportunity-report/min-product-quantity")
     Optional<Integer> findMinProductQuantity();
 
+    @GetMapping("/api/v1/opportunity-report/median-product-quantity")
+    Double findMedianQuantityStep1();
+
     @GetMapping("/api/v1/opportunity-report/mean-opportunities-per-account")
     Optional<Double>findMeanOpportunitiesPerAccount();
 
