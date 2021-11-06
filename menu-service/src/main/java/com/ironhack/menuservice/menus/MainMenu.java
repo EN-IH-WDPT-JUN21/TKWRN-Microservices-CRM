@@ -174,13 +174,6 @@ public class MainMenu implements Variables {
             switch (scanner.nextLine().trim().toLowerCase(Locale.ROOT)) {
                 case "y" -> {
                     LeadRequestDTO newLeadRequestDTO = new LeadRequestDTO();
-                    int id = leadServiceProxy.getLeads().size() + 1;
-                    System.out.println(id);
-                    Long idLong = Long.parseLong(String.valueOf(id));
-                    System.out.println(idLong);
-                    newLeadRequestDTO.setId(idLong);
-                    System.out.println(newLeadRequestDTO.getId());
-                    leadServiceProxy.createLead(newLeadRequestDTO);
 
                     //checks if restrictions for Customer name are met
                     while (!valid) {
@@ -251,10 +244,37 @@ public class MainMenu implements Variables {
                         }
                     }
 
-                    //theLeads.put(newLead.getId(), newLead);
-                    System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Lead created" + colorMain + " ══════════════════════╦══════════════════════╦══════════════════════════════════════════╦═════════════════════════════════════════════╗" + reset);
-                    System.out.println(newLeadRequestDTO);
-                    leadServiceProxy.createLead(newLeadRequestDTO);
+                    LeadRequestDTO lead = leadServiceProxy.createLead(newLeadRequestDTO);
+                    Long leadId = lead.getId();
+
+                    System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Lead created" + colorMain + " ══════════════════════╦══════════════════════╦══════════════════════════════════════════╦═════════════════════════════════════════════╦════════════╗" + reset);
+                    System.out.printf("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s %-17s %-1s",
+                            colorMain + "║",
+                            colorHeadlineBold + "ID",
+                            colorMain + "║",
+                            colorHeadlineBold + "Name",
+                            colorMain + "║",
+                            colorHeadlineBold + "Phone Number",
+                            colorMain + "║",
+                            colorHeadlineBold + "Email Address",
+                            colorMain + "║",
+                            colorHeadlineBold + "Company name",
+                            colorMain + "║",
+                            colorHeadlineBold + "SalesRep",
+                            colorMain + "║\n" + colorMain + "╠════════════╬═════════════════════════════════════════════╬══════════════════════╬══════════════════════════════════════════╬═════════════════════════════════════════════╬════════════╣\n" + reset);
+                    System.out.printf("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s %-17s %-1s\n",
+                            colorMain + "║",
+                            colorTable + leadServiceProxy.getLeadById(leadId).getId(),
+                            colorMain + "║",
+                            colorTable + leadServiceProxy.getLeadById(leadId).getName(),
+                            colorMain + "║",
+                            colorTable + leadServiceProxy.getLeadById(leadId).getPhoneNumber(),
+                            colorMain + "║",
+                            colorTable + leadServiceProxy.getLeadById(leadId).getEmail(),
+                            colorMain + "║",
+                            colorTable + leadServiceProxy.getLeadById(leadId).getCompanyName(), colorMain + "║", colorTable + leadServiceProxy.getLeadById(leadId).getSalesId(),
+                            colorMain + "║" + reset);
+                    System.out.println();
                     return newLeadRequestDTO;
                 }
                 case "n" -> OS();
