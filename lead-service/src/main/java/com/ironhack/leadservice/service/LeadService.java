@@ -57,21 +57,10 @@ public class LeadService {
     }
 
     public LeadDTO create(LeadDTO leadDTO) {
-        Optional<Lead> lead = leadRepository.findById(leadDTO.getId());
-        if(lead.isEmpty()) {
-            try {
-                SalesRepDTO sales = salesProxy.getSales(leadDTO.getSalesId());
-                Lead newLead = convertDtoToLead(leadDTO);
-                newLead.setSalesId(sales.getId());
-                leadRepository.save(newLead);
-                reportServiceProxy.addOrUpdateLead(convertLeadToDto(newLead));
-                return convertLeadToDto(newLead);
-            } catch (Exception e) {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The sales id wasn't found in the system.");
-            }
-        } else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The lead id already exists in the system.");
-        }
+        Lead newLead = convertDtoToLead(leadDTO);
+        leadRepository.save(newLead);
+        reportServiceProxy.addOrUpdateLead(convertLeadToDto(newLead));
+        return convertLeadToDto(newLead);
     }
 
     public LeadDTO convertLeadToDto(Lead lead) {
