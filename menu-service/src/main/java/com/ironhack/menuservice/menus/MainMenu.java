@@ -217,7 +217,11 @@ public class MainMenu implements Variables {
                     while (!valid) {
                         System.out.println(colorInput + "\nPlease input the customer's name: " + reset);
                         try {
-                            newLeadRequestDTO.setName(scanner.nextLine().trim().toUpperCase());
+                            String name = scanner.nextLine().trim().toUpperCase();
+                            if (name.isEmpty()) {throw new EmptyStringException("No name input. Please try again.");}
+                            else if(!name.matches("[a-zA-Z\\u00C0-\\u00FF\\s]+")){throw new NameContainsNumbersException( "Name can not contain numbers. Please try again.");
+                            } else if(name.length()>43){throw new ExceedsMaxLength("Exceeds maximum value of 43 characters. Please try again.");}
+                            newLeadRequestDTO.setName(name);
                             valid = true;
                         } catch (Exception e) {
                             System.out.println(colorError + e.getMessage());
@@ -230,7 +234,11 @@ public class MainMenu implements Variables {
                     while (!valid) {
                         System.out.println(colorInput + "\nPlease input the customer's phone number without spaces: " + reset);
                         try {
-                            newLeadRequestDTO.setPhoneNumber(scanner.nextLine().trim().toUpperCase());
+                            String phoneNumber = scanner.nextLine().trim().toUpperCase();
+                            if (phoneNumber.isEmpty()) {throw new EmptyStringException("No Phone Number input. Please try again.");}
+                            else if(!phoneNumber.matches("[0-9]+")) {throw new PhoneNumberContainsLettersException("The phone number must only contain numbers. Please try again.");
+                            } else if(phoneNumber.length()>20) {throw new ExceedsMaxLength("Exceeds maximum value of 20 characters. Please try again.");}
+                            newLeadRequestDTO.setPhoneNumber(phoneNumber);
                             valid = true;
                         } catch (Exception e) {
                             System.out.println(colorError + e.getMessage());
@@ -244,7 +252,11 @@ public class MainMenu implements Variables {
                     while (!valid) {
                         System.out.println(colorInput + "\nPlease input the customer's email address: " + reset);
                         try {
-                            newLeadRequestDTO.setEmail(scanner.nextLine().trim().toUpperCase());
+                            String email = scanner.nextLine().trim().toUpperCase();
+                            if (email.isEmpty()) {throw new EmptyStringException("No email input. Please, try again.");}
+                            else if (!EmailValidator.getInstance().isValid(email)){throw new EmailNotValidException("The email should follow the format \"***@***.**\". Please, try again.");
+                            } else if (email.length()>40){throw new ExceedsMaxLength("Exceeds maximum value of 40 characters. Please, try again.");}
+                            newLeadRequestDTO.setEmail(email);
                             valid = true;
                         } catch (Exception e) {
                             System.out.println(colorError + e.getMessage());
@@ -257,6 +269,9 @@ public class MainMenu implements Variables {
                     while (!valid) {
                         System.out.println(colorInput + "\nPlease input the customer's company name: " + reset);
                         try {
+                            String companyName = scanner.nextLine().trim().toUpperCase();
+                            if (companyName.isEmpty()) {throw new EmptyStringException("No company name input. Please, try again.");
+                            } else if (companyName.length()>43){throw new ExceedsMaxLength("Exceeds maximum value of 43 characters. Please, try again.");}
                             newLeadRequestDTO.setCompanyName(scanner.nextLine().trim().toUpperCase());
                             valid = true;
                         } catch (Exception e) {
@@ -388,10 +403,10 @@ public class MainMenu implements Variables {
                     newOpp.setSalesRepId(leadRequestDTO.getSalesId());
                         List<String> companyNameList = new ArrayList<>();
                         for (AccountReceiptDTO account : accountServiceProxy.getAccounts()) {
-
                             if (account.getContactList() != null) {
                                 if (account.getContactList().get(0).getCompanyName().equals(contactReceipt.getCompanyName().toUpperCase())) {
                                     newOpp.setAccountId(account.getId());
+                                    System.out.println(account.getId());
                                 }
                             }
                         }
@@ -465,20 +480,6 @@ public class MainMenu implements Variables {
 
     // Method called to create a new account
     public AccountReceiptDTO createAccount(OpportunityReceiptDTO opportunityRequestDTO) {
-        /*Long id = opportunityRequestDTO.getDecisionMakerId();
-        String companyName = contactServiceProxy.getContactById(id).getCompanyName();
-        for (var account : accountServiceProxy.getAccounts()) {
-            if (account.)
-        }
-        List<String> companyNameList = new ArrayList<>();
-        for (var contact : contactServiceProxy.getContacts()) {
-
-            companyNameList.add(contact.getCompanyName());
-        }
-        if (companyNameList.contains(companyName)) {
-            opportunityRequestDTO.setAccountId(companyName);
-            opportunityServiceProxy.updateOpportunity(opportunityRequestDTO.getId(), )
-        }*/
         if (opportunityRequestDTO.getAccountId() != null) {
             AccountReceiptDTO accountReceiptDTO = accountServiceProxy.findAccountById(opportunityRequestDTO.getAccountId());
             System.out.println(colorMain + "\n╔══════════╦═════ " + colorMainBold + "New Account Created"  + colorMain + " ════════════╦═════════════════════════╦═════════════════════════╦═══════════════════════════╗" + reset);
@@ -519,7 +520,6 @@ public class MainMenu implements Variables {
                     colorMain + "║" + reset);
         }
         else {
-            System.out.println(colorInput + "Would you like to create a new Account?" + colorTable + " y / n" + reset);
             Scanner scanner = new Scanner(System.in);
             try {
                 AccountRequestDTO newAccountRequestDTO = new AccountRequestDTO(opportunityRequestDTO);
