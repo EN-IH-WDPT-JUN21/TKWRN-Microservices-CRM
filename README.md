@@ -5,10 +5,20 @@
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-<p align="center"><em>Voice over:  Meanwhile, King Arthur and Bedevere, not more than a swallow's
-             flight away, had discovered something. 
-             There in the console, beside this shrubbery, only slightly higher, 
-   lives the feared menu, devourer of minds and DTOs....</em>
+<p align="center"><em>
+                 
+                  
+                   Voice over: Meanwhile, King Arthur and Bedevere, not more than a swallow's flight away, had discovered something. 
+
+                  There in the console, beside this shrubbery, only slightly higher, lives the feared Menu, devourer of minds and DTOs....
+
+                  The ancient beast stirs in its lair, drowsy after last night's feast. 
+                  
+                  Ah, the debuggers with their sweet flavour of rage, frustration and despair, what a meal it has been...
+
+                  Thus, be cautious noble reviewer, for although the Knights fought valiantly, many are the dangerous of the Menu.
+                  
+                  May the Admin armour protect you on your journey or choose the garb of the fallen Knight to honour them.</em>
 </p>
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
