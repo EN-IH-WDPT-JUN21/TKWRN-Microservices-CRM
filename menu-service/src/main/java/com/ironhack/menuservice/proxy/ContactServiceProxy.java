@@ -3,6 +3,7 @@ package com.ironhack.menuservice.proxy;
 import com.ironhack.menuservice.dto.ContactReceiptDTO;
 import com.ironhack.menuservice.dto.ContactRequestDTO;
 import com.ironhack.menuservice.dto.LeadRequestDTO;
+import com.ironhack.menuservice.dto.UpdatedContactDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,5 +26,5 @@ public interface ContactServiceProxy {
     public ContactReceiptDTO createContact(@RequestBody LeadRequestDTO leadDTO);
 
     @PatchMapping({"(/api/v1/contacts/change-account/{id}"})
-    public void updateContact(@PathVariable("id") long id, @RequestBody ContactRequestDTO contactDTO);
+    public void updateContact(@PathVariable("id") long id, @RequestBody UpdatedContactDTO contactDTO);
 }

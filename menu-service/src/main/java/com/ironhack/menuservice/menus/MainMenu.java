@@ -386,16 +386,15 @@ public class MainMenu implements Variables {
                     ContactReceiptDTO contactReceipt = contactServiceProxy.createContact(newContactRequestDTO);
                     newOpp.setDecisionMakerId(contactReceipt.getId()); // Assigns contact as the decisionMaker
                     newOpp.setSalesRepId(leadRequestDTO.getSalesId());
-                        /*List<String> companyNameList = new ArrayList<>();
+                        List<String> companyNameList = new ArrayList<>();
                         for (AccountReceiptDTO account : accountServiceProxy.getAccounts()) {
-                            companyNameList.add(account.getContactList().get(0).getCompanyName());
 
                             if (account.getContactList() != null) {
                                 if (account.getContactList().get(0).getCompanyName().equals(contactReceipt.getCompanyName().toUpperCase())) {
                                     newOpp.setAccountId(account.getId());
                                 }
                             }
-                        }*/
+                        }
                     OpportunityReceiptDTO oppReciept = opportunityServiceProxy.createOpportunity(newOpp);
                     leadServiceProxy.delete(leadRequestDTO.getId(), leadRequestDTO);
                     System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Opportunity created" + colorMain + " ════════════╦═══════════════════╗" + reset);

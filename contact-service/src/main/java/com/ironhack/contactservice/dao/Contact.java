@@ -50,13 +50,23 @@ public class Contact {
         this.accountId = accountId;
     }
 
-    public Contact(long id, String name, String phoneNumber, String email, String companyName, long l1) {
+    public Contact(long id, String name, String phoneNumber, String email, String companyName, long salesId) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.companyName = companyName;
-        this.salesId = l1;
+        this.salesId = salesId;
+    }
+
+    public Contact(String name, String phoneNumber, String email, String companyName, Long salesId, Long accountId, Long opportunityId) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.companyName = companyName;
+        this.salesId = salesId;
+        this.accountId = accountId;
+        this.opportunityId = List.of(opportunityId);
     }
 
     public void setName(String name) throws NameContainsNumbersException, EmptyStringException, ExceedsMaxLength {
