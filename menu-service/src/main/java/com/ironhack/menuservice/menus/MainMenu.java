@@ -15,9 +15,11 @@ import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.List;
 
 @Component
 @EnableFeignClients
@@ -72,18 +74,18 @@ public class MainMenu implements Variables {
                 + "╠═══════════════════════════════════════════════════════════════════════════════════════════════════╣\n"
                 + String.format("%-1s %-104s %-1s", "║", colorTable + "WHAT WOULD YOU LIKE TO DO " + Login.getUsername().toUpperCase() + "?", colorMain + /*insertLine(68) +*/ "║\n")
                 + "╠═══════════════════════════════════════════════════════════════════════════════════════════════════╣\n"
-                + "║ 1.  To create new Lead " + colorHeadline + "- type: 'new lead'" + colorMain + "                                                         ║\n"
-                + "║ 2.  To create new Sales Representative " + colorHeadline + "- type: 'new salesrep'" + colorMain + "                                     ║\n"
-                + "║ 3.  To check Leads list " + colorHeadline + "- type: 'show leads'" + colorMain + "                                                      ║\n"
-                + "║ 4.  To check individual Lead's details " + colorHeadline + "- type: 'lookup lead ' + Lead Id" + colorMain + "                           ║\n"
-                + "║ 5.  To convert Lead into Opportunity " + colorHeadline + "- type: - 'convert ' + Lead Id" + colorMain + "                               ║\n"
-                + "║ 6.  To check Opportunity list " + colorHeadline + "- type: 'show opportunities'" + colorMain + "                                        ║\n"
-                + "║ 7.  To check individual Opportunity's details " + colorHeadline + "- type: 'lookup opportunity ' + Opportunity Id" + colorMain + "      ║\n"
-                + "║ 8.  To change Opportunity status to WON" + colorHeadline + "- type: 'close-won' + Opportunity Id" + colorMain + "                       ║\n"
-                + "║ 9.  To change Opportunity status to LOST" + colorHeadline + "- type: 'close-lost' + Opportunity Id" + colorMain + "                     ║\n"
-                + "║ 10. To check Contact list " + colorHeadline + "- type: 'show contacts'" + colorMain + "                                                 ║\n"
-                + "║ 11. To check Account list " + colorHeadline + "- type: 'show accounts'" + colorMain + "                                                 ║\n"
-                + "║ 12. To check Sales Representatives list " + colorHeadline + "- type: 'show salesreps'" + colorMain + "                                  ║\n"
+                + "║ 1.  To create new Sales Representative " + colorHeadline + "- type: 'new salesrep'" + colorMain + "                                     ║\n"
+                + "║ 2.  To check Sales Representatives list " + colorHeadline + "- type: 'show salesreps'" + colorMain + "                                  ║\n"
+                + "║ 3.  To create new Lead " + colorHeadline + "- type: 'new lead'" + colorMain + "                                                         ║\n"
+                + "║ 4.  To check Leads list " + colorHeadline + "- type: 'show leads'" + colorMain + "                                                      ║\n"
+                + "║ 5.  To check individual Lead's details " + colorHeadline + "- type: 'lookup lead ' + Lead Id" + colorMain + "                           ║\n"
+                + "║ 6.  To convert Lead into Opportunity " + colorHeadline + "- type: - 'convert ' + Lead Id" + colorMain + "                               ║\n"
+                + "║ 7.  To check Opportunity list " + colorHeadline + "- type: 'show opportunities'" + colorMain + "                                        ║\n"
+                + "║ 8.  To check individual Opportunity's details " + colorHeadline + "- type: 'lookup opportunity ' + Opportunity Id" + colorMain + "      ║\n"
+                + "║ 9.  To change Opportunity status to WON" + colorHeadline + "- type: 'close-won' + Opportunity Id" + colorMain + "                       ║\n"
+                + "║ 10. To change Opportunity status to LOST" + colorHeadline + "- type: 'close-lost' + Opportunity Id" + colorMain + "                     ║\n"
+                + "║ 11. To check Contact list " + colorHeadline + "- type: 'show contacts'" + colorMain + "                                                 ║\n"
+                + "║ 12. To check Account list " + colorHeadline + "- type: 'show accounts'" + colorMain + "                                                 ║\n"
                 + "║ 13. To check available Reports " + colorHeadline + "- type: 'view reports'" + colorMain + "                                             ║\n"
                 + "║ 14. To quit " + colorHeadline + "- type: 'quit'" + colorMain + "                                                                        ║\n"
                 + "╚═══════════════════════════════════════════════════════════════════════════════════════════════════╝\n" + reset);
@@ -99,36 +101,70 @@ public class MainMenu implements Variables {
                 System.out.println(colorMainBold + "\nThank you for using our LBL CRM SYSTEM!" + reset);
                 System.out.println(colorError + "Exiting the program" + reset);
                 System.exit(0);
-            } else if (input[0].equals("populate")) {
-                System.out.println("populate");
-                PopulateDatabase.populateDatabase();
             } else if (input.length < 2) {
                 throw new IllegalArgumentException();
             } else if (input[0].equals("lookup") && input[1].equals("lead") && input.length > 2) {
-//                if (!leadServiceProxy.existsById(Long.parseLong(input[2]))) {
-//                    throw new NoSuchValueException("There is no Lead that matches that id.");
-//                }
-                lookUpLeadId(input[2]);
+                List<String> idList = new ArrayList<>();
+                for (var lead : leadServiceProxy.getLeads()) {
+                    idList.add(lead.getId().toString());
+                }
+                if (idList.contains(input[2])) {
+                    lookUpLeadId(input[2]);
+                } else {
+                    throw new NoSuchValueException("There is no Lead that matches that id.");
+                }
             } else if (input[0].equals("lookup") && input[1].equals("opportunity") && input.length > 2) {
 //                if (!opportunityServiceProxy.existsById(Long.parseLong(input[2]))) {
 //                    throw new NoSuchValueException("There is no Opportunity that matches that id.");
 //                }
-                lookUpOppId(input[2]);
+                List<String> idList = new ArrayList<>();
+                for (var opp : opportunityServiceProxy.getAll()) {
+                    idList.add(opp.getId().toString());
+                }
+                if (idList.contains(input[2])) {
+                    lookUpOppId(input[2]);
+                } else {
+                    throw new NoSuchValueException("There is no Opportunity that matches that id.");
+                }
             } else if (input[0].equals("convert")) { // throws null point exception if number not in array
 //                if (!leadServiceProxy.existsById(Long.parseLong(input[1]))) {
 //                    throw new NoSuchValueException("There is no Lead that matches that id.");
 //                }
-                createAccount(convertLead(input[1]));
+                List<String> idList = new ArrayList<>();
+                for (var lead : leadServiceProxy.getLeads()) {
+                    idList.add(lead.getId().toString());
+                }
+                if (idList.contains(input[1])) {
+                    lookUpLeadId(input[1]);
+                } else {
+                    throw new NoSuchValueException("There is no Lead that matches that id.");
+                }
             } else if (input[0].equals("close-lost")) {
 //                if (!opportunityServiceProxy.existsById(Long.parseLong(input[1]))) {
 //                    throw new NoSuchValueException("There is no Opportunity that matches that id.");
 //                }
-                closeLost(input[1]);
+                List<String> idList = new ArrayList<>();
+                for (var opp : opportunityServiceProxy.getAll()) {
+                    idList.add(opp.getId().toString());
+                }
+                if (idList.contains(input[1])) {
+                    closeLost(input[1]);
+                } else {
+                    throw new NoSuchValueException("There is no Opportunity that matches that id.");
+                }
             } else if (input[0].equals("close-won")) {
 //                if (!opportunityServiceProxy.existsById(Long.parseLong(input[1]))) {
 //                    throw new NoSuchValueException("There is no Opportunity that matches that id.");
 //                }
-                closeWon(input[1]);
+                List<String> idList = new ArrayList<>();
+                for (var opp : opportunityServiceProxy.getAll()) {
+                    idList.add(opp.getId().toString());
+                }
+                if (idList.contains(input[1])) {
+                    closeWon(input[1]);
+                } else {
+                    throw new NoSuchValueException("There is no Opportunity that matches that id.");
+                }
             } else {
 
                 switch (input[0] + input[1]) {
@@ -152,7 +188,7 @@ public class MainMenu implements Variables {
             }
         } catch (IllegalArgumentException | NullPointerException e) {
             System.out.println(colorError + "\nInvalid input" + reset);
-        } catch (NameContainsNumbersException | EmptyStringException | InvalidCountryException | EmailNotValidException | ExceedsMaxLength | PhoneNumberContainsLettersException | NoSuchValueException e) {
+        } catch (NoSuchValueException e) {
             System.out.println(colorError + e.getMessage() + reset);
         }
 
@@ -1000,13 +1036,13 @@ public class MainMenu implements Variables {
                 + "╠═══════════════════════════════════════════════════════════════════════════════════════════════════╣\n"
                 + String.format("%-1s %-104s %-1s", "║", colorTable + "WHAT WOULD YOU LIKE TO DO " + Login.getUsername().toUpperCase() + "?", colorMain + /*insertLine(68) +*/ "║\n")
                 + "╠═══════════════════════════════════════════════════════════════════════════════════════════════════╣\n"
-                + "║ 1.  To check Leads list " + colorHeadline + "- type: 'show leads'" + colorMain + "                                                      ║\n"
-                + "║ 2.  To check individual Lead's details " + colorHeadline + "- type: 'lookup lead ' + Lead Id" + colorMain + "                           ║\n"
-                + "║ 3.  To check Opportunity list " + colorHeadline + "- type: 'show opportunities'" + colorMain + "                                        ║\n"
-                + "║ 4.  To check individual Opportunity's details " + colorHeadline + "- type: 'lookup opportunity ' + Opportunity Id" + colorMain + "      ║\n"
-                + "║ 5.  To check Contact list " + colorHeadline + "- type: 'show contacts'" + colorMain + "                                                 ║\n"
-                + "║ 6.  To check Account list " + colorHeadline + "- type: 'show accounts'" + colorMain + "                                                 ║\n"
-                + "║ 7.  To check Sales Representatives list " + colorHeadline + "- type: 'show salesreps'" + colorMain + "                                  ║\n"
+                + "║ 1.  To check Sales Representatives list " + colorHeadline + "- type: 'show salesreps'" + colorMain + "                                  ║\n"
+                + "║ 2.  To check Leads list " + colorHeadline + "- type: 'show leads'" + colorMain + "                                                      ║\n"
+                + "║ 3.  To check individual Lead's details " + colorHeadline + "- type: 'lookup lead ' + Lead Id" + colorMain + "                           ║\n"
+                + "║ 4.  To check Opportunity list " + colorHeadline + "- type: 'show opportunities'" + colorMain + "                                        ║\n"
+                + "║ 5.  To check individual Opportunity's details " + colorHeadline + "- type: 'lookup opportunity ' + Opportunity Id" + colorMain + "      ║\n"
+                + "║ 6.  To check Contact list " + colorHeadline + "- type: 'show contacts'" + colorMain + "                                                 ║\n"
+                + "║ 7.  To check Account list " + colorHeadline + "- type: 'show accounts'" + colorMain + "                                                 ║\n"
                 + "║ 8.  To quit " + colorHeadline + "- type: 'quit'" + colorMain + "                                                                        ║\n"
                 + "╚═══════════════════════════════════════════════════════════════════════════════════════════════════╝\n" + reset);
 
