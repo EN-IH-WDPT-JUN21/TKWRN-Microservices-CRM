@@ -8,7 +8,7 @@
 <p align="center"><em>
                  
                   
-                  Voice over: Meanwhile, King Arthur and Bedevere, not more than a swallow's flight away, 
+                  Meanwhile, King Arthur and Bedevere, not more than a swallow's flight away, 
                   had discovered something. 
 
                   There in the console, beside this shrubbery, only slightly higher, lives the feared Menu, 
