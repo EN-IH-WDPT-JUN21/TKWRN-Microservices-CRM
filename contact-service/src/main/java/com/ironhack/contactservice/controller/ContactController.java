@@ -46,4 +46,9 @@ public class ContactController {
     public void updateContact(@PathVariable("id") long id, @RequestBody ContactDTO contactDTO) {
         contactService.update(id, contactDTO);
     }
+
+    @GetMapping("/get-by-account/{id}")
+    public List<Contact> getAllContactsByAccount(@PathVariable Long id){
+        return contactService.findAllByAccountId(id);
+    }
 }

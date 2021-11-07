@@ -1,5 +1,6 @@
 package com.ironhack.menuservice.proxy;
 
+import com.ironhack.menuservice.dto.SalesRepReceiptDTO;
 import com.ironhack.menuservice.dto.SalesRepRequestDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,7 @@ public interface SalesRepServiceProxy {
 
     @PostMapping("/api/v1/sales-reps/new")
     @ResponseStatus(HttpStatus.CREATED)
-    SalesRepRequestDTO addSalesRep(@RequestBody SalesRepRequestDTO salesRepDTO);
+    SalesRepReceiptDTO addSalesRep(@RequestBody SalesRepRequestDTO salesRepDTO);
 
     @GetMapping("/api/v1/sales-reps")
     @ResponseStatus(HttpStatus.OK)

@@ -24,7 +24,7 @@ public interface OpportunityServiceProxy {
     public OpportunityReceiptDTO createOpportunity(@RequestBody OpportunityRequestDTO opportunityDTO);
 
     @PutMapping("/api/v1/opps/update/{id}")
-    public OpportunityReceiptDTO updateOpportunity(@PathVariable Long id, @RequestBody OpportunityRequestDTO opportunityDTO);
+    public OpportunityReceiptDTO updateOpportunity(@PathVariable Long id, @RequestBody OpportunityReceiptDTO opportunityDTO);
 
     @PutMapping("/api/v1/opps/change-account/{id}")
     void updateAccount(@PathVariable(name = "id") Long id, @RequestBody @Valid OpportunityRequestDTO opportunityDTO);

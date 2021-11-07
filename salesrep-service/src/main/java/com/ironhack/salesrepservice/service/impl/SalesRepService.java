@@ -9,6 +9,7 @@ import com.ironhack.salesrepservice.proxy.OpportunityServiceProxy;
 import com.ironhack.salesrepservice.proxy.ReportServiceProxy;
 import com.ironhack.salesrepservice.repository.SalesRepRepository;
 import com.ironhack.salesrepservice.service.interfaces.ISalesRepService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,25 +20,30 @@ import java.util.List;
 @Service
 public class SalesRepService implements ISalesRepService {
 
+    @Autowired
     SalesRepRepository salesRepRepository;
+    @Autowired
     LeadServiceProxy leadServiceProxy;
+    @Autowired
     OpportunityServiceProxy opportunityServiceProxy;
+    @Autowired
     ReportServiceProxy reportServiceProxy;
 
-    public SalesRepService(SalesRepRepository salesRepRepository, LeadServiceProxy leadServiceProxy,
-                           OpportunityServiceProxy opportunityServiceProxy, ReportServiceProxy reportServiceProxy) {
-        this.salesRepRepository = salesRepRepository;
-        this.leadServiceProxy = leadServiceProxy;
-        this.opportunityServiceProxy = opportunityServiceProxy;
-        this.reportServiceProxy = reportServiceProxy;
-    }
+//    public SalesRepService(SalesRepRepository salesRepRepository, LeadServiceProxy leadServiceProxy,
+//                           OpportunityServiceProxy opportunityServiceProxy, ReportServiceProxy reportServiceProxy) {
+//        this.salesRepRepository = salesRepRepository;
+//        this.leadServiceProxy = leadServiceProxy;
+//        this.opportunityServiceProxy = opportunityServiceProxy;
+//        this.reportServiceProxy = reportServiceProxy;
+//    }
 
 
-    public SalesRepDTO addSalesRep(SalesRepDTO salesRepDTO) {
+    public SalesRep addSalesRep(SalesRepDTO salesRepDTO) {
         SalesRep salesRep = convertDTOToSalesRep(salesRepDTO);
         salesRepRepository.save(salesRep);
         reportServiceProxy.addOrUpdateSalesRep(salesRep);
-        return convertSalesRepToDTO(salesRep);
+        convertSalesRepToDTO(salesRep);
+        return salesRep;
     }
 
     public SalesRepDTO findById(Long id) {

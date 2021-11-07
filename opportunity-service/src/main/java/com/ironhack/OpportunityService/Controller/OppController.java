@@ -35,7 +35,7 @@ public class OppController {
     }
 
     @PostMapping("/new")
-    public OpportunityDTO createOpportunity(@RequestBody OpportunityDTO opportunityDTO){
+    public Opportunity createOpportunity(@RequestBody OpportunityDTO opportunityDTO){
         return opportunityService.createOpp(opportunityDTO);
     }
 

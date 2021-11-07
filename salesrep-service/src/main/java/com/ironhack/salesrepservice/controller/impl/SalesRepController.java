@@ -7,10 +7,8 @@ import com.ironhack.salesrepservice.repository.SalesRepRepository;
 import com.ironhack.salesrepservice.service.interfaces.ISalesRepService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/sales-reps")
@@ -27,7 +25,7 @@ public class SalesRepController implements ISalesRepController {
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public SalesRepDTO addSalesRep(@RequestBody SalesRepDTO salesRepDTO) {
+    public SalesRep addSalesRep(@RequestBody SalesRepDTO salesRepDTO) {
         return salesRepService.addSalesRep(salesRepDTO);
     }
 
