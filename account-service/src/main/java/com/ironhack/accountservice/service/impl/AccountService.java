@@ -114,14 +114,14 @@ public class AccountService implements IAccountService {
     }
 
     // Method called to create a new account
-    @Retry(name = "account-api", fallbackMethod = "fallbackAccountDTO")
+    //@Retry(name = "account-api", fallbackMethod = "fallbackAccountDTO")
     public AccountReceiptDTO createAccount(AccountRequestDTO accountRequestDTO) throws ExceedsMaxLength {
         List<OpportunityReceiptDTO> opportunityReceiptDTOS = new ArrayList<>();
         List<ContactReceiptDTO> contactReceiptDTOS= new ArrayList<>();
         OpportunityReceiptDTO opportunityDTO;
         ContactReceiptDTO contactReceiptDTO;
         try{
-            opportunityDTO= opportunityProxy.getById(accountRequestDTO.getOpportunityId());
+            opportunityDTO = opportunityProxy.getById(accountRequestDTO.getOpportunityId());
             opportunityReceiptDTOS.add(opportunityDTO);
         }catch(Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no opportunity with this id");

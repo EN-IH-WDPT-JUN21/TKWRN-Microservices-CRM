@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.stereotype.Component;
 
+import javax.ws.rs.HEAD;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -135,7 +136,8 @@ public class MainMenu implements Variables {
                     idList.add(lead.getId().toString());
                 }
                 if (idList.contains(input[1])) {
-                    convertLead(input[1]);
+                    createAccount(convertLead(input[1]));
+
                 } else {
                     throw new NoSuchValueException("There is no Lead that matches that id.");
                 }
@@ -326,7 +328,7 @@ public class MainMenu implements Variables {
     }
 
     // Method to convert Lead to Opportunity
-    public OpportunityRequestDTO convertLead(String id) throws NullPointerException {
+    public OpportunityReceiptDTO convertLead(String id) throws NullPointerException {
 
         LeadRequestDTO leadRequestDTO = null;
         try {
@@ -346,7 +348,7 @@ public class MainMenu implements Variables {
             switch (scanner.nextLine().trim().toLowerCase(Locale.ROOT)) {
                 case "y" -> {
                     OpportunityRequestDTO newOpp = new OpportunityRequestDTO();
-                    opportunityServiceProxy.createOpportunity(newOpp);
+                    //opportunityServiceProxy.createOpportunity(newOpp);
 
                     valid = false;
 
@@ -382,8 +384,18 @@ public class MainMenu implements Variables {
 
                     LeadRequestDTO newContactRequestDTO = new LeadRequestDTO(leadRequestDTO.getName().toUpperCase(), leadRequestDTO.getPhoneNumber().toUpperCase(), leadRequestDTO.getEmail().toUpperCase(), leadRequestDTO.getCompanyName().toUpperCase(), leadRequestDTO.getSalesId()); // Converts lead into contact
                     ContactReceiptDTO contactReceipt = contactServiceProxy.createContact(newContactRequestDTO);
-                    newOpp.setDecisionMakerId(newContactRequestDTO.getId()); // Assigns contact as the decisionMaker
+                    newOpp.setDecisionMakerId(contactReceipt.getId()); // Assigns contact as the decisionMaker
                     newOpp.setSalesRepId(leadRequestDTO.getSalesId());
+                        /*List<String> companyNameList = new ArrayList<>();
+                        for (AccountReceiptDTO account : accountServiceProxy.getAccounts()) {
+                            companyNameList.add(account.getContactList().get(0).getCompanyName());
+
+                            if (account.getContactList() != null) {
+                                if (account.getContactList().get(0).getCompanyName().equals(contactReceipt.getCompanyName().toUpperCase())) {
+                                    newOpp.setAccountId(account.getId());
+                                }
+                            }
+                        }*/
                     OpportunityReceiptDTO oppReciept = opportunityServiceProxy.createOpportunity(newOpp);
                     leadServiceProxy.delete(leadRequestDTO.getId(), leadRequestDTO);
                     System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Opportunity created" + colorMain + " ════════════╦═══════════════════╗" + reset);
@@ -439,7 +451,7 @@ public class MainMenu implements Variables {
                     System.out.println();
                     System.out.println(colorInput + "Press Enter to continue..." + reset);
                     scanner.nextLine();
-                    return newOpp;
+                    return oppReciept;
                 }
                 case "n" -> OS();
                 default -> throw new IllegalArgumentException(colorError + "Invalid input - please start again" + reset);
@@ -453,117 +465,171 @@ public class MainMenu implements Variables {
     }
 
     // Method called to create a new account
-    public AccountReceiptDTO createAccount(OpportunityRequestDTO opportunityRequestDTO) {
-        System.out.println(colorInput + "Would you like to create a new Account?" + colorTable + " y / n" + reset);
-        Scanner scanner = new Scanner(System.in);
-        try {
-            switch (scanner.nextLine().trim().toLowerCase(Locale.ROOT)) {
-                case "y" -> {
-                    //AccountRequestDTO newAccountRequestDTO = new AccountRequestDTO(opportunityRequestDTO.getDecisionMakerId(), opportunityRequestDTO);
-                    AccountRequestDTO newAccountRequestDTO = new AccountRequestDTO(opportunityRequestDTO);
-            
-                    valid = false;
+    public AccountReceiptDTO createAccount(OpportunityReceiptDTO opportunityRequestDTO) {
+        /*Long id = opportunityRequestDTO.getDecisionMakerId();
+        String companyName = contactServiceProxy.getContactById(id).getCompanyName();
+        for (var account : accountServiceProxy.getAccounts()) {
+            if (account.)
+        }
+        List<String> companyNameList = new ArrayList<>();
+        for (var contact : contactServiceProxy.getContacts()) {
 
-                        // checks if restrictions for Industry are met
-                        while (!valid) {
-                            System.out.println(colorInput + "\nPlease input the company industry: \n" +
-                                    colorTable + "PRODUCE, ECOMMERCE, MANUFACTURING, MEDICAL OR OTHER" + reset);
-                            try {
-                                newAccountRequestDTO.setIndustry(Industry.getIndustry(scanner.nextLine().trim().toUpperCase(Locale.ROOT))); // ENUM Selection
-                                valid = true;
-                            } catch (EmptyStringException | InvalidEnumException e) {
-                                System.out.println(colorError + e.getMessage());
-                            }
-                        }
+            companyNameList.add(contact.getCompanyName());
+        }
+        if (companyNameList.contains(companyName)) {
+            opportunityRequestDTO.setAccountId(companyName);
+            opportunityServiceProxy.updateOpportunity(opportunityRequestDTO.getId(), )
+        }*/
+        if (opportunityRequestDTO.getAccountId() != null) {
+            AccountReceiptDTO accountReceiptDTO = accountServiceProxy.findAccountById(opportunityRequestDTO.getAccountId());
+            System.out.println(colorMain + "\n╔══════════╦═════ " + colorMainBold + "New Account Created"  + colorMain + " ════════════╦═════════════════════════╦═════════════════════════╦═══════════════════════════╗" + reset);
+            System.out.printf("%-1s %-15s %-1s %-25s %-1s %-22s %-1s %-30s %-1s %-30s %-1s %-32s %-1s\n",
+                    colorMain + "║",
+                    colorHeadlineBold + "ID",
+                    colorMain + "║",
+                    colorHeadlineBold + "Industry",
+                    colorMain + "║",
+                    colorHeadlineBold + "Employee Count",
+                    colorMain + "║",
+                    colorHeadlineBold + "City",
+                    colorMain + "║",
+                    colorHeadlineBold + "Country",
+                    colorMain + "║",
+                    colorHeadlineBold + "Company Name",
+                    colorMain + "║\n" +
+                            colorMain + "╠══════════╬════════════════════╬═════════════════╬═════════════════════════╬═════════════════════════╬═══════════════════════════╣" + reset);
+            String companyInfo = "";
+            if (accountReceiptDTO.getOpportunityList()== null){
+                companyInfo = "No Company associated with this Account";
+            } else {
+                companyInfo = contactServiceProxy.getContactById(accountReceiptDTO.getOpportunityList().get(0).getDecisionMakerId()).getCompanyName();
+            }
+            System.out.printf("%-1s %-15s %-1s %-25s %-1s %-22s %-1s %-30s %-1s %-30s %-1s %-32s %-1s\n",
+                    colorMain + "║",
+                    colorTable + accountReceiptDTO.getId(),
+                    colorMain + "║",
+                    colorTable + accountReceiptDTO.getIndustry(),
+                    colorMain + "║",
+                    colorTable + accountReceiptDTO.getEmployeeCount(),
+                    colorMain + "║",
+                    colorTable + accountReceiptDTO.getCity(),
+                    colorMain + "║",
+                    colorTable + accountReceiptDTO.getCountry(),
+                    colorMain + "║",
+                    colorTable + companyInfo,
+                    colorMain + "║" + reset);
+        }
+        else {
+            System.out.println(colorInput + "Would you like to create a new Account?" + colorTable + " y / n" + reset);
+            Scanner scanner = new Scanner(System.in);
+            try {
+                AccountRequestDTO newAccountRequestDTO = new AccountRequestDTO(opportunityRequestDTO);
 
-                        valid = false;
+                valid = false;
 
-                        // checks if restrictions for Employee count are met
-                        while (!valid) {
-                            System.out.println(colorInput + "\nPlease input the employee count" + colorTable + colorInput + ":  " + reset); //**Needs amending to display name in contact list
-                            try {
-                                newAccountRequestDTO.setEmployeeCount(Integer.parseInt(scanner.nextLine().trim()));
-                                valid = true;
-                            } catch (NumberFormatException e) {
-                                System.out.println(colorError + "You need to input a reasonable number. Please, try again.");
-                            } catch (IllegalArgumentException e) {
-                                System.out.println(colorError + e.getMessage());
-                            }
-                        }
-
-                        valid = false;
-
-                        // checks if restrictions for City name are met
-                        while (!valid) {
-                            System.out.println(colorInput + "\nPlease input the city" + colorTable + colorInput + ":  " + reset);
-                            try {
-                                newAccountRequestDTO.setCity(scanner.nextLine().trim().toUpperCase(Locale.ROOT));
-                                valid = true;
-                            } catch (Exception e) {
-                                System.out.println(colorError + e.getMessage());
-                            }
-                        }
-
-                        valid = false;
-
-                        // checks if Country is in country array
-                        while (!valid) {
-                            System.out.println(colorInput + "\nPlease input the Country" + colorTable + ":  " + reset);
-                            try {
-                                newAccountRequestDTO.setCountry(scanner.nextLine().trim().toUpperCase());
-                                valid = true;
-                            } catch (Exception e) {
-                                System.out.println(colorError + e.getMessage());
-                            }
-                        }
-
-                        valid = false;
-
-                        // Assigns the Account to the contact(decision maker) of the opportunity
-                        AccountReceiptDTO accountReceiptDTO = accountServiceProxy.createAccount(newAccountRequestDTO);
-                        opportunityRequestDTO.setAccountId(accountReceiptDTO.getId());
-                        //contactServiceProxy.updateContact();
-                    System.out.println(colorMain + "\n╔══════════╦═════ " + colorMainBold + "New Account Created"  + colorMain + " ════════════╦═════════════════════════╦═════════════════════════╦═══════════════════════════╗" + reset);
-                    System.out.printf("%-1s %-15s %-1s %-25s %-1s %-22s %-1s %-30s %-1s %-30s %-1s %-32s %-1s\n",
-                            colorMain + "║",
-                            colorHeadlineBold + "ID",
-                            colorMain + "║",
-                            colorHeadlineBold + "Industry",
-                            colorMain + "║",
-                            colorHeadlineBold + "Employee Count",
-                            colorMain + "║",
-                            colorHeadlineBold + "City",
-                            colorMain + "║",
-                            colorHeadlineBold + "Country",
-                            colorMain + "║",
-                            colorHeadlineBold + "Company Name",
-                            colorMain + "║\n" +
-                                    colorMain + "╠══════════╬════════════════════╬═════════════════╬═════════════════════════╬═════════════════════════╬═══════════════════════════╣" + reset);
-                        String companyInfo = "";
-                        if (accountReceiptDTO.getOpportunityList()== null){
-                            companyInfo = "No Company associated with this Account";
-                        } else {
-                            companyInfo = contactServiceProxy.getContactById(accountReceiptDTO.getOpportunityList().get(0).getDecisionMakerId()).getCompanyName();
-                        }
-                        System.out.printf("%-1s %-15s %-1s %-25s %-1s %-22s %-1s %-30s %-1s %-30s %-1s %-32s %-1s\n",
-                                colorMain + "║",
-                                colorTable + accountReceiptDTO.getId(),
-                                colorMain + "║",
-                                colorTable + accountReceiptDTO.getIndustry(),
-                                colorMain + "║",
-                                colorTable + accountReceiptDTO.getEmployeeCount(),
-                                colorMain + "║",
-                                colorTable + accountReceiptDTO.getCity(),
-                                colorMain + "║",
-                                colorTable + accountReceiptDTO.getCountry(),
-                                colorMain + "║",
-                                colorTable + companyInfo,
-                                colorMain + "║" + reset);
-
-
-                        return accountReceiptDTO;
+                // checks if restrictions for Industry are met
+                while (!valid) {
+                    System.out.println(colorInput + "\nPlease input the company industry: \n" +
+                            colorTable + "PRODUCE, ECOMMERCE, MANUFACTURING, MEDICAL OR OTHER" + reset);
+                    try {
+                        newAccountRequestDTO.setIndustry(Industry.getIndustry(scanner.nextLine().trim().toUpperCase(Locale.ROOT))); // ENUM Selection
+                        valid = true;
+                    } catch (EmptyStringException | InvalidEnumException e) {
+                        System.out.println(colorError + e.getMessage());
+                    }
                 }
-                case "n" -> {
+
+                valid = false;
+
+                // checks if restrictions for Employee count are met
+                while (!valid) {
+                    System.out.println(colorInput + "\nPlease input the employee count" + colorTable + colorInput + ":  " + reset); //**Needs amending to display name in contact list
+                    try {
+                        newAccountRequestDTO.setEmployeeCount(Integer.parseInt(scanner.nextLine().trim()));
+                        valid = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println(colorError + "You need to input a reasonable number. Please, try again.");
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(colorError + e.getMessage());
+                    }
+                }
+
+                valid = false;
+
+                // checks if restrictions for City name are met
+                while (!valid) {
+                    System.out.println(colorInput + "\nPlease input the city" + colorTable + colorInput + ":  " + reset);
+                    try {
+                        newAccountRequestDTO.setCity(scanner.nextLine().trim().toUpperCase(Locale.ROOT));
+                        valid = true;
+                    } catch (Exception e) {
+                        System.out.println(colorError + e.getMessage());
+                    }
+                }
+
+                valid = false;
+
+                // checks if Country is in country array
+                while (!valid) {
+                    System.out.println(colorInput + "\nPlease input the Country" + colorTable + ":  " + reset);
+                    try {
+                        newAccountRequestDTO.setCountry(scanner.nextLine().trim().toUpperCase());
+                        valid = true;
+                    } catch (Exception e) {
+                        System.out.println(colorError + e.getMessage());
+                    }
+                }
+
+                valid = false;
+
+                // Assigns the Account to the contact(decision maker) of the opportunity
+                AccountReceiptDTO accountReceiptDTO = accountServiceProxy.createAccount(newAccountRequestDTO);
+                opportunityRequestDTO.setAccountId(accountReceiptDTO.getId());
+                //contactServiceProxy.updateContact();
+                //System.out.println(newAccountRequestDTO.ge);
+                System.out.println(colorMain + "\n╔══════════╦═════ " + colorMainBold + "New Account Created" + colorMain + " ════════════╦═════════════════════════╦═════════════════════════╦═══════════════════════════╗" + reset);
+                System.out.printf("%-1s %-15s %-1s %-25s %-1s %-22s %-1s %-30s %-1s %-30s %-1s %-32s %-1s\n",
+                        colorMain + "║",
+                        colorHeadlineBold + "ID",
+                        colorMain + "║",
+                        colorHeadlineBold + "Industry",
+                        colorMain + "║",
+                        colorHeadlineBold + "Employee Count",
+                        colorMain + "║",
+                        colorHeadlineBold + "City",
+                        colorMain + "║",
+                        colorHeadlineBold + "Country",
+                        colorMain + "║",
+                        colorHeadlineBold + "Company Name",
+                        colorMain + "║\n" +
+                                colorMain + "╠══════════╬════════════════════╬═════════════════╬═════════════════════════╬═════════════════════════╬═══════════════════════════╣" + reset);
+                String companyInfo = "";
+                if (accountReceiptDTO.getOpportunityList() == null) {
+                    companyInfo = "No Company associated with this Account";
+                } else {
+                    companyInfo = contactServiceProxy.getContactById(accountReceiptDTO.getOpportunityList().get(0).getDecisionMakerId()).getCompanyName();
+                }
+                System.out.printf("%-1s %-15s %-1s %-25s %-1s %-22s %-1s %-30s %-1s %-30s %-1s %-32s %-1s\n",
+                        colorMain + "║",
+                        colorTable + accountReceiptDTO.getId(),
+                        colorMain + "║",
+                        colorTable + accountReceiptDTO.getIndustry(),
+                        colorMain + "║",
+                        colorTable + accountReceiptDTO.getEmployeeCount(),
+                        colorMain + "║",
+                        colorTable + accountReceiptDTO.getCity(),
+                        colorMain + "║",
+                        colorTable + accountReceiptDTO.getCountry(),
+                        colorMain + "║",
+                        colorTable + companyInfo,
+                        colorMain + "║" + reset);
+
+
+                return accountReceiptDTO;
+            } catch (Exception e) {
+                System.out.println(colorError + "\nInvalid input - please start again\n");
+                createAccount(opportunityRequestDTO);
+                /*case "n" -> {
                     valid = false;
                     if(accountServiceProxy.getAccounts().isEmpty()){
                         System.out.println(colorError + "There are no Accounts. Please create a new Account");
@@ -572,22 +638,25 @@ public class MainMenu implements Variables {
                     while (!valid) {
                         System.out.println(colorInput + "Please, input the account number you wish to link the " + colorTable + "Opportunity " + opportunityRequestDTO.getId() + colorInput + " to: " + reset);
                         try {
-                            opportunityRequestDTO.setAccountId(Long.parseLong(scanner.nextLine().trim()));
-                            OpportunityReceiptDTO oppReceipt = opportunityServiceProxy.createOpportunity(opportunityRequestDTO);
+                            var input = Long.parseLong(scanner.nextLine().trim());
+                            var accountId = accountServiceProxy.findAccountById(input).getId();
+
+                            opportunityRequestDTO.setAccountId(accountId);
+                            opportunityServiceProxy.updateOpportunity(opportunityRequestDTO.getId(), opportunityRequestDTO);
+                            System.out.println(opportunityRequestDTO.getId());
+                            //OpportunityReceiptDTO opportunityReceiptDTO = new OpportunityReceiptDTO(opportunityRequestDTO);
+                            //opportunityServiceProxy.updateOpportunity(opportunityRequestDTO.getId(), opportunityReceiptDTO);
                             //contactServiceProxy.save(opportunityRequestDTO.getDecisionMaker());
                             valid = true;
-                            System.out.println(colorInput + "The Opportunity has been linked to " + colorTable + contactServiceProxy.getContactById(oppReceipt.getDecisionMakerId()).getCompanyName() + reset);
-                            return accountServiceProxy.findAccountById(oppReceipt.getAccountId());
+                            System.out.println(colorInput + "The Opportunity has been linked to " + colorTable + contactServiceProxy.getContactById(opportunityRequestDTO.getDecisionMakerId()).getCompanyName() + reset);
+                            return null;
                         } catch (Exception e) {
                             System.out.println(colorError + "There is no account with this number. Please, try again" + reset);
                         }
                     }
                 }
-                default -> throw new IllegalArgumentException(colorError + "Invalid input - please start again" + reset);
+                default -> throw new IllegalArgumentException(colorError + "Invalid input - please start again" + reset);*/
             }
-        } catch (Exception e) {
-            System.out.println(colorError + "\nInvalid input - please start again\n");
-            createAccount(opportunityRequestDTO);
         }
         return null;
     }
