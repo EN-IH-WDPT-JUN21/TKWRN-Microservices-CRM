@@ -401,16 +401,15 @@ public class MainMenu implements Variables {
                     ContactReceiptDTO contactReceipt = contactServiceProxy.createContact(newContactRequestDTO);
                     newOpp.setDecisionMakerId(contactReceipt.getId()); // Assigns contact as the decisionMaker
                     newOpp.setSalesRepId(leadRequestDTO.getSalesId());
-                        /*List<String> companyNameList = new ArrayList<>();
+                        List<String> companyNameList = new ArrayList<>();
                         for (AccountReceiptDTO account : accountServiceProxy.getAccounts()) {
-                            companyNameList.add(account.getContactList().get(0).getCompanyName());
-
                             if (account.getContactList() != null) {
                                 if (account.getContactList().get(0).getCompanyName().equals(contactReceipt.getCompanyName().toUpperCase())) {
                                     newOpp.setAccountId(account.getId());
+                                    System.out.println(account.getId());
                                 }
                             }
-                        }*/
+                        }
                     OpportunityReceiptDTO oppReciept = opportunityServiceProxy.createOpportunity(newOpp);
                     leadServiceProxy.delete(leadRequestDTO.getId(), leadRequestDTO);
                     System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Opportunity created" + colorMain + " ════════════╦═══════════════════╗" + reset);
@@ -481,20 +480,6 @@ public class MainMenu implements Variables {
 
     // Method called to create a new account
     public AccountReceiptDTO createAccount(OpportunityReceiptDTO opportunityRequestDTO) {
-        /*Long id = opportunityRequestDTO.getDecisionMakerId();
-        String companyName = contactServiceProxy.getContactById(id).getCompanyName();
-        for (var account : accountServiceProxy.getAccounts()) {
-            if (account.)
-        }
-        List<String> companyNameList = new ArrayList<>();
-        for (var contact : contactServiceProxy.getContacts()) {
-
-            companyNameList.add(contact.getCompanyName());
-        }
-        if (companyNameList.contains(companyName)) {
-            opportunityRequestDTO.setAccountId(companyName);
-            opportunityServiceProxy.updateOpportunity(opportunityRequestDTO.getId(), )
-        }*/
         if (opportunityRequestDTO.getAccountId() != null) {
             AccountReceiptDTO accountReceiptDTO = accountServiceProxy.findAccountById(opportunityRequestDTO.getAccountId());
             System.out.println(colorMain + "\n╔══════════╦═════ " + colorMainBold + "New Account Created"  + colorMain + " ════════════╦═════════════════════════╦═════════════════════════╦═══════════════════════════╗" + reset);
@@ -535,7 +520,6 @@ public class MainMenu implements Variables {
                     colorMain + "║" + reset);
         }
         else {
-            System.out.println(colorInput + "Would you like to create a new Account?" + colorTable + " y / n" + reset);
             Scanner scanner = new Scanner(System.in);
             try {
                 AccountRequestDTO newAccountRequestDTO = new AccountRequestDTO(opportunityRequestDTO);
