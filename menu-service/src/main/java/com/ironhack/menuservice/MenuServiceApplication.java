@@ -1,5 +1,6 @@
 package com.ironhack.menuservice;
 
+import com.ironhack.menuservice.dao.Login;
 import com.ironhack.menuservice.exceptions.*;
 import com.ironhack.menuservice.menus.MainMenu;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ public class MenuServiceApplication implements CommandLineRunner{
 
 	@Autowired
     MainMenu menu;
+
+	@Autowired
+	Login login;
+
+
 
 	public static void main(String[] args) {
 		System.setProperty("java.awt.headless", "false");

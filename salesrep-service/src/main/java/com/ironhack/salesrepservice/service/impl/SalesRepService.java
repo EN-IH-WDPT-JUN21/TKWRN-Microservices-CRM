@@ -36,7 +36,7 @@ public class SalesRepService implements ISalesRepService {
     public SalesRepDTO addSalesRep(SalesRepDTO salesRepDTO) {
         SalesRep salesRep = convertDTOToSalesRep(salesRepDTO);
         salesRepRepository.save(salesRep);
-        reportServiceProxy.addOrUpdateSalesRep(salesRepDTO);
+        reportServiceProxy.addOrUpdateSalesRep(salesRep);
         return convertSalesRepToDTO(salesRep);
     }
 
