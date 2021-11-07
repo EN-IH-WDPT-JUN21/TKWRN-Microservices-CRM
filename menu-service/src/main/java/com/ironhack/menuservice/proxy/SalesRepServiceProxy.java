@@ -27,7 +27,7 @@ public interface SalesRepServiceProxy {
     @ResponseStatus(HttpStatus.OK)
     SalesRepRequestDTO updateSalesRepName(@PathVariable Long id, @RequestParam String name);
 
-    @PostMapping("/api/v1/sales-reps/delete/{id}")
+    @DeleteMapping("/api/v1/sales-reps/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
     void deleteSalesRep(@PathVariable Long id);
 

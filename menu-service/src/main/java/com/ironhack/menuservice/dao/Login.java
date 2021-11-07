@@ -86,7 +86,7 @@ public class Login implements ActionListener {
         hint.setForeground(Color.red);
         hint.setBounds(20, 190, 380, 25);
         panel.add(hint);
-        
+
         esterEgg = new JLabel("--> Knights Who Say Ni <--");
         esterEgg.grabFocus();
         esterEgg.setOpaque(false);

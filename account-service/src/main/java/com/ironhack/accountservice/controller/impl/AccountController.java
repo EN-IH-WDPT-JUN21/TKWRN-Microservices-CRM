@@ -29,7 +29,6 @@ public class AccountController implements IAccountController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<AccountReceiptDTO> getAccounts(){
-
         return accountService.getAccountsWithLists();
     }
 

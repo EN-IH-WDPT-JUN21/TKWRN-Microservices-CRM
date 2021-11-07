@@ -30,7 +30,7 @@ public interface LeadServiceProxy {
                                       @RequestParam int quantity);
     
     @DeleteMapping("/api/v1/leads/delete/{id}")
-    public void delete(@PathVariable(value = "id") long id,
+    void delete(@PathVariable(value = "id") long id,
             @RequestBody LeadRequestDTO leadRequestDTO);
 
 }
