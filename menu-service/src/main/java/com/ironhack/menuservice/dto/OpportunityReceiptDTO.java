@@ -15,12 +15,11 @@ import javax.persistence.Enumerated;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OpportunityReceiptDTO {
-    private Long id;
 
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     private Status status;
-
 
     private Truck product;
 
@@ -36,6 +35,10 @@ public class OpportunityReceiptDTO {
 //    private Account account;
 
     private Long salesRepId;
+
+    public OpportunityReceiptDTO(OpportunityReceiptDTO opportunityRequestDTO) {
+        this.accountId = opportunityRequestDTO.getAccountId();
+    }
 
 
 //    private SalesRepDTO salesRepDTO;

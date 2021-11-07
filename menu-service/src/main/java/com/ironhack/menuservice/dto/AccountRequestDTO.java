@@ -37,7 +37,7 @@ public class AccountRequestDTO {
         this.country = country;
     }
 
-    public AccountRequestDTO(OpportunityRequestDTO opportunityRequestDTO) {
+    public AccountRequestDTO(OpportunityReceiptDTO opportunityRequestDTO) {
          this.opportunityId = opportunityRequestDTO.getId();
     }
 

@@ -41,4 +41,13 @@ public class OpportunityRequestDTO {
         this.quantity = quantity;
         this.decisionMakerId = decisionMakerId;
     }
+/*
+    public OpportunityRequestDTO(OpportunityRequestDTO opportunityRequestDTO) {
+        this.id = opportunityRequestDTO.getId();
+        this.status = opportunityRequestDTO.getStatus();
+        this.product = opportunityRequestDTO.getProduct();
+        this.quantity = opportunityRequestDTO.getQuantity();
+        this.decisionMakerId = opportunityRequestDTO.getDecisionMakerId();
+        this.salesRepId = opportunityRequestDTO.getSalesRepId();
+    }*/
 }
