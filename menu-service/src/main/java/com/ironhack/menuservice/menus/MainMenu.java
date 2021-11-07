@@ -135,7 +135,7 @@ public class MainMenu implements Variables {
                     idList.add(lead.getId().toString());
                 }
                 if (idList.contains(input[1])) {
-                    convertLead(input[1]);
+                    createAccount(convertLead(input[1]));
                 } else {
                     throw new NoSuchValueException("There is no Lead that matches that id.");
                 }
