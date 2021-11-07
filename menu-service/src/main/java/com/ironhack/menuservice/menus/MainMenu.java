@@ -616,7 +616,7 @@ public class MainMenu implements Variables {
 
     public void showOpportunities() {
         var allOpps = opportunityServiceProxy.getAll();
-        System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "Total Number Of Opportunities: " + allOpps.size() + colorMain + " ═════╦══════════════════════════════════════════╗" + reset);
+        System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "Total Number Of Opportunities: " + allOpps.size() + colorMain + " ══════╦══════════════════════════════════════════╗" + reset);
         System.out.printf("%-1s %-17s %-1s %-24s %-1s %-17s %-1s %-17s %-1s %-47s %-1s\n",
                 colorMain + "║",
                 colorHeadlineBold + "ID",
@@ -815,7 +815,7 @@ public class MainMenu implements Variables {
             switch (scanner.nextLine().trim().toLowerCase(Locale.ROOT)) {
                 case "y" -> {
                     opp.setStatus(Status.CLOSED_LOST);
-                    opportunityServiceProxy.createOpportunity(new OpportunityRequestDTO(opp)); //does it override or creates a new instance?
+                    opportunityServiceProxy.updateOpportunity(opp.getId(), opp);
                     System.out.println(colorMain + "\n═════════════ " + colorMainBold + "Status Changed!" + colorMain + " ═════════════" + reset);
                 }
                 case "n" -> OS();
@@ -860,7 +860,7 @@ public class MainMenu implements Variables {
             switch (scanner.nextLine().trim().toLowerCase(Locale.ROOT)) {
                 case "y" -> {
                     opp.setStatus(Status.CLOSED_WON);
-                    opportunityServiceProxy.createOpportunity(new OpportunityRequestDTO(opp));
+                    opportunityServiceProxy.updateOpportunity(opp.getId(), opp);
                     System.out.println(colorMain + "\n═════════════ " + colorMainBold + "Status Changed!" + colorMain + " ═════════════" + reset);
                 }
                 case "n" -> OS();
