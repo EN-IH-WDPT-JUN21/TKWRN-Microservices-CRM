@@ -38,7 +38,7 @@ public class Opportunity {
 
     public Opportunity(Status status, Truck product, Integer quantity,
                        Long decisionMakerId, Long accountId, Long salesRepId) {
-        this.status = status;
+        this.status = Status.OPEN;
         this.product = product;
         this.quantity = quantity;
         this.decisionMakerId = decisionMakerId;

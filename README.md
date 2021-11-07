@@ -3,10 +3,20 @@
    <img src="https://github.com/EN-IH-WDPT-JUN21/TKWRN-Microservices-CRM/blob/main/nullLogo.png?raw=true">
 </p>
 
---------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<p align="center"><em>Voice over:  Meanwhile, King Arthur and Bedevere, not more than a swallow's
+             flight away, had discovered something. 
+             There in the console, beside this shrubbery, only slightly higher, 
+   lives the feared menu, devourer of minds and DTOs....</em>
+</p>
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 #### Refactoring monolith CRM Spring project into microservices structure.
 
-Original project: https://github.com/EN-IH-WDPT-JUN21/Stolen-Name-LBL-Trucking_Company_Homework-3
+[Original project](https://github.com/EN-IH-WDPT-JUN21/Stolen-Name-LBL-Trucking_Company_Homework-3)
+
 
 ## Services
 
@@ -142,16 +152,22 @@ git clone https://github.com/EN-IH-WDPT-JUN21/TKWRN-Microservices-CRM
 ```
 
 4. Gateway security credentials: 
-   - runs OS menu for full access
+   - runs OS menu with full access
    ```
    name = Admin
    password = admin
    ```
-   - OSGuest menu for readonly access
+   - runs OS menu with superuser acces
+   ```
+   name = Knights
+   password = ni
+   ```
+   - runs OSGuest menu with readonly access
    ```
    name = Guest
    password = guest
    ```
+  
 
 ### Service ports
 | Port | Service

@@ -85,9 +85,7 @@ public class MainMenu implements Variables {
                 + "║ 11. To check Account list " + colorHeadline + "- type: 'show accounts'" + colorMain + "                                                 ║\n"
                 + "║ 12. To check Sales Representatives list " + colorHeadline + "- type: 'show salesreps'" + colorMain + "                                  ║\n"
                 + "║ 13. To check available Reports " + colorHeadline + "- type: 'view reports'" + colorMain + "                                             ║\n"
-                + "║ 14. To populate Database " + colorHeadline + "- type: 'populate'" + colorMain + "                                                       ║\n"
-                + "║ 15. To clear Database " + colorHeadline + "- type: 'clear'" + colorMain + "                                                             ║\n"
-                + "║ 16. To quit " + colorHeadline + "- type: 'quit'" + colorMain + "                                                                        ║\n"
+                + "║ 14. To quit " + colorHeadline + "- type: 'quit'" + colorMain + "                                                                        ║\n"
                 + "╚═══════════════════════════════════════════════════════════════════════════════════════════════════╝\n" + reset);
 
         consoleFocusRunOnce();
@@ -176,13 +174,6 @@ public class MainMenu implements Variables {
             switch (scanner.nextLine().trim().toLowerCase(Locale.ROOT)) {
                 case "y" -> {
                     LeadRequestDTO newLeadRequestDTO = new LeadRequestDTO();
-                    /*int id = leadServiceProxy.getLeads().size() + 1;
-                    System.out.println(id);
-                    Long idLong = Long.parseLong(String.valueOf(id));
-                    System.out.println(idLong);
-                    newLeadRequestDTO.setId(idLong);
-                    System.out.println(newLeadRequestDTO.getId());*/
-                    leadServiceProxy.createLead(newLeadRequestDTO);
 
                     //checks if restrictions for Customer name are met
                     while (!valid) {
@@ -253,10 +244,37 @@ public class MainMenu implements Variables {
                         }
                     }
 
-                    //theLeads.put(newLead.getId(), newLead);
-                    System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Lead created" + colorMain + " ══════════════════════╦══════════════════════╦══════════════════════════════════════════╦═════════════════════════════════════════════╗" + reset);
-                    System.out.println(newLeadRequestDTO);
-                    leadServiceProxy.createLead(newLeadRequestDTO);
+                    LeadRequestDTO lead = leadServiceProxy.createLead(newLeadRequestDTO);
+                    Long leadId = lead.getId();
+
+                    System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Lead created" + colorMain + " ══════════════════════╦══════════════════════╦══════════════════════════════════════════╦═════════════════════════════════════════════╦════════════╗" + reset);
+                    System.out.printf("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s %-17s %-1s",
+                            colorMain + "║",
+                            colorHeadlineBold + "ID",
+                            colorMain + "║",
+                            colorHeadlineBold + "Name",
+                            colorMain + "║",
+                            colorHeadlineBold + "Phone Number",
+                            colorMain + "║",
+                            colorHeadlineBold + "Email Address",
+                            colorMain + "║",
+                            colorHeadlineBold + "Company name",
+                            colorMain + "║",
+                            colorHeadlineBold + "SalesRep",
+                            colorMain + "║\n" + colorMain + "╠════════════╬═════════════════════════════════════════════╬══════════════════════╬══════════════════════════════════════════╬═════════════════════════════════════════════╬════════════╣\n" + reset);
+                    System.out.printf("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s %-17s %-1s\n",
+                            colorMain + "║",
+                            colorTable + leadServiceProxy.getLeadById(leadId).getId(),
+                            colorMain + "║",
+                            colorTable + leadServiceProxy.getLeadById(leadId).getName(),
+                            colorMain + "║",
+                            colorTable + leadServiceProxy.getLeadById(leadId).getPhoneNumber(),
+                            colorMain + "║",
+                            colorTable + leadServiceProxy.getLeadById(leadId).getEmail(),
+                            colorMain + "║",
+                            colorTable + leadServiceProxy.getLeadById(leadId).getCompanyName(), colorMain + "║", colorTable + leadServiceProxy.getLeadById(leadId).getSalesId(),
+                            colorMain + "║" + reset);
+                    System.out.println();
                     return newLeadRequestDTO;
                 }
                 case "n" -> OS();
@@ -274,7 +292,13 @@ public class MainMenu implements Variables {
     // Method to convert Lead to Opportunity
     public OpportunityRequestDTO convertLead(String id) throws NullPointerException {
 
-        LeadRequestDTO leadRequestDTO = leadServiceProxy.getLeadById(Long.parseLong(id));
+        LeadRequestDTO leadRequestDTO = null;
+        try {
+                leadRequestDTO = leadServiceProxy.getLeadById(Long.parseLong(id));
+        } catch (Exception e) {
+            System.out.println(colorError + "\nLead with id: " + id + " doesn't exist" + reset);
+        }
+
         System.out.println(colorInput + "\nWould you like to convert " +
                 colorTable + leadRequestDTO.getName().toUpperCase() +
                 colorInput + " from " +
@@ -321,10 +345,10 @@ public class MainMenu implements Variables {
                     valid = false;
 
                     LeadRequestDTO newContactRequestDTO = new LeadRequestDTO(leadRequestDTO.getName().toUpperCase(), leadRequestDTO.getPhoneNumber().toUpperCase(), leadRequestDTO.getEmail().toUpperCase(), leadRequestDTO.getCompanyName().toUpperCase(), leadRequestDTO.getSalesId()); // Converts lead into contact
-                    contactServiceProxy.createContact(newContactRequestDTO);
+                    ContactReceiptDTO contactReceipt = contactServiceProxy.createContact(newContactRequestDTO);
                     newOpp.setDecisionMakerId(newContactRequestDTO.getId()); // Assigns contact as the decisionMaker
                     newOpp.setSalesRepId(leadRequestDTO.getSalesId());
-                    opportunityServiceProxy.createOpportunity(newOpp);
+                    OpportunityReceiptDTO oppReciept = opportunityServiceProxy.createOpportunity(newOpp);
                     leadServiceProxy.delete(leadRequestDTO.getId(), leadRequestDTO);
                     System.out.println(colorMain + "\n╔════════════╦═════ " + colorMainBold + "New Opportunity created" + colorMain + " ════════════╦═══════════════════╗" + reset);
                     System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
@@ -339,13 +363,13 @@ public class MainMenu implements Variables {
                             colorMain + "║\n" + colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣");
                             System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
                                     colorMain + "║",
-                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getId(),
+                                    colorTable + oppReciept.getId(),
                                     colorMain + "║",
-                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getStatus(),
+                                    colorTable + oppReciept.getStatus(),
                                     colorMain + "║",
-                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getProduct(),
+                                    colorTable + oppReciept.getProduct(),
                                     colorMain + "║",
-                                    colorTable + opportunityServiceProxy.getById(Long.parseLong(id)).getQuantity(),
+                                    colorTable + oppReciept.getQuantity(),
                                     colorMain + "║");
                     System.out.println();
                     System.out.println(colorInput + "Press Enter to continue..." + reset);
@@ -366,15 +390,15 @@ public class MainMenu implements Variables {
                                     colorMain + "╠════════════╬═════════════════════════════════════════════╬══════════════════════╬══════════════════════════════════════════╬═════════════════════════════════════════════╣" + reset));
                     System.out.printf(String.format("%-1s %-17s %-1s %-50s %-1s %-27s %-1s %-47s %-1s %-50s %-1s\n",
                             colorMain + "║",
-                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getId(),
+                            colorTable + contactReceipt.getId(),
                             colorMain + "║",
-                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getName(),
+                            colorTable + contactReceipt.getName(),
                             colorMain + "║",
-                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getPhoneNumber(),
+                            colorTable + contactReceipt.getPhoneNumber(),
                             colorMain + "║",
-                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getEmail(),
+                            colorTable + contactReceipt.getEmail(),
                             colorMain + "║",
-                            colorTable + contactServiceProxy.getContactById(Long.parseLong(id)).getCompanyName(),
+                            colorTable + contactReceipt.getCompanyName(),
                             colorMain + "║"));
                     System.out.println();
                     System.out.println(colorInput + "Press Enter to continue..." + reset);
@@ -463,8 +487,43 @@ public class MainMenu implements Variables {
                         AccountReceiptDTO accountReceiptDTO = accountServiceProxy.createAccount(newAccountRequestDTO);
                         opportunityRequestDTO.setAccountId(accountReceiptDTO.getId());
                         //contactServiceProxy.updateContact();
-                        //accountServiceProxy.save(newAccountRequestDTO);
-                        System.out.println(accountReceiptDTO);
+                    System.out.println(colorMain + "\n╔══════════╦═════ " + colorMainBold + "New Account Created"  + colorMain + " ════════════╦═════════════════════════╦═════════════════════════╦═══════════════════════════╗" + reset);
+                    System.out.printf("%-1s %-15s %-1s %-25s %-1s %-22s %-1s %-30s %-1s %-30s %-1s %-32s %-1s\n",
+                            colorMain + "║",
+                            colorHeadlineBold + "ID",
+                            colorMain + "║",
+                            colorHeadlineBold + "Industry",
+                            colorMain + "║",
+                            colorHeadlineBold + "Employee Count",
+                            colorMain + "║",
+                            colorHeadlineBold + "City",
+                            colorMain + "║",
+                            colorHeadlineBold + "Country",
+                            colorMain + "║",
+                            colorHeadlineBold + "Company Name",
+                            colorMain + "║\n" +
+                                    colorMain + "╠══════════╬════════════════════╬═════════════════╬═════════════════════════╬═════════════════════════╬═══════════════════════════╣" + reset);
+                        String companyInfo = "";
+                        if (accountReceiptDTO.getOpportunityList()== null){
+                            companyInfo = "No Company associated with this Account";
+                        } else {
+                            companyInfo = contactServiceProxy.getContactById(accountReceiptDTO.getOpportunityList().get(0).getDecisionMakerId()).getCompanyName();
+                        }
+                        System.out.printf("%-1s %-15s %-1s %-25s %-1s %-22s %-1s %-30s %-1s %-30s %-1s %-32s %-1s\n",
+                                colorMain + "║",
+                                colorTable + accountReceiptDTO.getId(),
+                                colorMain + "║",
+                                colorTable + accountReceiptDTO.getIndustry(),
+                                colorMain + "║",
+                                colorTable + accountReceiptDTO.getEmployeeCount(),
+                                colorMain + "║",
+                                colorTable + accountReceiptDTO.getCity(),
+                                colorMain + "║",
+                                colorTable + accountReceiptDTO.getCountry(),
+                                colorMain + "║",
+                                colorTable + companyInfo,
+                                colorMain + "║" + reset);
+
 
                         return accountReceiptDTO;
                 }
@@ -733,14 +792,23 @@ public class MainMenu implements Variables {
                 colorMain + "║",
                 colorHeadlineBold + "ID",
                 colorMain + "║",
-                colorHeadlineBold + "Status",
+                colorHeadlineBold + "Contract status",
                 colorMain + "║",
                 colorHeadlineBold + "Product",
                 colorMain + "║",
                 colorHeadlineBold + "Quantity",
                 colorMain + "║\n" +
-                        colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣");
-        System.out.println(opp);
+                        colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣" + reset);
+        System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
+                colorMain + "║",
+                colorHeadlineBold + opp.getId(),
+                colorMain + "║",
+                colorHeadlineBold + opp.getStatus(),
+                colorMain + "║",
+                colorHeadlineBold + opp.getProduct(),
+                colorMain + "║",
+                colorHeadlineBold + opp.getQuantity(),
+                colorMain + "║\n" + reset);
         System.out.println(colorInput + "Would you like to change the status of this opportunity to " + colorTable + "LOST?   y / n" + reset);
         Scanner scanner = new Scanner(System.in);
         try {
@@ -769,14 +837,23 @@ public class MainMenu implements Variables {
                 colorMain + "║",
                 colorHeadlineBold + "ID",
                 colorMain + "║",
-                colorHeadlineBold + "Status",
+                colorHeadlineBold + "Contract status",
                 colorMain + "║",
                 colorHeadlineBold + "Product",
                 colorMain + "║",
                 colorHeadlineBold + "Quantity",
                 colorMain + "║\n" +
-                        colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣");
-        System.out.println(opp);
+                        colorMain + "╠════════════╬══════════════════════╬═══════════════════╬═══════════════════╣" + reset);
+        System.out.printf("%-1s %-17s %-1s %-27s %-1s %-24s %-1s %-24s %-1s\n",
+                colorMain + "║",
+                colorHeadlineBold + opp.getId(),
+                colorMain + "║",
+                colorHeadlineBold + opp.getStatus(),
+                colorMain + "║",
+                colorHeadlineBold + opp.getProduct(),
+                colorMain + "║",
+                colorHeadlineBold + opp.getQuantity(),
+                colorMain + "║\n" + reset);
         System.out.println(colorInput + "Would you like to change the status of this opportunity to " + colorTable + "WON?   y / n" + reset);
         Scanner scanner = new Scanner(System.in);
         try {
@@ -822,7 +899,7 @@ public class MainMenu implements Variables {
         }
     }
 
-    public SalesRepRequestDTO newSalesRep() {
+    public SalesRepReceiptDTO newSalesRep() {
 
         valid = false;
 
@@ -846,7 +923,7 @@ public class MainMenu implements Variables {
                     }
 
                     valid = false;
-                    salesRepServiceProxy.addSalesRep(newSalesRepRequestDTO);
+                    SalesRepReceiptDTO salesRepReceipt = salesRepServiceProxy.addSalesRep(newSalesRepRequestDTO);
                     System.out.println(colorMain + "\n╔════════════╦═══ " + colorMainBold + "New Sales Representative created" + colorMain + " ════════╗" + reset);
                     System.out.printf("%-1s %-17s %-1s %-50s %-1s\n",
                                       colorMain + "║",
@@ -862,11 +939,11 @@ public class MainMenu implements Variables {
                                       "╣" + reset);
                     System.out.printf("%-1s %-17s %-1s %-50s %-1s\n",
                             colorMain + "║",
-                            colorTable + newSalesRepRequestDTO.getId(),
+                            colorTable + salesRepReceipt.getId(),
                             colorMain + "║",
-                            colorTable + newSalesRepRequestDTO.getRepName().toUpperCase(),
+                            colorTable + salesRepReceipt.getRepName().toUpperCase(),
                             colorMain + "║" + reset);
-                    return newSalesRepRequestDTO;
+                    return salesRepReceipt;
                 }
                 case "n" -> // Would normally go back in the menu at this point
                         OS();

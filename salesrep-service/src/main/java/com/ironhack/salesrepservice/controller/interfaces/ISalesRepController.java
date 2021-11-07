@@ -5,5 +5,5 @@ import com.ironhack.salesrepservice.dto.SalesRepDTO;
 
 public interface ISalesRepController {
 
-    SalesRepDTO addSalesRep(SalesRepDTO salesRepDTO);
+    SalesRep addSalesRep(SalesRepDTO salesRepDTO);
 }

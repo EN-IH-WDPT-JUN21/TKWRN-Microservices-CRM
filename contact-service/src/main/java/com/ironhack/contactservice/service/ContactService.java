@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Service
 public class ContactService {
@@ -59,5 +62,10 @@ public class ContactService {
                            contactDTO.getSalesId(),
                            contactDTO.getAccountId());
 
+    }
+
+    public List<Contact> findAllByAccountId(Long id) {
+        List<Contact> contactList = contactRepository.findAllByAccountId(id);
+        return contactList;
     }
 }

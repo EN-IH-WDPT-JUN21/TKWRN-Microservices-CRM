@@ -56,11 +56,11 @@ public class AccountService implements IAccountService {
             if (!opps.isEmpty()){
                 accountReceiptDTO.setOpportunityList(opps);
             }
-//            var contacts = contactProxy.getAllContactsByAccount(id);
-//
-//            if (!contacts.isEmpty()){
-//                accountReceiptDTO.setContactList(contacts);
-//            }
+            var contacts = contactProxy.getAllContactsByAccount(id);
+
+            if (!contacts.isEmpty()){
+                accountReceiptDTO.setContactList(contacts);
+            }
             accountReceiptDTOList.add(accountReceiptDTO);
         }
         return accountReceiptDTOList;
@@ -88,11 +88,11 @@ public class AccountService implements IAccountService {
         if (!opps.isEmpty()){
             accountReceiptDTO.setOpportunityList(opps);
         }
-//            var contacts = contactProxy.getAllContactsByAccount(id);
-//
-//            if (!contacts.isEmpty()){
-//                accountReceiptDTO.setContactList(contacts);
-//            }
+            var contacts = contactProxy.getAllContactsByAccount(id);
+
+            if (!contacts.isEmpty()){
+                accountReceiptDTO.setContactList(contacts);
+            }
 
         return accountReceiptDTO;
     }
