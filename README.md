@@ -20,7 +20,7 @@
                   what a meal it has been...
 
                   Thus, be cautious noble reviewer, for although the Knights fought valiantly, 
-                  many are the dangerous of the Menu.
+                  many are the dangers of the Menu.
                   
                   May the Admin armour protect you on your journey or choose the garb of the fallen Knight 
                   to honour them.
