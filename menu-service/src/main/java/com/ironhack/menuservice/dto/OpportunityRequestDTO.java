@@ -30,7 +30,7 @@ public class OpportunityRequestDTO {
 
     private Long salesRepId;
 
-    public OpportunityRequestDTO(OpportunityReceiptDTO opp) {
+    public OpportunityRequestDTO(OpportunityRequestDTO opp) {
         this.id = opp.getId();
         this.product = opp.getProduct();
         this.quantity = opp.getQuantity();
