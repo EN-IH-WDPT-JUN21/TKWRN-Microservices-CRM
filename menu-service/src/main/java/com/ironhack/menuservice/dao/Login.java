@@ -87,7 +87,7 @@ public class Login implements ActionListener {
         hint.setBounds(20, 190, 380, 25);
         panel.add(hint);
 
-        esterEgg = new JLabel("Admin or Guest? Too short for a Knight");
+        esterEgg = new JLabel("Admin or Guest?");
         esterEgg.grabFocus();
         esterEgg.setOpaque(false);
         esterEgg.setFont(new Font("Serif", Font.BOLD, 16));
